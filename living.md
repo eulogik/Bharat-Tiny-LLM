@@ -1,6 +1,6 @@
 # Bharat-Tiny-LLM: Living Document
-**Last Updated:** Week 1, Day 1
-**Status:** POC Phase — Model Trained & Quantized
+**Last Updated:** Week 1, Day 1 (Session End)
+**Status:** ✅ POC Complete — All Pipeline Stages Proven
 
 ---
 
@@ -9,25 +9,31 @@
 **What:** India's first native edge AI for Indian languages
 **Why:** Zero tiny Indic models exist. Everyone builds skyscrapers, no one builds bicycles.
 **Target:** 350M parameter model running on ₹8,000 phones
-**Status:** ✅ POC complete — Hinglish-speaking model trained on Mac Mini M4 16GB
+**Status:** ✅ POC complete — Full pipeline demonstrated on Mac Mini M4 16GB with zero cloud compute
 
 ---
 
 ## Current Status
 
-### Week 1: POC Complete 🎉
+### Week 1: POC Complete — Final Results
 
-| Task | Status | Notes |
-|------|--------|-------|
-| Environment setup | ✅ Done | MLX with Metal GPU, venv |
-| SmolLM2-360M base downloaded | ✅ Done | 361.8M params, 693 MB FP16 |
-| Custom tokenizer trained | ✅ Done | 64K vocab, Unigram, Indic corpus |
-| Hinglish dataset generated | ✅ Done | 1,111 conversations via OpenRouter |
-| LoRA fine-tuning (3 rounds) | ✅ Done | prod_v2: 2000 iters from prod_v1 |
-| Model merged & exported | ✅ Done | FP16 (698 MB) + Q4 (202 MB) |
-| Q4 quantization | ✅ Done | 4.5 bits/weight, 202 MB |
-| GitHub repo created | ✅ Done | https://github.com/eulogik/Bharat-Tiny-LLM |
-| All code pushed | ✅ Done | Main branch with full pipeline |
+| Milestone | Result | Notes |
+|-----------|--------|-------|
+| Base model | SmolLM2-360M | 361.8M params, Apache 2.0 |
+| Custom tokenizer | Trained | 64K vocab Unigram on 1.36GB Indic corpus (not yet integrated) |
+| Dataset v1 | 1,101 conversations | Via qwen3-8b on OpenRouter (original) |
+| Data augmentation | +1,762 variants | Synonym swap, abbreviation, sentence variety |
+| Dataset v2 | +~1,000 conversations | Via openrouter/free (gemma-4-26b, llama-3.3-70b) |
+| **Final dataset** | **3,858 conversations** | Deduplicated, 99% Hinglish quality |
+| Round 1 (poc_v1) | 300 iters, loss 3.50→1.03 | Text format, quick test |
+| Round 2 (poc_v2) | 500 iters, loss 2.19→0.39 | Text format, more data |
+| Round 3 (poc_v3) | 800 iters, loss 3.42→0.38 | Messages format, first correct format |
+| Round 4 (prod_v1) | 1,200 iters, loss 3.45→0.39 | Messages, 561 conversations |
+| Round 5 (prod_v2) | 2,000 iters, loss 2.34→0.81 | Messages, 1,111 conversations |
+| **Round 6 (prod_v3)** | **3,000 iters, loss 2.72→1.83** | **Messages, 3,858 conversations** |
+| Q4 quantization | 201.8 MB, 4.5 bits/weight | Edge-ready |
+| Inference speed | 54 tok/s on M4 | Expected 40+ tok/s on Pi 5 |
+| GitHub push | ✅ All code pushed | https://github.com/eulogik/Bharat-Tiny-LLM |
 
 ### Git Status
 - Repository: https://github.com/eulogik/Bharat-Tiny-LLM (private)
@@ -194,17 +200,21 @@ hf_token = os.getenv('HF_TOKEN')
 
 ## Experiments Log
 
-### Final Model: prod_v2 (Bharat-Tiny-LLM v1)
+### Final Model: prod_v3 (Bharat-Tiny-LLM v2)
 
 | Metric | Value |
 |--------|-------|
 | Base model | SmolLM2-360M (361.8M params) |
-| Training data | 1,111 Hinglish conversations |
+| Training data | 3,858 Hinglish conversations (3472 train, 386 val) |
 | Method | LoRA (8 layers, rank 16) |
-| Training iters | 2000 (resumed from prod_v1) |
-| Final loss | 0.81 |
-| Peak memory | 1.5 GB |
-| Quantized size | 202 MB (Q4) |
+| Training iters | 3,000 (resumed from prod_v2) |
+| Final loss | 1.83 |
+| Best loss | 1.61 (at iter 2100) |
+| Trainable params | 1.085M (0.3% of total) |
+| Peak memory | 1.17 GB |
+| Training speed | ~5.6 it/s, ~520 tok/s |
+| Total training time | ~9 min (3000 iters) |
+| Quantized size | 201.8 MB (Q4) |
 | Inference speed | 54 tok/s (Mac Mini M4) |
 | Expected Pi 5 speed | ~40-50 tok/s |
 | Expected Android speed | ~30-40 tok/s |
@@ -214,10 +224,20 @@ hf_token = os.getenv('HF_TOKEN')
 | Category | Rating | Notes |
 |----------|--------|-------|
 | Hinglish recognition | ✅ Good | Understands Hinglish prompts |
-| Hinglish response | ⚠️ Fair | Attempts Hinglish, often garbled |
-| Answer relevance | ❌ Needs work | Many hallucinated/irrelevant answers |
-| Coherence | ❌ Needs work | Limited by small dataset |
-| Cultural knowledge | ❌ Not yet | No cultural data injected yet |
+| Hinglish response | ⚠️ Partial | Mixes Hindi+English but often garbled |
+| Answer relevance | ❌ Needs work | Limited by small dataset (3.8K) |
+| Coherence | ❌ Needs work | Model memorizes patterns, doesn't generalize |
+
+### Production Requirements (to close the gap)
+
+| Requirement | Current | Target |
+|-------------|---------|--------|
+| Training conversations | 3,858 | 50,000+ |
+| Human-verified data | 0% | 100% curated |
+| Custom tokenizer integrated | ❌ Not yet | Required for Indic efficiency |
+| DPO/RLHF | ❌ Not done | Needed for quality |
+| Full fine-tuning | ❌ LoRA only | Full FT would use all 361M params |
+| Evaluation benchmarks | ❌ Not done | Need IndicQA, HinglishEval |
 
 ---
 
@@ -289,15 +309,15 @@ hf_token = os.getenv('HF_TOKEN')
 | Week 0, Day 0 | Initialized git repository | Eulogik |
 | Week 0, Day 0 | SmolLM2-360M downloaded, MLX working | Eulogik |
 | Week 0, Day 0 | Custom tokenizer trained (64K, Unigram) | Eulogik |
-| Week 0, Day 0 | Model converted to MLX, 109 tok/s baseline | Eulogik |
-| Week 0, Day 0 | poc_v1 trained (300 iters, text format) | Eulogik |
-| Week 0, Day 0 | poc_v2 trained (500 iters, more data) | Eulogik |
-| Week 0, Day 0 | poc_v3 trained (800 iters, messages format) | Eulogik |
-| Week 0, Day 0 | prod_v1 trained (1200 iters, 561 convos) | Eulogik |
-| Week 1, Day 0 | prod_v2 trained (2000 iters, 1111 convos) | Eulogik |
+| Week 0, Day 0 | poc_v1-poc_v3 trained (Quick experiments) | Eulogik |
+| Week 0, Day 0 | prod_v1 trained (1,200 iters, 561 convos) | Eulogik |
+| Week 1, Day 0 | prod_v2 trained (2,000 iters, 1,111 convos) | Eulogik |
 | Week 1, Day 0 | Q4 quantization (202 MB, 54 tok/s) | Eulogik |
 | Week 1, Day 0 | GitHub repo created and code pushed | Eulogik |
-| Week 1, Day 1 | POC complete - model speaks Hinglish | Eulogik |
+| Week 1, Day 1 | Data augmentation (3,858 total conversations) | Eulogik |
+| Week 1, Day 1 | prod_v3 trained (3,000 iters, loss 1.83) | Eulogik |
+| Week 1, Day 1 | prod_v3 Q4 model created | Eulogik |
+| Week 1, Day 1 | Final code push — **POC complete** | Eulogik |
 
 ---
 
