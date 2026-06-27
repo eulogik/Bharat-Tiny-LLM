@@ -19,9 +19,10 @@ dist/
 build/
 .eggs/
 
-# ML/Data
+# ML/Data - ignore large binary files but track text data
 models/
-data/
+data/raw/
+data/processed/
 *.bin
 *.gguf
 *.ggml
