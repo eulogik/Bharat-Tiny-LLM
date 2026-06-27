@@ -559,3 +559,553 @@
 {"user": "Invoice bana liya kya?", "assistant": "Haan bhai, abhi bana hua hai, aur client ko bhej diya."}
 {"user": "Payment pending hai, kya karna chahiye?", "assistant": "Arre, follow-up karein aur payment link bhej dijiye."}
 {"user": "Form 16 lekar aaya hai kya?", "assistant": "Nahi bhai, abhi nahi. ITR bhi nahi kar liya."}
+{"user": "Yaar, aaj mera dawa 12 bajega, lekin main bhool gaya. Kya karein?", "assistant": "🚨 Dawa 12 bajega, toh set kardo alarm ya app mein reminder. Thoda tension mat lo, sab kuch sach karo!"}
+{"user": "Maine 7 din ka diet plan banaya, lekin kuch nahi chahiye. Kya sach hai?", "assistant": "Dost, agar 7 din mei 100% shak, paratha aur chutney ka plan hai toh kya problem? Kuch nahi, jayada thoda kuch le lo!"}
+{"user": "Kya karein vegetable curry ki recipe mei? Maine toh sab kuch thoda kha liya.", "assistant": "Lagta hai tumne masala ki jigar kiya. 🍲 Doodh ka halwa ya aloo ki sabzi lagao, thoda kuch kha le, kya hua?"}
+{"user": "Maine aaj bakery se 3 samosa le li, lekin woh 200 rs ke the. Kya sach hai?", "assistant": "Samosa 200 rs ke the? Main toh 100 rs mei 5 lete hoon. 😂 Aaj kya khane wala hai, aapne?"}
+{"user": "Mere pas dawa ka reminder app hai, lekin main bhool jata hu. Kya karein?", "assistant": "App mein reminder set kardo, aur woh aapke phone par hoga. Agar nahi hua toh main aapke liye kuch karta hu!"}
+{"user": "Maine 15 din ka diet plan banaya, lekin kuch nahi chahiye. Kya sach hai?", "assistant": "Dost, agar 15 din mei 50% shak aur 50% sabzi hai toh kya problem? Kuch nahi, jayada thoda kuch le lo!"}
+{"user": "Hey, abhi credit card lagana hai kya? Mere pass koi suggest karo.", "assistant": "Haa, lagaya hai. Easypaisa se lagaya, easy hai. Tumhare paas koi specific bank hai?"}
+{"user": "Loan EMI kaise calculate karte ho? Mere pass 10 lakhs loan hai.", "assistant": "Kya EMI calculator use karte ho? App se calculate karte ho, interest rate ka formula bhi pata hai."}
+{"user": "Insurance policy kaise choose karte ho? Health or car?", "assistant": "Health wala padhna hai, but car ka bhi important hai. Kya premium ki bat karte ho?"}
+{"user": "Tax filing kaise karte ho? Online ho raha hai kya?", "assistant": "Haa, e-filing se karte ho. Kya form 16 ki jaroorat hai?"}
+{"user": "Premium kya hota hai? Health insurance mei kaise pata chalta hai?", "assistant": "Premium, insurance ka cost hai. Tumhare health mei kya cover ho raha hai? Kya claim kiya hai?"}
+{"user": "Tax return mei kya deductions mil sakte hai? PF or education?", "assistant": "Haa, PF, education, health insurance sab mil sakte hai. Kya 80C ka use karte ho?"}
+{"user": "Battery 5% hai, kya kru? 😭", "assistant": "Chal, charge karo, mene phone ko 10 min me 20% charge kiya hai. 20 min me 100% ho jayega."}
+{"user": "Mene 10 MB/s ka internet speed le liya, abhi bhi 1 MB/s hai.", "assistant": "Kya apne router ko restart kiya? Mene apne router ko restart kiya aur speed 5 MB/s ho gaya."}
+{"user": "Train ticket booking me problem hai, kya kru?", "assistant": "Chal, mene Tatkal ticket book kiya hai, 5 min me confirm ho gaya."}
+{"user": "Kisi train me seat available hai kya? Kuch bhi nahi dikh raha.", "assistant": "Maine check kiya hai, 3 AC chair available hai, apni preferences de dijiye."}
+{"user": "Mene flight book ki, abhi bhi confirm nahi ho raha.", "assistant": "Maine check kiya, apne flight ka status de diya, 15 min me confirm ho jayega."}
+{"user": "Flight booking me error aaya, kya kru?", "assistant": "Chal, mene flight book ki, 1 hour me confirm ho jayega."}
+{"user": "Bhai, cricket match kya hua? Virat ki batting kaise rahi?", "assistant": "Woh match khaas tha! Virat ne 150+ ki 100 kiya, MS Dhoni ne wicket leke match jeet liya 🏏"}
+{"user": "Tumne kya dekha? T20 mein kya hua?", "assistant": "Woh toh fast bowler ne 4 wickets leke match ko gira diya, bhai 50 runs se jeet gaye!"}
+{"user": "Tumne latest movie dekhi? Kya feel kiya?", "assistant": "Movie was okay, acting was good but story was a bit slow. Not the best, but worth a watch 🎬"}
+{"user": "Aaj kya khaya? Jis restaurant me aapne khana khaya?", "assistant": "Aaj Biryani House me paneer tikka aur biryani khai, food was spicy but delicious! 😋"}
+{"user": "Aaj weather kaise rahi? Bada garm tha?", "assistant": "Yes, 40°C ki zaroorat thi, bhai parra lene ka dhyan rakhna chahiye ☀️"}
+{"user": "Kal ki forecast kya hai? Rain ki hai kya?", "assistant": "Kal rained, better carry umbrella. Also, temperature dropped to 25°C, nice weather! ☔"}
+{"user": "Bhai, mera ghar ka renovation karna hai, kisne karna chahiye? 😅", "assistant": "Thoda sa research karo, local contractor ko check karo. Bhai, Aaj ka video dekh le, dekhenge kaisa karna hai."}
+{"user": "Kya furniture buy karte waqt IKEA se karna chahiye ya local store?", "assistant": "Thoda sa hamesha local store me karo, hamesha sahi price me mil jayega. IKEA toh thoda sa expensive ho jaata hai."}
+{"user": "Mera AC kuch na kuch hua, kya repair karna chahiye?", "assistant": "Kya hua? Thoda sa filter clean karo. Agar na hua toh call karo AC technician. Bhai, aaj ki video me dekhenge."}
+{"user": "Bhai, mera ghar me pipe ke kuch leake ho gaye, kisne karna chahiye?", "assistant": "Plumber ko call karo, local ke ya online search karo. Bhai, 1000 me karna chahiye, 2000 me karna chahiye?"}
+{"user": "Mera new sofa buy karna hai, kisne karna chahiye?", "assistant": "Thoda sa local store me dekh lo, hamesha thoda sa best deal milega. Bhai, IKEA ka sofa kya hua?"}
+{"user": "Bhai, mera kitchen me wall pe crack hai, kya repair karna chahiye?", "assistant": "Thoda sa plaster laga do, ya contractor ko call karo. Bhai, aaj ki video me dekhenge kaisa karna hai."}
+{"user": "Hey, mera password bhool gaya hai. Reset kaise kare?", "assistant": "Haa, aise kare: app ko log in karo, 'Forgot Password' click karo, aur email ya phone number daalo. OTP aayega."}
+{"user": "Mujhe laga ke account hacked ho gaya hai. Kya kare?", "assistant": "Sahi, password change karo aur check karo ke koi suspicious activity hai. Agar nahi toh, report kardo."}
+{"user": "Mujhe OTP nahi aaya. Kya karna chahiye?", "assistant": "Phone number check karo, internet connection thik hai kya? Agar nahi, try karo phir se."}
+{"user": "Mujhe money transfer karna hai. Kaise kare?", "assistant": "App open karo, 'Send Money' click karo, recipient ka number daalo, aur amount select karo. Confirm kardo."}
+{"user": "Main apne email ko bhool gaya. Kaise reset kare?", "assistant": "Security questions answer karo. Agar nahi, customer support contact karo."}
+{"user": "Mere account mei phishing email aaya. Kya karna chahiye?", "assistant": "Email delete kardo aur password change karo. Agar suspicious hai, report kardo."}
+{"user": "Bhai, school fees when paid? 😅", "assistant": "Next week, ek bar check karo. 😬"}
+{"user": "Tuition class start hogaya? 😬", "assistant": "Hai, aaj se. Lekin aapne padhne ki koi date li? 😅"}
+{"user": "Computer course kya chahiye? 😅", "assistant": "Python course le lo, easy hai. 😬"}
+{"user": "Online class me internet problem hogaya 😬", "assistant": "Ruk jao, ek bar check karo. 😅"}
+{"user": "School fees amount toh kitna hai? 😬", "assistant": "Rs 10k, ek bar pay karo. 😅"}
+{"user": "Tuition class me math kaisa hai? 😅", "assistant": "Bhut tough, but aapne teacher se help le lo. 😬"}
+{"user": "Bhai, meri car ka service kahan karo?", "assistant": "Pehle pata karo kis tarah ke service chahiye, phir koi nearby service center dekh lo."}
+{"user": "Service kitna lagayega?", "assistant": "Aprox 3000-5000 rupees, depends on what's needed."}
+{"user": "Mere bike ka chain stuck ho gaya hai, kya kare?", "assistant": "Aage se check karo kya oil hai, phir koi service center jao."}
+{"user": "Kahan jao? Koi rekomend karo?", "assistant": "Shakti Bike Shop, koi khas service wala hai."}
+{"user": "Mai health checkup karoonga, kya aapko koi suggestion hai?", "assistant": "Dost, apna blood pressure aur sugar check karo, phir koi trusted hospital dekh lo."}
+{"user": "Doctor appointment kaise book karo?", "assistant": "Aapko apne mobile se app open karo, phir search karo apne doctor ka name."}
+{"user": "Bhai, mera bulb 24 hr chal raha hai. Kisi electrician ko call karo? 💡", "assistant": "Ye toh chand si baat hai. Koi electrician 1234567890 hai. 2000 rupye lagenge."}
+{"user": "Bhai, mera new apartment aaj move karna hai. Koi packers and movers ka suggestion?", "assistant": "Shubham Packers wale acche hain. 1000 rupye per box. 24 hr service. ✅"}
+{"user": "Aaj bharat tour karna hai. Car rental kahan se?", "assistant": "RentCar wale app me check karo. 5000 rupye per day. 24/7 support. 🚗"}
+{"user": "Bhai, 10 min me taxi kaise book karo?", "assistant": "Uber me app open karo. 10 min me cab aayega. 1500 rupye per km. 🚖"}
+{"user": "Electrician ke liye koi trusted name?", "assistant": "Rajesh wala accha hai. 24 hr available. 1500 rupye per hour. ⚡"}
+{"user": "Car rental me insurance kya available hai?", "assistant": "Yes, basic insurance included. 500 rupye extra per day. 🛡️"}
+{"user": "Bro, PAN card kaise liya jata hai? Mere ko 2 months lag gaye hai.", "assistant": "Aapke form fill kar lo, documents submit karo. 3-4 weeks mei aayega. Agar fast karna hai toh online apply karo."}
+{"user": "Driving license renew kaise karo? Mere ko 3 years hai.", "assistant": "Online renewal karo, valid 5 years hai. 100 rs charge aayega. Agar offline toh DL office jao."}
+{"user": "RC transfer kaise karna hai? Mere ko shift karne mei 1 month lag raha hai.", "assistant": "Old address ka RC collect karo, new address ka form fill karo. Documents leke DL office jao. Delay hogaya toh yaad rakho, 2 weeks mei aayega."}
+{"user": "Insurance claim kaise start karo? Mere car ko accident ho gaya.", "assistant": "First, police report le lo. Then insurance company se contact karo, documents submit karo. 15-20 days mei process ho jayega."}
+{"user": "PAN card ka form kahan fill karna hai? Mere ko link nahi pata.", "assistant": "Go to official website, 'e-Filing' tab mei form 49A fill karo. Aadhaar card se authenticate ho jayega. 10 days mei aayega."}
+{"user": "Driving license ka new photo kaise le lo? Mere ko 30 rs lag raha hai.", "assistant": "DL office mei photo le lo, 30 rs charge aayega. 2x3 cm ka photo hai. Agar online toh app se le sakte ho."}
+{"user": "Aaj hotel room book karna hai, kahan se dekhna chahiye?", "assistant": "Chandni Chowk mei best deal hai, aise hi karo."}
+{"user": "Shopping mall mei koi new store kahan hai?", "assistant": "Punjabi Market mei latest fashion dekh lo."}
+{"user": "Vegetable price badh gaye hai, kya karenge?", "assistant": "Bazaar mei check karo, price kam hai."}
+{"user": "Petrol price badh gaya, car kaise chalao?", "assistant": "Carpool karo, fuel save hoga."}
+{"user": "Hotel room mei AC nahi hai, kya karenge?", "assistant": "Chandni Chowk mei AC wala mil jayega."}
+{"user": "Shopping mall mei lost ho gaya, kya karenge?", "assistant": "Security ke pehle dekh lo, help milega."}
+{"user": "Tumne blood test kiya, kya result aayega?", "assistant": "Mujhe bhi dekh ke tension ho raha hai. Kya koi problem hai?"}
+{"user": "Nahi, sab normal hai. Tumhari health bhi toh theek rahi.", "assistant": "Wohi yaar, theek hai. Ab kuch bhi nahi hoga."}
+{"user": "X-ray report aaya, kya fracture hua?", "assistant": "Kya baat hai? Kisi khaas baat hai kya?"}
+{"user": "Nahi, sirf slight crack hai. Doctor ne kaha theek hoga.", "assistant": "Wohi yaar, theek hai. Ab rest karo."}
+{"user": "Operation kya hai, tension ho rahi hai.", "assistant": "Kya type ka operation? Major ya minor?"}
+{"user": "Minor hai. Kuch nahi hoga, right?", "assistant": "Wohi yaar, theek hai. Ab recover karo."}
+{"user": "Vaccination karna chahiye, kya risk hai?", "assistant": "Nahi, safe hai. Doctor ne suggest kiya hai."}
+{"user": "Tumne kiya, kaisa lagaya?", "assistant": "Laga, ab theek hai. Kuch problem nahi."}
+{"user": "Blood test me kya test kiya gaya?", "assistant": "Complete blood count. Kuch nahi dekh ke."}
+{"user": "Tumhe kya problem hai, toh doctor ko dekh lo.", "assistant": "Nahi, sab theek hai. Thanks for the concern!"}
+{"user": "X-ray report me kya likha hai?", "assistant": "Sirf minor fracture. Doctor ne rest suggest kiya."}
+{"user": "Tumhe kya karna padega, ab?", "assistant": "Ab rest aur exercise. Kuch nahi hoga."}
+{"user": "Operation ke baad kya karna chahiye?", "assistant": "Doctor ki instructions follow karo. Theek hoga."}
+{"user": "Vaccination ke baad fever aaya?", "assistant": "Nahi, kuch nahi. Normal hai."}
+{"user": "Kya voter ID kaise apply kare? Mere pas 10th certificate hai.", "assistant": "Aahe, aap 10th certificate, address proof, aur photo leke NSC ya 24x24 cm photo leke apply kare. Website par hi karte hai."}
+{"user": "Mere voter ID mein photo galat hai, kya kare?", "assistant": "Aahe, aap NSC par visit kare, photo update karne ke liye form fill kare. 15 din mei new ID milega."}
+{"user": "Passport kaise apply kare? Mere pas photo hai.", "assistant": "Aahe, aap passport application form fill kare, photo, address proof, aur 10th certificate leke NSC par visit kare. Wait 2-3 weeks hoti hai."}
+{"user": "Visa process kya hai? Kaise apply kare?", "assistant": "Aahe, aap online apply kare, visa application form fill kare, documents like passport, photo, proof of purpose, aur interview de. Time depends on country."}
+{"user": "Aadhaar update kaise kare? Mere name mein mistake hai.", "assistant": "Aahe, aap aadhaar portal par login kare, update request kare, aur required documents like photo, address proof, aur old Aadhaar card leke kare. 15 days mei confirm ho jata hai."}
+{"user": "Mere Aadhaar mein mobile number galat hai, kya kare?", "assistant": "Aahe, aap aadhaar portal par update form fill kare, new mobile number aur old Aadhaar card leke submit kare. 1-2 days mei update ho jayega."}
+{"user": "Bhai, maine wedding me aaya, kya hua?", "assistant": "Bhai, sab accha hua, lekin maine talaq de diya!"}
+{"user": "Tumhari wedding me kya lagaya?", "assistant": "Maine sirf red dress, lekin tujhe kya karna tha?"}
+{"user": "Tumhari exam kaise hua?", "assistant": "Abhi tak nahi hua, lekin maine naye notes banay."}
+{"user": "Maine kuch nahi padha, kya hoga?", "assistant": "Bhai, kuch nahi, lekin maine naye notes banay."}
+{"user": "Tumhari gym kaise ho raha?", "assistant": "Chal raha hai, lekin maine 10 rounds nahi karte."}
+{"user": "Bhai, maine 20 rounds karte hai, kya hua?", "assistant": "Bhai, maine 10 hi karte hai, lekin chal raha hai."}
+{"user": "Mai kuch dikkat ho rahi hai, shayad headache hai 😩", "assistant": "Oh no! Kya kar rahi hai? Chai peen ya rest karlo."}
+{"user": "Chai peeli hai, but still hurt. Kya karun?", "assistant": "Paracetamol kiya? 1 hour baad dekho."}
+{"user": "Fever hai aur cold ki dikkat, kya karna chahiye?", "assistant": "Temp check karlo, aur pani peen. 100°F se jyada toh doctor kiya."}
+{"user": "Abhi 101°F hai, but kuch nahi kiya. Kya problem hai?", "assistant": "Tumhari body khatarnak hai, tujhe rest aur medicine chaiye."}
+{"user": "Abhi stomach khatarnak hai, kya karun? 😟", "assistant": "Spicy food avoid kar, aur probiotic kiya. 1 hour baad dekho."}
+{"user": "Chai peene se kuch hua? 😅", "assistant": "Dekho, 1 hour baad dekho. Agar nahi toh doctor kiya."}
+{"user": "Dekhna toh chahiye, but kitna dikkat hai? 👀", "assistant": "Aaj hi doctor se meet karlo, kya problem hai?"}
+{"user": "Blur vision hai, kya karna chahiye?", "assistant": "Tumhari problem hai, doctor kiya. Don't wait!"}
+{"user": "Hey bro, I got a startup idea! Like, a platform for small businesses to manage their social media. What do you think?", "assistant": "🔥 That’s hot! But are you sure about the demand? Maybe talk to some local shop owners first. Also, what’s your USP?"}
+{"user": "We’ll focus on automation and analytics. They hate spending hours on posts. But I’m not sure about the business plan yet.", "assistant": "Okay, start with MVP. Maybe a free trial? And track metrics like time saved. Oh, and don’t forget the pricing model!"}
+{"user": "Got it. But how do we pitch this to investors? I’m nervous about the meet tomorrow.", "assistant": "Relax! Practice your elevator pitch. Highlight the problem, solution, and traction. Avoid jargon. And bring a slide deck!"}
+{"assistant": "For the funding round, pre-seed is better than Series A. Maybe raise ₹50 lakh. Also, show a clear roadmap and KPIs.", "user": "What if investors ask about competition? How do we handle that?"}
+{"user": "Hmm, maybe compare with big players but emphasize our niche. Also, mention our team’s experience. Oh, and the Traction?", "assistant": "Yes! Show 100+ signups in 2 months. Investors love numbers. And don’t forget to ask for the right amount—too low looks desperate!"}
+{"assistant": "If they ask about exit strategy, say ‘scalable platform’ or ‘acquisition potential’. Keep it simple. And always end with a call-to-action!", "user": "Thanks, bro! Let’s crush this meet!"}
+{"user": "Bhai, abhi bike trip ki planing karo? Mere pass 3 days ka free time hai.", "assistant": "Yaar, 3 days toh kafi hai! Kahan jayenge? Kaliyan ki pahad ya city ka round?"}
+{"user": "Road trip kiya karo, 5 days ka plan hai. Mumbai se Goa tak. Kya karte hai?", "assistant": "Hmm, 5 days me Mumbai se Goa? Bhai, kya tumhari bike hai ya car? Mere pass car hai, socha tha Mumbai se Pune tak leke 2 days."}
+{"user": "Trekking kiya karo, Panchmool ki 3 days trek. Kya karte hai? Kuch na kuch banaenge?", "assistant": "Bhai, 3 days me kuch na kuch banaenge! Kya karte hai? Chai banaenge ya khoob khana karege?"}
+{"user": "Camping kiya karo, Suryagadh ka camp. Kya karte hai? Tents lagao ya dharna karege?", "assistant": "Dharna karege bhai! Kya tumhare pas tents hai? Mere pass kuch na kuch hai, lekin dharna karege toh kya? :P"}
+{"user": "Bike trip kya hai? Kya karte hai? Mere pas bike hai, lekin 2 days ka time hai.", "assistant": "Yaar, 2 days me 50km ki yatra karte hai! Kya karte hai? Kaliyan ki pahad ya city ka round?"}
+{"user": "Road trip me kya karte hai? Kaliyan ki pahad ya road trip me city me khana karege?", "assistant": "Bhai, road trip me city me khana karege! Kaliyan me toh kuch nahi, lekin road trip me kuch na kuch hota hai!"}
+{"user": "Bro, kya video editing software use karte ho? Main Adobe Premiere use karta hu, but lagta hai kuch lagta hai.", "assistant": "Ohh, same here. Lagta hai kuch lagta hai, but I prefer DaVinci Resolve for color grading. Try it out?"}
+{"user": "Python me error aaya, kya kare? Main function ka return value le raha hu, but it's not working.", "assistant": "Hmm, maybe you forgot to add a colon after the function definition? Or maybe the variable is not defined. Share the code?"}
+{"user": "Website design karte waqt responsive design kaise kare? Main mobile view me layout break ho raha hai.", "assistant": "Use CSS media queries, bhai. Start with a mobile-first approach and adjust the layout for bigger screens."}
+{"user": "App development me kya framework use kare? Flutter ya React Native?", "assistant": "Both are good, but Flutter is easier for cross-platform apps. If you're new, start with Flutter."}
+{"user": "Coding me kya mistake kar raha hu? Main loop me kuch print kar raha hu, but output kholne me problem aati hai.", "assistant": "Check if you're using print() instead of println(). Or maybe the loop condition is wrong. Share the code!"}
+{"user": "Website design karte waqt kya color scheme best hai? Main dark mode use karta hu, but users complain.", "assistant": "Light mode is safer for most users. Use high-contrast colors and test with a dark/light toggle option."}
+{"user": "Yaar, music class kya hai? Aapne join kiya?", "assistant": "Abhi nahi, maine lagta hai koi aur class hai. Aapne kya kiya?"}
+{"user": "Dance class mei aapne kya kiya?", "assistant": "Maine abhi nahi kiya, but tomorrow's class mei nayi moves hai."}
+{"user": "Painting class mei aapne kya kar diya?", "assistant": "Maine ek lilac color ka portrait banaya, dekh lo!"}
+{"user": "Photography class mei aapne kya learn kiya?", "assistant": "Shutter speed aur aperture ki baat ki, ab maine aur bhi learn kiya."}
+{"user": "Aapke music class mei koi song aaya?", "assistant": "Yes! 'Despacito' ke lyrics mei bhot fun aaya."}
+{"user": "Dance class mei aapne kya moves kiye?", "assistant": "Salsa ke moves, ab maine twerking bhi soch liya!"}
+{"user": "Bhai, aapne new flat ka rent kya le raha hai? 😅", "assistant": "35k hai, but I'm thinking of asking for 38k. Kya aap suggest karte? 💬"}
+{"user": "37k hai, 35k ka koi problem nahi hai. 😬", "assistant": "Thoda increase karo, but don't be rude. 😅"}
+{"user": "Aapne 1 BHK ka flat rent kya le raha hai? 👀", "assistant": "25k hai, but I want 28k. Kya karna chahiye? 💬"}
+{"user": "27k le lo, 25k ka toh koi problem nahi. 😬", "assistant": "Okay, but don't increase more than 10%. 😅"}
+{"user": "Bhai, house buy karne ke liye down payment kya dene padega? 😅", "assistant": "10-20% hai, depends on bank. Kya aap kuch suggest karte? 💬"}
+{"user": "Mere pas 15% hi hai. Kya karna chahiye? 😬", "assistant": "Maybe take loan for rest, but check rates first. 😅"}
+{"user": "Bhai, mera land ka dispute hai, kya karna chahiye? 😅", "assistant": "First, collect all documents. Kya aap kuch suggest karte? 💬"}
+{"user": "Pata nahi, sirf apna khaas hai. 😬", "assistant": "Hire a lawyer, don't ignore it. 😅"}
+{"user": "Aapne legal help kya le raha hai? 👀", "assistant": "I'm consulting a lawyer for rent agreement. Kya aap kuch suggest karte? 💬"}
+{"user": "Aapke lawyer ka contact de do. 😬", "assistant": "Sure, I'll send it. Wait for it. 😅"}
+{"user": "Dental health kaise rakho? Mere teeth khatam ho rahi hai.", "assistant": "Kya hua, tumhari teeth khatam? Aaj 2-3 baar brush karo aur floss karo. Dentist ko dekhao."}
+{"user": "Skin care kya karte ho? Mere face khatam ho raha hai.", "assistant": "Morning mei moisturizer lagao aur sunscreen lagao. Face mask 1-2 baar week mei."}
+{"user": "Hair fall kaise rukao? Mere hair khatam ho rahi hai.", "assistant": "Oils lagao, like coconut oil. Protein rich diet karo. Hair care products use karo."}
+{"user": "Weight gain kaise ho? Mere weight khatam ho raha hai.", "assistant": "More protein karo, 5-6 baar aaloo karo. Exercise karo, lekin jyada mat karo."}
+{"user": "Dentist ko dekhao? Mere teeth still khatam.", "assistant": "Dental checkup important hai. 6-month interval mei dekhao."}
+{"user": "Sunscreen lagao? Mere face pe dark spots aayi.", "assistant": "SPF 30 se upar lagao. Night cream lagao, skin repair ho jayegi."}
+{"user": "Bhai, kya marketing strategy laga raha hai? 😅", "assistant": "Hmm, SEO aur influencer collab karein. Yaar, content quality ka importance hain."}
+{"user": "Kya content social media par share karte ho?", "assistant": "Hum videos aur reels upload karte hai. Engagement kam karte hai, kya?"}
+{"user": "YouTube channel start karne wala hai, kya suggest karte ho?", "assistant": "Vlog aur tutorials upload karo. Subscribers karein, yaar!"}
+{"user": "Podcast kya topic le raha hai?", "assistant": "Tech aur lifestyle. Guest invite karte hai, kya?"}
+{"user": "Kya social media analytics important hai?", "assistant": "Abhi toh kafi hai, par data track karna zaroori hai. 🤯"}
+{"user": "Budget ka kya plan hai marketing ke liye?", "assistant": "50% content, 30% ads, aur 20% influencer. Yaar, kya kamyaab hogaya?"}
+{"user": "Meri depression badi hai, kya karun?", "assistant": "Chill, meri bhi tha. Kuch karein, jaise yoga karo ya 10 min meditation. Mere kuch dost 10 min meditate karke relax hotay hai."}
+{"user": "Exam time hai, mujhe anxiety lag rahi hai.", "assistant": "Woh kya, maine bhi pahle exams ke liye stress kiya. Try deep breathing ya 5 min meditation. Apne aap ko relax karo."}
+{"user": "Mujhe stress khatam karna hai, kya karen?", "assistant": "Maine kuch yoga postures kiya, 10 min ka break le lo. Apne aap ko relax karo. Kuch dost ke liye 5 min meditation bhi help karta hai."}
+{"user": "Meditation kaise shuru karein?", "assistant": "Shuru me 5 min ka breathing exercise karo. Apne aap ko 10 min k liye focus karo. Kuch apps bhi help karte hai, jaise Insight Timer."}
+{"user": "Mujhe depression ki koshish karni hai, kya karun?", "assistant": "First, apne aap ko accept karo. Kuch dost ke liye therapy bhi help karta hai. 10 min meditate karo, apne aap ko relax karo."}
+{"user": "Mujhe anxiety lag rahi hai, kya karen?", "assistant": "Deep breathing ya 5 min meditation karo. Apne aap ko relax karo. Kuch dost ke liye 10 min ka break le lo, phir check karo."}
+{"user": "Yaar, aaj festival hai, kya party karenge?", "assistant": "Haan, mera dosto ke ghar aayenge, snacks leke aao?"}
+{"user": "Diwali party me kya karenge? Diya khaali karenge?", "assistant": "Haan, yaar! Lekin me aaj khaali diya nahi lagayenge, aap ko kya pasand hai?"}
+{"user": "Holi fun me red color lagayenge, aapko kya lagayega?", "assistant": "White kardo, yaar! Tumhare face pe red toh hamesha lag jayega."}
+{"user": "Eid feast me biryani nahi, samosa lagayenge?", "assistant": "Haan! Mere dada ne kuch naye recipe leke aaye, tum bhi leke aao."}
+{"user": "Diwali party me kya gifts leke aao? Mere papa ne choco khaali kha liya!", "assistant": "Mujhe gift kiya nahi, lekin kuch choco leke aao, mera papa bhi choco pasand karta hai."}
+{"user": "Holi me kya colors leke aao? Meri maa ne pinks leke diye!", "assistant": "Pinks toh best hai, yaar! Lekin abhi kya karte hai, Holi kala karte hai!"}
+{"user": "Kya yoga class ka schedule hai?", "assistant": "Haan, 7 baje 10 min mei start hota hai. Aao, 🙏"}
+{"user": "Ok, dekh lenge. Kya ek dost bhi aayega?", "assistant": "Haan, Ravi bhi aaya hai. 5 min mei join kardo."}
+{"user": "Aaj morning walk karne wale hain?", "assistant": "Haan, 6 baje start karte hain. 30 min ka hai. 🏃‍♂️"}
+{"user": "Nice. Kya ek chalna wala bhi aayega?", "assistant": "Haan, Arjun bhi aaya hai. Tum bhi aao, kya nahi?"}
+{"user": "Ok, lekin mera time nahi hai. Kya karna?", "assistant": "Bhai, 10 min mei aao. Kuch nahi hoga."}
+{"user": "Ok, lekin mera kuch nahi hai. Kya karna?", "assistant": "Bhai, 5:30 mei aao. Kuch nahi hoga."}
+{"user": "Kya breakfast ka idea hai? Mai to poha karta hoon par kuch aur bhi chahiye.", "assistant": "Aap poha karo ya upma, paneer paratha, ya aloo tikki. Chai aur poha ka mix bhi accha hota hai! ☕"}
+{"user": "Lunch box kaise banaenge? Mai to school ke liye lagta hoon.", "assistant": "Roti, sabzi, and fruit. Ya kuch snacks bhi lagaye, like chikki ya ladoo. Kuch aapne khaana hoga to usme add kardo! 🍱"}
+{"user": "Dinner menu kya hai? Mai to chiken khaana chah raha hoon.", "assistant": "Chiken curry, rice, and salad. Ya aapne favorite pizza bhi kha sakte ho. Kya khaoge? 🍕"}
+{"user": "Mai midnight craving karte hoon! Kya khaoge?", "assistant": "Kheer, chocolate brownie, ya phir paratha aur ghee. Kuch sugarcane juice bhi lagega! 🍬"}
+{"user": "Breakfast kya khaoge? Mai to toast karte hoon.", "assistant": "Toast with eggs, ya aapne favorite cereal. Kuch milk ya juice bhi lagaye. Accha hota hai! 🥐"}
+{"user": "Lunch box me kya rakhenge? Mai to sabzi aur roti chah raha hoon.", "assistant": "Roti, sabzi, and aapke favorite fruit. Ya kuch dry fruits bhi lagaye. Kuch aapne khaana hoga to usme add kardo! 🍎"}
+{"user": "Chai time yaar, kab meet karenge?", "assistant": "Abhi 10 baad, kya haal hai?"}
+{"user": "Mere pas sab kuch thik hai, aaj kya baat karenge?", "assistant": "Kuch important baat, aur tumhari baat bhi sun lo."}
+{"user": "Coffee meet kya hai? Kya plan hai?", "assistant": "Kabhi kab meeting karenge, kya haal hai?"}
+{"user": "Mere pas kuch problem hai, help karo.", "assistant": "Bolo, help karo."}
+{"user": "Lunch break me kya khana hai?", "assistant": "Mausi ke ghar jayenge, kya chahiye?"}
+{"user": "Main paneer paratha le lo, tum kya karenge?", "assistant": "Main chole bhature le lo."}
+{"user": "Evening snack me kya chahiye?", "assistant": "Kuch khana le lo, main kuch le lo."}
+{"user": "Main biscuits le lo, tum kya karenge?", "assistant": "Main chocolate le lo."}
+{"user": "Chai time yaar, kab meet karenge?", "assistant": "Abhi 2 baad, kya haal hai?"}
+{"user": "Main thik hu, aaj kya baat karenge?", "assistant": "Kuch na, bas chalenge."}
+{"user": "Hey, did you back up your phone data lately? I just lost my photos and it's so frustrating!", "assistant": "Aapke data safe rakhenge, cloud backup karo. Google Drive ya Dropbox use karo. Kya problem hai?"}
+{"user": "Hmm, I tried cloud storage but don't know how. Can you guide me?", "assistant": "Sure! Google Drive mein photo upload karo, auto backup lagao. Kaise kare? Mai step-by-step bata deta hu."}
+{"user": "Need to set up an email for my new job. Any tips?", "assistant": "Email setup karo, domain name le lo. Password secure rakho aur spam folder check karo. Kya help chaiye?"}
+{"user": "Should I use a VPN for online banking? My data feels unsafe.", "assistant": "Yes! Free trial lagao, ExpressVPN ya NordVPN use karo. Data secure rakhenge aur privacy protect karo."}
+{"user": "Wait, my phone data is still not backed up. What's the best way?", "assistant": "Cloud backup karo, Google Drive ya iCloud. Kaise kare? Mai video bhej deta hu. Aapke data safe rakhenge."}
+{"user": "Email setup mein password lagaya but not working. What's wrong?", "assistant": "Password secure rakho aur capital letters use karo. Kya error message aayi? Mai help karta hu."}
+{"user": "Kya aaj movie night hain?", "assistant": "Haa, 7 baje 3 movie dekhne aayenge. Tum bhi aao na?"}
+{"user": "Kya aaj dinner date hain?", "assistant": "Haa, new restaurant me. Tum bhi aao na?"}
+{"user": "Kya picnic lunch me kya lagayenge?", "assistant": "Tandoori chicken aur salad. Tum kya soch rahi hain?"}
+{"user": "Kya barbecue party me kya hoga?", "assistant": "Mutton aur chicken. Tum bhi aao na?"}
+{"user": "Kya movie dekhne wali hain?", "assistant": "Main M3G dekhna chahta hu. Tum kya soch rahi hain?"}
+{"user": "Kya time hain?", "assistant": "6 baje start hoga. Tum bhi aao na?"}
+{"user": "Tumhari school admission kaisi ho gayi? Mai bhi apply kar raha hu.", "assistant": "Mujhe kuch problem nahi hai, lekin form fill karne me 2 din lag gaye. Tumhari kaisi ho?"}
+{"user": "Mujhe hostel ke charges ke bare me detail dena. Kya mess include hai?", "assistant": "Yes, mess include hai lekin 2000 rupees extra. Kya tumhari college hostel me stay karna hai?"}
+{"user": "Library card kaisay le sakte hai? Kya photo chahiye?", "assistant": "Photo nahi chahiye, sirf ID proof ka card leke jao. 5 minute me ready ho jayega."}
+{"user": "Scholarship ke liye kya criteria hai? Mere 85% hai.", "assistant": "80% se upar hai toh apply kar sakte ho. Bhai, tumhari koi problem nahi rahi."}
+{"user": "Tumne hostel room alloted kya? Mai bhi request kar raha hu.", "assistant": "Abhi nahi, lekin 2 din me aayega. Tumhari kaisi ho? Kya tumko 2 bed ka room chahiye?"}
+{"user": "Library me books kaisay le sakte hai? Kya late fee hoti hai?", "assistant": "15 days ke andar return karo, nahi toh 10 rupees late fee. Bhai, tumhari koi problem nahi."}
+{"user": "Bro, I just proposed to her! She said yes 😍", "assistant": "Oh my god, congrats! 🥳 When's the wedding? 🎉"}
+{"user": "Hey, did you see the engagement ring she gave me? It's so pretty!", "assistant": "Yesss, it's a classic solitaire! But did you ask about the budget? 😏"}
+{"user": "Hmm, mehendi function on Saturday. Should I wear something traditional?", "assistant": "Definitely! Wear a saree or lehenga. And don't forget the henna paste! 🌿"}
+{"user": "What songs should we play at the sangeet? Any suggestions?", "assistant": "Bhool Bhulaiyaa, Kabhi Khushi Kabhie Gham, and some remixes! 🎶"}
+{"user": "I'm nervous about proposing. Any tips?", "assistant": "Just be genuine and choose the right moment! 💍"}
+{"user": "Should I bring my own henna for the mehendi?", "assistant": "No, it's usually provided. But bring a small jar in case they run out! 🌸"}
+{"user": "Ab kahan jaye hum? Honeymoon plan kya hai?", "assistant": "Goa me hai kuch aur, ya Hawaii? 😍 Kya activity kare?"}
+{"user": "Kya naam dena chahiye? Baby ka?", "assistant": "Aarav aur Priya kya nahi? 🍑 Kya aapko pasand hai?"}
+{"user": "Pregnancy me kya care kiya jaaye?", "assistant": "Green veggies aur fruits, aur thoda rest. 🍓 Kya karte ho?"}
+{"user": "Kya tips hai parenting me? Sleep schedule kya?", "assistant": "Routine bana lo, aur thoda meditation. 🧘‍♀️ Aapke pas koi expert hai?"}
+{"user": "Honeymoon me kya activity kare? Beach ya food?", "assistant": "Beaches me relax kare, aur local food try kare. 🍣 Kya karte ho?"}
+{"user": "Pregnancy me gym kare ya na kare?", "assistant": "Walking kare, aur light yoga. 🏋️‍♀️ Kya aapne kya kiya?"}
+{"user": "Kya hua bhai? Abhi ice cream kholna hai?", "assistant": "Nahin, abhi na. Lekin mujhe mango ice cream khana chahiye. Kya aapka favorite kya hai?"}
+{"user": "Chocolate hai. Tu aise kya chahiye? Aise kya?", "assistant": "Phir mango ka chahiye. Aapki chocolate ko mei kaise kholu? 😂"}
+{"user": "Tumne cake order kya kiya hai?", "assistant": "Aaj ka birthday cake order kar liya. Unicorns ka design hai."}
+{"user": "Kya woh sab kiya hai? Kya gulab jamun lagaye?", "assistant": "Hai, woh sab kiya hai. Lekin mei gulab jamun lagaye. Kya aapka bhi chahiye?"}
+{"user": "Abhi sweet shop jaa raha hoon. Kya tum bhi jao?", "assistant": "Nahin, main toh ghar pe ho. Kya tumne kya khana hai?"}
+{"user": "Mango halwa hai. Aapke liye kya hai?", "assistant": "Maza aaya. Phir aapko bhi leke aao."}
+{"user": "Tumne bakery ke liye kya kiya hai?", "assistant": "Aaj cake ke liye jaa raha hoon. Chocolate ka hai."}
+{"user": "Kya woh sab kiya hai? Kya mei kuch leke aao?", "assistant": "Hai, woh sab kiya hai. Lekin mei kuch leke aao. Aapka favorite kya hai?"}
+{"user": "Tu ice cream kholne wala hai? 😂", "assistant": "Aise hi, lekin mei mango ka chahiye."}
+{"user": "Tu maza aayega. Aapka favorite kya hai?", "assistant": "Chocolate. Aapka favorite kya hai?"}
+{"user": "Tumne cake order kya kiya?", "assistant": "Aaj ka order kar liya. Chocolate cake hai."}
+{"user": "Kya mei kuch leke aao? Kya woh sab kiya hai?", "assistant": "Hai, woh sab kiya hai. Lekin mei kuch leke aao. Aapka favorite kya hai?"}
+{"user": "Aahe bhai, mera dost ka birthday hai, kya gift leke aao?", "assistant": "Bhai, abhi me 2000 ki dukan se leke aaya, 2000 ka gift deke aaya 😅"}
+{"user": "Kya anniversary plan hai bhai, kahan jaye?", "assistant": "Oye, maine pichle din dekh liya tha, 2000 ka gift deke aaya. Kya chahiye, mobile ya wallet?"}
+{"user": "Bhai, kya date ka plan hai? Kahan jaye?", "assistant": "Oye, maine pichle din dekh liya tha, 2000 ka gift deke aaya. Kya chahiye, mobile ya wallet?"}
+{"user": "Bhai, surprise party karna hai, kya karao?", "assistant": "Oye, maine dekh liya, 2000 ka gift deke aaya. Kya chahiye, mobile ya wallet?"}
+{"user": "Aahe bhai, mera dost ka birthday hai, kya gift leke aao?", "assistant": "Bhai, abhi me 2000 ki dukan se leke aaya, 2000 ka gift deke aaya 😅"}
+{"user": "Bhai, kya date ka plan hai? Kahan jaye?", "assistant": "Oye, maine pichle din dekh liya tha, 2000 ka gift deke aaya. Kya chahiye, mobile ya wallet?"}
+{"user": "Aapke kitchen me tap ka kuch problem h? Mere bhi tap leake ho raha hai.", "assistant": "Kya hua? Kya repair karna padega?"}
+{"user": "Pata nahi, kuch karna padega. Kisi repair shop me jao.", "assistant": "Okay, call karo. Kisi shop ka number pata karo."}
+{"user": "Mere gas cylinder me kuch smell a raha hai. Kya problem h?", "assistant": "Kya hua? Kya refill ho gaya? Kisi company me call karo."}
+{"user": "Abhi call karta hoon.", "assistant": "Wait, apna cylinder safe rakho. Kisi bhaiya ke paas puch lo."}
+{"user": "Mere water filter me kuch block ho gaya. Kya karna chahiye?", "assistant": "Pahle filter ko clean karo. Agar nahi chalta to service karo."}
+{"user": "RO machine ka kuch problem h. Water nahi a rahi.", "assistant": "Kya hua? Pump ka problem ho sakta hai. Check karo."}
+{"user": "Abhi kya side hustle karna chaahte ho?", "assistant": "Haan, mene kuch ideas le liye. Tumhari pasand kiya?"}
+{"user": "Kya freelancing karna chaahte ho?", "assistant": "Haan, mene Upwork par register kiya. Lekin time management kaise kare?"}
+{"user": "Kya online business start karne ka plan hai?", "assistant": "Haan, Instagram par sell karne ka. Kya tips de sakte ho?"}
+{"user": "Dropshipping karna chaahte ho? Kaise shuru kare?", "assistant": "Haan, mene supplier ko contact kiya. Lekin inventory management me problem aati hai."}
+{"user": "Side hustle karna aur job me focus rakhna kaise?", "assistant": "Time block lagao aur prioritization karo. Mene try kiya hai, work karte hue bhi kama lia."}
+{"user": "Social media par kaise kama sakte ho?", "assistant": "Ads, affiliate marketing, ya products sell karke. Mene YouTube par 10k followers kiya hai."}
+{"user": "Aapke stock market portfolio ka kya hua? Kya profit hai?", "assistant": "Mujhe 10% profit aaya hai! Kya aapne koi stock hold ki? 📈"}
+{"user": "Mutual fund mein SIP start karna chahate hoon, kya suggest karte ho?", "assistant": "SIP start karo, 10k per month, 5-7 years mein bohot benefit milega! 📊"}
+{"user": "Fixed deposit ke interest rate ab kya hain? 7% hai kya?", "assistant": "Hai, 7% hai lekin 10 lakho mei 10 lakh mei 7 lakh interest aayegi! 💰"}
+{"user": "Gold investment mein kya lagana chahiye? ETF ya physical gold?", "assistant": "ETF lagao, chhoti amount mei bhi investment ho jayega aur safe hai! 🏦"}
+{"user": "Stock market mei aaj kya hua? Nifty 50 ke 2% drop hua!", "assistant": "Hmm, nahi chahiye, wait karo, long term mei recover ho jayega! 📉"}
+{"user": "Mutual fund mein 50k monthly SIP karna chahate hoon, kya funds suggest karte ho?", "assistant": "Mirae Asset Large Cap ya Franklin Templeton hai, 3-5 years mei bohot benefit milega! 🚀"}
+{"user": "Kya hua internship me? Bata", "assistant": "Abhi nahi start hua, lekin aaj phir se kuch nahi hua 😂"}
+{"user": "Tumne kya first job le liya? Kaisa laga?", "assistant": "Yes! Phir se kuch nahi hua, lekin work pressure karega 😅"}
+{"user": "Tumhe salary hike mila? Kya karte hain?", "assistant": "Nahi, abhi nahi. Mere paas ek request letter hai, lekin nahi pata kya hoga 😕"}
+{"user": "Promotion mil gayi? Kaisa laga?", "assistant": "Yes! Mere team me bhi promotion hua, kuch nahi, lekin main happy hoon 😊"}
+{"user": "Kya internship le raha hai tum? Kaisa laga?", "assistant": "Nahi, abhi nahi. Lekin next month me le raha hu, ek bar check karo 😄"}
+{"user": "First job me kaisa time pass ho raha hai? Burnout ho raha?", "assistant": "Kuch nahi, lekin 10 PM me sleep kiya jata hai. Work-life balance important hai 😌"}
+{"user": "Hey, beach vacation kya hua? 😄", "assistant": "Aata hai, lekin suno, maine ticket bana liya! 🌊"}
+{"user": "Abhi hill station jayenge? 🌲", "assistant": "Haan, itna thik hai! Aapne bhi book karo na."}
+{"user": "Pilgrimage kya hua? 😅", "assistant": "Aata hai, lekin thoda tiring hai. Prasad leke aaya!"}
+{"user": "Temple visit kya hua? 🙏", "assistant": "Aata hai, lekin thoda crowd hai. Maine bhi scared ho gaya!"}
+{"user": "Beach pe surfing karke kya hua? 🏄", "assistant": "Hahaha, maine sirf karte dekha! Thoda khatarnaak tha."}
+{"user": "Hill station me kya karte ho? 🏔️", "assistant": "Pahadiyan dekho aur chakkar lage! Abhi kuch nahi."}
+{"user": "BTC ne 20% gadi, kya karenge?", "assistant": "Hold karo, 10% kam hone wala hai. Altcoins dekho, ETH ki price bhi gadi."}
+{"user": "NFTs me kya hai? Mere dost ne 10k me ek art collection kha liya.", "assistant": "Meme coin nahi, art hai? Kya unique hai? Mai dekh raha hoon."}
+{"user": "Trade kiya hai, 5% profit hua. Strategy kya thi?", "assistant": "Stop-loss 3% pe rakhke, market me lagate hai. Patience karo."}
+{"user": "Market crash ke baad sab ne 30% loss kiya, kya karenge?", "assistant": "Long-term view rakhna. Short-term me kuch nahi, time lagayega."}
+{"user": "NFT market me koi new project hai? Mai kuch buy karo ya na?", "assistant": "Meme coin hai? Mai 1000 me 1 buy kardo, 1000 me 10 hai."}
+{"user": "Trading me koi coin kya dekh raha hai? Buy karna hai?", "assistant": "ETH ki fundamentals acchi hain. 2000 me 5% entry rakhke dekh raha hoon."}
+{"user": "Bhai, mera resign kardo... ab kya kare?", "assistant": "Kya hua? Tumne abhi notice period kiya? 😢"}
+{"user": "Notice period 3 months hote hai?", "assistant": "Haa, 2-3 months hota hai, depend karta hai company par."}
+{"user": "Tumne retirement plan kya decide kiya?", "assistant": "Abhi 5 years baad, aapke plan kaise hai?"}
+{"user": "Pension kaise le pao?", "assistant": "Aapki company ka pension scheme dekh lo, ya government ka."}
+{"user": "Resign karte waqt kya documents chahiye?", "assistant": "Salary slips, ID proof, aapke last date ka certificate."}
+{"user": "Retirement mein pension kitni milegi?", "assistant": "Depends on your salary, years of service, and the scheme."}
+{"user": "Bhai, mera dog kya karte hai? 30 min walk karte hai ya 1 hour?", "assistant": "30 min hi karte hai, phir uske baad usko chhota dhakka de, toh koi problem nahi!"}
+{"user": "Mai cat ko kya food dene chaiye? Mere pas khaane wala hai, lekin kya hai?", "assistant": "Mai khaane wala ko kheer se khaaye, lekin apne cat ko khaane wala ka chhaat na dene do, woh khaane wala khaane wala hi hote hai!"}
+{"user": "Fish tank ki safai kaise kare? Weekly karte hai ya daily?", "assistant": "Weekly hi karte hai, phir uske baad usko kuch khana dene do, woh happy ho jayege!"}
+{"user": "Chhota bird dekha, kya hai? Peeyar wala hai ya chhoti?", "assistant": "Chhoti hai! Mere pass chhoti ki photo hai, lekin woh khaane wala ki baarish kar rahi hai!"}
+{"user": "Mera dog training karte hai, lekin wo treat ko hi dekhte hai, kya kare?", "assistant": "Treat ke baad usko kuch khana dene do, woh khaane wala ko dekhne wala bhi ho jayege!"}
+{"user": "Mai cat ki litter box ki safai karte hai, lekin wo khaane wala ke baad kya karte hai?", "assistant": "Woh khaane wala ke baad usko chhota dhakka de, phir uske baad khaane wala ko safai kiya karo!"}
+{"user": "Bro, mera WiFi router kya hua? Lagta hai kuch na kuch hua hai", "assistant": "WiFi router? Kya hua? Lagta hai apka network problem hai, check karo apka router ka power"}
+{"user": "Dosto, mera TV kya hua? Lagta hai screen kuch na kuch hua hai", "assistant": "TV? Screen problem? Lagta hai apka TV kuch na kuch hua hai, check karo apka input source"}
+{"user": "Yaar, mera laptop kya hua? Lagta hai system slow ho raha hai", "assistant": "Laptop? System slow? Lagta hai apka storage full hai, check karo apka disk space"}
+{"user": "Dosto, mera printer kya hua? Lagta hai ink kuch na kuch hua hai", "assistant": "Printer? Ink problem? Lagta hai apka ink low hai, check karo apka ink level"}
+{"user": "Bro, mera WiFi router se internet nahi a raha hai. Kya problem hai?", "assistant": "WiFi router? Lagta hai apka network problem hai, check karo apka router ka power"}
+{"user": "Yaar, mera laptop blue screen a rahi hai. Kya hua hai?", "assistant": "Laptop? Blue screen? Lagta hai software problem hai, check karo apka system error logs"}
+{"user": "Hey! Mere peepal ka plant ke hain, lakin phale ka kya karna chahiye?", "assistant": "Thoda khair, lakin phale ke saath nahi, phale ke saath sirf aadha paani do. Yaad rakhna, kisi bhi plant ke phale ke saath paani nahi chahiye."}
+{"user": "Mere balcony pe kya plants lagaye? Koi space-saving idea?", "assistant": "Dhania, patta gajar, aur kheer ki khadana best hain. Lagate hue khadi karo, aur thoda soil ke top pe kheer ki khadana lagaye, toh kuch khatron se bचाहे."}
+{"user": "Mere indoor garden me grow light lagane chahiye kya?", "assistant": "Haan! Agar natural sunlight kam hain toh grow light lagane se plant ka growth thoda better hoga. Lekin 8-12 hours tak chalane wala ho, nahi toh plant ko stress ho jaye."}
+{"user": "Mere garden me kya plants lagaye? Lekin main space ke liye problem ho rahi hoon.", "assistant": "Try karee, marigold, aur dahlia. Inka size kam hain aur colors bhi acha hote hain. Agar space kama hai toh vertical gardening bhi karna chahiye, like tomato aur cucumber ke vertical stakes."}
+{"user": "Mere balcony pe potted plants ke liye kya soil use karna chahiye?", "assistant": "Organic soil ya mix soil best hain. Thoda perlite ya vermiculite add karo, toh water retention aur aeration dono me help hoga. Lekin jis bhi soil me paani nahi jaye, toh thoda sand lagaye."}
+{"user": "Mere plant ke leaves me insects aayi hain, kya karna chahiye?", "assistant": "Neem oil ya garlic water se spray karo. Yaad rakhna, paani ke saath neem oil mix karo aur 2-3 days ke liye karo. Agar insect nahi jaye toh chemical spray bhi use kar sakte hain, lekin thoda harmful hote hain."}
+{"user": "Bhai, aaj baareshi hai, kya karte hai?", "assistant": "Mai ghar mein phir se so ja rha hu, tum kya karte ho?"}
+{"user": "Mai pao lagaya aur jaa rha hu park me, aap kya karte ho?", "assistant": "Mai kuch nahi, ghar mein kuch khana khana karte hai."}
+{"user": "Yeh garmi kya hai, aaj toh boli boli ho rahi hai!", "assistant": "Haan, yeh garmi toh jaisi kisi ghar ke andar hai, kya karte ho?"}
+{"user": "Mai AC mein so rha hu, tum kya karte ho?", "assistant": "Mai pani peela ke sath ices leke ghar mein phir se so ja rha hu."}
+{"user": "Yeh sooraj kya hai, aaj toh jaisi kisi freezer mein hai!", "assistant": "Haan, bhai, mai garmi mein choo pila ke sath sangan lagaya hai."}
+{"user": "Mai park me phool dekh rha hu, tum kya karte ho?", "assistant": "Mai phool ke sath ghar ja rha hu, yeh mausam toh jaisi pariyaa hai!"}
+{"user": "Yaar, mera car parking me kuch na hua, koi space nahi hai!", "assistant": "Aa gaya na? Kya hua, kuch na? 😅"}
+{"user": "Mujhe kisi ko kholna padega, koi help kardo!", "assistant": "Wait, main apne dost ko bolo, wo aayega. 🚗"}
+{"user": "Towing service kis se le lo? Mere car ko utha diya gaya!", "assistant": "Aur kya hua? Kisi service provider se contact karo, fast!"}
+{"user": "Mera car ek aur car ke paas stuck ho gaya, kya karo?", "assistant": "Kholo, nahi toh police call karo. 😬"}
+{"user": "Fuel station me kya dekh lo? Mere petrol me kuch na hua!", "assistant": "Aur kya hua? 95 octane le lo, safe hoga. 💨"}
+{"user": "Tire puncture ho gaya! Kya karna chahiye?", "assistant": "Roadside assistance call karo, nahi toh jagah le lo. 🛠️"}
+{"user": "Mujhe phone charge nahi ho raha, kya hua?", "assistant": "USB cable check karo, aisa lag raha hai ki khatam ho gaya hai."}
+{"user": "Charger ka diya nahi lag raha, kya problem hai?", "assistant": "Charger ki prakar check karo, aisa lag raha hai ki khatam ho gaya hai."}
+{"user": "Bluetooth se speaker connect nahi ho raha, kya karna chahiye?", "assistant": "Bluetooth off karo aur phir on karo, aisa lag raha hai ki device not found hai."}
+{"user": "Speaker ka sound nahi a raha, kya hua?", "assistant": "Bluetooth settings check karo, aisa lag raha hai ki device not connected hai."}
+{"user": "USB cable khatam ho gaya, kya alternative hai?", "assistant": "Dekho, USB cable ki dhoop dekho, agar frayed hai toh replace karo."}
+{"user": "Bluetooth pair nahi ho raha, kya karna chahiye?", "assistant": "Device ko forget karo aur phir fresh me pair karo, aisa lag raha hai ki problem hai."}
+{"user": "Bhai, monsoon aagya hai, kya tips hai?", "assistant": "Umbrella lene ki jaroorat hai, raincoat bhi. Waterproof bag bhi lagao, jisse ghar wala sachcha raho."}
+{"user": "Mujhe umbrella kho gayi, kya karo?", "assistant": "Pata karo railway station ya bus stand se. Agar nahi mila toh waterproof bag use karo, jisse chashma bhi bhar jaye."}
+{"user": "Raincoat kaha se le? Mere paas koi nahi hai.", "assistant": "Amazon ya local shop se le, jisme kuch na kuch ho jaye. Umbrella se zyada safe hai, bhai!"}
+{"user": "Waterproof bag kaha se milta hai?", "assistant": "Myntra ya Flipkart se. Kuch dukan me free kaam hai, jaise raincoat ke sath khaali."}
+{"user": "Mujhe umbrella kho gayi, kya karo?", "assistant": "Kuch nahi, raincoat lagao aur waterproof bag me chai le, tab bhi monsoon me pata chalega!"}
+{"user": "Monsoon me kya chij sabse zyada important hai?", "assistant": "Umbrella, raincoat aur waterproof bag! Kisi ek ko miss karo toh ghar wala chhota raho."}
+{"user": "Mujhe phone screen crack ho gaya hai 😢", "assistant": "Screen protector lagao, itna damage nahi hoga."}
+{"user": "New mobile cover laga liya", "assistant": "Accha hai, kitna khaali hai?"}
+{"user": "Earphone me static a raha hai", "assistant": "Bluetooth wala lagao, sahi ho jaye ga."}
+{"user": "Power bank me 10000mAh hai", "assistant": "Tumhari phone kuch na kuch charge karega."}
+{"user": "Mobile ka screen protector khaali hai", "assistant": "Yaar, lagao na, screen ka damage ho jaye ga."}
+{"user": "Mujhe power bank ke saath charging karna pad raha hai", "assistant": "Lagao 20000mAh ka, jyada charge hoga."}
+{"user": "Kya aaj cricket match hai? Kounsa time hai?", "assistant": "Haan, aaj 5 PM pe CSK vs SRH ka match hai. 2nd ODI hai."}
+{"user": "Match ke result kaise lagega?", "assistant": "CSK ko win karega, kyoki unke batters strong hai."}
+{"user": "Movie 'Baahubali 2' ke review kya hai?", "assistant": "Movie best hai, action scenes aur story rock karte hai, 10/10."}
+{"user": "Kya 'Spider-Man: No Way Home' watch karna chahiye?", "assistant": "Haan, super fun hai, best superhero movie of the year!"}
+{"user": "Biryani kya taste hai yahan?", "assistant": "Best biryani hai, extra masala aur jeera wala."}
+{"user": "Kya vegetarian options hain?", "assistant": "Haan, paneer tikka aur aloo paratha available hai."}
+{"user": "Mera phone battery 5% hai. Kya karna chahiye?", "assistant": "Battery 5% hai to 30 min me charge ho jayegi. Koi bhi app se jayada use na karo aur power saving mode enable karo."}
+{"user": "Internet speed kharaab hai. Kya karna chahiye?", "assistant": "Speed test karke dekho. Agar 10 Mbps se kam hai, network provider se contact karo ya 5G/4G switch karo."}
+{"user": "Kaise train ticket book karna hai?", "assistant": "Railway website ya app par login karo, journey details dene ke baad ticket book karo. Seat availability dekh lo."}
+{"user": "Flight booking me step kya hai?", "assistant": "Airline website par jao, flight details select karo, and then payment complete karo. Ticket confirmation email check karo."}
+{"user": "Battery kaise bache?", "assistant": "Screen brightness kam karo, auto brightness off karo, background apps close karo, aur power saving mode enable karo."}
+{"user": "Kaise internet speed check karna hai?", "assistant": "Speedtest.net ya Google speed test par jao, test click karo, aur result dekho. Agar slow hai, restart router karo."}
+{"user": "Mujhe dost ka birthday gift dekhna hai, kya suggest karte ho?", "assistant": "Dost ka interest kya hai? Agar books pasand karte ho toh book subscription ya personalized mug with his name. Agar gaming pasand karte ho toh latest game ya premium gaming mouse."}
+{"user": "Anniversary plan banana hai, kya karte ho?", "assistant": "Rajasthan ke desert me trip ya khushboo ke garden me dinner. Agar 3 din ka time hai toh hill station jayein, like Manali ya Mussoorie. Sabhi ko surprise karke mehndi aur dinner ke saath."}
+{"user": "Date ka idea kya hai?", "assistant": "Mujhe lagta hai, picnic park me ya rooftop café. Agar romantic hai toh city lights ke saath sunset view. Ya phir museum jayein, jo hai na toh history aur art ka fun."}
+{"user": "Surprise party kaise plan karein?", "assistant": "Sabhi ko secret me invite karein, decoration kardo aur cake ke saath gift box. Agar home me hai toh LED lights aur balloons lage. Ya phir restaurant me surprise dinner ke saath."}
+{"user": "Dost ke birthday ke liye kya gift best hai?", "assistant": "Agar unka hobby photography hai toh camera lens ya tripod. Ya phir unka favorite food ke liye cooking class ke certificate. Agar unki age 25+ hai toh smartwatch ya headphones bhi accha hai."}
+{"user": "Anniversary ke liye kya activity best hai?", "assistant": "Mujhe lagta hai, boating in Vembanad Lake ya cultural dance class. Agar budget kam hai toh home me candle lit dinner aur movie night. Ya phir mini getaway, like 2-day trip to nearby hill station."}
+{"user": "Aapke hotel room ka availability kaise check karte hain?", "assistant": "Aap app par login kare, search box me location daalenge aur dates daalenge. Filter me 'available rooms' select kare, aur dekhenge."}
+{"user": "Shopping mall me kya store hain?", "assistant": "Aapne mall me electronics, fashion, food, aur beauty stores hain. Aap 'map' tab me dekhke specific store ki location pata kare."}
+{"user": "Aaj ki vegetable ka price kaisa hain?", "assistant": "Aaj aloo 30 rupees, tomato 20, pyaaz 15, aur methi 10 rupees per kg hai. Local market me sabse cheep milenge."}
+{"user": "Petrol ka price kya hai?", "assistant": "Aaj petrol 82 rupees aur diesel 78 rupees per litre hai. Aap 'fuel price' app me check kare ya petrol pump par dekhke."}
+{"user": "Hotel me breakfast inclusive hai kya?", "assistant": "Yes, most hotels include breakfast. Aap booking me 'meal plan' option check kare, ya customer service se confirm kare."}
+{"user": "Shopping mall me parking kaise karte hain?", "assistant": "Aap 'parking' tab me entry kare, aur ticket wala counter par dekhke. Aapne mall me free parking ya paid parking hote hain."}
+{"user": "Mera car ke tyre me hole hai, kaise thoda time me fix kare?", "assistant": "Thoda time me fix kare toh, tyre ko thoda pressure deke rakhenge. Agar hole bade hai toh, service center me jaye, unhe new tyre lagaye."}
+{"user": "Mera car engine me kuch noise a raha hai, kya karoon?", "assistant": "Kuch noise toh kisi bhi car me ho sakta hai. Pehle service center me jaye, unhe check kare. Agar oil low hai toh oil change kare, aur agar spark plug badalne ka zaroorat hai toh wo bhi kare."}
+{"user": "Mujhe health checkup karwane ka kya yaad rakhna chahiye?", "assistant": "Agar tumhe stress, kuch pain ya blood pressure ke dikkat ho rahi ho toh, definitely. Aage kisi bhi kisi me checkup karwane ka yaad rakhna chahiye."}
+{"user": "Doctor ka appointment kaise book kare?", "assistant": "App ki aap app me jaye, ya phir clinic me call kare, unke website par appointment book kare. Agar tumhe koi specific doctor chahiye toh, unka name likh de."}
+{"user": "Mera bike ke engine me overheat ho raha hai, kya problem ho sakti hai?", "assistant": "Engine overheat hone ka sabse zyada wajah coolant ke kam hone ya radiator me dust hai. Pehle coolant level check kare, agar low hai toh fill kare. Agar nahi toh, service center me jaye."}
+{"user": "Mujhe kya test karwane chahiye health checkup ke liye?", "assistant": "Agar tumhe general checkup chahiye toh, blood test, urine test, blood pressure, and BMI check include hota hai. Agar tumhe specific problem ho rahi ho, toh doctor ke hisab se tests select kare."}
+{"user": "Sir, mujhe tablet lete raho, lekin bhool jata hu. Kuch help kare?", "assistant": "Tabiyat ko rakhne ke liye, apni tablet ko 10 am ya 4 pm ko lete raho. App ki alarm ya pill box use kare. Aapko yaad rakhne me help karega."}
+{"user": "Kya diet plan hai jo health ka liye accha hai?", "assistant": "Diet plan me 50% fruits, 30% veggies, 20% protein ka include kare. Chawal, roti ki jayegi, aur 1-2 litre water daily piniye. Morning me pani aur evening me green tea lete raho."}
+{"user": "Kya recipe hai tandoori chicken ki?", "assistant": "Chicken ko marinate karo 10 gram red chili powder, 1 tsp tandoori masala, lemon juice aur salt se. 15 min bad, 200 degree oven me 30 min bake karo. Ready!"}
+{"user": "Kya bakery items good hai morning ke liye?", "assistant": "Raisin bread, whole wheat toast, or banana muffins acche hain. 1-2 pieces aur 1 cup milk/tea leke sambhal ke chalao. Aapko energy denge."}
+{"user": "Mujhe 10 am ko medicine lete raho, lekin 5 min delay hoga. Kya kare?", "assistant": "Delay hone par bhi le jaye. Agar ek tablet bachi ho, to 10:05 me le do. 10:00 ke liye alarm set karo, tabiyat ko rakhne ke liye."}
+{"user": "Kya diet plan 2 weeks ke liye kuch suggeation hai?", "assistant": "Pahli 2 days: 2 fruits, 3 veggies, 1 roti, 1 egg. 3-4 days: 1-2 chapati, 1 paneer, 2-3 salads. Last 3 days: 1-2 rice, 1-2 chapati, 1 dal. 1-2 litre water daily piniye."}
+{"user": "Bhai, yahan traffic kya hua hai? Kya phir se kuch time lag jayega?", "assistant": "Abhi bhi 20 minute lag raha hai, kya karenge? Dusra lane bhi blocked hai."}
+{"user": "Yahan road construction karte hue, kya phir se koi lane banaya hai?", "assistant": "Nahi, same lane hai, kya hua? Aaj phir se slow drive karna padega."}
+{"user": "Metro ka time table kya hua hai? Aaj phir se 15 minute delay hai.", "assistant": "Aaj hi nahi, pichle din bhi delay hai. Kya karenge? Koi option nahi."}
+{"user": "Kya bus route mein kuch changes hui hai? Mere paas schedule nahi hai.", "assistant": "Hai, aur ek new route start hui hai. Aapne app me check karo."}
+{"user": "Yahan kya hua hai? Aaj sirf traffic hi hai.", "assistant": "Bhai, 45 minute lag raha hai, kya karenge? Aaj koi chalna nahi hai."}
+{"user": "Yahan construction karte hue, kya phir se koi lane banaya hai?", "assistant": "Hai, lekin ek new lane banaya hai, lekin slow drive padega."}
+{"user": "Bhai, meri car ka wash kaise kare?", "assistant": "Kya hua? Car ka wash kar liya?"}
+{"user": "Bike ka cleaning kaise kare?", "assistant": "Tumhe kaha karne wala hai?"}
+{"user": "Ghar ka cleaning kaise kare?", "assistant": "Tumhe kya problem hai?"}
+{"user": "Laundry service kaha karte hai?", "assistant": "Kya hua? Sajha le liya?"}
+{"user": "Bhai, car wash ka tarika kya hai?", "assistant": "Tumhe kya karte hai?"}
+{"user": "Bike ka cleaning kaise kare?", "assistant": "Tumhe kya product lene wala hai?"}
+{"user": "Aap mujhe shadi ka function kaise plan karein? Budget 5 lakh hai.", "assistant": "Shadi ka function plan karein to sabse pehle guest list banaye. Budget 5 lakh mei 200+ guests ka event 100% possible hai. Venue choose karein jisme catering aur decoration included ho. Guest coordinator le lo aur sab ke sab ka plan samayey."}
+{"user": "Exam ke liye kya tayari karein? 3 din baqi hai.", "assistant": "3 din mei tayari karein to daily 4-5 chapters revise karein. Past papers solve karein aur weak areas mei focus karein. Naps 8-9 baar karein aur pehle 10 min meditation karein. Exam mei sabse pehle easy questions solve karein."}
+{"user": "Gym mei shuru kaise karein? 15 minute ka routine chaiye.", "assistant": "Shuru mei 5 min warm up karein (jumping jacks ya high knees). Phir 10 min cardio (treadmill ya cycle). 5 min stretching karein. 15 minute mei 3-4 sets of bodyweight exercises karein. Aapne diet mei protein aur water ka focus rakhein."}
+{"user": "Interview mei kya dress karein? Formal ho ya casual?", "assistant": "Interview mei formal dress chaiye. Men ke liye dark suit aur women ke liye saree ya salwar kameez. Accessories minimum rakhie. Shoes shine karein aur kuch bhi nahi le lo jo aap ko stress kare. Interview mei confident aur polite rakhie."}
+{"user": "Exam mei time kaise manage karein? 2 hour ka paper hai.", "assistant": "Paper mei sabse pehle 10 min read karein. 20% questions ko time ke hisab se divide karein. Easy questions ko pehle solve karein aur complex ones ke liye mark karein. Last 10 min mei review karein. Paper mei kalakar diya gaya time ke hisab se work karein."}
+{"user": "Gym mei weight kaise karein? 30 minute ka routine.", "assistant": "Shuru mei 5 min warm up karein. Phir 20 min weight training karein (10 sets of bench press, squats aur bicep curls). Last 5 min stretching karein. Water aur protein drink le lo. Aapne routine mei rest days include karein aur 15-20 minute walks ke liye time le lo."}
+{"user": "Mere ghar me bulb nahi glata hai, kya karun?", "assistant": "Pahle switch ko check karo, phir bulb badhao. Agar problem nahi ho jaye to ek electrician bolo."}
+{"user": "Main apne ghar ka move karna chahta hu, kya services ap provide karte ho?", "assistant": "Haa, hum packing, transportation, aur assembly services dete hai. Apna address do, hum schedule kar de."}
+{"user": "Kya car rental possible hai, kya price hai?", "assistant": "Haa, economy car 500-800 rupaye per day, luxury car 1000-1500 rupaye. Online booking kar sakte ho."}
+{"user": "Kaise taxi book karein? Kya app hai?", "assistant": "Uber ya Ola app ka istemal karein. App open karo, source aur destination select karo, phir book kar de."}
+{"user": "Main apne ghar ki circuit me problem ho rahi hai, kya karun?", "assistant": "Switch box me fuse check karo. Agar koi damaged hai, replace karo. Agar problem continue ho, electrician bolo."}
+{"user": "Main apne office ke items pack karna chahta hu, kya help mil sakti hai?", "assistant": "Haa, hum fragile items aur heavy items ka special packaging karate hai. Apna address do, hum schedule kar de."}
+{"user": "Mujhe password reset karna hai, kaise karenge?", "assistant": "Aap apne account ka email ya mobile number dikhao, phir 'Forgot Password' option click karein. OTP aayega, usko enter karo aur new password set karein."}
+{"user": "Mere account ko kisi ne hack kar diya, kya karen?", "assistant": "Pehle apni password change karein, phir 2FA enable karein. Agar problem ho rahi hai, support team se contact karein aur account secure karein."}
+{"user": "Mujhe OTP nahi mil raha, kya karun?", "assistant": "Check karein ki apna mobile number sahi hai. Agar OTP nahi aata, try karein 2-3 baar ya support se help lein. Network issue ho sakte hai."}
+{"user": "Bank transfer kaise karenge, step by step?", "assistant": "Aap apne bank app open karein, 'Transfer' option click karein. Recipient details dikhao, amount select karein aur confirm karein. OTP enter karo aur transaction complete ho jayega."}
+{"user": "Password reset karte waqt OTP nahi aaya, kya karen?", "assistant": "Try karein 2-3 baar ya mobile number check karein. Agar nahi aata, support se contact karein aur alternative verification method choose karein."}
+{"user": "Mere account ko hack kiya gaya, kaise pata chalega?", "assistant": "Agar aapne account se unusual activity (like login from new device ya unauthorized transactions) dekhi, immediately password change karein. Support team se contact karein aur account security check karein."}
+{"user": "PAN card apply kaise kare? Mere pass koi document hai jo help kare?", "assistant": "PAN card apply karne ke liye e-filling ya offline form fill kare. Aadhaar, photo, address proof (like electricity bill) submit kare. 15-20 din mei receipt milega."}
+{"user": "Mere PAN card lost ho gaya hai, duplicate kaise le paye?", "assistant": "PAN card lost hai toh 'Lost/Stolen' form fill kare. Aadhaar number aur old PAN card details deke 10-15 din mei duplicate card mil jayega. Online bhi apply kar sakte ho."}
+{"user": "Driving license renew kaise kare? Document kya chaiye?", "assistant": "DL renew karne ke liye old DL, photo, address proof, aur fee (Rs 200) chaiye. Online form fill karke 10-15 din mei new license mil jayega. Agar expired hai toh fresh apply kare."}
+{"user": "RC transfer kaise kare? New car ko kya steps chaiye?", "assistant": "RC transfer kare: 1) Old owner ke sath agreement kare. 2) New owner ka address proof aur photo submit kare. 3) Online form fill karke 10-15 din mei RC mil jayega. Police registration bhi kare."}
+{"user": "Insurance claim file kaise kare? Kya documents chaiye?", "assistant": "Claim file karne ke liye police report, medical bills, RC, policy document, aur photo submit kare. 15-20 din mei processing hota hai. Agar claim reject ho toh reason check kare aur documents correct kare."}
+{"user": "Insurance claim rejected ho gaya hai, kya kare? Kya steps chaiye?", "assistant": "Claim rejected ho toh first check document kya missing hai. Agar sab sahi hai toh 2nd opinion ya insurance company se contact kare. 30 din mei revision kiya jaa sakta hai. Agar still issue hai toh legal help le sakte ho."}
+{"user": "Kya music class me kis instruments ka use hota hai?", "assistant": "Hmm, music class me tabla, guitar, piano, aur violin ka use hota hai. Shuru me basics learn karne ke liye tabla ya guitar start karo. Online courses bhi help karte hain."}
+{"user": "Dance class me kya karein agar shuru karte hai?", "assistant": "Shuru me basic moves like hip-hop ya ballet karein. Studio me join karo ya online videos dekh lo. Practice regularly aur kisi experienced teacher se guidance le lo."}
+{"user": "Painting me kis tarah se shuru karein?", "assistant": "Shuru me sketching practice karo. Acrylic ya watercolor paints use karein. Canvas ya paper par start karo. YouTube par free tutorials bhi milte hain."}
+{"user": "Photography me kya equipment chahiye?", "assistant": "Shuru me smartphone ka camera hi use karo. Later, DSLR camera ya mirrorless camera chahiye. Tripod aur filters bhi important hain. Practice aur composition ka focus rakho."}
+{"user": "Dance class me kya karein agar koi injury ho jaye?", "assistant": "Injury ke time rest lein aur doctor se consult karo. Light stretching ya yoga karke flexibility badhao. Phir shuru karo aur overdo na karein."}
+{"user": "Painting me colors ki 10 best combination kya hain?", "assistant": "Red + Yellow = Orange, Blue + Yellow = Green, Red + Blue = Purple. Warm colors (red, orange) aur cool colors (blue, green) mix karo. Contrast aur harmony ka dhyan rakhna chahiye."}
+{"user": "Mujhe sharam a rahi hai, kya karna chahiye?", "assistant": "Sharam ke liye, 100mg paracetamol le lo, aur 10 minute rest karo. Pani peela karke chhod do."}
+{"user": "Mai fever aur cold ke saath pani peela karke chhod raha hoon, kya karna chahiye?", "assistant": "Fever ki wajah se pani peela karke chhod do, aur 200mg ibuprofen le lo. Agar 3 days tak nahi utha toh doctor se consult karo."}
+{"user": "Mai stomach pain me hota hai, kya karna chahiye?", "assistant": "Stomach pain ke liye 150mg omeprazole le lo, aur 1 hour ke liye 200mg domperidone le lo. Agar 2 days tak nahi utha toh doctor se consult karo."}
+{"user": "Mai eye checkup kya karna chahiye?", "assistant": "Eye checkup ke liye 20-20-20 rule follow karo: 20 minutes ke liye 20 feet ki distance par dekho aur 20 inches ke liye 20 minutes. Agar 10-12 years ke baad nahi ho raha toh doctor se consult karo."}
+{"user": "Mai headache ke liye kya karna chahiye?", "assistant": "Headache ke liye 500mg paracetamol le lo, aur 10 minutes ke liye 20 minutes ke liye rest karo. Agar 2 days tak nahi utha toh doctor se consult karo."}
+{"user": "Mai fever aur cold me hoon, kya karna chahiye?", "assistant": "Fever aur cold me, 400mg paracetamol le lo, aur 20 minutes ke liye 20 feet ki distance par dekho. Agar 3 days tak nahi utha toh doctor se consult karo."}
+{"user": "Yaar, Christmas party kya hua? Abhi tak kisi ne bataaya?", "assistant": "Nahi, abhi ek din baad hai. Tum kya karoge? Mere paas kuch samay hai, yaar 😅"}
+{"user": "Mujhe bhi aayega, lekin kya leke aayenge?", "assistant": "Kya leke aayenge? Mere paas kuch snacks hai, lekin agar kuch aur chaiye toh batao."}
+{"user": "Chal, kuch aur nahi. Kya hua, paray kya hoga?", "assistant": "Paray hoga, yaar. Kya karoge, tu toh aayega, yaar 😄"}
+{"user": "New Year ka plan kya hua? Kya karte hai?", "assistant": "Nahi, abhi nahi, yaar. Kya karoge? Bade plans hai yaar."}
+{"user": "Mujhe bhi nahi, yaar. Kya hua, chal kuch nahi hai.", "assistant": "Chal, kuch nahi hai. Kya karoge, tu toh aayega, yaar."}
+{"user": "Aapke birthday bash kya hua? Kya leke aayenge?", "assistant": "Nahi, abhi nahi. Kya karoge, yaar. Mere paas kuch samay hai."}
+{"user": "Chal, kuch aur nahi. Kya hua, paray kya hoga?", "assistant": "Paray hoga, yaar. Kya karoge, tu toh aayega, yaar."}
+{"user": "House party kya hua? Kya leke aayenge?", "assistant": "Nahi, abhi ek din baad hai. Tum kya karoge? Mere paas kuch samay hai, yaar 😅"}
+{"user": "Mujhe bhi aayega, lekin kya leke aayenge?", "assistant": "Kya leke aayenge? Mere paas kuch snacks hai, lekin agar kuch aur chaiye toh batao."}
+{"user": "Chal, kuch aur nahi. Kya hua, paray kya hoga?", "assistant": "Paray hoga, yaar. Kya karoge, tu toh aayega, yaar 😄"}
+{"user": "Aap video ke ek part ko trim kaise karte ho?", "assistant": "YouTube Editor ya Adobe Premiere se karo, video ko select karo aur start/end points set karo."}
+{"user": "Video mein text kaise add kare?", "assistant": "Canva ya DaVinci Resolve mein text add karo, font aur size adjust karo aur position set karo."}
+{"user": "Python mein loop kaise chalate hain?", "assistant": "For loop ya while loop use karo, variable ko initialize karo aur condition set karo."}
+{"user": "Code mein error aaya, kaise debug kare?", "assistant": "Print statements ya debugger tool use karo, step-by-step check karo."}
+{"user": "Responsive website kaise banae?", "assistant": "HTML/CSS mein media queries use karo, flexbox ya grid layout choose karo."}
+{"user": "Mobile app kaise banae?", "assistant": "Flutter ya React Native choose karo, UI design karo aur backend logic add karo."}
+{"user": "Aapne bike trip ki planing ki hai? Kya rasta chahiye Delhi se Jaipur tak?", "assistant": "Haan, Delhi se Jaipur tak NH8 rasta sabse acha hai. Rastaa me 200 km aur 10 rest stops hai. Bade sahara rastaa me 2-3 din me complete ho jayega. Bikes ko check kar ke rakhna, aur water bottle me pani rakhna bhool jao na."}
+{"user": "Mumbai se Goa ki road trip ki planing kaise kare? Kya stops chahiye?", "assistant": "Mumbai se Goa ki coastal route sabse acha hai. Mumbai se Panvel, Alibag, Karwar, and Goa ke andar stops kar sakte ho. Petrol price check karo, aur 3-4 dino ki planing karo. Tyre pressure aur bike maintenance check karo."}
+{"user": "Trekking karne wale ne kya gear chahiye? Newbie hai.", "assistant": "Trekking ke liye waterproof jacket, trekking poles, and a good pair of shoes chahiye. High altitude par acclimatization karna jaruri hai. 10L water bottle aur energy bars bhi le jao. Weather check karo, aur map le jao."}
+{"user": "Camping ki tarah tent setup kaise kare? Pahli baar hai.", "assistant": "Tent setup karte samay ground ko flat karo, aur groundsheet lagao. Tent ki base ke andar kuch space rakho, aur door ki side me light aur wind ki taraf jaye. Firewood le jao, aur sleep bag me pahunch jao. Night me wild animals se bhi dikkat nahi hogi."}
+{"user": "Bike trip me kya safety tips hain? Long ride me pani aur food kaise manage kare?", "assistant": "Helmet aur gloves sabse pahle lagao. Bike ki tyre, chain aur brakes check karo. 500 ml water bottle me pani rakhna chahiye, aur energy bars aur fruits le jao. 3-4 hours ke baad rest lete ho, aur mobile me offline maps install karo."}
+{"user": "Trekking me navigation kaise kare? Kya app ya device chahiye?", "assistant": "Map aur compass sabse important hai. Google Maps ya AllTrails app use karte ho. Landmarks aur sun position ka use karo. Group me chalte ho to leader ko follow karo. High altitude par compass ka use karna acha hai, aur GPS device bhi le jao."}
+{"user": "Kya beach vacation me kya le jaye? Koi specific items?", "assistant": "Pant, shirt, sunblock, water bottle, hat, sunglasses, flip-flops, and a towel. Also, a reusable bag for trash. Bhai, jaldii sunblock lagao, else skin burn ho jaye!"}
+{"user": "Hill station ke liye kya chahiye? Kya weather hai waha?", "assistant": "Winters me toh cold hai, so wool clothes, gloves, and a scarf. Summer me light clothes. Don’t forget a thermos for tea and a good pair of boots. Bhai, altitude sickness ki precaution bhi lena chahiye."}
+{"user": "Pilgrimage ki wajah se kya karenge? Kya rituals hai?", "assistant": "Abhishek, prarthna, and offering flowers are essential. Carry a small idol or image of the deity. Bhai, koi bhi shabads ya mantras repeat karo, it helps in connecting with the divine."}
+{"user": "Temple me kya rules hai? Kya dress code?", "assistant": "Shirt and pants or saree. No shoes inside. Keep your voice low. Bhai, if you’re a man, don’t touch the deity directly; use a brass plate instead. Also, don’t eat before entering the sanctum sanctorum."}
+{"user": "Beach me kya activities karte hain? Kya water sports?", "assistant": "Snorkeling, swimming, and sandcastle building are fun. Also, sunset boat rides! Bhai, don’t go alone at night. Always stay in groups. And remember, the sea can be dangerous, so follow safety rules."}
+{"user": "Hill station me kya local food hai? Kya try karenge?", "assistant": "Pasta, momos, and local thukpa are must-tries. Also, street-side momos and chowmein are a treat! Bhai, try the local tea too—it’s famous here. Don’t miss the butter chicken and chocolate fudge!"}
+{"user": "Bhai, kya tumne sleep kiya? Main toh 12 baje se nahi soya.", "assistant": "Nahi, main bhi 12 baje se nahi soya. Kya tumne kuch kiya?"}
+{"user": "Movie dekh raha hoon, 3rd time.", "assistant": "Aww, tumhari hawa hain. Main toh kuch nahi karta, so ja raha hoon."}
+{"user": "Sapna, 6 baje se awake ho gayi?", "assistant": "Nahi, 7 baje se. Kya tumne meeting ki?"}
+{"user": "Nahi, main nahi jaa raha. Bhai ko khaana lag raha hai.", "assistant": "Haa, main bhi khaana lag raha hoon. Aaj toh chutti hai."}
+{"user": "Chintu, kya tumne nap kiya?", "assistant": "Nahi, main toh 2 baje se so jaa raha hoon. Kya tum?"}
+{"user": "Main bhi 2 baje se so jaa raha hoon. Aaj toh so jaa raha hoon.", "assistant": "Haa, main bhi so jaa raha hoon. Aaj toh chutti hai."}
+{"user": "Rahul, tumne aaj ki sleep schedule kya rakhi?", "assistant": "Main toh 10 baje so gaya. Kya tum?"}
+{"user": "Main 11 baje so gaya. Aaj toh so ja raha hoon.", "assistant": "Haa, main bhi so ja raha hoon. Aaj toh chutti hai."}
+{"user": "Bhai, kya tumne sleep kiya? Main toh 12 baje se nahi soya.", "assistant": "Nahi, main bhi 12 baje se nahi soya. Kya tumne kuch kiya?"}
+{"user": "Main 12 baje se chocolate khana chhaucha.", "assistant": "Aww, tumhari hawa hain. Main toh kuch nahi karta, so ja raha hoon."}
+{"user": "Sapna, 6 baje se awake ho gayi?", "assistant": "Nahi, 7 baje se. Kya tumne exercise ki?"}
+{"user": "Nahi, main nahi kiya. Bhai ko khaana lag raha hai.", "assistant": "Haa, main bhi khaana lag raha hoon. Aaj toh chutti hai."}
+{"user": "Kya Christmas party ke liye decoration ka plan karna chahiye?", "assistant": "Haan, aur thoda colorful lights aur baarik pahelis lagao."}
+{"user": "New year ke liye kya plan karna chahiye?", "assistant": "Thoda time management aur goal setting ka plan karo."}
+{"user": "Birthday bash ke liye kya theme le sakte hain?", "assistant": "Thoda colorful aur fun theme lagao."}
+{"user": "House party ke liye kya food karna chahiye?", "assistant": "Aap light snacks aur chaat ke saath kuch non-veg bhi lagao."}
+{"user": "Kya Christmas party ke liye koi special food karna chahiye?", "assistant": "Haan, aur yaad rakhna ki kuch lagega jo saare ko pasand aaye."}
+{"user": "New year ke liye kya resolution le sakte hain?", "assistant": "Aap kisi ek kaam ke liye aur health ka dhyan rakhna chahiye."}
+{"user": "Movie night kya lag raha hai? Kya movie chunne me help karo", "assistant": "Acha hai! Ek comedy movie jaise 'The Intern' ya 'Hustle' chun ke dekhenge. Screen pe dimag ki chhoti aur snacks ke saath, sab kuch sabka kamaal ho jayega!"}
+{"user": "Dinner date ke liye kya dress karna chahiye? Kya lag raha hai?", "assistant": "Formal dress karna best hai, lekin agar casual hai toh jeans aur shirt sehna chahiye. Ek smart look chahiye, kya lag raha hai? Jab bhi aapka dress chunne me help kiya jaye, toh ek acha look ho jayega!"}
+{"user": "Picnic lunch ke liye kya items le jaye? Kya chahiye?", "assistant": "Aapne kuch sabzi, roti, dahi aur phir kuch ladoos aur fruit le jaye. Bade pani ke saath, aur ek badam ki chocolate leke aao, toh sab kuch sabka kamaal ho jayega!"}
+{"user": "Barbecue party ke liye kya recipe chahiye? Kya lag raha hai?", "assistant": "Kheer ki recipe ya paratha ki recipe chahiye. Aapne chutney aur chutney ke saath, sab kuch sabka kamaal ho jayega. Aapke liye kya lag raha hai?"}
+{"user": "Movie night ke liye kya snacks best hai? Kya help karo?", "assistant": "Pakode aur chaat ke saath, aur ek kadhai ki sabzi chahiye. Aapne sab kuch karna chahiye, toh ek acha movie night ho jayega! Kya lag raha hai?"}
+{"user": "Dinner date me kya conversation karna chahiye? Kya help karo?", "assistant": "Aapne kuch aisa puchh lo jaise 'Kya aapka favorite food hai?' ya 'Kya aapne koi new hobby start kiya hai?' Kya lag raha hai? Aapke liye kuch help karna chahiye?"}
+{"user": "Mere WiFi router ko connect nahi ho raha hai, kya karna chahiye?", "assistant": "WiFi router ko connect nahi ho raha hai? Pehle password check karo aur router ko restart karo. Agar nahi chalta toh modem ko bhi reset karo."}
+{"user": "TV me power nahi a rahi hai, kya problem ho sakti hai?", "assistant": "TV me power nahi a rahi hai? Prong ko check karo aur socket me current ho raha hai kya. Agar prong taya hai toh repair wala batao."}
+{"user": "Mere laptop me screen freeze ho rahi hai, kya karna chahiye?", "assistant": "Laptop screen freeze ho rahi hai? Restart kar do. Agar nahi chalta toh keyboard me F2 ya F8 press karo aur safe mode me check karo."}
+{"user": "Printer me ink nahi lag raha hai, kya karna chahiye?", "assistant": "Printer me ink nahi lag raha hai? Ink cartridge ko remove karo aur naya daalo. Agar problem bhi rahi toh printer settings me auto alignment karo."}
+{"user": "Mere laptop me charging nahi ho raha hai, kya karna chahiye?", "assistant": "Laptop charging nahi ho raha hai? Charger cable check karo aur port me dust ho raha hai kya. Agar nahi chalta toh service center me jao."}
+{"user": "TV me picture dark hai, kya karna chahiye?", "assistant": "TV me picture dark hai? Brightness setting check karo aur source input verify karo. Agar nahi toh TV ka menu me contrast ka option check karo."}
+{"user": "Aap Diwali party ke liye decoration ka kya suggestion de sakte hai?", "assistant": "Diwali ke liye bright lights aur diyas lagao, rangoli banao aur marigold flowers se floral arrangements. Kuch extra touch ke liye LED candles aur decorative garlands lagane se party look more festive hoga!"}
+{"user": "Holi fun ke liye kya activities karenge? Mai kuch new ideas chahiye.", "assistant": "Holi me kuch traditional games karo jaise kho kho mila, khoobsurat rangoli banao aur colors ka khoob nihal karo. Mai suggest karta hun natural colors use karein taki skin safe rahi. Aur holi ka time me yaad rakhna ki water aur soap se colors clean ho jaye!"}
+{"user": "Eid feast ke liye kya traditional dishes prepare karenge?", "assistant": "Eid ke liye biryani, kebabs, andarun, and chana masala sab kuch special hote hai. Kuch extra taste ke liye rose water aur saffron ka use karein. Aur Eid ke bad kuch paratha ya sheermal banta hai, jo sabko accha lagta hai!"}
+{"user": "Festival celebration ke liye kya party planning tips hai?", "assistant": "Festival me party plan karne me kuch points important hote hai. First, venue choose karo jisme sabko comfortable lagaye. Second, food aur drinks arrange karo. Aur third, music aur decorations ka extra attention de. Sabse important hai guests ke safety aur fun ensure karna!"}
+{"user": "Diwali party ke liye kya recipes prepare karenge? Mai kuch easy dishes chahiye.", "assistant": "Diwali me samosa, bhujia, and kheer sab kuch easy hote hai. Kuch extra taste ke liye paneer tikka aur aloo paratha bana sakte hai. Aur jisme sabko accha lagta hai, chai aur ladoo bhi add karo. Sab dishes ka sabzi aur masala ki quantity check karo!"}
+{"user": "Holi fun ke liye kya safety tips hai? Mai colors ka overuse nahi karna chahta.", "assistant": "Holi me safety ke liye natural colors use karo, jaise beetroot aur turmeric. Kuch extra care ke liye skin protect karo aur water aur soap se colors clean karo. Aur kuch extra fun ke liye holi ka time me yaad rakhna ki overexposure to sunlight avoid karo!"}
+{"user": "Aap kya ice cream ka shop dekhne aaye hain? Kya aapko kuch sugarcane ka ice cream milta hai?", "assistant": "Haan, maine aaj hi ek new shop me dekh liya hai! Sugarcane ka ice cream toh hain, par aapko kya flavor chaiye? Kesar, chocolate, ya strawberry?"}
+{"user": "Mujhe birthday cake order karna hai. Kya aap help kar sakte hain?", "assistant": "Bada acha hai! Kya aapko konsa design chaiye? Kya size (10 inch, 12 inch, ya 14 inch) aur konsa flavor (vanilla, chocolate, ya strawberry) chahte hain?"}
+{"user": "Aapka sweet shop me kya items milenge? Kya aapko kuch special items hai?", "assistant": "Haan, hum yahan me laddoos, barfis, ya chocolate ke items milenge. Aapko kya special item chaiye? Kuch kheer ya gulab jamun bhi hain!"}
+{"user": "Bakery run karna hai, kya aap help kar sakte hain? Kya aapka shop me fresh bread hai?", "assistant": "Bada acha hai! Hum yahan me fresh bread, croissants, aur naan milenge. Kya aapko konsa bread chaiye? Kuch kheer ya naan bhi hain!"}
+{"user": "Kya aapko cake order kiya jaa sakta hai? Kya aapka shop me birthday cake bhi hain?", "assistant": "Haan, hum yahan me cake order kiya jaa sakta hai. Birthday cake bhi hain, aur aapko kya design aur flavor chaiye? Kya size bhi mention karna hai."}
+{"user": "Aapka sweet shop me kya laddoos hai? Kya aapko kuch handmade items hai?", "assistant": "Haan, hum yahan me handmade laddoos aur barfis hain. Kya aapko konsa type chaiye? Kuch kheer ya jalebi bhi hain, aapko kya lagta hai?"}
+{"user": "Kya aise breakfast ke idea hai jo health ya time-saving ho?", "assistant": "Ji, 20 min mein ready ho jayega! Aloo paratha aur 2 eggs ki kheer, ya aloo ki kheer aur 1 roti. Ya chawal aur 1 tava ki sabzi."}
+{"user": "Mujhe lunch box leke jao, kya sachcha healthy option hai?", "assistant": "Dekho, 1 roti, 1 paneer sandwich, 1 fruit (like banana), aur 1 glass milk. Ya 1 egg ki kheer aur 1 veg salad ka mix."}
+{"user": "Kya dinner ke liye aise menu hai jo sabko pasand ho?", "assistant": "Bada easy hai! 1 grilled chicken, 1 rice, aur 1 mixed veg. Ya dal, 1 roti, aur 1 fruit. All 20 min mein ready."}
+{"user": "Mujhe midnight ka craving hai, kya karna chahiye?", "assistant": "Kuch nahi, 1 banana ya 1 glass curd lelo. Ya 10 almonds. Agar kuch nahi toh, 1 cup green tea se relax ho jao."}
+{"user": "Kya aise quick breakfast hai jo 10 min mein ho jaye?", "assistant": "Ji, 1 toast aur 1 glass milk, ya 1 egg ki kheer aur 1 paratha. Ya 1 glass smoothie (fruit + yogurt + ice)."}
+{"user": "Mujhe lunch box ke liye kya chahiye jo kids pasand kare?", "assistant": "Dekho, 1 cheese sandwich, 1 fruit ke chips (like banana chips), aur 1 cup yogurt. Ya 1 rice ke puri aur 1 veg stick."}
+{"user": "Aapka chai ka sabut time kya hai?", "assistant": "Chai ka sabut time 3-4 baje hota hai. Kuch log 2 baje bhi pina chahate hai."}
+{"user": "Kya coffee meet ke liye kahan jaye?", "assistant": "Mumbai me Starbucks ya Coffee Bean me jaye, wo theek hai. Kuch log even roadside stalls se pina chahate hai."}
+{"user": "Kya lunch break me kya khane chahiye?", "assistant": "Methi paratha, roti, sabzi, and a glass of lassi. Kuch log rice aur dal bhi chahate hai."}
+{"user": "Kya evening snack ke liye kuch suggest kare?", "assistant": "Cheese sandwich, samosa, or a cup of tea. Kuch log even a small burger bhi chahate hai."}
+{"user": "Chai me kya daalna chahiye?", "assistant": "Black tea, milk, sugar, and a pinch of cardamom. Kuch log even a drop of honey add karte hai."}
+{"user": "Coffee meet ke liye kya kare?", "assistant": "Book a table, bring some snacks, and discuss your plans. Kuch log even a laptop le jate hai."}
+{"user": "Aapne tap me se paani uth raha hai, kya karna chahiye?", "assistant": "Pahle check kare ki washer khaali hai ya na. Agar nahi hai, toh replace kare."}
+{"user": "Mixer me problem hai, kya karna chahiye?", "assistant": "Check kare motor ki khaali hai ya na. Agar khaali hai, toh repair kare."}
+{"user": "Gas cylinder me lek hai, kya karna chahiye?", "assistant": "Pahle smell kare. Agar gas ki gandh aati hai, toh aapke aangan me jake check kare."}
+{"user": "Gas cylinder kaise replace kare?", "assistant": "Pahle old cylinder ko leke aangan me jake, new cylinder lagao. Agar nahi jante, toh plumber se help le."}
+{"user": "Water filter clogged hai, kya karna chahiye?", "assistant": "Pahle filter ko clean kare. Agar nahi ho raha, toh new filter lagao."}
+{"user": "RO me paani me funny taste hai, kya karna chahiye?", "assistant": "Check kare filter ki khaali hai ya na. Agar khaali hai, toh replace kare."}
+{"user": "Admission ke liye kya procedure hai?", "assistant": "Admission ke liye aap ek form bhje, documents jaise mark sheet aur certificate provide krenge. Application date 1st July hai, to aap time ki baarish krenge."}
+{"user": "College hostel ke liye application kaise krenge?", "assistant": "Hostel application ke liye aap college ke website par login krenge, phir hostel form fill krenge. Aapko hostel fees aur rules ke bare mein bhi jankari mil jayegi."}
+{"user": "Library card kaise le sakte hain?", "assistant": "Library card lene ke liye aap college ke librarian ke pass jaye, phir 100 rupees ka fee dabaye. Aapko id card aur student id number chahiye."}
+{"user": "Scholarship kaise apply krenge?", "assistant": "Scholarship apply kرنge to aap college ke website par go to scholarship section. Aapko family income, marks aur category ke basis par jankari deni hogi."}
+{"user": "Hostel me 10th ke student ko kya benefits milte hain?", "assistant": "10th ke student ke liye hostel me 50% fee discount milta hai. Aapko hostel me 24/7 facility milti hai, jaise food, laundry aur internet."}
+{"user": "Library me kya books available hain?", "assistant": "Library me books, e-books aur journals available hain. Aap ek library card leke jaye, phir online search karenge. Aapko books 2 weeks ke liye borrow karenge."}
+{"user": "Kaise crypto buy kare? Mere pas bank account hai, lekin kaise trading app select kare?", "assistant": "Tumko 1st step mepe Coinbase ya Binance jese platform par account banane hai. Bank details add karke KYC complete karo. Phir select karo konsa coin (like Bitcoin or Ethereum) aur quantity. 'Buy' button dabaye, amount confirm karke transaction complete ho jayege."}
+{"user": "NFT kya hai? Kaise pata chale ke koi NFT genuine hai?", "assistant": "NFT ek unique digital asset hai jo blockchain par record hota hai. Pata lagane ke genuine hai, to check karo: 1. Platform ke reputation, 2. Ownership history, 3. Blockchain explorer mepe verify karo (jaise Etherscan). Avoid unknown sellers aur fake collections."}
+{"user": "Market crash mepe kaise profit kare? Sankhya mepe loss nahi ho paye?", "assistant": "Market crash mepe 2 strategy: 1. Diversify portfolio (crypto, stocks, NFTs mepe spread karke). 2. Stop-loss orders lagaye (kisi coin ke price 10% galti ho jaye to auto sell ho jaye). Long-term thinking karo, panic nahi kare."}
+{"user": "Trading mepe kaise risk manage kare? Kaise pata chale ke konsa coin safe hai?", "assistant": "Risk manage kise: 1. Only invest karo jisme 10-20% portfolio ho. 2. Research karo: Check coin's use case, team, market cap. 3. Use limit orders instead of market orders. Safe coins like Bitcoin aur Ethereum hote hai, lekin market mepe fluctuation hote hai."}
+{"user": "Kya NFTs mepe profit hote hai? Kaise sell kare?", "assistant": "Yes, NFTs mepe profit hote hai lekin high risk hai. Sell kise: 1. Open marketplace jaise OpenSea ya Rarible. 2. Set price ya auction karo. 3. Verify buyer ke address. Remember, NFTs mepe value emotional aur trend-based hoti hai, so research important hai."}
+{"user": "Market crash ke baad kaise recovery kare? Konsi coin chhoti mepe recover kare?", "assistant": "Recovery kise: 1. Focus on long-term holders (LTH) coins jaise Bitcoin. 2. Avoid panic selling. 3. Check fundamental value: 100x ROI ke coins mepe recovery fast hoti hai. 4. Diversify portfolio aur use dollar-cost averaging (DCA) strategy."}
+{"user": "Kya stock market me invest karna sakti hoon? Mujhe kuch basic guide chaiye.", "assistant": "Haan, stock market me invest kar sakti hain. Pehle, demat account banaye, phir share market me stocks choose kare. Risks hote hain, toh long-term investment karna chahie aur diversify karke."}
+{"user": "Mutual fund kya hai aur kaise invest karna sakti hoon?", "assistant": "Mutual fund ek investment tool hai jisme aapka paisa professional managers ke paas jata hai jo market me different assets me lagata hai. Aap online ya through aadhaar-based KYC process se invest kar sakti hain."}
+{"user": "Fixed deposit ke interest rates kabhi 7% se zyada nahi hote? Kya hua hai?", "assistant": "Haan, fixed deposit ke interest rates 7% se zyada ho sakte hain, lekin usme risk nahi hote. Current rates 6.5-7.5% ke beech hain. Agar aap 10 lakho se zyada deposit karte hain, toh kuch banks 8% tak ka offer karte hain."}
+{"user": "Gold investment kaise kare? Physical ya digital?", "assistant": "Gold investment me aap physical (gold coins/bars) ya digital (ETFs, gold mutual funds) chon sakti hain. Physical gold me security aur storage cost hote hain, jabki digital gold me easy access hai. 20-30% allocation me invest karna chahie."}
+{"user": "Kya stock market me daily trade karna sakti hoon? Kya profit hote hai?", "assistant": "Haan, daily trade kar sakti hain, lekin high risk hote hain. Profit hi nahi, loss bhi hote hain. Agar aap 1000 rupees me trade karte hain, toh 10-15% ke profit me 100-150 rupees ka gain ho sakta hai. Practice karke start kare."}
+{"user": "Mutual fund me small amount bhi invest kar sakti hoon? Kaise?", "assistant": "Haan, mutual fund me 1000 rupees se bhi kam amount invest kar sakti hain. Aap Systematic Investment Plan (SIP) choose kare, jo monthly basis me automatic investment karta hai. 1000 rupees monthly SIP se 1-2 lakho rupees 5 years me banti hai."}
+{"user": "Kaise proposal karein jisse wo accept kare?", "assistant": "Propose karte time, aapka heart ko pure karein aur wo kaam kare. Aap apni partner ke pas hone wale moment ko choose karein, jaise aapki favorite spot ho ya kisi special place. Bataiye kaise love aur sincerity aapke proposal mei jaye."}
+{"user": "Kya proposal ke liye kisi special place par jana chahiye?", "assistant": "Haan, ek special place, jaise aapke favorite restaurant, garden, ya kisi landmark par jaye. Aap apni partner ke preferences dekh ke choose karein. Aap apni partner ko ek heartfelt message bhi leke jaye, jisse wo aapke feelings ko samajh paye."}
+{"user": "Kaise engagement ring choose karein?", "assistant": "Aap apni partner ke preferences dekh ke choose karein. Aap budget ke hisab se 18k, 22k ya 24k karate hain. Aap apni partner ko ek ring dekh ke puchh sakte hain, jisse wo aapke preferences ko samajh paye."}
+{"user": "Kya budget karte hue ring le sakte hain?", "assistant": "Haan, aap apni partner ke budget ke hisab se ring choose karein. Ek basic ring 20k se leke 50k tak hote hain. Aap apni partner ko ek sample dekh ke puchh sakte hain, jisse wo aapke budget ke hisab se choose kare."}
+{"user": "Mehendi function ke liye kya kuch karna chahiye?", "assistant": "Mehendi function ke liye aap apni partner ke mehndi artist ko book karein, jisse wo aapki mehndi design ke hisab se prepare ho. Aap apni partner ko ek special outfit dekh ke puchh sakte hain, jisse wo aapke preferences ko samajh paye."}
+{"user": "Kya mehendi ke liye kisi special mehndi artist ko book karein?", "assistant": "Haan, ek experienced mehndi artist ki service aapko help karegi. Aap apni partner ke preferences dekh ke ek artist choose karein. Aap apni partner ko ek trial mehndi dekh ke puchh sakte hain, jisse wo aapke design ke hisab se choose kare."}
+{"user": "Aapke kuch tips kya hai internshiop leke aane ke liye?", "assistant": "Hmm, first, LinkedIn pe profile complete karo aur companies ke internships ke notifications le lo. Agar interview me ho toh confidently answer karo aur questions me clear ho jao. Yaad rakho, internship ek learning opportunity hai."}
+{"user": "Mujhe first job me start karte waqt kuch tips chahiye.", "assistant": "Okay, first job me sabse important hai punctuality aur professionalism. Dress code follow karo, tasks me sincerity se work karo aur manager ke suggestions ko accept karo. Aapke performance ke hisab se feedback lete raho."}
+{"user": "Kaise salary hike ke liye talk karte hain?", "assistant": "Aap apne performance ke hisab se discussion karo, aur market me current salary rates check karo. Aapke contribution ko highlight karo aur apne growth ke liye request karo. Yaad rakho, itna na keh do ki aapke boss ko pressure marna hai."}
+{"user": "Kaise promotion leke aaye?", "assistant": "Aapke work quality me improvement karo, new skills learn karo aur team ke saath collaboration me help karo. Regularly feedback lete raho aur apne manager ke saath open communication rakhenge toh promotion ki chance bhi aayegi."}
+{"user": "Internship me kya karna chahiye?", "assistant": "Internship me aapko learn karna hai aur feedback lete raho. Task me sincerity se work karo, questions me clear ho jao aur apne mentors ke suggestions ko follow karo. Aapke portfolio build karo."}
+{"user": "First job me stress kaise manage karo?", "assistant": "Stress manage karo aur apni time management karo. Aapke manager se support lete raho aur apni tasks ko small parts me divide karo. Aapko apna work ke liye proud ho jaye toh stress kam ho jayega."}
+{"user": "Bhai, I have to propose to my girlfriend, but I don't know how to start the conversation. What should I do?", "assistant": "Bro, start by being sincere. Say something like 'I've been thinking a lot about us, and I feel like I want to spend the rest of my life with you. Will you marry me?' Keep it simple and heartfelt. Don't overcomplicate it!"}
+{"user": "I proposed, but she said 'No'! What do I do now? I'm so confused.", "assistant": "Dude, don't panic. Maybe she needs time to process. Talk to her calmly and ask her reasons. If she's not ready, respect her decision. Sometimes, things take time. Stay patient and show her you're there for her."}
+{"user": "I bought an engagement ring, but it's too big. How can I fix this?", "assistant": "Bro, you can take it back to the store and ask for resizing. If that's not possible, maybe go for a different style or adjust the band. Don't worry—there are solutions. Just make sure it's the right fit for her finger!"}
+{"user": "The engagement ring is so expensive! Should I have spent less?", "assistant": "No worries, bro! Quality matters more than price. If you're happy with your choice, that's what counts. If you're unsure, maybe discuss it with her. Open communication is key here!"}
+{"user": "The mehendi function decorator didn't show up! What should I do?", "assistant": "Bro, call the vendor immediately and explain the situation. Ask for a replacement or a refund. Also, inform your family and guests politely. If possible, arrange for a backup decorator on the spot to avoid chaos!"}
+{"user": "Our sangeet night is tomorrow, but the band is not ready! What to do?", "assistant": "Dude, contact the band's manager immediately and check the status. If they're late, have a backup playlist or hire another group. Keep the vibe upbeat and positive. Your guests should enjoy the night, not stress!"}
+{"user": "Car wash ki steps kya hain?", "assistant": "Car ko wash karna samajhne ke liye, pehle khol de, phir dhobi se water laga ke dust aur kholna chhod do. Phir sabse pehle kholna chhod ke sabhi pahle pahle part ko dhob lo, fir chhoti kholna chhod ke kholna chhod ke main part ko dhob lo. Aakhir me sabse kholna chhod ke sabse pehle pahle part ko dhob lo aur kholna chhod ke sabki surface ko kholna chhod ke dhob lo."}
+{"user": "Bike ko kaise chhodo?", "assistant": "Bike ko chhodne ke liye, pehle chain ko oiled kardo, phir tire ko chhodega ke liye air pressure check kardo. Aap sabse pehle front aur back wheel ko chhodega ke liye sabki surface ko dust free kardo. Agar aapko bike ko chhodega ki zaroorat hai, toh koi profesional service provider se help le lo."}
+{"user": "Home cleaning kaise kare?", "assistant": "Home cleaning ke liye, pehle sabse pahle floor ko dust free kardo, phir sabhi surface ko sabun se dhob lo. Kitchen me sabse pahle cooking area ko dhob lo, aur bathroom me sabse pahle shower aur sink ko dhob lo. Aapko chhodega ki zaroorat hai, toh koi professional cleaning service se contact kardo."}
+{"user": "Laundry service kaise chalayi jaye?", "assistant": "Laundry service chalayi jaye, toh pehle aapke aapki customer base ko collect kardo. Phir aapko sabse pahle washing machine ya dhobi se help le lo. Aapko sabse pahle customer service ke liye contact details rakh lo. Aapke sabse pahle quality control ko maintain kardo aur aapke sabse pahle payment system ko proper rakh lo."}
+{"user": "Car wash kaha kare?", "assistant": "Car wash kaha kare, toh aapko sabse pahle locality me car wash karta hai service provider ko dekh lo. Agar aapko fast service ki zaroorat hai, toh online booking kar lo. Aapko sabse pahle price compare kardo aur aapke sabse pahle service ke liye rating dekh lo. Aapko sabse pahle service ko chhodega ke liye contact kardo."}
+{"user": "Bike cleaning kaise kare?", "assistant": "Bike cleaning kare, toh pehle chain ko oiled kardo, phir tire ko chhodega ke liye air pressure check kardo. Aap sabse pahle front aur back wheel ko chhodega ke liye sabki surface ko dust free kardo. Agar aapko bike ko chhodega ki zaroorat hai, toh koi profesional service provider se help le lo."}
+{"user": "Honeymoon plan ke liye kahan jaye? Budget bhi leke aayenge.", "assistant": "Goa aur Kerala best hai. Budget wala dekho, 5-7 days ki trip. Ocean view hotels aur local cuisine ka joy!"}
+{"user": "Baby ka naam kya rakhenge? Traditionally kuch suggest kare?", "assistant": "Arjun, Aarav, ya Priya. Kuch cultural significance hai. Namaaz me bhi acha lagta hai!"}
+{"user": "Pregnancy ke durn diet kiya karna chahiye?", "assistant": "Leafy veggies, fruits, aur whole grains. Avoid junk food. Pani ka pehla priority hai, 8-10 liters daily!"}
+{"user": "Parenting tips? Bedtime routine kya?", "assistant": "Consistent schedule, 7-8 hours sleep. Calm environment. Book ya lullaby use karo. Tantrum ke time sach chalao!"}
+{"user": "Honeymoon me kya activities include kare?", "assistant": "Beaches, cultural sites, aur adventure activities. Rafting ya paragliding kare. Local markets me shopping bhi karo!"}
+{"user": "Baby name ka unique suggestion?", "assistant": "Zara, Rohan, ya Nishant. Kuch modern yet traditional. Check their meaning bhi, like 'Zara' means 'flower' in Arabic!"}
+{"user": "Aapke sath kahan jayein? Honeymoon plan karo.", "assistant": "Chandigarh, aapke liye accha hai. Aapne favorite hai, kuch bhi nahi, lekin humne apna plan kar liya."}
+{"user": "Baby ka naam kya rakhenge? Kuch suggestions de do.", "assistant": "Aadi aur Nisha ka naam accha hai. Aapko koi aur preference hai?"}
+{"user": "Pregnancy care me kya karna chahiye? Diet kya hai?", "assistant": "Papad, chaas, aur aloo paratha jyada hai. Aapne doctor ke sath bhi baat karo."}
+{"user": "Parenting tips me kuch aur kya hai? Baby ka sleep kaise manage kare?", "assistant": "Fixed schedule karo aur night time me kuch aapko nahi karna chahiye. Shhh song lagao."}
+{"user": "Honeymoon me kya activity karenge? Water park kya hai?", "assistant": "Water park accha hai, lekin 10 days me kuch bhi nahi karenge. Aapne koi aur plan hai?"}
+{"user": "Baby ka naam kya rakhenge? Kuch unique names de do.", "assistant": "Sahil aur Tanya ka naam accha hai. Aapko koi aur preference hai?"}
+{"user": "Mere dost, mujhe depression ka feel ho raha hai. Kya karna chahiye?", "assistant": "Aahe, depression serious hai. First, kisi ke paas baitho, kuch kahna chahiye. Aur aapko apne feelings ko samajhne ka effort karo. Yoga aur healthi diet bhi help karte hai. Agar serious ho raha hai, toh therapist se consult karo."}
+{"user": "Mere paas anxiety hain, sirf sab kuch par kuch na ho jaye.", "assistant": "Anxiety ko handle karna easy nahi hai, but you can start with deep breathing. Kisi bhi problem ko small parts mein break karo. Aur kisi ko aapko share karo, because isolation bad for mental health."}
+{"user": "Work par stress ki bajay, kya karna chahiye?", "assistant": "Work stress se apna time manage karo. Kuch time apne pas karo, hobbies kiya karo. Aur yeh sab nahi, apne feelings ko express karo, jo kuch bhi ho, aapke paas kisi hai jo help karega."}
+{"user": "Mera meditation nahi chal raha, kya karna chahiye?", "assistant": "Meditation karna easy nahi hai, but start small. 5 minutes chalao, apni mind ko focus karo. Aur nahi, apne thoughts ko accept karo, yeh sab part hai. Consistency more important hai."}
+{"user": "Mere paas depression hain, aur ek damna hai apne aap ko nahi marne ki. Kya karna chahiye?", "assistant": "Aapko apne aap ko nahi marne ki intention ho rahi hai, toh apni problem serious hai. Apne dost ke paas baitho, aur therapist se help le lo. Aapko apni feelings ko express karna chahiye, jo bhi ho, aapke paas koi hai jo aapko support karega."}
+{"user": "Mere paas anxiety hain, aur mera heart ko kuch na hoga kya karna chahiye?", "assistant": "Anxiety ko handle karo, yeh sab nahi. Aur apni health ki care karo, diet aur sleep. Aur kisi bhi problem ko small parts mein break karo. Agar panic attack ho raha hai, toh breath 4-7-8 method use karo. Aur apni feelings ko share karo, isse apni mental health improve hogi."}
