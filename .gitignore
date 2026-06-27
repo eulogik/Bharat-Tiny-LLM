@@ -1,0 +1,58 @@
+# Secrets - NEVER COMMIT
+.env
+.env.*
+*.key
+*.pem
+credentials.json
+service-account.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ML/Data
+models/
+data/
+*.bin
+*.gguf
+*.ggml
+*.safetensors
+*.pt
+*.pth
+*.ckpt
+checkpoints/
+wandb/
+mlruns/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+training.log
+
+# Temporary
+tmp/
+temp/
+*.tmp
