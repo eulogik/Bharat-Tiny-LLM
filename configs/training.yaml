@@ -1,0 +1,79 @@
+# Training Configuration for Bharat-Tiny-LLM
+# Mac Mini M4 16GB Optimized
+
+model:
+  name: "HuggingFaceTB/SmolLM2-360M"
+  save_path: "./models/smolm2-360m-base"
+  params: 360000000
+  architecture: "decoder-only-transformer"
+
+training:
+  # Memory optimization for 16GB Mac Mini
+  batch_size: 2
+  gradient_accumulation: 8
+  effective_batch_size: 16
+  
+  # Learning rate schedule
+  learning_rate: 1e-5
+  weight_decay: 0.01
+  warmup_steps: 100
+  max_steps: 10000
+  
+  # Context
+  context_length: 2048
+  max_seq_length: 2048
+  
+  # Checkpointing
+  save_every: 1000
+  eval_every: 500
+  
+  # LoRA configuration
+  lora:
+    rank: 16
+    alpha: 32
+    layers: 8
+    dropout: 0.05
+
+data:
+  train_file: "data/processed/train.jsonl"
+  val_file: "data/processed/val.jsonl"
+  test_file: "data/processed/test.jsonl"
+  
+  # Data mix
+  languages:
+    - hindi
+    - english
+    - hinglish
+    - tamil
+    - telugu
+  
+  # Proportions
+  language_weights:
+    hindi: 0.30
+    english: 0.25
+    hinglish: 0.20
+    tamil: 0.10
+    telugu: 0.05
+    other: 0.10
+
+evaluation:
+  metrics:
+    - perplexity
+    - rouge
+    - bleu
+  
+  benchmarks:
+    - indicqa
+    - hinglish_f1
+    - cultural_commonsense
+
+export:
+  formats:
+    - gguf
+    - safetensors
+    - coreml
+  
+  quantization:
+    - q4_k_m
+    - q8_0
+    - fp16
