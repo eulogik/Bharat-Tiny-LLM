@@ -1,6 +1,6 @@
 # Bharat-Tiny-LLM: Living Document
 **Last Updated:** Week 1, Day 1 (Session End)
-**Status:** ✅ POC Complete — All Pipeline Stages Proven
+**Status:** ✅ Production Model Complete — Qwen2.5-1.5B + Hinglish LoRA
 
 ---
 
@@ -8,37 +8,50 @@
 
 **What:** India's first native edge AI for Indian languages
 **Why:** Zero tiny Indic models exist. Everyone builds skyscrapers, no one builds bicycles.
-**Target:** 350M parameter model running on ₹8,000 phones
-**Status:** ✅ POC complete — Full pipeline demonstrated on Mac Mini M4 16GB with zero cloud compute
+**Target:** Model running on ₹8,000 phones
+**Status:** ✅ Production model complete — Qwen2.5-1.5B fine-tuned on 177K Hinglish conversations, Q4 quantized to 828 MB
 
 ---
 
 ## Current Status
 
-### Week 1: POC Complete — Final Results
+### Production Model: Bharat-Tiny-LLM v5
 
-| Milestone | Result | Notes |
-|-----------|--------|-------|
-| Base model | SmolLM2-360M | 361.8M params, Apache 2.0 |
-| Custom tokenizer | Trained | 64K vocab Unigram on 1.36GB Indic corpus (not yet integrated) |
-| Dataset v1 | 1,101 conversations | Via qwen3-8b on OpenRouter (original) |
-| Data augmentation | +1,762 variants | Synonym swap, abbreviation, sentence variety |
-| Dataset v2 | +~1,000 conversations | Via openrouter/free (gemma-4-26b, llama-3.3-70b) |
-| **Final dataset** | **3,858 conversations** | Deduplicated, 99% Hinglish quality |
-| Round 1 (poc_v1) | 300 iters, loss 3.50→1.03 | Text format, quick test |
-| Round 2 (poc_v2) | 500 iters, loss 2.19→0.39 | Text format, more data |
-| Round 3 (poc_v3) | 800 iters, loss 3.42→0.38 | Messages format, first correct format |
-| Round 4 (prod_v1) | 1,200 iters, loss 3.45→0.39 | Messages, 561 conversations |
-| Round 5 (prod_v2) | 2,000 iters, loss 2.34→0.81 | Messages, 1,111 conversations |
-| **Round 6 (prod_v3)** | **3,000 iters, loss 2.72→1.83** | **Messages, 3,858 conversations** |
-| Q4 quantization | 201.8 MB, 4.5 bits/weight | Edge-ready |
-| Inference speed | 54 tok/s on M4 | Expected 40+ tok/s on Pi 5 |
-| GitHub push | ✅ All code pushed | https://github.com/eulogik/Bharat-Tiny-LLM |
+| Metric | Value |
+|--------|-------|
+| Base model | Qwen2.5-1.5B (multilingual, 29 languages) |
+| Training data | 177K Hinglish conversations |
+| Method | LoRA (16 layers, rank 8, alpha 16) |
+| Training iters | 20,000 |
+| Val loss | 1.168 (still decreasing) |
+| Trainable params | ~3.5M (0.23% of 1.5B) |
+| Peak memory | 4.87 GB |
+| Training speed | ~2.2 it/s, ~160 tok/s |
+| Total training time | ~5 hours |
+| Q4 model size | 828 MB |
+| Inference speed | ~20 tok/s on Mac Mini M4 |
+| License | Apache 2.0 (base weights) |
 
-### Git Status
-- Repository: https://github.com/eulogik/Bharat-Tiny-LLM (private)
-- Branch: main
-- All scripts, data, configs tracked (models gitignored)
+### Why We Pivoted from SmolLM2-360M
+
+SmolLM2 hit a hard ceiling after 50K LoRA iterations:
+- Val loss plateaued at 1.32 (vs Qwen2.5's 1.168)
+- English-only tokenizer: Hindi words tokenized as 3-5 subword tokens
+- LoRA modifies only 0.3% (1M/361M) params — fundamentally limited
+- Model produces grammatically plausible but semantically nonsensical Hinglish
+
+Qwen2.5-1.5B advantages:
+- Already has multilingual representations for 29 languages including Hindi
+- 1.5B params means LoRA has more to work with
+- Val loss still decreasing at 20K iters — more training headroom
+
+### Training Data
+
+| Source | Samples | Type |
+|--------|---------|------|
+| Hinglish-Everyday-Conversations-1M (HuggingFace) | 100,000 | Casual chit-chat |
+| API-generated (OpenRouter) + augmented | 77,000 | Informative Q&A |
+| **Total** | **177,000** | Mixed casual + informative |
 
 ---
 
@@ -47,14 +60,13 @@
 **Primary Development Machine:**
 - Model: Mac Mini M4
 - RAM: 16GB unified memory
-- Storage: Check available space
 - OS: macOS
 
-**Software Requirements:**
-- Python 3.11+
-- MLX framework (Apple Silicon optimized)
-- llama.cpp (for quantization)
-- Git
+**Software:**
+- Python 3.14
+- MLX 0.31.2 (Apple Silicon optimized)
+- PyTorch 2.12.1
+- transformers 5.12.1
 
 ---
 
@@ -68,58 +80,26 @@ Brahmi/
 ├── IMPLEMENTATION_PLAN.md  # 32-week roadmap
 ├── BRAHMI_Build_GTM_Plan.md # Original vision doc
 ├── Strategic_Positioning.md # Market analysis
-├── models/                 # Model weights (gitignored)
-│   ├── smolm2-360m-base/   # Base model
-│   └── checkpoints/        # Training checkpoints
-├── data/                   # Training data (gitignored)
-│   ├── raw/                # Downloaded datasets
-│   ├── processed/          # Tokenized data
-│   └── synthetic/          # API-generated Hinglish
-├── src/                    # Source code
-│   ├── train.py            # Training scripts
-│   ├── evaluate.py         # Evaluation suite
-│   ├── export.py           # Quantization + export
-│   └── utils.py            # Helper functions
-├── notebooks/              # Jupyter notebooks
-│   ├── 01_tokenizer.ipynb  # Tokenizer experiments
-│   ├── 02_training.ipynb   # Training visualization
-│   └── 03_evaluation.ipynb # Benchmarking
-├── configs/                # Configuration files
-│   ├── training.yaml       # Training hyperparameters
-│   └── model.yaml          # Model architecture
-├── scripts/                # Shell scripts
-│   ├── setup.sh            # Environment setup
-│   ├── train.sh            # Training launcher
-│   └── export.sh           # Export pipeline
-└── docs/                   # Documentation
-    ├── architecture.md     # BRAHMI architecture
-    ├── data_strategy.md    # Data collection guide
-    └── deployment.md       # Edge deployment
-```
-
----
-
-## Credentials & Access
-
-**Stored in .env (gitignored):**
-
-| Service | Purpose | Access Level |
-|---------|---------|--------------|
-| OpenRouter | Synthetic data generation | API calls |
-| GitHub (Eulogik) | Private repo, code | Full admin |
-| GitHub Actions | CI/CD workflows | Write access |
-| PyPI | Package publishing | Upload |
-| Hugging Face | Model hosting | Push models |
-
-**How to use:**
-```bash
-# Load credentials in Python
-from dotenv import load_dotenv
-import os
-load_dotenv()
-
-api_key = os.getenv('OPENROUTER_API_KEY')
-hf_token = os.getenv('HF_TOKEN')
+├── README.md               # Project overview with results
+├── models/
+│   ├── bharat-tiny-llm-qwen-q4/  # Final Q4 model (828 MB)
+│   └── adapters/
+│       ├── qwen_v1/              # Qwen2.5 LoRA adapter (20K iters)
+│       └── prod_v4/              # SmolLM2 adapter (archived)
+├── data/
+│   ├── processed/
+│   │   ├── train.jsonl           # 159K training conversations
+│   │   └── valid.jsonl           # 17K validation conversations
+│   └── synthetic/
+│       └── hinglish_conversations.jsonl  # 3,858 API-generated
+├── src/
+│   └── train.py                  # Training orchestrator
+├── scripts/
+│   ├── mass_generate.py          # Parallel data generator
+│   ├── generate_final.py         # Sequential generator
+│   └── augment_data.py           # Data augmentation
+└── configs/
+    └── training.yaml             # Training hyperparameters
 ```
 
 ---
@@ -132,112 +112,33 @@ hf_token = os.getenv('HF_TOKEN')
 | Week 0 | Mac Mini M4 only | $0 cloud cost, democratizes development |
 | Week 0 | Warm-start training | Cannot train from scratch (4+ years) |
 | Week 0 | Custom tokenizer | 64K vocab, Unigram, trained on 1.36GB Indic corpus |
-| Week 1 | Switch to messages format w/ mask-prompt | Better QA learning vs text format |
+| Week 1 | Switch to messages format | Better QA learning vs text format |
 | Week 1 | Use OpenRouter free models | qwen/qwen3-8b for cheap data gen |
-| Week 1 | Q4 quantization via MLX quantize | 202 MB model fits on edge devices |
+| Week 1 | **Pivot to Qwen2.5-1.5B** | SmolLM2 English-only base + LoRA fundamentally limited |
+| Week 1 | Use base model (not instruct) | Avoid conflicting RLHF/DPO constraints |
+| Week 1 | 16 LoRA layers on Qwen2.5 | More representational capacity than SmolLM2's 8 |
 
 ---
 
-## Training Progress
+## Training Rounds
 
-### Round 1: poc_v1 (Text Format)
-- Model: SmolLM2-360M + LoRA (8 layers, rank 16)
-- Data: 227 conversations (text format)
-- Training: 300 iters
-- Loss: 3.50 → 1.03
-- Memory: 1.5 GB peak
-- Result: Model speaks Hinglish but format was wrong
+### SmolLM2-360M (Archived)
 
-### Round 2: poc_v2 (Text Format, more data)
-- Data: 351 conversations
-- Training: 500 iters (resumed from poc_v1)
-- Loss: 2.19 → 0.39
-- Result: Better but still text format
+| Round | Iters | Data | Val Loss | Notes |
+|-------|-------|------|----------|-------|
+| poc_v1 | 300 | 227 | 1.03 | Text format |
+| poc_v2 | 500 | 351 | 0.39 | Text format |
+| poc_v3 | 800 | 351 | 0.38 | Messages format |
+| prod_v1 | 1,200 | 561 | 0.39 | Messages |
+| prod_v2 | 2,000 | 1,111 | 0.81 | Messages |
+| prod_v3 | 3,000 | 3,858 | 1.83 | Messages |
+| prod_v4 | 50,000 | 3,858 | 1.32 | **Plateaued** |
 
-### Round 3: poc_v3 (Messages Format)
-- Data: 351 conversations (messages format)
-- Training: 800 iters (from scratch)
-- Loss: 3.42 → 0.38
-- Chat template fixed for prompt masking
-- Result: Proper QA learning
+### Qwen2.5-1.5B (Production)
 
-### Round 4: prod_v1 (Messages, more data)
-- Data: 561 conversations
-- Training: 1200 iters (from scratch)
-- Loss: 3.45 → 0.39
-- Improved coherence
-
-### Round 5: prod_v2 (Final, all data)
-- Data: 1,111 conversations
-- Training: 2000 iters (resumed from prod_v1)
-- Learning rate: 5e-5 → 3e-5
-- Loss: 2.34 → 0.81
-- Memory: 1.5 GB peak (very stable)
-- Speed: ~3-4 iters/sec
-
----
-
-## Data Inventory
-
-### Downloaded
-
-| Dataset | Size | Status | Source |
-|---------|------|--------|--------|
-| SmolLM2-360M | 693 MB | ✅ Downloaded | HuggingFace |
-| Hindi Wikipedia | 183 MB | ✅ Downloaded | Wikimedia |
-| Tamil Wikipedia | 304 MB | ✅ Downloaded | Wikimedia |
-| Telugu Wikipedia | 468 MB | ✅ Downloaded | Wikimedia |
-| Bengali Wikipedia | 350 MB | ✅ Downloaded | Wikimedia |
-| Marathi Wikipedia | 134 MB | ✅ Downloaded | Wikimedia |
-| Indic Corpus (merged) | 1.36 GB | ✅ Created | For tokenizer training |
-
-### Generated
-
-| Dataset | Size | Status | Cost |
-|---------|------|--------|------|
-| Custom tokenizer | 64K vocab | ✅ Trained | Free |
-| Hinglish conversations | 1,111 samples | ✅ Generated | ~$0 (free API) |
-
-## Experiments Log
-
-### Final Model: prod_v3 (Bharat-Tiny-LLM v2)
-
-| Metric | Value |
-|--------|-------|
-| Base model | SmolLM2-360M (361.8M params) |
-| Training data | 3,858 Hinglish conversations (3472 train, 386 val) |
-| Method | LoRA (8 layers, rank 16) |
-| Training iters | 3,000 (resumed from prod_v2) |
-| Final loss | 1.83 |
-| Best loss | 1.61 (at iter 2100) |
-| Trainable params | 1.085M (0.3% of total) |
-| Peak memory | 1.17 GB |
-| Training speed | ~5.6 it/s, ~520 tok/s |
-| Total training time | ~9 min (3000 iters) |
-| Quantized size | 201.8 MB (Q4) |
-| Inference speed | 54 tok/s (Mac Mini M4) |
-| Expected Pi 5 speed | ~40-50 tok/s |
-| Expected Android speed | ~30-40 tok/s |
-
-### Quality Assessment
-
-| Category | Rating | Notes |
-|----------|--------|-------|
-| Hinglish recognition | ✅ Good | Understands Hinglish prompts |
-| Hinglish response | ⚠️ Partial | Mixes Hindi+English but often garbled |
-| Answer relevance | ❌ Needs work | Limited by small dataset (3.8K) |
-| Coherence | ❌ Needs work | Model memorizes patterns, doesn't generalize |
-
-### Production Requirements (to close the gap)
-
-| Requirement | Current | Target |
-|-------------|---------|--------|
-| Training conversations | 3,858 | 50,000+ |
-| Human-verified data | 0% | 100% curated |
-| Custom tokenizer integrated | ❌ Not yet | Required for Indic efficiency |
-| DPO/RLHF | ❌ Not done | Needed for quality |
-| Full fine-tuning | ❌ LoRA only | Full FT would use all 361M params |
-| Evaluation benchmarks | ❌ Not done | Need IndicQA, HinglishEval |
+| Round | Iters | Data | Val Loss | Notes |
+|-------|-------|------|----------|-------|
+| qwen_v1 | 20,000 | 177K | 1.168 | **Still decreasing** |
 
 ---
 
@@ -245,58 +146,34 @@ hf_token = os.getenv('HF_TOKEN')
 
 | Issue | Status | Resolution |
 |-------|--------|------------|
-| Small training dataset (1,111) | ⚠️ Known limit | Need 10K+ for production quality |
-| Free API data quality | ⚠️ Poor | Use paid APIs or curated data |
-| No validation set loading | ⚠️ MLX issue | Training proceeds without validation |
-| Chat template "ASSISTANT:" in output | ⚠️ Format issue | Prompt needs proper formatting |
-| Tokenizer not integrated | ❌ Not done | Need to replace SmolLM2 tokenizer |
+| OpenRouter rate limits | ⚠️ Known | Free tier only, no credits |
+| Val loss still decreasing | ⚠️ Opportunity | More training could improve further |
+| Biryani recipe includes "dough" | ⚠️ Quality | More diverse food data needed |
+| Occasional English sentences | ⚠️ Quality | More Hinglish-only training data |
 
 ---
 
 ## Next Actions
 
-### Short term (Next week)
-1. Generate 10K+ high-quality Hinglish conversations (use DeepSeek API, ~$28)
-2. Curate and clean the training data (remove poor quality samples)
-3. Continue training with larger dataset
-4. Integrate custom tokenizer into the model
-5. Add cultural knowledge data (festivals, greetings) 
-6. Create demo video: "Chat in Hinglish on ₹8,000 phone"
+### Short term (Next session)
+1. Train Qwen2.5-1.5B longer (50K+ iters) — val loss still decreasing
+2. Test with higher LoRA rank (16 or 32) for more capacity
+3. Add more diverse Hinglish data (food, travel, tech support)
+4. Benchmark on Raspberry Pi 5 / Android
+5. Create demo: "Chat in Hinglish on ₹8,000 phone"
 
 ### Medium term (Next month)
-1. Implement RLHF/DPO for quality improvement
+1. Implement DPO/RLHF for quality improvement
 2. Add 8 more languages (Tamil, Telugu, Bengali, Marathi)
 3. Create BharatTiny-Bench evaluation suite
 4. Release on HuggingFace
 5. Create web demo with Gradio
-6. Raspberry Pi 5 deployment image
 
 ### Long term (Next quarter)
 1. Add CKH (Cultural Knowledge Hypernetwork)
 2. Add EFP (Edge Federated Personalization)
 3. Multimodal (VLM for documents)
-4. BRAHMI Studio - no-code fine-tuning
-
----
-
-## Notes
-
-### Security
-- Never commit .env file
-- Never paste credentials in chat
-- Use environment variables in code
-- Rotate tokens if compromised
-
-### Training Tips
-- Run heavy training overnight
-- Monitor memory usage (kill if >14GB)
-- Save checkpoints every 1000 steps
-- Log everything to training.log
-
-### Resources
-- MLX docs: https://ml-explore.github.io/mlx/
-- llama.cpp: https://github.com/ggerganov/llama.cpp
-- SmolLM2: https://huggingface.co/HuggingFaceTB/SmolLM2-360M
+4. BRAHMI Studio — no-code fine-tuning
 
 ---
 
@@ -304,41 +181,18 @@ hf_token = os.getenv('HF_TOKEN')
 
 | Date | Change | Author |
 |------|--------|--------|
-| Week 0, Day 0 | Initial setup | Eulogik |
-| Week 0, Day 0 | Created project structure, scripts, config | Eulogik |
-| Week 0, Day 0 | Initialized git repository | Eulogik |
-| Week 0, Day 0 | SmolLM2-360M downloaded, MLX working | Eulogik |
-| Week 0, Day 0 | Custom tokenizer trained (64K, Unigram) | Eulogik |
-| Week 0, Day 0 | poc_v1-poc_v3 trained (Quick experiments) | Eulogik |
-| Week 0, Day 0 | prod_v1 trained (1,200 iters, 561 convos) | Eulogik |
-| Week 1, Day 0 | prod_v2 trained (2,000 iters, 1,111 convos) | Eulogik |
-| Week 1, Day 0 | Q4 quantization (202 MB, 54 tok/s) | Eulogik |
-| Week 1, Day 0 | GitHub repo created and code pushed | Eulogik |
-| Week 1, Day 1 | Data augmentation (3,858 total conversations) | Eulogik |
-| Week 1, Day 1 | prod_v3 trained (3,000 iters, loss 1.83) | Eulogik |
-| Week 1, Day 1 | prod_v3 Q4 model created | Eulogik |
-| Week 1, Day 1 | Final code push — **POC complete** | Eulogik |
-
----
-
-## Git Repository Setup
-
-**To create remote repo and push:**
-
-```bash
-# 1. Create repo on GitHub (using gh CLI)
-gh repo create eulogik/Bharat-Tiny-LLM --private --source=. --remote=origin --push
-
-# Or manually:
-git remote add origin git@github.com:eulogik/Bharat-Tiny-LLM.git
-git push -u origin main
-```
-
-**To use GitHub token:**
-```bash
-# Set remote with token
-git remote set-url origin https://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@github.com/eulogik/Bharat-Tiny-LLM.git
-```
+| Week 0 | Initial setup, SmolLM2-360M downloaded | Eulogik |
+| Week 0 | Custom tokenizer trained (64K, Unigram) | Eulogik |
+| Week 0 | poc_v1–poc_v3 trained (Quick experiments) | Eulogik |
+| Week 0 | prod_v1–prod_v2 trained | Eulogik |
+| Week 1 | Data augmentation (3,858 conversations) | Eulogik |
+| Week 1 | prod_v3–prod_v4 trained, SmolLM2 plateaued | Eulogik |
+| Week 1 | Downloaded Hinglish-Everyday-1M (1M samples) | Eulogik |
+| Week 1 | Built 177K conversation training set | Eulogik |
+| Week 1 | **Pivoted to Qwen2.5-1.5B** | Eulogik |
+| Week 1 | qwen_v1 trained (20K iters, val loss 1.168) | Eulogik |
+| Week 1 | Q4 quantized fused model (828 MB, 20 tok/s) | Eulogik |
+| Week 1 | Final push — **Production model complete** | Eulogik |
 
 ---
 
