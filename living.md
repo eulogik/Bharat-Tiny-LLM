@@ -1,6 +1,6 @@
 # Bharat-Tiny-LLM: Living Document
-**Last Updated:** July 4, 2026
-**Status:** ✅ Production Model v2 Complete — 76K iters, val loss 0.781
+**Last Updated:** July 6, 2026
+**Status:** ✅ Production Model v2 Complete — 76K iters, val loss 0.781 — Live on HuggingFace
 
 ---
 
@@ -9,7 +9,7 @@
 **What:** India's first native edge AI for Indian languages
 **Why:** Zero tiny Indic models exist. Everyone builds skyscrapers, no one builds bicycles.
 **Target:** Model running on ₹8,000 phones
-**Status:** ✅ Production model v2 complete — Qwen2.5-1.5B fine-tuned on 376K Hinglish conversations, Q4 quantized to 828 MB, 57 tok/s
+**Status:** ✅ Production model v2 complete — Qwen2.5-1.5B fine-tuned on 376K Hinglish conversations, Q4 quantized to 828 MB, 57 tok/s. Live on HuggingFace under `eulogik` org.
 
 ---
 
@@ -33,6 +33,24 @@
 | Inference speed | **~57 tok/s** on Mac Mini M4 (3x faster than v5) |
 | Best checkpoint | `models/adapters/qwen_v2/0075000_adapters.safetensors` |
 | License | Apache 2.0 (base weights) |
+
+### HuggingFace Release (July 6)
+
+All assets live under the **eulogik** organization:
+
+| Asset | URL | Format |
+|-------|-----|--------|
+| Q4 MLX Model | https://huggingface.co/eulogik/Bharat-Tiny-LLM | 828 MB, Q4 quantized, Apple MLX |
+| PEFT Adapter | https://huggingface.co/eulogik/Bharat-Tiny-LLM-adapter | 20 MB, transformers+peft compatible |
+| Gradio Demo | https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM | Live demo with eulogik branding |
+
+**Positioning:** Transparent about Qwen2.5 base (collapsible "Base model details" section), brand-forward with "Bharat-Tiny-LLM" as the name. Full model card with story, badges, training curve, example outputs, limitations, and roadmap.
+
+**Model card tags for SEO:** hinglish, hindi, indian-languages, edge-ai, mac-mini, lora, small-language-model, on-device-ai, apple-silicon, mlx, apache-2.0, lightweight, edge-deployment, low-resource, conversation, india, bharat
+
+**Demo space:** Uses Dockerfile with Qwen2.5-1.5B pre-cached at build time. Gradio 4.44.1 with PEFT adapter + 4-bit bitsandbytes. Patched `gradio_client` for Python 3.13 compat. Custom CSS, example prompts, temperature/max-tokens controls. eulogik branding in header and footer.
+
+**Quota strategy:** HF Spaces free tier allows ~2-3 active spaces per namespace. Spread across `eulogik`, `GautamKishore`, and optionally new orgs. Model repos have no quota limit.
 
 ### Quality Benchmark (76K iters)
 
@@ -182,6 +200,11 @@ Brahmi/
 | Week 2 | **Replaced data pipeline** | 5 curated datasets (376K) vs 177K old |
 | Week 2 | max-seq-length=512 | batch=4 OOM at longer sequences |
 | Week 2 | Open-core strategy | Apache 2.0 base, commercial enterprise layers |
+| Week 2 | **HuggingFace release** (July 6) | 3 repos under eulogik org: model (Q4 MLX), adapter (PEFT), space (Gradio) |
+| Week 2 | Model card: transparent about Qwen2.5 base | Brand-forward "Bharat-Tiny-LLM", Qwen in collapsible section |
+| Week 2 | Space uses Dockerfile with pre-cached model | Avoids HF Space startup timeout for 3GB model download |
+| Week 2 | Patched gradio_client for Python 3.13 | `const in schema` bool bug in gradio-client 1.3.0 |
+| Week 2 | Space quota workaround | Spread active spaces across multiple namespaces (eulogik, GautamKishore) |
 
 ---
 
@@ -195,6 +218,7 @@ Brahmi/
 | "Aap kaise ho?" answered in Devanagari | ⚠️ Quality | Needs more Romanized Hinglish examples |
 | OpenRouter free tier rate limited | ⚠️ Known | Cannot generate more synthetic data |
 | 76K iters not fully converged | ⚠️ Opportunity | Resume later with lower LR (2e-5) |
+| HF Space quota (2-3 active per namespace) | ⚠️ Known | Spread across eulogik, GautamKishore, or new orgs |
 
 ---
 
@@ -204,8 +228,8 @@ Brahmi/
 1. **Evaluate on edge** — Benchmark on Raspberry Pi 5 and Android
 2. **Test with low LR** — Resume training from 76K to 110K with 2e-5 LR for convergence
 3. **Fix quality gaps** — Add diverse data for jobs, relationships, casual chit-chat
-4. **HuggingFace release** — Upload model with model card
-5. **Demo** — Gradio web app or CLI demo
+4. ~~**HuggingFace release**~~ ✅ Done — model, adapter, demo space under `eulogik` org
+5. ~~**Demo**~~ ✅ Done — Gradio space live at https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM
 
 ### Medium term
 1. **Add 8 Indic languages** — Tamil, Telugu, Bengali, Marathi, etc. (Qwen2.5 already knows them)
@@ -261,6 +285,9 @@ nohup python3 -u -m mlx_lm lora \
 | Week 2 | qwen_v2 trained to 76K (val loss 0.781) | Eulogik |
 | Week 2 | Q4 fused model (828 MB, **57 tok/s**) | Eulogik |
 | Week 2 | living.md updated with v6 results | Eulogik |
+| July 6 | HuggingFace release (3 repos under eulogik) | Eulogik |
+| July 6 | Gradio Space live + patched for Python 3.13 | Eulogik |
+| July 6 | living.md updated with HF release + quota strategy | Eulogik |
 
 ---
 
