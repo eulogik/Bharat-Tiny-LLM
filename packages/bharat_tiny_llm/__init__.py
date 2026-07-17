@@ -17,7 +17,7 @@ from .constants import (
 )
 from .loaders import load, chat
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __all__ = [
     "MODEL_ID",

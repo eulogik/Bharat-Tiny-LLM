@@ -58,3 +58,8 @@ tmp/
 temp/
 *.tmp
 mlx_model/
+
+# Archived training artifacts (moved to external SSD, kept as symlinks locally)
+backup
+data/raw
+data/staging

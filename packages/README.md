@@ -63,11 +63,14 @@ print(generate(model, tokenizer, prompt=prompt, max_tokens=128))
 | Repo | Format | Size | Use |
 |------|--------|------|-----|
 | [`eulogik/Bharat-Tiny-LLM`](https://huggingface.co/eulogik/Bharat-Tiny-LLM) | MLX 4-bit | ~880 MB | **Edge / Apple Silicon** (default) |
+| [`eulogik/Bharat-Tiny-LLM-GGUF`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-GGUF) | GGUF Q4_K_M | ~1.06 GB | **Cross-platform** (llama.cpp, Android, Pi, CPU) |
 | [`eulogik/Bharat-Tiny-LLM-fused`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-fused) | PyTorch fp16 | ~3.3 GB | Server / fine-tuning base |
 
 ## Links
 
 - 🤗 Model card: https://huggingface.co/eulogik/Bharat-Tiny-LLM
+- 🤗 GGUF (llama.cpp): https://huggingface.co/eulogik/Bharat-Tiny-LLM-GGUF
+- 🤗 fp16 fused: https://huggingface.co/eulogik/Bharat-Tiny-LLM-fused
 - 🚀 Demo space: https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM
 - 💻 Source: https://github.com/eulogik/Bharat-Tiny-LLM
 - 🏢 Built by [eulogik](https://eulogik.com)
