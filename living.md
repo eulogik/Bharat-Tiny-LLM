@@ -1,6 +1,6 @@
 # Bharat-Tiny-LLM: Living Document
-**Last Updated:** July 9, 2026
-**Status:** ✅ Training Complete (150K iters) — Fused model on HF Space — Next: improve data quality
+**Last Updated:** July 17, 2026
+**Status:** ✅ Training Complete (110K iters, v8) — Cleaned data, fixed generation config, Q4 edge model uploaded — Next: update Space gen params
 
 ---
 
@@ -9,45 +9,45 @@
 **What:** India's first native edge AI for Indian languages
 **Why:** Zero tiny Indic models exist. Everyone builds skyscrapers, no one builds bicycles.
 **Target:** Model running on ₹8,000 phones
-**Status:** ✅ Production model v2 complete — Qwen2.5-1.5B fine-tuned on 376K Hinglish conversations, Q4 quantized to 828 MB, 57 tok/s. Live on HuggingFace under `eulogik` org.
+**Status:** ✅ Production model v8 complete — Qwen2.5-1.5B fine-tuned on 436K Hinglish/Devanagari conversations (cleaned), fp16 fused uploaded to HF. Live on HuggingFace under `eulogik` org.
 
 ---
 
 ## Current Status
 
-### Production Model: Bharat-Tiny-LLM v7 (qwen_v2)
+### Production Model: Bharat-Tiny-LLM v8 (qwen_v2, 110K iters)
 
 | Metric | Value |
 |--------|-------|
 | Base model | Qwen2.5-1.5B (multilingual, 29 languages) |
-| Training data | 376K conversations (5 datasets) |
-| Method | LoRA (16 layers, rank 8, alpha 16, scale 20.0) |
-| Training iters | **150,000** |
-| Best val loss | **0.593** (@ 3.5K of V5 run, cumulative ~102K) |
-| Final val loss | 0.863 |
-| PPL (200 val samples) | 4.39 (150K) vs 4.56 (75K) |
-| Data sources | HinglishConversations (202K), IndicVault (151K), HinglishInstruct (10K), cookGPT (6K), Yojana (7K) |
-| Trainable params | 5.276M (0.342% of 1.5B) |
-| Peak memory | 8.75 GB (batch=2, seq=768) |
-| Training speed | ~0.6 it/s (batch=2, seq=768) |
-| Total training time | ~11 days (multiple runs, power failures, crashes) |
-| Inference speed | **~22 tok/s** on MPS (fp16), ~57 tok/s Q4 |
-| Best checkpoint | `models/adapters/qwen_v2/0003500_adapters.safetensors` (V5 run) |
-| Final adapter | `models/adapters/qwen_v2/adapters.safetensors` (150K cumulative) |
+| Training data | **436K** cleaned conversations (gold 343K + NebulaByte 100K + smangrul 1K) |
+| Method | LoRA (16 layers, rank 16, alpha 32, scale 2.0, dropout 0.05) |
+| Training iters | **110,000** (resumed from 24K → 110K) |
+| Best val loss | **0.937** (@ iter 22K, old config) / 0.970 (@ iter 35K, this run) |
+| Data cleaning | Removed 7,919 contaminated rows (1.8%) → `train_gold_v3.jsonl` (436K) |
+| Trainable params | 10.551M (0.684% of 1.5B) |
+| Peak memory | 7.3 GB (batch=4, seq=768) |
+| Training speed | ~0.18 it/s (batch=4, seq=768) |
 | Fusion method | Direct safetensors save (0.0 roundtrip diff, no `save_pretrained`) |
 | License | Apache 2.0 (base weights) |
 
-### HuggingFace Release (July 9)
+**CRITICAL GENERATION CONFIG (discovered July 17):**
+- The model looked "broken" (garbled Thai/CJK/Romanian tokens, echo loops) but this was a **sampling config bug**, NOT a training/data problem.
+- Base Qwen2.5-1.5B at temp=0.8 emits garbled out-of-script tokens. Fixed with: `temperature=0.3, top_p=0.85, repetition_penalty=1.25, no_repeat_ngram_size=3`.
+- See `configs/generation_config.json` for the canonical config.
+- Space MUST use these params or output is unusable.
+
+### HuggingFace Release (July 17 update)
 
 All assets live under the **eulogik** organization:
 
-| Asset | URL | Format | Visibility |
-|-------|-----|--------|------------|
-| Q4 MLX Model | https://huggingface.co/eulogik/Bharat-Tiny-LLM | 828 MB, Q4 quantized, Apple MLX | Public |
-| PEFT Adapter | https://huggingface.co/eulogik/Bharat-Tiny-LLM-adapter | 21 MB, transformers+peft compatible | **Private** |
-| Adapter Backups | https://huggingface.co/eulogik/Bharat-Tiny-LLM-adapter-backups | All historical checkpoints | **Private** |
-| Fused Model | https://huggingface.co/eulogik/Bharat-Tiny-LLM-fused | 3.0 GB, fp16, transformers | Public |
-| Gradio Demo | https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM | Live demo with eulogik branding | Public |
+| Asset | URL | Format | Visibility | Status |
+|-------|-----|--------|------------|--------|
+| Q4 MLX Model | https://huggingface.co/eulogik/Bharat-Tiny-LLM | 880 MB, Q4 affine (group 64), Apple MLX | Public | ✅ **updated July 17 (v8, val 0.937)** |
+| PEFT Adapter | https://huggingface.co/eulogik/Bharat-Tiny-LLM-adapter | 21 MB, transformers+peft compatible | **Private** | archived |
+| Adapter Backups | https://huggingface.co/eulogik/Bharat-Tiny-LLM-adapter-backups | All historical checkpoints | **Private** | archived |
+| Fused Model | https://huggingface.co/eulogik/Bharat-Tiny-LLM-fused | 3.3 GB, fp16, transformers | Public | ✅ **updated July 17 (v8, val 0.937)** |
+| Gradio Demo | https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM | Live demo with eulogik branding | Public | ⚠️ needs gen params update |
 
 **Positioning:** Transparent about Qwen2.5 base (collapsible "Base model details" section), brand-forward with "Bharat-Tiny-LLM" as the name. Full model card with story, badges, training curve, example outputs, limitations, and roadmap.
 
@@ -331,6 +331,7 @@ nohup /usr/bin/caffeinate -dis /Users/eulogikdeveloper/Documents/Brahmi/venv/bin
 | July 9 | Fused model uploaded (0.0 roundtrip diff), HF Space rebuilt | Eulogik |
 | July 9 | PPL benchmark: 4.39 (150K) vs 4.56 (75K) — marginal improvement | Eulogik |
 | July 9 | living.md updated with v7 results | Eulogik |
+| July 17 | **Q4 edge model re-quantized & uploaded** — v8 fused (val 0.937) → affine 4-bit (group 64) 880 MB to `eulogik/Bharat-Tiny-LLM`. `quantize_model` + `config.json` `quantization` key (not `quantization_config`). Verified clean Hinglish/Devanagari output at temp=0.3 | Eulogik |
 
 ---
 
