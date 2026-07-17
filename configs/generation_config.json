@@ -1,0 +1,13 @@
+{
+  "model": "Bharat-Tiny-LLM v8 (qwen_v2, 110K iters)",
+  "base_model": "Qwen/Qwen2.5-1.5B",
+  "generation_params": {
+    "temperature": 0.3,
+    "top_p": 0.85,
+    "repetition_penalty": 1.25,
+    "no_repeat_ngram_size": 3,
+    "do_sample": true,
+    "max_new_tokens": 256
+  },
+  "notes": "CRITICAL: temperature must be low (0.3). High temp (0.8) causes the base Qwen2.5-1.5B to emit garbled out-of-script tokens (Thai/CJK/Romanian/Arabic) and degenerate loops. repetition_penalty 1.25 + no_repeat_ngram_size 3 prevents echo/markdown spam."
+}
