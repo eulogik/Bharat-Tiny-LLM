@@ -1,6 +1,6 @@
 # Bharat-Tiny-LLM: Living Document
 **Last Updated:** July 17, 2026
-**Status:** ✅ Training Complete (110K iters, v8) — Cleaned data, fixed generation config, Q4 edge model uploaded — Next: update Space gen params
+**Status:** ✅ Training Complete (110K iters, v8) — Cleaned data, fixed generation config, Q4 edge model uploaded, PyPI package + cross-linked docs live — Next: multi-Indic languages / DPO
 
 ---
 
@@ -332,6 +332,8 @@ nohup /usr/bin/caffeinate -dis /Users/eulogikdeveloper/Documents/Brahmi/venv/bin
 | July 9 | PPL benchmark: 4.39 (150K) vs 4.56 (75K) — marginal improvement | Eulogik |
 | July 9 | living.md updated with v7 results | Eulogik |
 | July 17 | **Q4 edge model re-quantized & uploaded** — v8 fused (val 0.937) → affine 4-bit (group 64) 880 MB to `eulogik/Bharat-Tiny-LLM`. `quantize_model` + `config.json` `quantization` key (not `quantization_config`). Verified clean Hinglish/Devanagari output at temp=0.3 | Eulogik |
+| July 17 | **PyPI package `bharat-tiny-llm` 0.1.0 published** — `pip install bharat-tiny-llm[mlx|torch]`, lazy MLX/transformers backends, ships canonical gen config. Source in `packages/`. Verified installable | Eulogik |
+| July 17 | **Cross-linked docs live** — decorated HF model card (SEO YAML tags + examples), GitHub README, HF Space README all link to eulogik.com / GitHub / PyPI / Space. Space `app.py` uses temp=0.3, top_p=0.85, rep_penalty=1.25, no_repeat_ngram_size=3 | Eulogik |
 
 ---
 
