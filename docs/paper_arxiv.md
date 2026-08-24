@@ -213,9 +213,20 @@ tokenizer — the char-normalized metric removes that artifact.
 ### 4.4 GSM8K-Hindi
 
 4-shot CoT, greedy decoding, exact match on final number, N=100 test items
-(`bingbangboom/gsm8k-hindi`). Results recorded in `docs/bench_gsm_hi.json`
-(filled by `scripts/bench_gsm_hi.py`; see accompanying benchmarks document for
-the measured table).
+(`bingbangboom/gsm8k-hindi`, gold parsing accepts `####N`/`###N`):
+
+| Model | Accuracy | Decode tok/s |
+|---|---:|---:|
+| Qwen2.5-1.5B (bf16) | 3.0% | 27.1 |
+| v2 + LoRA (Q4) | 0.0% | 52.7 |
+
+Neither model solves Hindi math at this scale. Notably, v2 scores below base:
+LoRA tuning on conversation data replaced few-shot format-following with
+conversational behavior — most v2 answers omit the answer marker entirely.
+We therefore claim compression and conversational-likelihood improvements,
+not capability gains. On the same protocol, v2 decodes ~1.9× faster
+(52.7 vs 27.1 tok/s); this reflects Q4 quantization plus the compressed
+tokenizer, i.e., end-to-end product speed rather than an architecture result.
 
 ### 4.5 Deployment
 

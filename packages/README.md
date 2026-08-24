@@ -1,91 +1,64 @@
-# 🇮🇳 Bharat-Tiny-LLM — Edge AI for Hindi & Hinglish
+# 🇮🇳 bharat-tiny-llm — Offline Hindi/Hinglish AI for Apple Silicon
 
-**33.8% Hindi token compression via Brahmi vocabulary injection. Runs offline on Apple Silicon.**
+**`bharat chat`** — an 880 MB Hindi/Hinglish assistant that runs fully offline. No API, no cloud, no internet.
 
 [![PyPI version](https://img.shields.io/pypi/v/bharat-tiny-llm?color=3776ab)](https://pypi.org/project/bharat-tiny-llm/)
 [![Python](https://img.shields.io/pypi/pyversions/bharat-tiny-llm)](https://pypi.org/project/bharat-tiny-llm/)
 [![License](https://img.shields.io/pypi/l/bharat-tiny-llm?color=green)](https://github.com/eulogik/Bharat-Tiny-LLM)
 [![Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-eulogik%2FBharat--Tiny--LLM--v2--MLX-ff6f00)](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v2-MLX)
 
-`bharat-tiny-llm` is the official Python package for **Bharat-Tiny-LLM v2**: a 1.5B-parameter LLM fine-tuned for **Hinglish** and **Devanagari Hindi**, with **33.8% token compression** achieved via Brahmi script injection — 300 Devanagari subwords injected into Qwen2.5's tokenizer.
-
-> Built by [eulogik](https://eulogik.com) — an India-first AI lab shipping edge AI.
-
----
-
-## ✨ v0.2.0 — Brahmi Token Injection
-
-| Feature | Description |
-|---------|-------------|
-| **Brahmi injection** | 300 Devanagari subwords → 33.8% fewer tokens for Hindi |
-| **v2 model** | `eulogik/Bharat-Tiny-LLM-v2-MLX` with LoRA adapter |
-| **52.5% loss improvement** | Vs base Qwen2.5-1.5B on Hindi text |
-| **880 MB** | Q4 MLX, runs offline on Mac/iPhone/iPad |
+Built by [eulogik](https://eulogik.com).
 
 ## Install
 
 ```bash
-# Apple Silicon (recommended — MLX, fastest)
-pip install bharat-tiny-llm[mlx]
-
-# Other platforms (CPU / CUDA, transformers)
-pip install bharat-tiny-llm[torch]
+pip install "bharat-tiny-llm[mlx]"   # Apple Silicon (recommended)
+pip install "bharat-tiny-llm[torch]" # CPU/CUDA (loaders only)
 ```
 
-## Quick start
+## Use
 
-### v2 model (recommended)
+```bash
+bharat chat                  # interactive REPL with history
+bharat ask "नमस्ते!"         # one-shot question
+bharat info                  # model + package info
+```
+
+First run downloads the 880 MB model from Hugging Face; after that everything is offline.
+
+```text
+आप › Chai peete hain?
+Chai peet hai, main ek assistant hoon.
+```
+
+### Python API
 
 ```python
 from bharat_tiny_llm import chat
 
-# Uses the v2 MLX model with LoRA adapter
-reply = chat(
-    [{"role": "user", "content": "कितने बजे मिलना है?"}],
-    use_v2=True,
-    adapter_path="eulogik/Bharat-Tiny-LLM-v2-MLX/lora_adapter",
-)
-print(reply)
+print(chat([{"role": "user", "content": "नमस्ते, आप कैसे हैं?"}], use_v2=True))
 ```
 
-### v1 model (legacy)
+## What's inside
 
-```python
-from bharat_tiny_llm import chat
+Qwen2.5-1.5B + **300 injected Devanagari tokens** ("Brahmi injection", −36.5%
+Hindi tokenization cost) + LoRA, quantized to 4-bit MLX. Measured benchmarks:
+[bharat-tiny-llm benchmarks](https://github.com/eulogik/Bharat-Tiny-LLM/blob/main/docs/benchmarks_v2.md).
 
-reply = chat([{"role": "user", "content": "Chai peete hain?"}])
-print(reply)
-```
+## Notes & limitations
 
-### Low-level MLX
-
-```python
-from bharat_tiny_llm import load
-from mlx_lm import generate
-
-model, tokenizer = load(use_v2=True)
-prompt = tokenizer.apply_chat_template(
-    [{"role": "user", "content": "नमस्ते, आप कैसे हैं?"}],
-    tokenize=False, add_generation_prompt=True,
-)
-print(generate(model, tokenizer, prompt=prompt, max_tokens=128))
-```
-
-## Model variants
-
-| Repo | Format | Size | Description |
-|------|--------|------|-------------|
-| `eulogik/Bharat-Tiny-LLM-v2-MLX` | Q4 MLX | 880 MB | **v2 edge model (recommended)** |
-| `eulogik/Bharat-Tiny-LLM-v2` | PyTorch fp16 | 3.6 GB | v2 for server/fine-tuning |
-| `eulogik/Bharat-Tiny-LLM` | Q4 MLX | 880 MB | v1 edge model (legacy) |
-| `eulogik/Bharat-Tiny-LLM-fused` | PyTorch fp16 | 3.3 GB | v1 for server/fine-tuning |
-
-## License
-
-Apache-2.0
+- Requires Apple Silicon for the CLI (`mlx`); Python `chat()` also works via the torch backend on other platforms.
+- Don't pass system prompts — v2 was trained without system turns.
+- Sampling defaults are canonical (temp 0.3, top-p 0.85, rep-penalty 1.25) — changing them can degrade output badly.
+- Conversational quality is decent; factual/math reliability at 1.5B is limited.
 
 ## Links
 
 - 🤗 Model: https://huggingface.co/eulogik/Bharat-Tiny-LLM-v2-MLX
 - 💻 Source: https://github.com/eulogik/Bharat-Tiny-LLM
+- 📊 Benchmarks: https://github.com/eulogik/Bharat-Tiny-LLM/blob/main/docs/benchmarks_v2.md
 - 🏢 Built by [eulogik](https://eulogik.com)
+
+## License
+
+Apache-2.0

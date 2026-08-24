@@ -72,12 +72,25 @@ LoRA config (MLX run): rank 8, scale 20, dropout 0, 16 layers, LR 1e-4, 500 step
 Dataset: `bingbangboom/gsm8k-hindi` test_main, N=100, exact match on final number.
 Gold parsing accepts `####N` and `###N` separators (28% of rows use `###`).
 
-| Model | Accuracy | tok/s |
+| Model | Accuracy | Decode tok/s |
 |---|---:|---:|
-| Base Qwen2.5-1.5B (bf16) | _see bench_gsm_hi.json_ | _auto-recorded_ |
-| v2 Q4 + LoRA | _see bench_gsm_hi.json_ | _auto-recorded_ |
+| Base Qwen2.5-1.5B (bf16) | 3.0% | 27.1 |
+| v2 Q4 + LoRA | **0.0%** | **52.7** |
 
-*(filled automatically by `scripts/bench_gsm_hi.py --n 100`)*
+**Honest reading:**
+- Neither model can do Hindi grade-school math at this scale (base ≈ floor).
+- v2 scores *below* base here: LoRA fine-tuning on conversation data taught it to
+  chat instead of following few-shot CoT formats — most answers lack the
+  `उत्तर:` marker entirely (`pred=None`). v2 trades instruction-formatting for
+  conversational fluency.
+- Decode throughput on the identical protocol/hardware: v2 ≈ 1.9× base
+  (52.7 vs 27.1 tok/s). Confounds: v2 is Q4-quantized and uses the compressed
+  tokenizer, so this is end-to-end product speed, not an architecture claim.
+- Raw JSON: `docs/bench_gsm_hi.json` (100 samples/model, prompts + predictions).
+
+**Implication for positioning:** sell v2 as an *offline Hindi/Hinglish
+conversational assistant* with superior token economics — not as a reasoning or
+math model. Capability work (DPO/instruction data, stronger base) belongs to v3.
 
 ## 5. Known product quirks (discovered during release testing)
 
