@@ -1,0 +1,19 @@
+{
+  "seq_len": 512,
+  "n_chunks": 200,
+  "base": {
+    "ppl": 6.112,
+    "nats_per_token": 1.8102,
+    "total_tokens": 102400,
+    "chars": 161768,
+    "bits_per_char": 1.6531
+  },
+  "v2_lora": {
+    "ppl": 7.48,
+    "nats_per_token": 2.0123,
+    "total_tokens": 82432,
+    "chars": 160853,
+    "bits_per_char": 1.4878
+  },
+  "bits_per_char_reduction_pct": 10.0
+}

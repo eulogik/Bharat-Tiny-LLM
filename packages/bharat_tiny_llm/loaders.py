@@ -14,6 +14,37 @@ _DEFAULT_BACKEND_MSG = (
 )
 
 
+def ngram_blocker(ngram_size=3):
+    """Return a logits processor blocking repeated n-grams (MLX backend)."""
+    import mlx.core as mx
+
+    def _proc(tokens, logits):
+        if len(tokens) < ngram_size:
+            return logits
+        ngrams = {}
+        for i in range(len(tokens) - ngram_size + 1):
+            ngrams.setdefault(tuple(tokens[i : i + ngram_size - 1]), []).append(
+                tokens[i + ngram_size - 1]
+            )
+        prev = tuple(tokens[-(ngram_size - 1):])
+        if prev in ngrams:
+            idx = mx.array(ngrams[prev])
+            logits = logits.at[idx].add(-1e9)
+        return logits
+
+    return _proc
+
+
+def mlx_logits_processors():
+    """Canonical MLX logits processors from GENERATION_CONFIG."""
+    from mlx_lm.sample_utils import make_repetition_penalty
+
+    return [
+        make_repetition_penalty(GENERATION_CONFIG["repetition_penalty"]),
+        ngram_blocker(GENERATION_CONFIG["no_repeat_ngram_size"]),
+    ]
+
+
 def load(model_id: str | None = None, backend: str | None = None, use_v2: bool = False, adapter_path: str | None = None):
     """Load the model + tokenizer.
 

@@ -1,0 +1,67 @@
+{
+  "base_vocab": 151665,
+  "v2_vocab": 151965,
+  "n_convs": 5000,
+  "devanagari": {
+    "base": {
+      "chars": 983382,
+      "tokens": 1024595,
+      "tokens_per_1000_chars": 1041.9,
+      "chars_per_token": 0.96
+    },
+    "v2": {
+      "chars": 983382,
+      "tokens": 650615,
+      "tokens_per_1000_chars": 661.6,
+      "chars_per_token": 1.511
+    },
+    "savings_pct": 36.5
+  },
+  "full_text": {
+    "base": {
+      "chars": 2752493,
+      "tokens": 1633091,
+      "tokens_per_1000_chars": 593.3,
+      "chars_per_token": 1.685
+    },
+    "v2": {
+      "chars": 2752493,
+      "tokens": 1339348,
+      "tokens_per_1000_chars": 486.6,
+      "chars_per_token": 2.055
+    },
+    "savings_pct": 17.99
+  },
+  "phrases": [
+    {
+      "text": "नमस्ते, आप कैसे हैं?",
+      "base_tokens": 20,
+      "v2_tokens": 13,
+      "savings_pct": 35.0
+    },
+    {
+      "text": "ज़रूरी बात है क्या करते हो",
+      "base_tokens": 25,
+      "v2_tokens": 11,
+      "savings_pct": 56.0
+    },
+    {
+      "text": "हम आपको बताना चाहते हैं",
+      "base_tokens": 23,
+      "v2_tokens": 16,
+      "savings_pct": 30.4
+    },
+    {
+      "text": "कितने बजे मिलना है?",
+      "base_tokens": 18,
+      "v2_tokens": 13,
+      "savings_pct": 27.8
+    },
+    {
+      "text": "चाय पी लो, फिर बात करते हैं",
+      "base_tokens": 25,
+      "v2_tokens": 19,
+      "savings_pct": 24.0
+    }
+  ]
+}

@@ -20,7 +20,7 @@ from .constants import (
 )
 from .loaders import load, chat
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 __all__ = [
     "MODEL_ID",

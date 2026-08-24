@@ -1,0 +1,11 @@
+lr_schedule:
+  name: cosine_decay
+  arguments:
+    - 0.0002
+    - 110000
+  warmup: 500
+  warmup_init: 0.0
+lora_parameters:
+  rank: 16
+  dropout: 0.05
+  scale: 2.0

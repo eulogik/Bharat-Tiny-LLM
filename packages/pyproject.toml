@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "bharat-tiny-llm"
-version = "0.2.0"
-description = "Bharat-Tiny-LLM v2 - 33.8% Hindi token compression via Brahmi injection. 1.5B LLM runs offline on edge devices."
+version = "0.3.0"
+description = "Bharat-Tiny-LLM - Offline Hindi/Hinglish AI assistant for Apple Silicon. `bharat chat` and go. 33.8% token compression via Brahmi injection."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "Apache-2.0" }
@@ -49,6 +49,9 @@ BuiltBy = "https://eulogik.com"
 [project.optional-dependencies]
 mlx = ["mlx-lm"]
 torch = ["torch", "transformers"]
+
+[project.scripts]
+bharat = "bharat_tiny_llm.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["bharat_tiny_llm"]
