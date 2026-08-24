@@ -5,7 +5,7 @@ inference backend (``mlx-lm`` on Apple Silicon, or ``transformers`` elsewhere)
 is imported lazily so the package stays lightweight.
 """
 
-from .constants import MODEL_ID, GENERATION_CONFIG
+from .constants import MODEL_ID, MODEL_V2_ID, GENERATION_CONFIG
 
 _DEFAULT_BACKEND_MSG = (
     "No inference backend found. Install one:\n"
@@ -14,7 +14,7 @@ _DEFAULT_BACKEND_MSG = (
 )
 
 
-def load(model_id: str = MODEL_ID, backend: str | None = None):
+def load(model_id: str | None = None, backend: str | None = None, use_v2: bool = False, adapter_path: str | None = None):
     """Load the model + tokenizer.
 
     Parameters
@@ -24,11 +24,21 @@ def load(model_id: str = MODEL_ID, backend: str | None = None):
         (``eulogik/Bharat-Tiny-LLM``), an Apple MLX 4-bit build.
     backend:
         ``"mlx"`` or ``"torch"``. Auto-detected from the platform when ``None``.
+    use_v2:
+        Shortcut to load ``eulogik/Bharat-Tiny-LLM-v2-MLX``.
+    adapter_path:
+        Path or HF repo ID to a LoRA adapter (e.g.
+        ``"eulogik/Bharat-Tiny-LLM-v2-MLX/lora_adapter"``).
 
     Returns
     -------
     (model, tokenizer)
     """
+    if use_v2:
+        model_id = MODEL_V2_ID
+    if model_id is None:
+        model_id = MODEL_ID
+
     if backend is None:
         import platform
 
@@ -37,14 +47,17 @@ def load(model_id: str = MODEL_ID, backend: str | None = None):
     if backend == "mlx":
         try:
             from mlx_lm.utils import load as _load
-        except ImportError as exc:  # pragma: no cover
+        except ImportError as exc:
             raise ImportError(_DEFAULT_BACKEND_MSG) from exc
-        return _load(model_id)
+        kwargs = {}
+        if adapter_path is not None:
+            kwargs["adapter_path"] = adapter_path
+        return _load(model_id, **kwargs)
 
     try:
         import torch
         from transformers import AutoModelForCausalLM, AutoTokenizer
-    except ImportError as exc:  # pragma: no cover
+    except ImportError as exc:
         raise ImportError(_DEFAULT_BACKEND_MSG) from exc
     model = AutoModelForCausalLM.from_pretrained(model_id, torch_dtype=torch.float32)
     tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -53,16 +66,22 @@ def load(model_id: str = MODEL_ID, backend: str | None = None):
 
 def chat(
     messages,
-    model_id: str = MODEL_ID,
+    model_id: str | None = None,
     backend: str | None = None,
     max_new_tokens: int | None = None,
+    use_v2: bool = False,
+    adapter_path: str | None = None,
 ):
     """Generate a reply for a list of ``{"role", "content"}`` messages.
 
     Uses the canonical :data:`GENERATION_CONFIG` so output is clean out of the
     box — no garbled scripts, no degenerate loops.
     """
-    model, tokenizer = load(model_id, backend)
+    model, tokenizer = load(model_id, backend, use_v2=use_v2, adapter_path=adapter_path)
+
+    if backend is None:
+        import platform
+        backend = "mlx" if platform.system() == "Darwin" else "torch"
 
     if backend == "mlx":
         from mlx_lm import generate

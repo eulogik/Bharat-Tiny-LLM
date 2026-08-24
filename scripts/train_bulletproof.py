@@ -7,17 +7,18 @@ from datetime import datetime
 
 BASE_MODEL = "mlx-community/Qwen2.5-1.5B-bf16"
 ADAPTER_DIR = Path("./models/adapters/qwen_v2")
-DATA_DIR = Path("./data/processed")
+DATA_DIR = Path("./data/processed_v2")
+CONFIG_FILE = str(DATA_DIR / "train_config.yaml")
 LOG_FILE = Path("./training_v2.log")
 METRICS_FILE = Path("./training_metrics.jsonl")
 TOTAL_ITERS = 110000
-SAVE_EVERY = 5000
-EVAL_EVERY = 500
-MAX_SEQ_LENGTH = 2048
+SAVE_EVERY = 1000
+EVAL_EVERY = 1000
+MAX_SEQ_LENGTH = 768
 LORA_LAYERS = 16
 SEED = 42
 BATCH_SIZE = 4
-LEARNING_RATE = 5e-5
+LEARNING_RATE = 2e-4
 
 best_val_loss = float("inf")
 best_iter = 0
@@ -85,7 +86,8 @@ def run_training(resume_from=None, start_iter=0):
         "--save-every", str(SAVE_EVERY),
         "--num-layers", str(LORA_LAYERS),
         "--max-seq-length", str(MAX_SEQ_LENGTH),
-        "--mask-prompt", "--seed", str(SEED), "--grad-checkpoint"]
+        "--mask-prompt", "--seed", str(SEED), "--grad-checkpoint",
+        "-c", CONFIG_FILE]
     if resume_from:
         cmd.extend(["--resume-adapter-file", str(resume_from)])
     log(f"Batch={BATCH_SIZE}, iters={TOTAL_ITERS - start_iter}")
@@ -95,7 +97,7 @@ def run_training(resume_from=None, start_iter=0):
 def main():
     global best_val_loss, best_iter, training_running
     log("=" * 60)
-    log("BHARAT-TINY-LLM Bulletproof Training v2")
+    log("BHARAT-TINY-LLM Bulletproof Training v4 (443K, batch=6, seq=768, Muon, r=16)")
     log("=" * 60)
     last_cp, last_it = find_last_checkpoint(ADAPTER_DIR)
     if last_cp:

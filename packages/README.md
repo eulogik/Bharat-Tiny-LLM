@@ -1,58 +1,71 @@
-# 🇮🇳 Bharat-Tiny-LLM
+# 🇮🇳 Bharat-Tiny-LLM — Edge AI for Hindi & Hinglish
 
-**India's first native edge AI for Hinglish & Hindi — running fully offline on ₹8,000 phones.**
+**33.8% Hindi token compression via Brahmi vocabulary injection. Runs offline on Apple Silicon.**
 
-`bharat-tiny-llm` is the official Python package for **Bharat-Tiny-LLM**: a 1.5B-parameter,
-LoRA-fine-tuned language model that speaks fluent **Hinglish (Romanized Hindi)** and
-**Devanagari Hindi**, and runs entirely on-device — no API, no cloud, no internet.
+[![PyPI version](https://img.shields.io/pypi/v/bharat-tiny-llm?color=3776ab)](https://pypi.org/project/bharat-tiny-llm/)
+[![Python](https://img.shields.io/pypi/pyversions/bharat-tiny-llm)](https://pypi.org/project/bharat-tiny-llm/)
+[![License](https://img.shields.io/pypi/l/bharat-tiny-llm?color=green)](https://github.com/eulogik/Bharat-Tiny-LLM)
+[![Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-eulogik%2FBharat--Tiny--LLM--v2--MLX-ff6f00)](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v2-MLX)
 
-> Built by [eulogik](https://eulogik.com) · 🤗 Model: [eulogik/Bharat-Tiny-LLM](https://huggingface.co/eulogik/Bharat-Tiny-LLM) · 🚀 Live demo: [spaces/eulogik/Bharat-Tiny-LLM](https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM) · 💻 Code: [github.com/eulogik/Bharat-Tiny-LLM](https://github.com/eulogik/Bharat-Tiny-LLM)
+`bharat-tiny-llm` is the official Python package for **Bharat-Tiny-LLM v2**: a 1.5B-parameter LLM fine-tuned for **Hinglish** and **Devanagari Hindi**, with **33.8% token compression** achieved via Brahmi script injection — 300 Devanagari subwords injected into Qwen2.5's tokenizer.
+
+> Built by [eulogik](https://eulogik.com) — an India-first AI lab shipping edge AI.
 
 ---
 
-## Why Bharat-Tiny-LLM?
+## ✨ v0.2.0 — Brahmi Token Injection
 
-- 🌐 **Truly bilingual** — Hinglish *and* Devanagari Hindi in one model (most Indic models do only one).
-- 📱 **Edge-native** — 880 MB 4-bit build runs offline on ₹8,000 Android phones & Apple Silicon.
-- 🆓 **Open & free** — Apache-2.0 weights, no vendor lock-in, self-hostable.
-- 💸 **$0 training cost** — fine-tuned on a Mac Mini M4, zero cloud compute.
-- 🪶 **Small** — 1.5B params, ~57 tok/s on a Mac Mini M4.
+| Feature | Description |
+|---------|-------------|
+| **Brahmi injection** | 300 Devanagari subwords → 33.8% fewer tokens for Hindi |
+| **v2 model** | `eulogik/Bharat-Tiny-LLM-v2-MLX` with LoRA adapter |
+| **52.5% loss improvement** | Vs base Qwen2.5-1.5B on Hindi text |
+| **880 MB** | Q4 MLX, runs offline on Mac/iPhone/iPad |
 
 ## Install
 
 ```bash
-# Apple Silicon (recommended — MLX 4-bit, fastest)
+# Apple Silicon (recommended — MLX, fastest)
 pip install bharat-tiny-llm[mlx]
 
-# Other platforms (CPU / CUDA, transformers backend)
+# Other platforms (CPU / CUDA, transformers)
 pip install bharat-tiny-llm[torch]
 ```
 
 ## Quick start
 
+### v2 model (recommended)
+
 ```python
 from bharat_tiny_llm import chat
 
-reply = chat([
-    {"role": "user", "content": "Chai peete hain?"},
-])
+# Uses the v2 MLX model with LoRA adapter
+reply = chat(
+    [{"role": "user", "content": "कितने बजे मिलना है?"}],
+    use_v2=True,
+    adapter_path="eulogik/Bharat-Tiny-LLM-v2-MLX/lora_adapter",
+)
 print(reply)
 ```
 
-The package ships with a **canonical generation config** (`temperature=0.3`,
-`top_p=0.85`, `repetition_penalty=1.25`, `no_repeat_ngram_size=3`) so output is
-clean out of the box — no garbled scripts, no degenerate loops. You normally
-never have to tune these.
+### v1 model (legacy)
 
-### Apple Silicon, low-level MLX
+```python
+from bharat_tiny_llm import chat
+
+reply = chat([{"role": "user", "content": "Chai peete hain?"}])
+print(reply)
+```
+
+### Low-level MLX
 
 ```python
 from bharat_tiny_llm import load
 from mlx_lm import generate
 
-model, tokenizer = load()  # pulls eulogik/Bharat-Tiny-LLM (MLX 4-bit)
+model, tokenizer = load(use_v2=True)
 prompt = tokenizer.apply_chat_template(
-    [{"role": "user", "content": "Biryani kaise banate hain?"}],
+    [{"role": "user", "content": "नमस्ते, आप कैसे हैं?"}],
     tokenize=False, add_generation_prompt=True,
 )
 print(generate(model, tokenizer, prompt=prompt, max_tokens=128))
@@ -60,21 +73,19 @@ print(generate(model, tokenizer, prompt=prompt, max_tokens=128))
 
 ## Model variants
 
-| Repo | Format | Size | Use |
-|------|--------|------|-----|
-| [`eulogik/Bharat-Tiny-LLM`](https://huggingface.co/eulogik/Bharat-Tiny-LLM) | MLX 4-bit | ~880 MB | **Edge / Apple Silicon** (default) |
-| [`eulogik/Bharat-Tiny-LLM-GGUF`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-GGUF) | GGUF Q4_K_M | ~1.06 GB | **Cross-platform** (llama.cpp, Android, Pi, CPU) |
-| [`eulogik/Bharat-Tiny-LLM-fused`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-fused) | PyTorch fp16 | ~3.3 GB | Server / fine-tuning base |
-
-## Links
-
-- 🤗 Model card: https://huggingface.co/eulogik/Bharat-Tiny-LLM
-- 🤗 GGUF (llama.cpp): https://huggingface.co/eulogik/Bharat-Tiny-LLM-GGUF
-- 🤗 fp16 fused: https://huggingface.co/eulogik/Bharat-Tiny-LLM-fused
-- 🚀 Demo space: https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM
-- 💻 Source: https://github.com/eulogik/Bharat-Tiny-LLM
-- 🏢 Built by [eulogik](https://eulogik.com)
+| Repo | Format | Size | Description |
+|------|--------|------|-------------|
+| `eulogik/Bharat-Tiny-LLM-v2-MLX` | Q4 MLX | 880 MB | **v2 edge model (recommended)** |
+| `eulogik/Bharat-Tiny-LLM-v2` | PyTorch fp16 | 3.6 GB | v2 for server/fine-tuning |
+| `eulogik/Bharat-Tiny-LLM` | Q4 MLX | 880 MB | v1 edge model (legacy) |
+| `eulogik/Bharat-Tiny-LLM-fused` | PyTorch fp16 | 3.3 GB | v1 for server/fine-tuning |
 
 ## License
 
-Apache-2.0 (base Qwen2.5-1.5B weights Apache-2.0; LoRA adapter Apache-2.0).
+Apache-2.0
+
+## Links
+
+- 🤗 Model: https://huggingface.co/eulogik/Bharat-Tiny-LLM-v2-MLX
+- 💻 Source: https://github.com/eulogik/Bharat-Tiny-LLM
+- 🏢 Built by [eulogik](https://eulogik.com)

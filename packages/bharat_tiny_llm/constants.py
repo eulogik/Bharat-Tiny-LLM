@@ -1,6 +1,9 @@
 """Canonical identifiers and the recommended generation configuration."""
 
 MODEL_ID = "eulogik/Bharat-Tiny-LLM"
+MODEL_V2_ID = "eulogik/Bharat-Tiny-LLM-v2-MLX"
+MODEL_V2_LORA = "eulogik/Bharat-Tiny-LLM-v2-MLX/lora_adapter"
+MODEL_V2_TORCH = "eulogik/Bharat-Tiny-LLM-v2"
 FUSED_MODEL_ID = "eulogik/Bharat-Tiny-LLM-fused"
 SPACE_ID = "eulogik/Bharat-Tiny-LLM"
 GITHUB_URL = "https://github.com/eulogik/Bharat-Tiny-LLM"

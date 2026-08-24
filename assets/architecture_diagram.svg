@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="tok" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="inj" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="pt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="lora" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#2563eb"/>
+    </linearGradient>
+    <linearGradient id="q" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#db2777"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="900" height="520" fill="url(#bg)" rx="20"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" text-anchor="middle" fill="#f1f5f9" font-size="20" font-weight="700">Brahmi Token Injection — Training Pipeline</text>
+  
+  <!-- Step 1: Tokenizer Analysis -->
+  <rect x="50" y="70" width="180" height="100" fill="url(#tok)" rx="12" filter="url(#glow)"/>
+  <text x="140" y="98" text-anchor="middle" fill="#e0e7ff" font-size="11" font-weight="600" letter-spacing="2">STEP 1</text>
+  <text x="140" y="122" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Token Analysis</text>
+  <text x="140" y="142" text-anchor="middle" fill="#c7d2fe" font-size="11">500 candidates → 300 tokens</text>
+  <text x="140" y="157" text-anchor="middle" fill="#c7d2fe" font-size="11">n-gram frequency analysis</text>
+  
+  <!-- Arrow 1 -->
+  <line x1="235" y1="120" x2="280" y2="120" stroke="#475569" stroke-width="2"/>
+  <polygon points="278,115 288,120 278,125" fill="#475569"/>
+  
+  <!-- Step 2: Vocab Injection -->
+  <rect x="290" y="70" width="180" height="100" fill="url(#inj)" rx="12" filter="url(#glow)"/>
+  <text x="380" y="98" text-anchor="middle" fill="#fef3c7" font-size="11" font-weight="600" letter-spacing="2">STEP 2</text>
+  <text x="380" y="122" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Vocab Injection</text>
+  <text x="380" y="142" text-anchor="middle" fill="#fde68a" font-size="11">151,936 → 152,236 tokens</text>
+  <text x="380" y="157" text-anchor="middle" fill="#fde68a" font-size="11">Mean embedding init</text>
+  
+  <!-- Arrow 2 -->
+  <line x1="475" y1="120" x2="520" y2="120" stroke="#475569" stroke-width="2"/>
+  <polygon points="518,115 528,120 518,125" fill="#475569"/>
+  
+  <!-- Step 3: Continued Pre-training -->
+  <rect x="530" y="70" width="180" height="100" fill="url(#pt)" rx="12" filter="url(#glow)"/>
+  <text x="620" y="98" text-anchor="middle" fill="#d1fae5" font-size="11" font-weight="600" letter-spacing="2">STEP 3</text>
+  <text x="620" y="122" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Continued PT</text>
+  <text x="620" y="142" text-anchor="middle" fill="#a7f3d0" font-size="11">3000 steps · 614K params</text>
+  <text x="620" y="157" text-anchor="middle" fill="#a7f3d0" font-size="11">Loss: 2.776 → 1.320</text>
+  
+  <!-- Arrow 3 -->
+  <line x1="715" y1="120" x2="760" y2="120" stroke="#475569" stroke-width="2"/>
+  <polygon points="758,115 768,120 758,125" fill="#475569"/>
+  
+  <!-- Step 4: Quantization -->
+  <rect x="770" y="340" width="110" height="70" fill="url(#q)" rx="12" filter="url(#glow)"/>
+  <text x="825" y="362" text-anchor="middle" fill="#fce7f3" font-size="10" font-weight="600" letter-spacing="2">STEP 5</text>
+  <text x="825" y="384" text-anchor="middle" fill="#fff" font-size="13" font-weight="700">Q4 MLX</text>
+  <text x="825" y="400" text-anchor="middle" fill="#fbcfe8" font-size="10">880 MB · 4.5 bpw</text>
+  
+  <!-- Step 4: LoRA (below, with arrow down from step 3) -->
+  <rect x="530" y="240" width="180" height="100" fill="url(#lora)" rx="12" filter="url(#glow)"/>
+  <text x="620" y="268" text-anchor="middle" fill="#dbeafe" font-size="11" font-weight="600" letter-spacing="2">STEP 4</text>
+  <text x="620" y="292" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">LoRA Fine-tuning</text>
+  <text x="620" y="312" text-anchor="middle" fill="#bfdbfe" font-size="11">400 steps · 5.3M params</text>
+  <text x="620" y="327" text-anchor="middle" fill="#bfdbfe" font-size="11">Val Loss: 1.837</text>
+  
+  <!-- Arrow from Step 3 to Step 4 -->
+  <line x1="620" y1="175" x2="620" y2="230" stroke="#475569" stroke-width="2"/>
+  <polygon points="615,228 620,238 625,228" fill="#475569"/>
+  
+  <!-- Arrow from Step 4 to Step 5 -->
+  <line x1="715" y1="290" x2="760" y2="375" stroke="#475569" stroke-width="2"/>
+  <polygon points="758,370 768,375 758,380" fill="#475569"/>
+  
+  <!-- Data box -->
+  <rect x="50" y="240" width="180" height="100" fill="#1e293b" rx="12" stroke="#334155" stroke-width="1"/>
+  <text x="140" y="266" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="600" letter-spacing="2">TRAINING DATA</text>
+  <text x="140" y="290" text-anchor="middle" fill="#e2e8f0" font-size="13" font-weight="600">435,999 conversations</text>
+  <text x="140" y="310" text-anchor="middle" fill="#64748b" font-size="11">Hinglish + Devanagari</text>
+  <text x="140" y="328" text-anchor="middle" fill="#64748b" font-size="11">Gold standard corpus</text>
+  
+  <!-- Arrow from data to step 3 -->
+  <line x1="235" y1="290" x2="520" y2="290" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="235" y1="290" x2="235" y2="240" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="235" y1="240" x2="525" y2="240" stroke="#475569" stroke-width="1.5" stroke-dasharray="5,3"/>
+  
+  <!-- Key metrics summary -->
+  <rect x="50" y="380" width="400" height="100" fill="#1e293b" rx="12" stroke="#334155" stroke-width="1"/>
+  <text x="250" y="406" text-anchor="middle" fill="#94a3b8" font-size="11" font-weight="600" letter-spacing="2">KEY RESULTS</text>
+  <text x="120" y="436" text-anchor="middle" fill="#34d399" font-size="16" font-weight="700">33.8%</text>
+  <text x="120" y="456" text-anchor="middle" fill="#64748b" font-size="11">Token Compression</text>
+  <text x="250" y="436" text-anchor="middle" fill="#60a5fa" font-size="16" font-weight="700">52.5%</text>
+  <text x="250" y="456" text-anchor="middle" fill="#64748b" font-size="11">Loss Improvement</text>
+  <text x="380" y="436" text-anchor="middle" fill="#f59e0b" font-size="16" font-weight="700">880 MB</text>
+  <text x="380" y="456" text-anchor="middle" fill="#64748b" font-size="11">Model Size</text>
+  
+  <!-- Footer -->
+  <text x="450" y="510" text-anchor="middle" fill="#475569" font-size="11">Built by eulogik · github.com/eulogik/Bharat-Tiny-LLM</text>
+</svg>

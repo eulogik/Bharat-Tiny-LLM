@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" font-family="Inter, system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="grad1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+    <linearGradient id="grad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="#0f172a" rx="16"/>
+  <text x="400" y="48" text-anchor="middle" fill="#f1f5f9" font-size="22" font-weight="700">Bharat-Tiny-LLM v2 — Benchmark Comparison</text>
+  
+  <!-- Y axis label -->
+  <text x="40" y="260" text-anchor="middle" fill="#94a3b8" font-size="13" transform="rotate(-90, 40, 260)">Tokens per 1000 Hindi chars</text>
+  
+  <!-- Grid lines -->
+  <line x1="100" y1="100" x2="740" y2="100" stroke="#1e293b" stroke-width="1"/>
+  <line x1="100" y1="180" x2="740" y2="180" stroke="#1e293b" stroke-width="1"/>
+  <line x1="100" y1="260" x2="740" y2="260" stroke="#1e293b" stroke-width="1"/>
+  <line x1="100" y1="340" x2="740" y2="340" stroke="#1e293b" stroke-width="1"/>
+  <line x1="100" y1="420" x2="740" y2="420" stroke="#334155" stroke-width="1"/>
+  
+  <!-- Y axis labels -->
+  <text x="85" y="104" text-anchor="end" fill="#64748b" font-size="12">1000</text>
+  <text x="85" y="184" text-anchor="end" fill="#64748b" font-size="12">750</text>
+  <text x="85" y="264" text-anchor="end" fill="#64748b" font-size="12">500</text>
+  <text x="85" y="344" text-anchor="end" fill="#64748b" font-size="12">250</text>
+  <text x="85" y="424" text-anchor="end" fill="#64748b" font-size="12">0</text>
+  
+  <!-- Bar 1: Base Qwen2.5 -->
+  <rect x="180" y="117" width="140" height="303" fill="url(#grad1)" rx="6" opacity="0.9"/>
+  <text x="250" y="430" text-anchor="middle" fill="#94a3b8" font-size="14" font-weight="500">Base Qwen2.5</text>
+  <text x="250" y="110" text-anchor="middle" fill="#f1f5f9" font-size="20" font-weight="700">950</text>
+  
+  <!-- Bar 2: Bharat-Tiny-LLM v2 -->
+  <rect x="460" y="232" width="140" height="188" fill="url(#grad2)" rx="6" opacity="0.9"/>
+  <text x="530" y="430" text-anchor="middle" fill="#94a3b8" font-size="14" font-weight="500">Bharat-Tiny-LLM v2</text>
+  <text x="530" y="225" text-anchor="middle" fill="#f1f5f9" font-size="20" font-weight="700">630</text>
+  
+  <!-- Arrow and savings label -->
+  <line x1="330" y1="200" x2="450" y2="200" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,3"/>
+  <polygon points="448,195 458,200 448,205" fill="#f59e0b"/>
+  <text x="390" y="190" text-anchor="middle" fill="#f59e0b" font-size="16" font-weight="700">−33.8%</text>
+  
+  <!-- Subtitle -->
+  <text x="400" y="478" text-anchor="middle" fill="#64748b" font-size="12">33.8% fewer tokens — 36% faster inference — same model architecture</text>
+</svg>
