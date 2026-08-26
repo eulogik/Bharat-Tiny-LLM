@@ -64,8 +64,9 @@ if not STATE.get("phase3"):
     corpus.close()
     print(f"warmup chunks: {len(chunks)}")
 
-    opt = torch.optim.AdamW([emb.weight], lr=WARMUP_LR)
-    sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=WARMUP_STEPS)
+    # NOTE: AdamW on fp16 embeddings explodes (~constant-size steps vs 0.02-scale
+    # rows -> overflow -> NaN within ~200 steps). SGD+momentum scales with grad.
+    opt = torch.optim.SGD([emb.weight], lr=WARMUP_LR, momentum=0.9)
     def _collate(items):
         return torch.tensor(items, dtype=torch.long)
 
@@ -78,6 +79,7 @@ if not STATE.get("phase3"):
     t0 = time.time()
     while step < WARMUP_STEPS:
         oom_streak = 0
+        nan_skips = 0
         for batch in dl:
             x = batch[:, :-1].cuda(non_blocking=True)
             y = batch[:, 1:].cuda(non_blocking=True)
@@ -93,13 +95,22 @@ if not STATE.get("phase3"):
                     raise RuntimeError("warmup OOM: >25 consecutive skipped batches")
                 continue
             oom_streak = 0
+            if not torch.isfinite(loss):
+                opt.zero_grad(set_to_none=True)
+                nan_skips += 1
+                if nan_skips > 50:
+                    raise RuntimeError("warmup: >50 non-finite losses")
+                continue
             # mask grads: only the 300 injected rows may move
             g = emb.weight.grad
             if g is not None:
                 g[:first_id] = 0
+                torch.nn.utils.clip_grad_norm_([emb.weight], 1.0)
+                if not torch.isfinite(g).all():
+                    opt.zero_grad(set_to_none=True)
+                    continue
             opt.step()
             opt.zero_grad(set_to_none=True)
-            sched.step()
             losses.append(loss.item())
             step += 1
             if step % 200 == 0:
