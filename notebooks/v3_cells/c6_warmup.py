@@ -77,13 +77,22 @@ if not STATE.get("phase3"):
     model.train()
     t0 = time.time()
     while step < WARMUP_STEPS:
+        oom_streak = 0
         for batch in dl:
             x = batch[:, :-1].cuda(non_blocking=True)
             y = batch[:, 1:].cuda(non_blocking=True)
-            logits = model(input_ids=x).logits
-            loss = torch.nn.functional.cross_entropy(
-                logits.view(-1, logits.shape[-1]).float(), y.view(-1))
-            loss.backward()
+            try:
+                logits = model(input_ids=x).logits
+                loss = torch.nn.functional.cross_entropy(
+                    logits.view(-1, logits.shape[-1]).float(), y.view(-1))
+                loss.backward()
+            except torch.cuda.OutOfMemoryError:
+                torch.cuda.empty_cache()
+                oom_streak += 1
+                if oom_streak > 25:
+                    raise RuntimeError("warmup OOM: >25 consecutive skipped batches")
+                continue
+            oom_streak = 0
             # mask grads: only the 300 injected rows may move
             g = emb.weight.grad
             if g is not None:

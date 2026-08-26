@@ -5,6 +5,9 @@ import json, math, os, re, signal, subprocess, sys, time, gzip, random
 from collections import Counter
 from pathlib import Path
 
+import os as _os
+_os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
+
 import torch
 from huggingface_hub import (
     HfApi, create_repo, hf_hub_download, list_repo_files,
