@@ -64,11 +64,40 @@ if not STATE.get("phase3"):
     corpus.close()
     print(f"warmup chunks: {len(chunks)}")
 
+    def _collate(items):
+        return torch.tensor(items, dtype=torch.long)
+
+    # ---- poison gate: a resumed checkpoint from a NaN run is garbage ----
+    probe = next(iter(DataLoader(chunks[:32], batch_size=8, shuffle=False,
+                                 collate_fn=_collate)))
+    px = probe[:, :-1].cuda()
+    py = probe[:, 1:].cuda()
+    model.eval()
+    with torch.no_grad():
+        pl = torch.nn.functional.cross_entropy(
+            model(input_ids=px).logits.view(-1, model.config.vocab_size).float(),
+            py.view(-1))
+    model.train()
+    if not torch.isfinite(pl):
+        if STATE.get("warmup_step"):
+            print(f"!! probe loss {pl.item()} non-finite -> DISCARDING poisoned "
+                  f"warmup checkpoint (step {STATE['warmup_step']}), restarting clean")
+            with torch.no_grad():
+                emb.weight[ids] = d["rows"].to(device=emb.weight.device,
+                                               dtype=emb.weight.dtype)
+            WARMUP_PATH.unlink(missing_ok=True)
+            STATE.pop("warmup_step", None)
+            save_state(STATE)
+        else:
+            raise RuntimeError(f"probe loss non-finite on fresh init: {pl.item()}")
+    else:
+        print(f"probe loss finite: {pl.item():.3f}"
+              + (f" (resuming from step {STATE.get('warmup_step')})"
+                 if STATE.get('warmup_step') else " (fresh)"))
+
     # NOTE: AdamW on fp16 embeddings explodes (~constant-size steps vs 0.02-scale
     # rows -> overflow -> NaN within ~200 steps). SGD+momentum scales with grad.
     opt = torch.optim.SGD([emb.weight], lr=WARMUP_LR, momentum=0.9)
-    def _collate(items):
-        return torch.tensor(items, dtype=torch.long)
 
     dl = DataLoader(chunks, batch_size=WARMUP_BS, shuffle=True,
                     drop_last=True, collate_fn=_collate)
