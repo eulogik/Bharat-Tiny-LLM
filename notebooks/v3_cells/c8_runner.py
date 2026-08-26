@@ -98,7 +98,8 @@ else:
     with _gz.open(SFT_DATA, "wt", encoding="utf-8") as f:
         for m in out:
             f.write(json.dumps({"messages": m["messages"]}) + "\n")
-    upload_file(str(SFT_DATA), "sft_data.jsonl.gz", ARTIFACTS_REPO,
+    upload_file(path_or_fileobj=str(SFT_DATA),
+                path_in_repo="sft_data.jsonl.gz", repo_id=ARTIFACTS_REPO,
                 repo_type="model", token=HF_TOKEN)
     STATE["sft_data"] = True
     STATE["sft_rows"] = len(out)
@@ -200,8 +201,9 @@ if not STATE.get("sft_done"):
     tokdir = WORK / "sft_out" / "tokenizer"
     for f in tokdir.iterdir():
         if f.is_file():
-            upload_file(str(f), f"sft/final_tokenizer/{f.name}", ARTIFACTS_REPO,
-                        repo_type="model", token=HF_TOKEN)
+            upload_file(path_or_fileobj=str(f),
+                        path_in_repo=f"sft/final_tokenizer/{f.name}",
+                        repo_id=ARTIFACTS_REPO, repo_type="model", token=HF_TOKEN)
     STATE["sft_done"] = True
     save_state(STATE)
 else:

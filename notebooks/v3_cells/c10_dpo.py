@@ -10,8 +10,8 @@ else:
     from transformers import AutoModelForCausalLM, AutoTokenizer
     from safetensors.torch import load_file
 
-    hf_hub_download(ARTIFACTS_REPO, "dpo_pairs.jsonl.gz", repo_type="model",
-                    token=HF_TOKEN, local_dir=WORK)
+    hf_hub_download(repo_id=ARTIFACTS_REPO, filename="dpo_pairs.jsonl.gz",
+                    repo_type="model", token=HF_TOKEN, local_dir=str(WORK))
     pairs = load_dataset("json", data_files=str(WORK / "dpo_pairs.jsonl.gz"))["train"]
 
     import torch

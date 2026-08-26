@@ -6,6 +6,16 @@ from safetensors.torch import save_file, load_file
 
 WARMUP_PATH = WORK / "warmup_rows.safetensors"
 
+# resume mid-warmup: pull partial artifact saved by a previous session
+if not WARMUP_PATH.exists() and STATE.get("warmup_step"):
+    try:
+        hf_hub_download(repo_id=ARTIFACTS_REPO, filename="warmup_rows.safetensors",
+                        repo_type="model", token=HF_TOKEN, local_dir=str(WORK),
+                        force_download=True)
+        print(f"resuming warmup from step {STATE['warmup_step']}")
+    except Exception as e:
+        print("no remote warmup artifact yet:", type(e).__name__)
+
 
 class SplitEmbedding(nn.Module):
     """Frozen original embedding + trainable block of `budget` new rows."""
@@ -104,8 +114,10 @@ if not STATE.get("phase3"):
                 save_file({"ids": split.new_ids.cpu(),
                            "rows": split.new.detach().to(torch.float16).cpu()},
                           str(WARMUP_PATH))
-                upload_file(str(WARMUP_PATH), "warmup_rows.safetensors",
-                            ARTIFACTS_REPO, repo_type="model", token=HF_TOKEN)
+                upload_file(path_or_fileobj=str(WARMUP_PATH),
+                            path_in_repo="warmup_rows.safetensors",
+                            repo_id=ARTIFACTS_REPO, repo_type="model",
+                            token=HF_TOKEN)
                 STATE["warmup_step"] = step
                 save_state(STATE)
             if step >= WARMUP_STEPS:

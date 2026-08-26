@@ -4,8 +4,8 @@ STATE_PATH = WORK / "state_v3.json"
 
 def load_state():
     try:
-        p = hf_hub_download(ARTIFACTS_REPO, "state_v3.json", repo_type="model",
-                            token=HF_TOKEN, local_dir=WORK, force_download=True)
+        p = hf_hub_download(repo_id=ARTIFACTS_REPO, filename="state_v3.json", repo_type="model",
+                            token=HF_TOKEN, local_dir=str(WORK), force_download=True)
         st = json.loads(Path(p).read_text())
         print("loaded remote state")
         return st

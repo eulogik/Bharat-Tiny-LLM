@@ -9,8 +9,8 @@ def get_corpus_handle():
         return gzip.open(CORPUS_PATH, "rt", encoding="utf-8")
     for rid, fn, rtype in CORPUS_CANDIDATES:
         try:
-            p = hf_hub_download(rid, fn, repo_type=rtype, token=HF_TOKEN,
-                                local_dir=WORK / "corpus")
+            p = hf_hub_download(repo_id=rid, filename=fn, repo_type=rtype, token=HF_TOKEN,
+                                local_dir=str(WORK / "corpus"))
             print("corpus source:", rid, rtype)
             return gzip.open(p, "rt", encoding="utf-8")
         except Exception as e:

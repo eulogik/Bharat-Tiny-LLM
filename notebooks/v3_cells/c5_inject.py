@@ -32,22 +32,23 @@ if not STATE.get("phase2"):
                "rows": rows}, str(DELTA_PATH))
     vtok.save_pretrained(TOK_DIR)
 
-    upload_file(str(DELTA_PATH), "embed_delta.safetensors", ARTIFACTS_REPO,
+    upload_file(path_or_fileobj=str(DELTA_PATH),
+                path_in_repo="embed_delta.safetensors", repo_id=ARTIFACTS_REPO,
                 repo_type="model", token=HF_TOKEN)
     for f in sorted(TOK_DIR.iterdir()):
         if f.is_file():
-            upload_file(str(f), f"v3_tokenizer/{f.name}", ARTIFACTS_REPO,
-                        repo_type="model", token=HF_TOKEN)
+            upload_file(path_or_fileobj=str(f), path_in_repo=f"v3_tokenizer/{f.name}",
+                        repo_id=ARTIFACTS_REPO, repo_type="model", token=HF_TOKEN)
     STATE["phase2"] = True
     save_state(STATE)
     print(f"delta saved: {rows.shape} fp16, ids {new_ids[0]}..{new_ids[-1]}")
 else:
     if not DELTA_PATH.exists():
-        hf_hub_download(ARTIFACTS_REPO, "embed_delta.safetensors", repo_type="model",
-                        token=HF_TOKEN, local_dir=WORK)
+        hf_hub_download(repo_id=ARTIFACTS_REPO, filename="embed_delta.safetensors",
+                        repo_type="model", token=HF_TOKEN, local_dir=str(WORK))
     if not TOK_DIR.exists():
-        snapshot_download(ARTIFACTS_REPO, repo_type="model", token=HF_TOKEN,
-                          local_dir=WORK, allow_patterns=["v3_tokenizer/*"])
+        snapshot_download(repo_id=ARTIFACTS_REPO, repo_type="model", token=HF_TOKEN,
+                          local_dir=str(WORK), allow_patterns=["v3_tokenizer/*"])
     print("phase2 artifacts fetched")
 
 d = load_file(str(DELTA_PATH))

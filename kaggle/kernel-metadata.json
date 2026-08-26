@@ -1,5 +1,5 @@
 {
-  "id": "sundayeulogik/brahmi-v3-pipeline",
+  "id": "sundayeulogik/brahmi-v3-pipeline-qwen3-1-7b-injection-sft",
   "title": "Brahmi v3 Pipeline (Qwen3-1.7B + Injection + SFT)",
   "code_file": "brahmi_v3_kaggle.ipynb",
   "language": "python",

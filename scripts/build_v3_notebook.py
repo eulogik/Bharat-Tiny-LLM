@@ -84,15 +84,10 @@ def main():
             })
 
         first = raw.splitlines()[0]
-        meta = {}
         if first.startswith("#@title"):
-            title = first.replace("#@title", "").strip()
-            hide = ' {display-mode:"form"}' in title
-            title = title.replace(' {display-mode:"form"}', "")
-            meta = {"cellView": "form" if hide else "form"}
             src = raw.splitlines(keepends=True)
             cells.append({"cell_type": "code", "execution_count": None,
-                          "metadata": {"collapsed": "true", "_kg-hide-input": False},
+                          "metadata": {"collapsed": True},
                           "outputs": [], "source": src})
         else:
             src_lines = raw.splitlines(keepends=True)
@@ -107,7 +102,7 @@ def main():
         if marker in src:
             a, b = src.split(marker, 1)
             final_cells.append({"cell_type": "code", "execution_count": None,
-                                "metadata": {"collapsed": "true"}, "outputs": [],
+                                "metadata": {"collapsed": True}, "outputs": [],
                                 "source": a.rstrip() + "\n"})
             final_cells.append({"cell_type": "markdown", "metadata": {},
                                 "source": ["## Phase 4b — Self-healing runner\n",
@@ -116,7 +111,7 @@ def main():
                                            "No progress across attempts → kills "
                                            "session to save quota.\n"]})
             final_cells.append({"cell_type": "code", "execution_count": None,
-                                "metadata": {"collapsed": "true"}, "outputs": [],
+                                "metadata": {"collapsed": True}, "outputs": [],
                                 "source": ("#@title 6b · Self-healing SFT runner "
                                            "{display-mode:\"form\"}\n" + b)})
         else:
