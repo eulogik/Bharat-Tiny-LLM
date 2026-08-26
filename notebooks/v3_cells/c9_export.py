@@ -7,12 +7,12 @@ if not STATE.get("phase5"):
 
     print("loading base fp32 on CPU for exact merge...")
     model = AutoModelForCausalLM.from_pretrained(BASE_MODEL, torch_dtype=torch.float32)
-    base_vocab = model.get_input_embeddings().num_embeddings
 
     d = load_file(str(DELTA_PATH))
     ids = d["ids"].tolist()
-    assert ids == list(range(base_vocab, base_vocab + len(ids)))
-    model.resize_token_embeddings(base_vocab + len(ids))
+    assert ids == sorted(set(ids)) and len(ids) == int(ids[-1] - ids[0] + 1), \
+        "delta ids must be unique & contiguous"
+    model.resize_token_embeddings(ids[-1] + 1)
     emb = model.get_input_embeddings()
     with torch.no_grad():
         emb.weight[ids] = d["rows"].float()

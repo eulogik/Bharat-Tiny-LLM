@@ -98,9 +98,11 @@ def main():
     final_cells = []
     for c in cells:
         src = "".join(c["source"]) if isinstance(c["source"], list) else c["source"]
-        marker = "#@title 6b · PHASE 4 — Self-healing SFT runner on 2×T4"
+        marker = ("#@title 6b · PHASE 4 — Self-healing SFT runner on 2×T4 "
+                  "{display-mode:\"form\"}")
         if marker in src:
             a, b = src.split(marker, 1)
+            validate("c8_runner_6b", b)
             final_cells.append({"cell_type": "code", "execution_count": None,
                                 "metadata": {"collapsed": True}, "outputs": [],
                                 "source": a.rstrip() + "\n"})
