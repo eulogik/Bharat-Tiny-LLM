@@ -16,12 +16,13 @@ else:
 
     import torch
     model = AutoModelForCausalLM.from_pretrained(BASE_MODEL, torch_dtype=torch.float16).cuda()
-    base_vocab = model.get_input_embeddings().num_embeddings
     d = load_file(str(DELTA_PATH))
     ids = d["ids"].tolist()
-    model.resize_token_embeddings(base_vocab + len(ids))
+    model.resize_token_embeddings(max(ids) + 1)
+    _emb = model.get_input_embeddings()
     with torch.no_grad():
-        model.get_input_embeddings().weight[ids] = d["rows"].to(torch.float16)
+        _emb.weight[ids] = d["rows"].to(device=_emb.weight.device,
+                                        dtype=_emb.weight.dtype)
     tokd = AutoTokenizer.from_pretrained(TOK_DIR)
 
     cfg = DPOConfig(

@@ -74,10 +74,11 @@ def main():
     model.resize_token_embeddings(ids[-1] + 1)
     emb = model.get_input_embeddings()
     with torch.no_grad():
-        emb.weight[ids] = d["rows"].to(emb.weight.dtype)
+        _dev, _dt = emb.weight.device, emb.weight.dtype
+        emb.weight[ids] = d["rows"].to(device=_dev, dtype=_dt)
         if args.warmup_rows and Path(args.warmup_rows).exists():
             w = load_file(args.warmup_rows)
-            emb.weight[w["ids"].tolist()] = w["rows"].to(emb.weight.dtype)
+            emb.weight[w["ids"].tolist()] = w["rows"].to(device=_dev, dtype=_dt)
             if rank == 0:
                 print("warmup rows applied")
     for p in emb.parameters():

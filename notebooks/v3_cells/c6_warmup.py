@@ -32,11 +32,12 @@ if not STATE.get("phase3"):
     # so writing rows here makes new tokens both input-embeddable AND predictable.
     model.resize_token_embeddings(ids[-1] + 1)
     emb = model.get_input_embeddings()
+    dev, dt = emb.weight.device, emb.weight.dtype
     with torch.no_grad():
-        emb.weight[ids] = d["rows"].to(emb.weight.dtype)
+        emb.weight[ids] = d["rows"].to(device=dev, dtype=dt)
         if WARMUP_PATH.exists():
             w = load_file(str(WARMUP_PATH))
-            emb.weight[w["ids"].tolist()] = w["rows"].to(emb.weight.dtype)
+            emb.weight[w["ids"].tolist()] = w["rows"].to(device=dev, dtype=dt)
             print("resumed warmup rows from artifact")
 
     for p in model.parameters():

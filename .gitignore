@@ -63,3 +63,6 @@ mlx_model/
 backup
 data/raw
 data/staging
+
+# Kaggle build artifact (contains push-time injected HF token - NEVER commit)
+kaggle/brahmi_v3_kaggle.ipynb
