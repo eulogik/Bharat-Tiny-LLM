@@ -65,7 +65,7 @@ if not STATE.get("phase3"):
     print(f"warmup chunks: {len(chunks)}")
 
     opt = torch.optim.AdamW([emb.weight], lr=WARMUP_LR)
-    sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_MAX=WARMUP_STEPS)
+    sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=WARMUP_STEPS)
     dl = DataLoader(chunks, batch_size=WARMUP_BS, shuffle=True, drop_last=True)
 
     start_step = STATE.get("warmup_step", 0)
@@ -74,8 +74,10 @@ if not STATE.get("phase3"):
     t0 = time.time()
     while step < WARMUP_STEPS:
         for batch in dl:
-            x = torch.tensor(batch)[:, :-1].cuda(non_blocking=True)
-            y = torch.tensor(batch)[:, 1:].cuda(non_blocking=True)
+            if not isinstance(batch, torch.Tensor):
+                batch = torch.tensor(batch)
+            x = batch[:, :-1].cuda(non_blocking=True)
+            y = batch[:, 1:].cuda(non_blocking=True)
             logits = model(input_ids=x).logits
             loss = torch.nn.functional.cross_entropy(
                 logits.view(-1, logits.shape[-1]).float(), y.view(-1))
