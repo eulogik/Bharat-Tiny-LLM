@@ -66,7 +66,11 @@ if not STATE.get("phase3"):
 
     opt = torch.optim.AdamW([emb.weight], lr=WARMUP_LR)
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, T_max=WARMUP_STEPS)
-    dl = DataLoader(chunks, batch_size=WARMUP_BS, shuffle=True, drop_last=True)
+    def _collate(items):
+        return torch.tensor(items, dtype=torch.long)
+
+    dl = DataLoader(chunks, batch_size=WARMUP_BS, shuffle=True,
+                    drop_last=True, collate_fn=_collate)
 
     start_step = STATE.get("warmup_step", 0)
     losses, step = [], start_step
@@ -74,8 +78,6 @@ if not STATE.get("phase3"):
     t0 = time.time()
     while step < WARMUP_STEPS:
         for batch in dl:
-            if not isinstance(batch, torch.Tensor):
-                batch = torch.tensor(batch)
             x = batch[:, :-1].cuda(non_blocking=True)
             y = batch[:, 1:].cuda(non_blocking=True)
             logits = model(input_ids=x).logits
