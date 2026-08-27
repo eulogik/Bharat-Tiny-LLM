@@ -152,7 +152,6 @@ def main():
         num_train_epochs=args.epochs,
         learning_rate=args.lr,
         lr_scheduler_type="cosine",
-        lr_scheduler_kwargs={"warmup_ratio": 0.03},
         logging_steps=25,
         save_steps=500,
         save_total_limit=2,
