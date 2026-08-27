@@ -61,7 +61,8 @@ else:
 
     # 2) IndicVault (Hindi+Hinglish QA) — knowledge breadth, streamed subset
     try:
-        iv = load_dataset("maya-research/IndicVault", split="train", streaming=True)
+        iv = load_dataset("maya-research/IndicVault", name="Hindi",
+                          split="train", streaming=True)
         want = min(30000, MAX_SFT_ROWS - len(out))
         got = 0
         for r in iv:
@@ -97,7 +98,7 @@ else:
     import gzip as _gz
     with _gz.open(SFT_DATA, "wt", encoding="utf-8") as f:
         for m in out:
-            f.write(json.dumps({"messages": m["messages"]}) + "\n")
+            f.write(json.dumps({"messages": m}) + "\n")
     upload_file(path_or_fileobj=str(SFT_DATA),
                 path_in_repo="sft_data.jsonl.gz", repo_id=ARTIFACTS_REPO,
                 repo_type="model", token=HF_TOKEN)
