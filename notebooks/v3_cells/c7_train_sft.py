@@ -151,20 +151,19 @@ def main():
         gradient_accumulation_steps=args.accum,
         num_train_epochs=args.epochs,
         learning_rate=args.lr,
-        warmup_ratio=0.03,
         lr_scheduler_type="cosine",
+        lr_scheduler_kwargs={"warmup_ratio": 0.03},
         logging_steps=25,
         save_steps=500,
         save_total_limit=2,
         fp16=True,
-        bf16=False,                      # T4 has no bf16
+        bf16=False,
         gradient_checkpointing=True,
         gradient_checkpointing_kwargs={"use_reentrant": False},
         optim="adamw_torch_fused",
         report_to=[],
         dataloader_num_workers=2,
         seed=42,
-        save_safetensors=True,
         remove_unused_columns=False,
     )
 

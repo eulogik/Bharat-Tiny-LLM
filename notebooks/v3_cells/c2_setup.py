@@ -1,5 +1,5 @@
 #@title 1 · Setup {display-mode:"form"}
-%pip install -q "transformers==4.51.3" peft accelerate datasets safetensors sentencepiece huggingface_hub 2>&1 | tail -1
+%pip install -q -U "transformers>=4.53" peft accelerate datasets safetensors sentencepiece huggingface_hub 2>&1 | tail -1
 # peft>=0.18 tries torchao LoRA dispatch; Kaggle ships torchao 0.10 which it
 # rejects. We don't use torchao quant LoRA so remove it to avoid the clash.
 %pip uninstall -y torchao 2>/dev/null; echo "torchao removed"
