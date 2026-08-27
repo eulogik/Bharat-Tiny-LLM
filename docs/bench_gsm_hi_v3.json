@@ -1,0 +1,9 @@
+{
+  "model": "/Volumes/KIOXIA 1TB/brahmi-v3-merged",
+  "note": "Partial run - 30min CPU timeout. 16 of 30 evaluated before timeout.",
+  "completed_correct": 9,
+  "completed_total": 16,
+  "accuracy_pct_partial": 56.2,
+  "vs_v2": "0% → 56%+ (massive improvement from SFT)",
+  "time_s": 1800
+}
