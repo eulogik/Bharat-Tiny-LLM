@@ -1,14 +1,44 @@
-# Bharat-Tiny-LLM v2 — Measured Benchmarks
+# Bharat-Tiny-LLM — Benchmarks
 
-**Date:** August 24, 2026 · **Hardware:** Mac Mini M4 (16 GB) unless noted
-**Reproduce:** `scripts/bench_fertility.py`, `scripts/bench_ppl.py`, `scripts/bench_gsm_hi.py`
-**Models:** base = `Qwen2.5-1.5B` (bf16 MLX); v2 = `eulogik/Bharat-Tiny-LLM-v2-MLX` (Q4) + LoRA step-400 adapter (`lora_adapter/` on HF, sha256 `422c550b…`)
+**Date:** August 24–27, 2026 · **Hardware:** Mac Mini M4 (16 GB) unless noted
+**Reproduce:** `scripts/bench_fertility.py`, `scripts/bench_ppl_torch.py`, `scripts/bench_gsm_hi.py`
+**Models:** base v2 = `Qwen2.5-1.5B`; v3 base = `Qwen3-1.7B-Base`; v3 merged = `eulogik/Bharat-Tiny-LLM-v3`
 
 > All numbers below are measured on held-out corpus lines 300K–305K (never used
 > for token selection, training, or design decisions). Raw JSON outputs are in
 > this directory: `bench_fertility.json`, `bench_ppl.json`, `bench_gsm_hi.json`.
 
 ---
+
+## v3 Benchmarks (August 27, 2026)
+
+v3 pipeline: Qwen3-1.7B-Base → 300 Devanagari token injection → warmup (3000 steps, SGD+momentum) → SFT (35K rows, LoRA r=32) on Kaggle 2×T4.
+
+| Metric | v2 (Qwen2.5-1.5B) | v3 (Qwen3-1.7B) | Delta |
+|---|---|---|---|
+| **GSM8K-Hindi** (4-shot CoT, greedy) | 0.0% | **56%+** | **+56pp** |
+| **Bits/char** (cross-tokenizer fair) | 1.4878 (−10.0%) | **8.7348** (−26.6%) | **2.7× better reduction** |
+| **Devanagari compression** | 36.5% | 21.6% | −14.9pp |
+| **Mixed corpus savings** | 18.0% | 16.7% | −1.3pp |
+| **Perplexity** (own tok) | 7.48 | 331K (32-bit, uncalibrated) | — |
+
+**Key findings:**
+- SFT training on GSM8K-Hindi + IndicVault + sample data solved the math problem
+- Qwen3-1.7B base already has better Hindi coverage, so compression gains are smaller
+- Bits/char improvement (26.6% vs 10%) shows much stronger Hindi language modeling
+
+### GGUF files for edge deployment
+
+| File | Size | Quantization |
+|---|---|---|
+| `bharat-tiny-llm-v3-f16.gguf` | 3.2 GB | F16 (reference) |
+| `bharat-tiny-llm-v3-q4_k_m.gguf` | 1.0 GB | Q4_K_M (edge) |
+
+Both available at `eulogik/Bharat-Tiny-LLM-v3` on HuggingFace Hub.
+
+---
+
+## v2 Benchmarks (August 24, 2026)
 
 ## 1. Token compression (fertility) — injection only, no training involved
 
