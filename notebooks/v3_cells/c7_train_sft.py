@@ -7,6 +7,11 @@ import torch
 import torch.distributed as dist
 from datasets import load_dataset
 from peft import LoraConfig, get_peft_model
+import peft.tuners.lora.torchao as _lora_torchao
+# Kaggle ships torchao 0.10.0 but peft>=0.18 demands >=0.16.0. We don't use
+# torchao quant LoRA — bypass the version check by stubbing the dispatcher.
+if hasattr(_lora_torchao, "dispatch_torchao"):
+    _lora_torchao.dispatch_torchao = lambda *a, **kw: None
 from safetensors.torch import load_file
 from transformers import (AutoModelForCausalLM, AutoTokenizer, Trainer,
                           TrainingArguments, TrainerCallback)
@@ -177,4 +182,14 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    import traceback, sys
+    _err_log = Path(os.environ.get("TRAIN_ERROR_LOG", "train_error.log"))
+    try:
+        main()
+    except Exception:
+        with open(_err_log, "w") as _f:
+            traceback.print_exc(file=_f)
+        traceback.print_exc()
+        sys.stdout.flush()
+        sys.stderr.flush()
+        raise

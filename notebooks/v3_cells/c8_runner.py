@@ -139,6 +139,7 @@ if not STATE.get("sft_done"):
               f"| resume={resume_dir} ===", flush=True)
 
         cmd = ["torchrun", "--nproc_per_node=2", "--master_port=29515",
+               "--log-dir", str(WORK / "torchrun_logs"),
                "train_sft.py",
                "--data", str(SFT_DATA), "--out", str(WORK / "sft_out"),
                "--tok-dir", str(TOK_DIR), "--delta", str(DELTA_PATH),
@@ -149,9 +150,12 @@ if not STATE.get("sft_done"):
         if resume_dir:
             cmd += ["--resume-dir", str(resume_dir)]
 
-        env = dict(os.environ, BASE_MODEL=BASE_MODEL, HF_TOKEN=HF_TOKEN)
-        with open(LOG_PATH, "w") as lf:
-            proc = subprocess.Popen(cmd, stdout=lf, stderr=subprocess.STDOUT,
+        env = dict(os.environ, BASE_MODEL=BASE_MODEL, HF_TOKEN=HF_TOKEN,
+                    PYTHONFAULTHANDLER="1", PYTHONUNBUFFERED="1",
+                    TRAIN_ERROR_LOG=str(WORK / "train_error.log"))
+        stderr_path = WORK / "sft_train_stderr.log"
+        with open(LOG_PATH, "w") as lf, open(stderr_path, "w") as ef:
+            proc = subprocess.Popen(cmd, stdout=lf, stderr=ef,
                                     cwd=str(WORK), env=env)
             start_best = max(prev_best, 0)
             while proc.poll() is None:
@@ -180,6 +184,34 @@ if not STATE.get("sft_done"):
 
         print(f"attempt {attempt}: rc={rc} done={done_flag} "
               f"oom={oom} progressed={progressed} stall={stall}")
+        if rc != 0:
+            print("--- torchrun log tail (last 800 chars) ---")
+            print(logtail[-800:])
+            print("--- end log ---")
+            # Also print per-worker logs from log-dir
+            for p in (WORK / "torchrun_logs").rglob("*.log"):
+                try:
+                    txt = p.read_text(errors="ignore")[-1200:]
+                    print(f"--- worker log {p.name} ---")
+                    print(txt)
+                    print(f"--- end worker {p.name} ---")
+                except Exception:
+                    pass
+            # Print raw stderr (the actual Python traceback)
+            try:
+                stderr_txt = stderr_path.read_text(errors="ignore")[-2000:]
+                if stderr_txt.strip():
+                    print("--- raw stderr ---")
+                    print(stderr_txt)
+                    print("--- end stderr ---")
+            except Exception:
+                pass
+            # Print error log written by train_sft.py itself (most reliable)
+            err_log = WORK / "train_error.log"
+            if err_log.exists():
+                print("--- train_error.log ---")
+                print(err_log.read_text(errors="ignore")[-2000:])
+                print("--- end train_error.log ---")
 
         if oom and bs > MIN_PER_DEVICE_BS:
             bs = max(MIN_PER_DEVICE_BS, bs // 2)
