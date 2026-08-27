@@ -99,6 +99,11 @@ def main():
 
     def encode(ex):
         msgs = ex["messages"]
+        if isinstance(msgs, str):
+            msgs = json.loads(msgs)
+        if not isinstance(msgs, list) or len(msgs) < 2:
+            return {"input_ids": [tok.eos_token_id] * 2,
+                    "labels": [-100] * 2}
         full = tok.apply_chat_template(msgs, tokenize=False,
                                        add_generation_prompt=False)
         prompt = tok.apply_chat_template(msgs[:-1], tokenize=False,
