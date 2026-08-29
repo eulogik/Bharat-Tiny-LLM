@@ -70,7 +70,7 @@ CSS = """
 with gr.Blocks(css=CSS, title="Bharat-Tiny-LLM v3", theme=gr.themes.Soft()) as demo:
     gr.Markdown("# Bharat-Tiny-LLM v3")
     gr.Markdown("**Bilingual Hindi / Hinglish edge LLM** - 1.7B params, runs fully offline. Type in Hindi, Hinglish, or English.")
-    chatbot = gr.Chatbot(height=420, label="Chat", bubble_full_width=False)
+    chatbot = gr.Chatbot(height=420, label="Chat")
     with gr.Row():
         msg = gr.Textbox(placeholder="अपना सवाल यहाँ लिखें / Type your question here...", scale=4, container=False)
         send = gr.Button("Send", scale=1, variant="primary")
