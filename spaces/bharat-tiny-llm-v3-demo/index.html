@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bharat-Tiny-LLM v3 — Bilingual Hindi/Hinglish Chat</title>
+<meta name="description" content="Bharat-Tiny-LLM v3 is a 1.7B-parameter offline edge LLM that speaks Hindi, Hinglish and English. Runs fully in your browser via WebGPU. Free, private, no server." />
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --accent:#ff6f00; --text:#e6edf3; --muted:#8b949e; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--text); }
+  .wrap { max-width:760px; margin:0 auto; padding:24px 16px 60px; }
+  header { text-align:center; padding:24px 0; }
+  h1 { font-size:1.9rem; margin:0 0 6px; }
+  .tag { color:var(--accent); font-weight:600; }
+  .sub { color:var(--muted); font-size:.95rem; }
+  .card { background:var(--card); border:1px solid #30363d; border-radius:14px; padding:18px; margin:16px 0; }
+  #chat { height:380px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; padding:6px; }
+  .msg { max-width:85%; padding:10px 14px; border-radius:12px; line-height:1.45; white-space:pre-wrap; word-wrap:break-word; }
+  .user { align-self:flex-end; background:var(--accent); color:#fff; }
+  .bot { align-self:flex-start; background:#21262d; }
+  .row { display:flex; gap:8px; margin-top:10px; }
+  input { flex:1; padding:12px 14px; border-radius:10px; border:1px solid #30363d; background:#0d1117; color:var(--text); font-size:1rem; }
+  button { padding:12px 18px; border:none; border-radius:10px; background:var(--accent); color:#fff; font-weight:600; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:not-allowed; }
+  .status { font-size:.85rem; color:var(--muted); margin-top:8px; min-height:1.2em; }
+  .examples { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .examples button { background:#21262d; font-weight:400; font-size:.85rem; padding:7px 12px; }
+  .badges { text-align:center; margin:10px 0; }
+  code { background:#21262d; padding:2px 6px; border-radius:6px; font-size:.85em; }
+  a { color:var(--accent); }
+  table { width:100%; border-collapse:collapse; font-size:.9rem; }
+  td,th { border:1px solid #30363d; padding:8px; text-align:left; }
+  th { background:#21262d; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🗣️ Bharat-Tiny-LLM <span class="tag">v3</span></h1>
+    <div class="sub">Bilingual Hindi / Hinglish / English edge LLM — runs 100% in your browser. Private, offline, free.</div>
+    <div class="badges">
+      <a href="https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3"><img alt="HF Model" src="https://img.shields.io/badge/%F0%9F%A4%97%20Model-eulogik%2FBharat--Tiny--LLM--v3-ff6f00"></a>
+      <img alt="Params" src="https://img.shields.io/badge/Params-1.7B-orange">
+      <img alt="License" src="https://img.shields.io/badge/License-Apache_2.0-green">
+      <img alt="Runs" src="https://img.shields.io/badge/Runs-In%20Browser%20(WebGPU)-blue">
+    </div>
+  </header>
+
+  <div class="card">
+    <div id="chat"></div>
+    <div class="status" id="status">Loading model (first run downloads ~1 GB, then cached)...</div>
+    <div class="row">
+      <input id="input" placeholder="अपना सवाल लिखें / Type here (Hindi, Hinglish, English)..." disabled />
+      <button id="send" disabled>Send</button>
+    </div>
+    <div class="examples" id="examples"></div>
+  </div>
+
+  <div class="card">
+    <h3>Why Bharat-Tiny-LLM v3?</h3>
+    <table>
+      <tr><th>Feature</th><th>Benefit</th></tr>
+      <tr><td>1.7B params, Q4 (~1 GB)</td><td>Runs on phones, laptops, edge devices</td></tr>
+      <tr><td>Devanagari token injection</td><td>21.6% better Hindi token compression</td></tr>
+      <tr><td>SFT on Hindi math + QA</td><td>56%+ on GSM8K-Hindi (vs 0% in v2)</td></tr>
+      <tr><td>26.6% fewer bits/char</td><td>Stronger Hindi language modeling</td></tr>
+      <tr><td>In-browser WebGPU</td><td>No server, no data leaves your device</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Run it yourself</h3>
+    <p><b>llama.cpp:</b> <code>llama-cli -m bharat-tiny-llm-v3-q4_k_m.gguf -p "नमस्ते"</code></p>
+    <p><b>Ollama:</b> <code>ollama create bharat-v3 -f Modelfile</code></p>
+    <p><b>Python:</b> <code>pip install llama-cpp-python</code> then load <code>eulogik/Bharat-Tiny-LLM-v3</code></p>
+    <p>Model: <a href="https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3">huggingface.co/eulogik/Bharat-Tiny-LLM-v3</a></p>
+  </div>
+
+  <div class="card">
+    <h3>FAQ</h3>
+    <p><b>Is my data private?</b> Yes — inference runs entirely in your browser via WebGPU. Nothing is sent to a server.</p>
+    <p><b>Which languages?</b> Hindi (Devanagari), Hinglish (Romanized Hindi+English), and English.</p>
+    <p><b>Does it need internet after first load?</b> Only the first load downloads the model; afterwards it's cached offline.</p>
+    <p><b>What can it do well?</b> Conversational Hindi/Hinglish, factual Q&A, and grade-school math word problems in Hindi.</p>
+  </div>
+</div>
+
+<script type="module">
+import { AutoModelForCausalLM, AutoTokenizer, TextGenerationPipeline } from "https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.0.0";
+
+const MODEL = "eulogik/Bharat-Tiny-LLM-v3";
+const chatEl = document.getElementById("chat");
+const inputEl = document.getElementById("input");
+const sendEl = document.getElementById("send");
+const statusEl = document.getElementById("status");
+const examplesEl = document.getElementById("examples");
+
+const EXAMPLES = [
+  "नमस्ते, आपका नाम क्या है?",
+  "भारत की राजधानी क्या है?",
+  "5 सेब में से 2 खा लिए, बचे कितने?",
+  "Hinglish mein batao: aaj ka mausam kaisa hai?"
+];
+
+let generator = null;
+
+function addMsg(text, cls) {
+  const d = document.createElement("div");
+  d.className = "msg " + cls;
+  d.textContent = text;
+  chatEl.appendChild(d);
+  chatEl.scrollTop = chatEl.scrollHeight;
+  return d;
+}
+
+EXAMPLES.forEach(e => {
+  const b = document.createElement("button");
+  b.textContent = e;
+  b.onclick = () => { inputEl.value = e; send(); };
+  examplesEl.appendChild(b);
+});
+
+async function init() {
+  if (!navigator.gpu) {
+    statusEl.textContent = "⚠️ WebGPU not detected. Use Chrome/Edge 113+ or enable WebGPU. Alternatively, run the GGUF locally with llama.cpp.";
+    return;
+  }
+  const progress = (p) => {
+    if (p.status === "progress") {
+      const pct = (p.loaded / p.total * 100).toFixed(0);
+      statusEl.textContent = `Downloading model… ${pct}% (${(p.loaded/1e9).toFixed(2)}/${(p.total/1e9).toFixed(2)} GB)`;
+    }
+  };
+  statusEl.textContent = "Loading tokenizer...";
+  const tokenizer = await AutoTokenizer.from_pretrained(MODEL);
+  statusEl.textContent = "Loading model (downloads ~1 GB GGUF, then cached)...";
+  const model = await AutoModelForCausalLM.from_pretrained(MODEL, {
+    dtype: "q4",
+    device: "webgpu",
+    progress_callback: progress,
+  });
+  generator = new TextGenerationPipeline(model, tokenizer);
+  statusEl.textContent = "Ready! Ask anything in Hindi, Hinglish, or English.";
+  inputEl.disabled = false;
+  sendEl.disabled = false;
+}
+
+async function send() {
+  const text = inputEl.value.trim();
+  if (!text || !generator) return;
+  inputEl.value = "";
+  addMsg(text, "user");
+  const botEl = addMsg("…", "bot");
+  const prompt = `System: You are Bharat-Tiny-LLM, a helpful bilingual assistant for Hindi and Hinglish. Answer in the same language the user writes. Be concise.\nUser: ${text}\nAssistant:`;
+  let out = "";
+  const streamer = {
+    put(value) { out += value; botEl.textContent = out; chatEl.scrollTop = chatEl.scrollHeight; },
+    end() {}
+  };
+  try {
+    const result = await generator(prompt, { max_new_tokens: 200, do_sample: true, temperature: 0.4, top_p: 0.9, repetition_penalty: 1.15, streamer });
+    botEl.textContent = result[0].generated_text.replace(prompt, "").trim();
+  } catch (e) {
+    botEl.textContent = "Error: " + e.message;
+  }
+}
+
+sendEl.onclick = send;
+inputEl.addEventListener("keydown", e => { if (e.key === "Enter") send(); });
+
+init().catch(e => { statusEl.textContent = "Failed to load: " + e.message; });
+</script>
+</body>
+</html>
