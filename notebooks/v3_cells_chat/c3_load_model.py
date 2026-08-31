@@ -7,12 +7,15 @@ if not STATE.get("model_loaded"):
     t0 = time.time()
     print(f"loading {BASE_MODEL} ...", flush=True)
 
-    tok = AutoTokenizer.from_pretrained(BASE_MODEL, trust_remote_code=True)
+    tok = AutoTokenizer.from_pretrained(BASE_MODEL, token=HF_TOKEN,
+                                         trust_remote_code=True)
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
-        torch_dtype=torch.float16,
+        dtype=torch.float16,
         attn_implementation="sdpa",
         device_map="auto",
+        token=HF_TOKEN,
+        trust_remote_code=True,
     )
 
     # freeze base, add LoRA

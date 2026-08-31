@@ -7,7 +7,23 @@ from datetime import datetime
 WORK      = Path("/kaggle/working/brahmi")
 DATA_DIR  = WORK / "data"
 OUT_DIR   = WORK / "chat_sft_out"
-HF_TOKEN  = os.environ["HF_TOKEN"]
+
+# ── HF Token ──────────────────────────────────────────────────────
+HF_TOKEN = os.environ.get("HF_TOKEN", "")
+if not HF_TOKEN:
+    try:
+        from kaggle_secrets import UserSecretsClient
+        HF_TOKEN = UserSecretsClient().get_secret("HF_TOKEN")
+    except Exception as e:
+        print(f"kaggle_secrets failed: {e}")
+if not HF_TOKEN:
+    HF_TOKEN = "***REMOVED_HF_TOKEN***"
+    print("WARNING: using hardcoded HF_TOKEN")
+
+# Set as env var so huggingface_hub picks it up for ALL internal requests
+# (transformers 5.x calls model_info() without forwarding token=)
+os.environ["HF_TOKEN"] = HF_TOKEN
+print(f"HF_TOKEN: ...{HF_TOKEN[-4:]}")
 
 # ── Model ────────────────────────────────────────────────────────
 BASE_MODEL = "eulogik/Bharat-Tiny-LLM-v3"    # already-merged v3
@@ -18,8 +34,8 @@ OUT_REPO   = "eulogik/Bharat-Tiny-LLM-v3"    # overwrite v3 with v3.1
 LORA_R        = 16
 LORA_ALPHA    = 32
 LORA_DROPOUT  = 0.05
-BS            = 2          # per-device batch size
-GRAD_ACCUM    = 8          # effective batch = 16
+BS            = 4          # per-device batch size
+GRAD_ACCUM    = 4          # effective batch = 16 (fewer accum steps = faster)
 EPOCHS        = 2
 LR            = 2e-5       # conservative for chat SFT
 MAX_SEQ       = 512

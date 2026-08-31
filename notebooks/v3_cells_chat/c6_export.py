@@ -11,7 +11,7 @@ if not STATE.get("export_done"):
 
     print("loading base v3 fp32 for merge...", flush=True)
     base = AutoModelForCausalLM.from_pretrained(
-        BASE_MODEL, torch_dtype=torch.float32)
+        BASE_MODEL, dtype=torch.float32, token=HF_TOKEN, trust_remote_code=True)
 
     model = PeftModel.from_pretrained(base, str(final_dir))
     model = model.merge_and_unload()

@@ -4,7 +4,7 @@ from datasets import load_dataset
 if not STATE.get("tok_done"):
     t0 = time.time()
     print(f"loading {CHAT_DATA} ...", flush=True)
-    ds = load_dataset(CHAT_DATA, split="train")
+    ds = load_dataset(CHAT_DATA, split="train", token=HF_TOKEN)
     print(f"  raw rows: {len(ds)}")
 
     # sample down to 20K if needed (dataset is exactly 20K but safety check)

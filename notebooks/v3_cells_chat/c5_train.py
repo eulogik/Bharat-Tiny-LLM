@@ -5,11 +5,16 @@ from pathlib import Path
 
 class Heartbeat(TrainerCallback):
     def on_log(self, args, state, control, logs=None, **kw):
-        if state.is_world_process_zero and logs and "loss" in logs:
+        if logs and "loss" in logs:
             (WORK / "chat_progress.json").write_text(json.dumps(
                 {"step": state.global_step, "loss": logs.get("loss"),
                  "eval_loss": logs.get("eval_loss"),
                  "ts": time.time()}))
+            print(f"  [step {state.global_step}] loss={logs.get('loss', '?'):.4f}", flush=True)
+
+    def on_step_end(self, args, state, control, **kw):
+        if state.global_step % 100 == 0 and state.global_step > 0:
+            print(f"  ... step {state.global_step}/{state.max_steps}", flush=True)
 
 def find_local_ckpt(out):
     cks = [p for p in Path(out).glob("checkpoint-*") if p.is_dir()]
@@ -49,15 +54,16 @@ if not STATE.get("train_done"):
         bf16=False,
         gradient_checkpointing=True,
         gradient_checkpointing_kwargs={"use_reentrant": False},
-        optim="adamw_torch_fused",
+        optim="adamw_torch",
         report_to=[],
-        dataloader_num_workers=2,
+        dataloader_num_workers=0,
         seed=42,
         remove_unused_columns=False,
         eval_strategy="steps",
         eval_steps=SAVE_STEPS,
         load_best_model_at_end=True,
         metric_for_best_model="eval_loss",
+        disable_tqdm=False,
     )
 
     trainer = Trainer(
