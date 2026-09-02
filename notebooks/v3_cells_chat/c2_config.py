@@ -4,7 +4,7 @@ from pathlib import Path
 from datetime import datetime
 
 # ── Paths ────────────────────────────────────────────────────────
-WORK      = Path("/kaggle/working/brahmi")
+WORK      = Path("/kaggle/working/brahmi_v33")
 DATA_DIR  = WORK / "data"
 OUT_DIR   = WORK / "chat_sft_out"
 
@@ -27,19 +27,19 @@ print(f"HF_TOKEN: ...{HF_TOKEN[-4:]}")
 
 # ── Model ────────────────────────────────────────────────────────
 BASE_MODEL = "eulogik/Bharat-Tiny-LLM-v3"    # already-merged v3
-CHAT_DATA  = "eulogik/bharat-v3-chat-sft"     # our 20K chat dataset
-OUT_REPO   = "eulogik/Bharat-Tiny-LLM-v3"    # overwrite v3 with v3.1
+CHAT_DATA  = "eulogik/bharat-v3-chat-sft-v3"  # 370 curated
+OUT_REPO   = "eulogik/Bharat-Tiny-LLM-v3"
 
-# ── Hyperparameters (T4 single-GPU) ────────────────────────────
-LORA_R        = 16
-LORA_ALPHA    = 32
+# ── Hyperparameters (v3.3: tiny+clean) ───────────────────────
+LORA_R        = 8
+LORA_ALPHA    = 16
 LORA_DROPOUT  = 0.05
-BS            = 4          # per-device batch size
-GRAD_ACCUM    = 4          # effective batch = 16 (fewer accum steps = faster)
-EPOCHS        = 2
-LR            = 2e-5       # conservative for chat SFT
+BS            = 4
+GRAD_ACCUM    = 4          # eff_bs=16
+EPOCHS        = 2           # 370 rows -> 46 steps total
+LR            = 5e-6       # very low — just polish
 MAX_SEQ       = 512
-SAVE_STEPS    = 250
+SAVE_STEPS    = 200
 LOG_STEPS     = 25
 MAX_SESSION_HOURS = 5.5
 

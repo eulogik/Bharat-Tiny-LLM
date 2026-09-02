@@ -9,13 +9,15 @@ if not STATE.get("model_loaded"):
 
     tok = AutoTokenizer.from_pretrained(BASE_MODEL, token=HF_TOKEN,
                                          trust_remote_code=True)
+    # T4 x2 allocates 2 GPUs but Trainer is single-GPU — force cuda:0
     model = AutoModelForCausalLM.from_pretrained(
         BASE_MODEL,
         dtype=torch.float16,
         attn_implementation="sdpa",
-        device_map="auto",
+        device_map={"": 0},
         token=HF_TOKEN,
         trust_remote_code=True,
+        low_cpu_mem_usage=True,
     )
 
     # freeze base, add LoRA

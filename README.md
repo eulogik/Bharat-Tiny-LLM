@@ -16,7 +16,7 @@
 
 > Built by [eulogik](https://eulogik.com) — an India-first AI lab shipping edge-deployable models.
 
-> **🧪 v3.2 experimental** — Conversational SFT (2.5K rows, r=8, 1 epoch, 15 min on T4) pushed as `brahmi-v3.2-f16.gguf` / `brahmi-v3.2-q4_k_m.gguf`. Improves Hinglish/math (10−4=6 correct) but shows prefix artifacts. **Default remains `bharat-tiny-llm-v3-q4_k_m.gguf` (v3, 56% GSM8K-Hindi).**
+> **🧪 v3.3 conversational** — 370 curated rows (evol-hindi + Hinglish + identity), r=8, 2 epochs, LR 5e-6. 46 steps, ~4 min on T4. Pushed as `brahmi-v3.3-f16.gguf` (3.4 GB) / `brahmi-v3.3-q4_k_m.gguf` (1.1 GB). Dataset: `eulogik/bharat-v3-chat-sft-v3`.
 
 ---
 
