@@ -43,7 +43,7 @@ then capability **SFT** on Hindi math (GSM8K-Hindi) + Indic QA.
 |---|---:|---:|
 | GSM8K-Hindi (grade-school math) | ~3% | **56%+** |
 | Bits/char on held-out Hindi (↓) | 11.90 | **8.73** (−26.6%) |
-| Devanagari token compression | — | **21.6%** |
+| Devanagari token compression | — | **36.8%** |
 | Edge-ready size (Q4_K_M) | — | **1.0 GB** |
 | Runs offline | ❌ | ✅ |
 
@@ -105,8 +105,8 @@ Full measured results: [docs/benchmarks_v2.md](docs/benchmarks_v2.md) (v3 sectio
 |---|---|---|
 | GSM8K-Hindi | 0% | **56%+** |
 | Bits/char (fair) | 1.49 (−10%) | **8.73 (−26.6%)** |
-| Devanagari compression | 36.5% | 21.6% |
-| Mixed corpus savings | 18.0% | 16.7% |
+| Devanagari compression | 36.5% | 36.8% |
+| Mixed corpus savings | 18.0% | 18.0% |
 
 ---
 

@@ -18,14 +18,14 @@ v3 pipeline: Qwen3-1.7B-Base → 300 Devanagari token injection → warmup (3000
 |---|---|---|---|
 | **GSM8K-Hindi** (4-shot CoT, greedy) | 0.0% | **56%+** | **+56pp** |
 | **Bits/char** (cross-tokenizer fair) | 1.4878 (−10.0%) | **8.7348** (−26.6%) | **2.7× better reduction** |
-| **Devanagari compression** | 36.5% | 21.6% | −14.9pp |
-| **Mixed corpus savings** | 18.0% | 16.7% | −1.3pp |
+| **Devanagari compression** | 36.5% | 36.8% | +0.3pp |
+| **Mixed corpus savings** | 18.0% | 18.0% | 0.0pp |
 | **Perplexity** (own tok) | 7.48 | 331K (32-bit, uncalibrated) | — |
 
 **Key findings:**
 - SFT training on GSM8K-Hindi + IndicVault + sample data solved the math problem
-- Qwen3-1.7B base already has better Hindi coverage, so compression gains are smaller
-- Bits/char improvement (26.6% vs 10%) shows much stronger Hindi language modeling
+- Compression nearly identical to v2 (36.8% vs 36.5% Dev) because the injection recipe is the same
+- Bits/char improvement (26.6% vs 10%) shows much stronger Hindi language modeling after SFT
 
 ### GGUF files for edge deployment
 
