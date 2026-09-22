@@ -1,5 +1,7 @@
 <div align="center">
 
+![Bharat-Tiny-LLM v3 banner](assets/banner.png)
+
 # 🗣️ Bharat-Tiny-LLM v3
 
 **A bilingual Hindi / Hinglish / English edge LLM that runs fully offline — 1.7B params, 1.0 GB GGUF, Apache-2.0.**
