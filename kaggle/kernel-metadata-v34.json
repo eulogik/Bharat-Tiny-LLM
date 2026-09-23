@@ -1,0 +1,14 @@
+{
+  "id": "sundayeulogik/bharat-v34-mixed-sft",
+  "title": "Bharat-Tiny v3.4 — Mixed Math+Chat SFT (smoke/full)",
+  "code_file": "brahmi_v34_mixed_sft.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "machine_shape": "NvidiaTeslaT4",
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}
