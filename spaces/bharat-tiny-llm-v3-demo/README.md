@@ -11,26 +11,25 @@ tags:
   - hinglish
   - devanagari
   - edge-llm
-  - quantized
-  - gguf
-  - webgpu
-  - in-browser
   - indian-languages
-  - offline
-  - transformers.js
+  - conversational
+  - inference-providers
 ---
+![Bharat-Tiny-LLM v3 banner](banner.png)
 
-# Bharat-Tiny-LLM v3 — In-Browser Demo
+# Bharat-Tiny-LLM v3 — Chat Demo
 
-A 1.7B-parameter bilingual (Hindi / Hinglish / English) edge LLM that runs
-**entirely in your browser** via WebGPU. No server, no API key, fully private.
+A 1.7B-parameter bilingual (Hindi / Hinglish / English) LLM. This page is
+fully static — it calls the model through Hugging Face Inference Providers
+(Featherless AI) straight from your browser. No download, no WebGPU needed.
 
-- 🇮🇳 Devanagari token injection for 21.6% Hindi compression
-- 📊 56%+ on GSM8K-Hindi (grade-school math in Hindi)
+**Setup:** paste a free read-only HF token
+([huggingface.co/settings/tokens](https://huggingface.co/settings/tokens));
+it stays in your browser's localStorage.
+
+- 🇮🇳 Devanagari token injection for 36.8% Hindi compression
+- 📊 56% on GSM8K-Hindi (grade-school math in Hindi)
 - ⚡ 26.6% fewer bits/char than base Qwen3-1.7B on held-out Hindi
-- 🔒 Privacy-first: inference never leaves your device
-
-The first load downloads the ~1 GB Q4 GGUF (then cached). Works best in
-Chrome/Edge with WebGPU enabled.
 
 Model: [eulogik/Bharat-Tiny-LLM-v3](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3)
+(Apache 2.0) · Offline GGUFs in the same repo.

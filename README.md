@@ -7,7 +7,7 @@
 **A bilingual Hindi / Hinglish / English edge LLM that runs fully offline — 1.7B params, 1.0 GB GGUF, Apache-2.0.**
 
 [![HF Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-eulogik%2FBharat--Tiny--LLM--v3-ff6f00)](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3)
-[![HF Space](https://img.shields.io/badge/%F0%9F%9A%80%20Demo-In--Browser%20WebGPU-blue)](https://huggingface.co/spaces/eulogik/bharat-tiny-llm-v3-demo)
+[![HF Space](https://img.shields.io/badge/%F0%9F%9A%80%20Demo-Featherless%20API-blue)](https://huggingface.co/spaces/eulogik/bharat-tiny-llm-v3-demo)
 [![PyPI](https://img.shields.io/badge/PyPI-bharat--tiny--llm-3776ab)](https://pypi.org/project/bharat-tiny-llm/)
 [![Params](https://img.shields.io/badge/Params-1.7B-orange)](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3)
 [![GGUF](https://img.shields.io/badge/GGUF-Q4__K__M%20(1.0GB)-blue)](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3)
@@ -28,7 +28,7 @@
 pip install "bharat-tiny-llm[mlx]" && bharat chat
 ```
 
-Or open the **[in-browser WebGPU demo](https://huggingface.co/spaces/eulogik/bharat-tiny-llm-v3-demo)** — no install, fully private.
+Or open the **[live demo](https://huggingface.co/spaces/eulogik/bharat-tiny-llm-v3-demo)** (Featherless API, browser-based) — no install.
 
 ---
 
@@ -130,7 +130,7 @@ Apache 2.0. Base model [Qwen3-1.7B-Base](https://huggingface.co/Qwen/Qwen3-1.7B-
 ## 🔗 Links
 
 - 🤗 Flagship model: https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3
-- 🌐 Live demo: https://huggingface.co/spaces/eulogik/bharat-tiny-llm-v3-demo
+- 🌐 Live demo (Featherless): https://huggingface.co/spaces/eulogik/bharat-tiny-llm-v3-demo
 - 📊 Benchmarks: [docs/benchmarks_v2.md](docs/benchmarks_v2.md)
 - 💻 This repo: https://github.com/eulogik/Bharat-Tiny-LLM
 - 🏢 Built by [eulogik](https://eulogik.com)
