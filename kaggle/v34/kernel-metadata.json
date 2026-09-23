@@ -1,0 +1,13 @@
+{
+  "id": "eulogikdevelopers/bharat-v34-mixed-sft",
+  "title": "bharat-v34-mixed-sft",
+  "code_file": "brahmi_v34_mixed_sft.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}
