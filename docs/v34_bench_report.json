@@ -1,0 +1,67 @@
+{
+  "model": "eulogik/Bharat-Tiny-LLM-v3.4",
+  "status": "TRAINED + UPLOADED — demo Space NOT flipped (quality gates failed)",
+  "training": {
+    "dataset": "eulogik/bharat-v3-mixed-sft-v34 (43,887 rows)",
+    "method": "LoRA r=16 α=32 → merged fp16, 1 epoch, lr 2e-5, seq 1024",
+    "hardware": "2×Tesla T4 DataParallel on Kaggle",
+    "final_loss": 1.2337,
+    "elapsed_min": 611
+  },
+  "artifacts": {
+    "hf_model": "eulogik/Bharat-Tiny-LLM-v3.4 (model.safetensors 3.44GB + tokenizer, verified)",
+    "adapter": "/tmp/k34_pull/brahmi_v34/sft_out/final_adapter (69.8MB)",
+    "merged_local": "/tmp/k34_export_v34",
+    "kaggle_kernel": "eulogikdevelopers/bharat-v34-mixed-sft",
+    "git": "pushed through 71f4c22 (9 commits)",
+    "reports": [
+      "docs/v34_bench_report.json",
+      "docs/v34_ship_report.json",
+      "docs/bench_v34_summary.json"
+    ],
+    "bench_script": "scripts/bench_gsm_hi_v34.py"
+  },
+  "quality_gates": {
+    "foreign_script_cjk": {
+      "verdict": "PASS",
+      "gen_cjk": 0,
+      "chat_cjk": 0,
+      "note": "sampling temp=0.7 + repetition_penalty=1.15 eliminated greedy CJK leaks"
+    },
+    "gsm8k_hindi": {
+      "verdict": "FAIL",
+      "v34_partial": "~12–15% (n=20/40 aborted for MPS speed)",
+      "v33_ref": "24% on n=100 (docs/bench_gsm_hi_v33.json)",
+      "protocol": "4-shot CoT, greedy, exact match"
+    },
+    "chat": {
+      "verdict": "WEAK",
+      "role_leak": "6/6 replies started with 'User:'",
+      "notes": [
+        "17*23=391 correct; photosynthesis English OK",
+        "Hindi identity / math word-problem reasoning incoherent",
+        "not demo-ready"
+      ]
+    }
+  },
+  "demo_space": {
+    "flipped": false,
+    "space": "spaces/bharat-tiny-llm-v3-demo still serves v3",
+    "reason": "GSM regression vs v3.3 + 100% chat role-leak"
+  },
+  "blockers": {
+    "kaggle_gpu_quota": "0.00h until 2026-09-26 — no retrain/2nd epoch until then"
+  },
+  "next_when_quota_refreshes": [
+    "2nd epoch and/or higher LoRA rank (r=32)",
+    "Fix chat template role handling (User: echo)",
+    "Diagnose GSM regression (eval_loss never logged in full run)",
+    "Full GSM n=100 + chat re-bench; only then flip demo Space MODEL → v3.4"
+  ],
+  "sizing_answer": {
+    "smoke_500_rows": "~7 min",
+    "full_43k_1ep_2xT4": "611 min (~10.2 h)",
+    "mvp_15k_1ep": "~45 min",
+    "min_to_validate_5k": "~15 min"
+  }
+}
