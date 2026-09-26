@@ -1,0 +1,13 @@
+{
+  "id": "eulogikdevelopers/bharat-v35-math-chat-sft",
+  "title": "bharat-v35-math-chat-sft",
+  "code_file": "brahmi_v35_math_chat_sft.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}
