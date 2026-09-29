@@ -1,0 +1,13 @@
+{
+  "id": "eulogikdevelopers/bharat-v3-gsm-eval",
+  "title": "bharat-v3-gsm-eval",
+  "code_file": "bharat_v3_gsm_eval.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": true,
+  "enable_gpu": true,
+  "enable_internet": true,
+  "dataset_sources": [],
+  "competition_sources": [],
+  "kernel_sources": []
+}
