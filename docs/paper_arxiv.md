@@ -24,10 +24,13 @@ Injection alone reduces token count on pure Devanagari text by 36.9% and
 on mixed Hinglish/Devanagari conversations by 17.7%. After training, the
 model predicts held-out Hindi text at 26.6% fewer bits per character than
 its base under identical character coverage. On GSM8K-Hindi (4-shot
-chain-of-thought, greedy decoding), the base model scores 3% and the
-fine-tuned model scores 56% (9/16 partial run). The whole pipeline runs
-on consumer hardware (Kaggle 2x T4, zero cloud cost) and ships as a 1.0 GB
-4-bit GGUF file, downloadable from Hugging Face.
+chain-of-thought, greedy decoding, n=100), scores are dominated by
+inference-stack effects: 2% under torch/fp16 versus 29% under
+llama.cpp/Q4 for identical prompts and weights (chat-tuned variant:
+35%). An early 9/16 partial run suggesting 56% did not reproduce under
+either pinned protocol and is retracted (see Section 6). The whole
+pipeline runs on consumer hardware (Kaggle 2x T4, zero cloud cost)
+and ships as a 1.0 GB 4-bit GGUF file, downloadable from Hugging Face.
 
 Unlike prior Indic vocabulary work that extends tokenizers by 48K tokens
 (OpenHathi) or redesigns them wholesale (Sarvam-1), this study quantifies
@@ -65,8 +68,10 @@ Our contributions:
 2. A two-phase recovery recipe (embedding-row warmup, then LoRA SFT on
    Hindi math and QA data) that recovers and exceeds base-model Hindi
    likelihood, measured via bits-per-character across different tokenizers.
-3. A capability jump: from 3% to 56% on GSM8K-Hindi, using only 35K
-   curated training rows on Kaggle 2xT4 (zero cloud cost).
+3. A documented negative result on math SFT: 35K curated training
+   rows move GSM8K-Hindi only within a stack-dominated 2-35% band
+   (n=100, pinned protocols), with no version separation exceeding
+   stack variation; an early 56% partial did not reproduce.
 4. A fully open artifact: 1.0 GB Q4_K_M GGUF, Apache 2.0, downloadable
    from Hugging Face (`eulogik/Bharat-Tiny-LLM-v3`).
 
@@ -111,9 +116,9 @@ transliteration round-trip. Injection keeps the surface form native.
 **Novelty positioning.** We claim no new mechanism: insertion, mean-init,
 CPT, and LoRA all exist separately. Our contribution is the quantified
 minimal budget (300 tokens, 0.198% of vocab) delivering 36.9% script-
-specific compression, 26.6% better bits-per-character, and a 53-point jump
-on GSM8K-Hindi, plus an honest cross-tokenizer evaluation protocol and a
-fully open artifact.
+specific compression, 26.6% better bits-per-character, a pinned-stack
+GSM8K-Hindi study that retracts an early 56% partial, plus an honest
+cross-tokenizer evaluation protocol and a fully open artifact.
 
 ---
 
@@ -183,8 +188,10 @@ All measurements use text held out from token selection. Fertility
 v2 reference figures come from docs/bench_fertility.json (lines
 300K-305K, 5,000 conversations). Scripts: scripts/bench_fertility.py,
 scripts/bench_ppl.py, scripts/bench_gsm_hi.py. Raw JSON outputs:
-docs/bench_fertility.json, docs/bench_ppl_v3.json,
-docs/bench_gsm_hi_v3.json.
+docs/bench_fertility.json, docs/bench_fertility_v3.json,
+docs/bench_ppl_v3.json, docs/bench_gsm_hi_v3.json,
+docs/bench_gsm_hi_v3_torch.json, docs/bench_gsm_hi_v3_llama.json,
+docs/bench_gsm_hi_v33_llama.json.
 
 ### 4.1 Compression (injection only, no training involved)
 
@@ -263,34 +270,41 @@ targets Hindi text quality, whereas v2 trained only on conversation data.
 ### 4.4 GSM8K-Hindi
 
 4-shot chain-of-thought, greedy decoding, exact match on final number.
-Dataset: bingbangboom/gsm8k-hindi test_main. Gold parsing accepts both
-####N and ###N separators (24% of rows use ###).
+Dataset: bingbangboom/gsm8k-hindi test_main, first 100 rows. Gold
+parsing accepts both ####N and ###N separators (24% of rows use ###).
+Prompts, exemplars (train rows 0-3), and answer extraction are
+byte-identical across runs; only the inference stack varies. JSONs:
+bench_gsm_hi_v3_torch.json, bench_gsm_hi_v3_llama.json,
+bench_gsm_hi_v33_llama.json.
 
-Table 3: GSM8K-Hindi accuracy (4-shot CoT, greedy).
+Table 3: GSM8K-Hindi accuracy (4-shot CoT, greedy, n=100). Stacks are
+not comparable across rows.
 
     +-----------------------------+----------+---------+
-    | Model                       | Accuracy |  tok/s  |
+    | Model / stack               |    n     | Accuracy|
     +-----------------------------+----------+---------+
-    | Qwen2.5-1.5B (bf16)        |    3.0%  |  27.1   |
-    | v2 Q4 + LoRA (Qwen2.5)     |    0.0%  |  52.7   |
-    +-----------------------------+----------+---------+
-    | Qwen3-1.7B-Base             |    3.0%  |     --  |
-    | v3 Q4_K_M + LoRA (Qwen3)   |   56.0%* |     --  |
+    | v3 / torch fp16 (2xT4)     |   100    |   2.0%  |
+    | v3 / torch fp16 1-GPU (T4) |   100    |   2.0%  |
+    | v3 / llama.cpp Q4 (CPU)    |   100    |  29.0%  |
+    | v3.3 / llama.cpp Q4 (CPU)  |   100    |  35.0%  |
     +-----------------------------+----------+---------+
 
-  * 16/30 evaluated items before 30-minute CPU timeout (partial run).
-    Full 100-question run pending; see Section 5, Limitation 2.
+Two independent torch runs (2-GPU auto map and single-GPU) agree at
+2.0%. Prior base-model (3%) and v2 (0%) figures used other stacks and
+are omitted as incomparable. The 9/16 ad-hoc run once reported as 56%
+used an unrecorded protocol and is retracted.
 
-The v3 base (Qwen3-1.7B) scores the same 3% as v2 base (Qwen2.5-1.5B)
-on this benchmark. The 53-point jump to 56% comes entirely from the
-capability SFT phase: 35K curated training rows containing GSM8K-Hindi
-problems, IndicVault QA, and sample conversations. This is not a base-
-model effect; it is a training-data effect.
-
-The v2 LoRA scores below base (0% vs 3%) because conversation-only
-training replaced few-shot format-following with conversational behavior.
-Most v2 answers omit the answer marker entirely. v3, trained on math
-data, follows the format correctly.
+The headline finding is the stack gap, not the scores. Identical
+prompts fed to identical weights produce degenerate question-echoing
+loops under torch/fp16 but genuine reasoning attempts under
+llama.cpp/Q4. The mechanism is unpinned (repetition-penalty defaults
+were checked and ruled out), but the measurement stands across two
+independent torch runs and full n=100 llama runs. Within a pinned
+stack, versions barely separate: llama gives v3.3 (35%) over v3 (29%),
+torch gives v3.4 (~13%, partial) over v3 (2%). Neither gap exceeds
+noise plus stack variation. There is no evidence here that 35K rows of
+math SFT bought robust GSM8K-Hindi ability, and no evidence of a
+math-versus-chat trade-off in GSM scores either.
 
 ### 4.5 Conversational quality trade-off
 
@@ -305,40 +319,31 @@ Table 4: Math vs. chat trade-off.
     | Variant          | GSM8K    | Chat     |
     |                  | -Hi (%)  | quality  |
     +------------------+----------+----------+
-    | v3 (math SFT)    |   56.0%  |  basic   |
-    | v3.3 (chat SFT)  |   24.0%  |  strong  |
-    | v3.4 (mixed SFT) |  ~13%*   |  weak    |
+    | v3 (math SFT)    | 2 torch /|  basic   |
+    |                  | 29 llama |          |
+    | v3.3 (chat SFT)  | 35 llama |  strong  |
+    | v3.4 (mixed SFT) | ~13*     |  weak    |
+    |                  | torch    |          |
     | v3.5 (math x2,   |    ---+  | regress. |
     |   r=32)          |          |          |
     +------------------+----------+----------+
 
-* v3.4 GSM is partial (MPS timeouts); trend vs. v3.3's full-run 24% is
-unambiguous. + v3.5 GSM not benched (MPS too slow for n=100); math
-failure established by direct probes. Full curves and bench outputs:
+* v3.4 GSM is partial (MPS timeouts); shown for completeness, not
+ranked. + v3.5 GSM not benched (MPS too slow for n=100); math failure
+established by direct probes. Full curves and bench outputs:
 v35_final_decision.json.
 
-v3.3 (100-question eval, full run) scores 24% on GSM8K-Hindi, down from
-v3's 56%. The 32-point drop confirms that conversational fine-tuning
-overwrites the math format-following behavior learned during capability
-SFT. This is a known problem in multi-task SFT: small models struggle to
-retain multiple capability modes simultaneously.
-
-Two follow-up experiments trace the frontier further. v3.4 (mixed
-math+chat SFT, 43,887 rows at ~17% math, LoRA r=16, 1 epoch) scores
-only ~13% on GSM8K-Hindi (partial runs, n=20/40; JSON:
-v34_bench_report.json) with weak chat (assistant echoes the User: role
-on raw prompts). v3.5 (same data with math upsampled x2 to ~23%, LoRA
-r=32) regresses outright: merged checkpoint-3000 answers 17x23 as 169
-and 25x48 as 2100, emits Thai/Arabic script junk at response starts
-under the same sampling config that passed clean for v3.4, and produces
-incoherent Hindi identity answers. The run was killed by the session
-limit at step ~3070/3082 (99.6%; exit 137); the missing steps cannot
-explain the regression. More rank plus more math on a stacked LoRA base
-made chat strictly worse without fixing math.
-
-The practical implication: v3 (math SFT) is the better general-purpose
-model. v3.3 is useful only when conversational fluency matters more than
-reasoning.
+All GSM cells are n=100 except v3.4 (partial n=20/40). Within a pinned
+stack, later versions score higher, not lower: llama gives v3.3 (35%)
+over v3 (29%), torch gives v3.4 (~13%) over v3 (2%). Neither gap
+exceeds noise plus stack variation, so there is no measurable GSM
+trade-off from chat or mixed SFT here. The earlier frontier reading
+(56% to 24% to 13%) mixed unpinned stacks with an irreproducible
+partial and is withdrawn. What did replicate across stacks is the chat
+degradation: v3.4 assistants echo the User: role on raw prompts, and
+v3.5 regresses outright. The practical implication is unchanged: v3
+remains the model to ship, now because later versions buy no measured
+math gain while degrading chat, not because of a GSM trade-off.
 
 ### 4.6 Deployment
 
@@ -366,7 +371,8 @@ Table 5: v2 vs v3 comparison.
     | Injection savings (%)  | 36.5 (Dev)       | 36.9 (Dev)       |
     |                        | 18.0 (mixed)     | 17.7 (mixed)     |
     | Bits/char reduction    | -10.0%           | -26.6%           |
-    | GSM8K-Hindi            | 0.0%             | 56.0%            |
+    | GSM8K-Hindi            | 0.0% (old stack)| 29% llama, 2%    |
+    |                        |                  | torch (n=100)    |
     | Training data          | conversations    | math + QA + conv |
     | Hardware               | M4 + Colab T4    | Kaggle 2x T4     |
     | Edge size (Q4)         | 880 MB (MLX)     | 1.0 GB (GGUF)    |
@@ -383,16 +389,27 @@ after training, even though the tokenizer gains are comparable.
 
 ## 6. Limitations
 
-1. **GSM8K-Hindi is not a comprehensive reasoning benchmark.** 56% on
-   grade-school math does not imply strong general reasoning. MMLU-Hindi,
-   ARC-Challenge-Hindi, or custom benchmarks would paint a fuller picture.
-   We report what we measured, not what we wish we measured.
+1. **GSM8K-Hindi is not a comprehensive reasoning benchmark.** A high
+   score on grade-school math would not imply strong general reasoning.
+   MMLU-Hindi, ARC-Challenge-Hindi, or custom benchmarks would paint a
+   fuller picture. We report what we measured, not what we wish we
+   measured.
 
-2. **The v3 GSM8K number is a partial run.** The 56% figure comes from
-   16 out of 30 evaluated items before a 30-minute CPU timeout (JSON:
-   bench_gsm_hi_v3.json). A full 100-question run is needed to confirm
-   this number. We report it as "56%" with this caveat, not "56.2%" or
-   "56%+".
+2. **The v3 GSM8K headline (56%) is retracted.** The figure came from
+   9 correct out of 16 evaluated items in an ad-hoc run whose protocol
+   was never recorded (JSON: bench_gsm_hi_v3.json). Pinned
+   re-measurement gives 2% (torch/fp16, n=100, two runs) and 29%
+   (llama.cpp/Q4, n=100) on identical prompts and weights. Treat every
+   GSM number in this paper as stack-pinned or incomparable.
+
+   **Greedy exact-match GSM on 1.7B is stack-dominated.** Identical
+   prompts and weights score 2% under torch but 29% under llama.cpp.
+   The mechanism is unpinned (repetition-penalty defaults were checked
+   and ruled out), but the measurement stands across two independent
+   torch runs and full n=100 llama runs. Until the mechanism is
+   understood, single-point GSM claims on small models, ours included,
+   should be read as stack-plus-model measurements, and cross-stack
+   rankings are invalid.
 
 3. **Mixed-text compression gains are modest (17.7%).** Products serving
    mostly Hinglish will see less speedup than Devanagari-heavy ones.
@@ -402,16 +419,17 @@ after training, even though the tokenizer gains are comparable.
    init (ZETT/HYPEROFA) may improve quality-per-token; untested here.
 
 5. **Math-chat trade-off is real, and mixed SFT does not fix it.**
-   Conversational fine-tuning on top of the math-SFT model drops
-   GSM8K-Hindi from 56% to 24% (v3.3, N=100). Mixed math+chat SFT
-   degrades both sides: v3.4 (~17% math) falls to ~13% GSM with weak
-   chat, and v3.5 (~23% math after x2 upsampling, LoRA r=32) regresses
-   outright, wrong arithmetic, incoherent Hindi identity answers, and
+   Conversational fine-tuning on top of the math-SFT model changes
+   GSM8K-Hindi within noise under pinned stacks (llama: v3.3 35% vs
+   v3 29%; torch: v3.4 ~13% vs v3 2%), while mixed math+chat SFT
+   degrades chat outright: v3.4 (~17% math) has weak chat, and v3.5
+   (~23% math after x2 upsampling, LoRA r=32) regresses outright,
+   wrong arithmetic, incoherent Hindi identity answers, and
    resurfacing Thai/Arabic script junk under sampling controls that
-   passed clean for v3.4. Stacking LoRA on LoRA-merged weights compounds
-   format drift; more rank is not a substitute for clean data. Retaining
-   both capabilities simultaneously likely requires DPO, a larger base,
-   or continued pretraining, not more SFT mixing.
+   passed clean for v3.4. Stacking LoRA on LoRA-merged weights
+   compounds format drift; more rank is not a substitute for clean
+   data. Retaining both capabilities simultaneously likely requires
+   DPO, a larger base, or continued pretraining, not more SFT mixing.
 
 6. **Machine-translated eval data.** GSM8K-Hindi inherits translation
    artifacts from the original English GSM8K. Real Hindi math reasoning
@@ -426,9 +444,12 @@ after training, even though the tokenizer gains are comparable.
 
 A 300-token injection (0.198% of the vocabulary, 614K trained params in
 warmup, SFT on Kaggle 2xT4) buys 36.9% script-
-specific compression, 26.6% better bits-per-character on held-out Hindi,
-and a 53-point accuracy jump on GSM8K-Hindi. The final artifact is a
-1.0 GB GGUF file that runs offline on phones, laptops, and browsers.
+specific compression and 26.6% better bits-per-character on held-out
+Hindi. The GSM8K-Hindi campaign ended in a retraction (an early 56%
+partial did not reproduce) and a finding that stands on its own:
+greedy exact-match scores on a 1.7B model are dominated by the
+inference stack. The final artifact is
+a 1.0 GB GGUF file that runs offline on phones, laptops, and browsers.
 
 The recipe is deliberately simple: n-gram mining, mean-init, embedding
 warmup, LoRA. No new architecture, no new tokenizer design, no massive
