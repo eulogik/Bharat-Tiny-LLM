@@ -20,12 +20,12 @@ constituent byte tokens, and recover quality with two training phases:
 continued pre-training of the new rows only, followed by LoRA fine-tuning
 on a curated Hindi reasoning corpus.
 
-Injection alone reduces token count on pure Devanagari text by 36.8% and
-on mixed Hinglish/Devanagari conversations by 18.0%. After training, the
+Injection alone reduces token count on pure Devanagari text by 36.9% and
+on mixed Hinglish/Devanagari conversations by 17.7%. After training, the
 model predicts held-out Hindi text at 26.6% fewer bits per character than
 its base under identical character coverage. On GSM8K-Hindi (4-shot
 chain-of-thought, greedy decoding), the base model scores 3% and the
-fine-tuned model scores 56% (16/30 partial run). The whole pipeline runs
+fine-tuned model scores 56% (9/16 partial run). The whole pipeline runs
 on consumer hardware (Kaggle 2x T4, zero cloud cost) and ships as a 1.0 GB
 4-bit GGUF file, downloadable from Hugging Face.
 
@@ -61,12 +61,12 @@ SFT, can deliver both compression and reasoning.
 Our contributions:
 
 1. A minimal-budget injection on Qwen3-1.7B-Base: 300 Devanagari tokens
-   (+0.198% of vocab) deliver 36.8% script-specific compression.
+   (+0.198% of vocab) deliver 36.9% script-specific compression.
 2. A two-phase recovery recipe (embedding-row warmup, then LoRA SFT on
    Hindi math and QA data) that recovers and exceeds base-model Hindi
    likelihood, measured via bits-per-character across different tokenizers.
 3. A capability jump: from 3% to 56% on GSM8K-Hindi, using only 35K
-   curated training rows and 6 GPU-hours on consumer hardware.
+   curated training rows on Kaggle 2xT4 (zero cloud cost).
 4. A fully open artifact: 1.0 GB Q4_K_M GGUF, Apache 2.0, downloadable
    from Hugging Face (`eulogik/Bharat-Tiny-LLM-v3`).
 
@@ -110,7 +110,7 @@ transliteration round-trip. Injection keeps the surface form native.
 
 **Novelty positioning.** We claim no new mechanism: insertion, mean-init,
 CPT, and LoRA all exist separately. Our contribution is the quantified
-minimal budget (300 tokens, 0.198% of vocab) delivering 36.8% script-
+minimal budget (300 tokens, 0.198% of vocab) delivering 36.9% script-
 specific compression, 26.6% better bits-per-character, and a 53-point jump
 on GSM8K-Hindi, plus an honest cross-tokenizer evaluation protocol and a
 fully open artifact.
@@ -156,7 +156,7 @@ constituent byte-token embeddings. Final vocabulary: 151,669 to 151,969
 
 Backbone frozen; only the 300 new rows (614K params) train on 20K chunks
 of the corpus for 3,000 steps (SGD with momentum, learning rate 1e-3,
-cosine decay, Kaggle T4). The poison gate monitors validation loss on
+Kaggle T4). The poison gate monitors validation loss on
 chunks containing injected tokens and stops if loss diverges.
 
 ### 3.6 Phase 2: Capability SFT
@@ -164,23 +164,24 @@ chunks containing injected tokens and stops if loss diverges.
 LoRA fine-tuning on a curated Hindi reasoning corpus: 35,000 rows
 containing GSM8K-Hindi (grade-school math), IndicVault (factual QA),
 and sample conversations. LoRA rank 32, alpha 64, applied to all
-attention layers. Distributed across 2x Kaggle T4 GPUs via DDP, batch
-size 8 per GPU, max sequence length 512, cosine schedule, ~6 GPU-hours
-total.
+attention and MLP layers. Distributed across 2x Kaggle T4 GPUs via
+torchrun (DDP), batch size 4 per GPU (16 effective with gradient
+accumulation), max sequence length 1024, cosine schedule.
 
 ### 3.7 Merge and export
 
-LoRA weights merged into base; full model exported to GGUF via
-llama.cpp convert_hf_to_gguf.py (F16 outtype), then quantized to
-Q4_K_M via llama_cpp.llama_model_quantize(). Final artifact: 1.0 GB
-single-file GGUF.
+LoRA weights merged into base; full model exported to F16 GGUF, then
+quantized to Q4_K_M. Final artifact: 1.0 GB single-file GGUF.
 
 ---
 
 ## 4. Results
 
-All measurements use held-out lines 300K-305K (5,000 conversations,
-243,887 Devanagari runs). Scripts: scripts/bench_fertility.py,
+All measurements use text held out from token selection. Fertility
+(Table 1) is measured on 18,641 validation conversations
+(data/processed/valid_gold.jsonl; JSON: docs/bench_fertility_v3.json);
+v2 reference figures come from docs/bench_fertility.json (lines
+300K-305K, 5,000 conversations). Scripts: scripts/bench_fertility.py,
 scripts/bench_ppl.py, scripts/bench_gsm_hi.py. Raw JSON outputs:
 docs/bench_fertility.json, docs/bench_ppl_v3.json,
 docs/bench_gsm_hi_v3.json.
@@ -192,14 +193,14 @@ Table 1: Token compression under Qwen3-1.7B-Base tokenizer.
     +---------------------------------------+--------+----------+--------+
     | Metric                                |  Base  | +300 tok | Savings|
     +---------------------------------------+--------+----------+--------+
-    | Tokens/1000 chars (Devanagari runs)   | 1041.9 |   658.9  | 36.8%  |
-    | Chars/token (Devanagari runs)         |  0.960 |   1.518  |+58.1%  |
-    | Tokens/1000 chars (full mixed convos) |  593.7 |   486.6  | 18.0%  |
+    | Tokens/1000 chars (Devanagari runs)   | 1042.9 |   658.3  | 36.9%  |
+    | Chars/token (Devanagari runs)         |  0.959 |   1.519  |+58.4%  |
+    | Tokens/1000 chars (full mixed convos) |  586.5 |   482.6  | 17.7%  |
     +---------------------------------------+--------+----------+--------+
 
-Held-out: 5,000 conversations, 983K Devanagari chars (243,887 runs),
-2.75M total chars. End-to-end savings (18.0%) are lower than script-only
-savings (36.8%) because Latin/Hinglish spans gain nothing. Products
+Held-out: 18,641 conversations, 3.36M Devanagari chars (840,493 runs),
+9.68M total chars. End-to-end savings (17.7%) are lower than script-only
+savings (36.9%) because Latin/Hinglish spans gain nothing. Products
 serving mostly Hinglish will see proportionally smaller wins.
 
 Example phrases (measured):
@@ -263,7 +264,7 @@ targets Hindi text quality, whereas v2 trained only on conversation data.
 
 4-shot chain-of-thought, greedy decoding, exact match on final number.
 Dataset: bingbangboom/gsm8k-hindi test_main. Gold parsing accepts both
-####N and ###N separators (28% of rows use ###).
+####N and ###N separators (24% of rows use ###).
 
 Table 3: GSM8K-Hindi accuracy (4-shot CoT, greedy).
 
@@ -306,13 +307,34 @@ Table 4: Math vs. chat trade-off.
     +------------------+----------+----------+
     | v3 (math SFT)    |   56.0%  |  basic   |
     | v3.3 (chat SFT)  |   24.0%  |  strong  |
+    | v3.4 (mixed SFT) |  ~13%*   |  weak    |
+    | v3.5 (math x2,   |    ---+  | regress. |
+    |   r=32)          |          |          |
     +------------------+----------+----------+
+
+* v3.4 GSM is partial (MPS timeouts); trend vs. v3.3's full-run 24% is
+unambiguous. + v3.5 GSM not benched (MPS too slow for n=100); math
+failure established by direct probes. Full curves and bench outputs:
+v35_final_decision.json.
 
 v3.3 (100-question eval, full run) scores 24% on GSM8K-Hindi, down from
 v3's 56%. The 32-point drop confirms that conversational fine-tuning
 overwrites the math format-following behavior learned during capability
 SFT. This is a known problem in multi-task SFT: small models struggle to
 retain multiple capability modes simultaneously.
+
+Two follow-up experiments trace the frontier further. v3.4 (mixed
+math+chat SFT, 43,887 rows at ~17% math, LoRA r=16, 1 epoch) scores
+only ~13% on GSM8K-Hindi (partial runs, n=20/40; JSON:
+v34_bench_report.json) with weak chat (assistant echoes the User: role
+on raw prompts). v3.5 (same data with math upsampled x2 to ~23%, LoRA
+r=32) regresses outright: merged checkpoint-3000 answers 17x23 as 169
+and 25x48 as 2100, emits Thai/Arabic script junk at response starts
+under the same sampling config that passed clean for v3.4, and produces
+incoherent Hindi identity answers. The run was killed by the session
+limit at step ~3070/3082 (99.6%; exit 137); the missing steps cannot
+explain the regression. More rank plus more math on a stacked LoRA base
+made chat strictly worse without fixing math.
 
 The practical implication: v3 (math SFT) is the better general-purpose
 model. v3.3 is useful only when conversational fluency matters more than
@@ -341,8 +363,8 @@ Table 5: v2 vs v3 comparison.
     | Base model             | Qwen2.5-1.5B     | Qwen3-1.7B       |
     | Base vocab size        | 151,665          | 151,669          |
     | Tokens injected        | 300              | 300              |
-    | Injection savings (%)  | 36.5 (Dev)       | 36.8 (Dev)       |
-    |                        | 18.0 (mixed)     | 18.0 (mixed)     |
+    | Injection savings (%)  | 36.5 (Dev)       | 36.9 (Dev)       |
+    |                        | 18.0 (mixed)     | 17.7 (mixed)     |
     | Bits/char reduction    | -10.0%           | -26.6%           |
     | GSM8K-Hindi            | 0.0%             | 56.0%            |
     | Training data          | conversations    | math + QA + conv |
@@ -351,7 +373,7 @@ Table 5: v2 vs v3 comparison.
     +------------------------+------------------+------------------+
 
 The compression numbers are nearly identical between v2 and v3 (36.5% vs
-36.8% Devanagari, 18.0% for both mixed). This is expected: the injection
+36.9% Devanagari, 18.0% vs 17.7% mixed). This is expected: the injection
 recipe is the same, and the base Devanagari fertility is similar across
 Qwen2.5-1.5B and Qwen3-1.7B. The bits-per-character improvement (26.6%
 vs 10.0%) tells the real story: v3 is a much better Hindi language model
@@ -372,17 +394,24 @@ after training, even though the tokenizer gains are comparable.
    this number. We report it as "56%" with this caveat, not "56.2%" or
    "56%+".
 
-3. **Mixed-text compression gains are modest (18.0%).** Products serving
+3. **Mixed-text compression gains are modest (17.7%).** Products serving
    mostly Hinglish will see less speedup than Devanagari-heavy ones.
    Larger budgets recover this but cost warmup time.
 
 4. **Mean-init is likely suboptimal.** OMP transplant or hypernetwork
    init (ZETT/HYPEROFA) may improve quality-per-token; untested here.
 
-5. **Math-chat trade-off is real.** Conversational fine-tuning on top of
-   the math-SFT model drops GSM8K-Hindi from 56% to 24% (v3.3, N=100).
-   Retaining both capabilities simultaneously may require DPO or
-   multi-task data mixing, not just more SFT data.
+5. **Math-chat trade-off is real, and mixed SFT does not fix it.**
+   Conversational fine-tuning on top of the math-SFT model drops
+   GSM8K-Hindi from 56% to 24% (v3.3, N=100). Mixed math+chat SFT
+   degrades both sides: v3.4 (~17% math) falls to ~13% GSM with weak
+   chat, and v3.5 (~23% math after x2 upsampling, LoRA r=32) regresses
+   outright, wrong arithmetic, incoherent Hindi identity answers, and
+   resurfacing Thai/Arabic script junk under sampling controls that
+   passed clean for v3.4. Stacking LoRA on LoRA-merged weights compounds
+   format drift; more rank is not a substitute for clean data. Retaining
+   both capabilities simultaneously likely requires DPO, a larger base,
+   or continued pretraining, not more SFT mixing.
 
 6. **Machine-translated eval data.** GSM8K-Hindi inherits translation
    artifacts from the original English GSM8K. Real Hindi math reasoning
@@ -396,7 +425,7 @@ after training, even though the tokenizer gains are comparable.
 ## 7. Conclusion
 
 A 300-token injection (0.198% of the vocabulary, 614K trained params in
-warmup, ~6 GPU-hours of SFT on consumer hardware) buys 36.8% script-
+warmup, SFT on Kaggle 2xT4) buys 36.9% script-
 specific compression, 26.6% better bits-per-character on held-out Hindi,
 and a 53-point accuracy jump on GSM8K-Hindi. The final artifact is a
 1.0 GB GGUF file that runs offline on phones, laptops, and browsers.

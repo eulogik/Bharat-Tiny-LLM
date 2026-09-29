@@ -1,0 +1,71 @@
+{
+  "base_tok": "Qwen/Qwen3-1.7B-Base",
+  "v3_tok": "eulogik/Bharat-Tiny-LLM-v3 (local merged)",
+  "base_vocab": 151669,
+  "v3_vocab": 151969,
+  "vocab_note": "transformers counting convention (incl. chat specials); raw tokenizer.json vocab entries: base 151643 + 26 added, v3 151643 + 326 added (300 injected + 26 chat). tokenizers-lib totals: base 151665, v3 151969; encode behavior identical.",
+  "n_convs": 18641,
+  "corpus": "data/processed/valid_gold.jsonl (all lines; held out from token selection)",
+  "devanagari": {
+    "base": {
+      "chars": 3363545,
+      "tokens": 3507756,
+      "tokens_per_1000_chars": 1042.9,
+      "chars_per_token": 0.959
+    },
+    "v3": {
+      "chars": 3363545,
+      "tokens": 2214338,
+      "tokens_per_1000_chars": 658.3,
+      "chars_per_token": 1.519
+    },
+    "savings_pct": 36.87
+  },
+  "full_text": {
+    "base": {
+      "chars": 9682635,
+      "tokens": 5679262,
+      "tokens_per_1000_chars": 586.5,
+      "chars_per_token": 1.705
+    },
+    "v3": {
+      "chars": 9682635,
+      "tokens": 4672634,
+      "tokens_per_1000_chars": 482.6,
+      "chars_per_token": 2.072
+    },
+    "savings_pct": 17.72
+  },
+  "phrases": [
+    {
+      "text": "नमस्ते, आप कैसे हैं?",
+      "base_tokens": 20,
+      "v3_tokens": 13,
+      "savings_pct": 35.0
+    },
+    {
+      "text": "ज़रूरी बात है क्या करते हो",
+      "base_tokens": 25,
+      "v3_tokens": 11,
+      "savings_pct": 56.0
+    },
+    {
+      "text": "हम आपको बताना चाहते हैं",
+      "base_tokens": 23,
+      "v3_tokens": 16,
+      "savings_pct": 30.4
+    },
+    {
+      "text": "कितने बजे मिलना है?",
+      "base_tokens": 18,
+      "v3_tokens": 13,
+      "savings_pct": 27.8
+    },
+    {
+      "text": "चाय पी लो, फिर बात करते हैं",
+      "base_tokens": 25,
+      "v3_tokens": 19,
+      "savings_pct": 24.0
+    }
+  ]
+}
