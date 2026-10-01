@@ -116,7 +116,7 @@
 <script>
 const API_URL = "https://router.huggingface.co/v1/chat/completions";
 const MODEL = "eulogik/Bharat-Tiny-LLM-v3:featherless-ai";
-const SYS = "You are Bharat-Tiny-LLM, a helpful bilingual assistant for Hindi and Hinglish. Answer in the same language the user writes. Be concise: at most 4 short sentences. Never repeat any sentence. Use only Devanagari, Latin, and numerals.";
+const SYS = "You are Bharat-Tiny-LLM, a helpful bilingual assistant for Hindi and Hinglish. Answer in the same language the user writes. Be concise.";
 
 const chatEl = document.getElementById("chat");
 const inputEl = document.getElementById("input");
@@ -149,6 +149,7 @@ function addMsg(text, cls) {
 // sentence anywhere (not just trailing loops).
 function clean(text) {
   if (!text) return "";
+  const rawLen = text.length;
   let junkFound = false;
   const s = text.match(/[A-Za-z0-9\u0900-\u097F]/);
   if (s && s.index > 0 && /[^\s]/.test(text.slice(0, s.index))) { text = text.slice(s.index); junkFound = true; }
@@ -164,8 +165,9 @@ function clean(text) {
   const out = cutRepeats(kept.join("\n")).trim();
   // Junk was present but almost nothing salvageable: say so instead of
   // showing a misleading fragment (a wrong tax rate shown cleanly is
-  // worse than a visible failure).
-  if (junkFound && out.length < 25 && !/\d/.test(out)) {
+  // worse than a visible failure). Short real answers ("नई दिल्ली",
+  // "8") survive: threshold is tiny and digit-bearing outs are exempt.
+  if (junkFound && out.replace(/\s/g, "").length < 8 && !/\d/.test(out) && rawLen > 120) {
     return "(garbled reply — try a shorter question)";
   }
   return out;
@@ -182,8 +184,10 @@ function cleanLine(line) {
   // ALL-CAPS Latin runs (ACCESSIBILITY junk); threshold 6 spares GST/AI/USA
   const caps = line.match(/[A-Z]{6,}/);
   if (caps && caps.index < cut) { cut = caps.index; junk = true; }
-  // placeholder/model junk: <id..>, <PHONE>, <<..>>, <DIGITS>
-  const ph = line.match(/<[A-Za-z_\/]/);
+  // placeholder/model junk: <id..>, <PHONE>, <(id..)> cut at once;
+  // <<..>> cuts only when letters follow (placeholders), so pure-math
+  // calculator annotations (<<24/3 = 8>>) survive for math answers.
+  const ph = line.match(/<[(A-Za-z_\/]/) || line.match(/<<(?=[^>]{0,40}[A-Za-z])/);
   if (ph && ph.index < cut) { cut = ph.index; junk = true; }
   // stray " ." left by a cut (e.g. "18% .ACCESSIBILITY" -> "18% .")
   return [line.slice(0, cut).trim().replace(/ \.+$/, ""), junk];
@@ -304,7 +308,6 @@ async function send() {
         max_tokens: parseInt(document.getElementById("maxtok").value, 10),
         temperature: parseFloat(document.getElementById("temp").value),
         top_p: 0.85,
-        repetition_penalty: 1.25,
         stop: ["<|file_sep|>", "<|im_end|>", "<|im_start|>"],
       }),
     });
