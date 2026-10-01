@@ -173,6 +173,20 @@ attention and MLP layers. Distributed across 2x Kaggle T4 GPUs via
 torchrun (DDP), batch size 4 per GPU (16 effective with gradient
 accumulation), max sequence length 1024, cosine schedule.
 
+| | v3 SFT | v3.3 SFT |
+|---|---|---|
+| Base | Qwen3 + 300 inj. | merged v3 |
+| LoRA | r32 / a64 | r8 / a16 |
+| Dropout | 0.05 (both) | 0.05 (both) |
+| Targets | q,k,v,o + gate,up,down (both) | q,k,v,o + gate,up,down (both) |
+| Data | 35,209 rows | 370 rows |
+| Epochs (steps) | 2 (~4.4K) | 2 (46) |
+| LR | 1e-4 | 5e-6 |
+| Batch | 4/GPU, accum 2 (eff 16) | 4/GPU, accum 4 (eff 16) |
+| Seq len | 1024 | 512 |
+| Optim / sched | adamw_fused / cosine | adamw / cosine |
+| Hardware | 2xT4 torchrun DDP | single T4 |
+
 ### 3.7 Merge and export
 
 LoRA weights merged into base; full model exported to F16 GGUF, then
@@ -458,6 +472,35 @@ this is a practical playbook, not a research prototype.
 
 All weights, benchmark scripts, and raw JSON outputs are released under
 Apache 2.0.
+
+---
+
+## Appendix
+
+### A. Follow-up training curves
+
+v3.4 (mixed math+chat, 43,887 rows at ~17% math, LoRA r=16, 1 epoch,
+lr 2e-5, seq 1024, 2xT4 DataParallel) trained 611 min to final loss
+1.2337 (JSON: v34_bench_report.json). v3.5 (same data with math
+upsampled x2, LoRA r=32) was killed by the session limit at step
+~3070/3082; train loss sat at ~0.9-1.0 with eval loss falling
+1.327 to 1.217 across six evaluations (JSON: v35_final_decision.json).
+
+### B. Qualitative samples
+
+Live endpoint outputs (Featherless AI, temp 0.3, 2026-10-01), shown as
+displayed after the demo scrubber: "भारत की राजधानी क्या है?" got
+"भारत की राजधानी नई दिल्ली ।"; "17 * 23 kitna hota hai?" got
+"17 * 23 = 391" plus "उत्तर: 391".
+
+### C. Reproduction checklist
+
+Fertility: scripts/bench_fertility.py. Likelihood: scripts/bench_ppl.py.
+GSM8K-Hindi: scripts/bench_gsm_hi.py (MLX) and
+scripts/bench_gsm_hi_v34.py (torch); pinned JSONs
+bench_gsm_hi_v3_torch/llama and bench_gsm_hi_v33_llama. Training data:
+eulogik/bharat-v3-mixed-sft-v34 (43,887 rows) and
+eulogik/bharat-v3-chat-sft-v3 (370 rows) on the Hub.
 
 ---
 
