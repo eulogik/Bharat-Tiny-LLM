@@ -75,11 +75,12 @@
     <div class="row">
       <input id="input" placeholder="अपना सवाल लिखें / Type here (Hindi, Hinglish, English)..." />
       <button id="send">Send</button>
+      <button id="newchat" title="Clear this conversation">New chat</button>
     </div>
     <div class="examples" id="examples"></div>
     <div class="sliders">
       <label>Temp <input id="temp" type="range" min="0.1" max="1" step="0.1" value="0.3"><span id="tempV">0.3</span></label>
-      <label>Max tokens <input id="maxtok" type="range" min="32" max="512" step="32" value="200"><span id="maxtokV">200</span></label>
+      <label>Max tokens <input id="maxtok" type="range" min="32" max="512" step="32" value="160"><span id="maxtokV">160</span></label>
     </div>
   </div>
 
@@ -109,7 +110,7 @@
     <p><b>Which languages?</b> Hindi (Devanagari), Hinglish (Romanized Hindi+English), and English.</p>
     <p><b>Why do I need a token?</b> The inference provider requires authentication. A free read-only token takes 30 seconds at <a href="https://huggingface.co/settings/tokens">huggingface.co/settings/tokens</a>.</p>
     <p><b>What can it do well?</b> Short Hindi math (e.g. 17×23=391), factual Q&A, and grade-school math word problems. Conversational quality is limited in v3 — see v3.3 GGUF for better chat.</p>
-    <p><b>Why is the output sometimes garbled?</b> v3 was trained primarily on math + QA data, not conversations, and the base model leaks non-Hindi scripts. This page sends repetition penalty 1.25 and scrubs junk scripts, repeated sentences, and placeholder tokens — but long chats can still drift. Short questions work best.</p>
+    <p><b>Why is the output sometimes garbled?</b> v3 was trained primarily on math + QA data, not conversations, and the base model leaks non-Hindi scripts. This page scrubs junk scripts, repeated sentences, and placeholder tokens, and keeps only the last exchange for context — but long chats can still drift. Short questions work best. Tip: if replies degrade as the chat grows, press New chat — this small model does best with one question at a time.</p>
   </div>
 </div>
 
@@ -147,26 +148,41 @@ function addMsg(text, cls) {
 // Mirror of the server-side scrubber: strip leading template-leak junk,
 // cut each line at the first junk signal, stop at the first repeated
 // sentence anywhere (not just trailing loops).
-function clean(text) {
+function clean(text, userText) {
   if (!text) return "";
   const rawLen = text.length;
   let junkFound = false;
+  // skip a junk preamble, then drop a first token fused with junk
+  // ("zwłaszcuser") or a bare "user" role echo at the reply start
   const s = text.match(/[A-Za-z0-9\u0900-\u097F]/);
-  if (s && s.index > 0 && /[^\s]/.test(text.slice(0, s.index))) { text = text.slice(s.index); junkFound = true; }
-  else if (s) { text = text.slice(s.index); }
+  if (s) text = text.slice(s.index);
+  const first = text.match(/^\s*(\S+)/);
+  if (first && CUT_RE.test(first[1])) {
+    text = text.slice(first[0].length); junkFound = true;
+  }
+  text = text.replace(/^\s*users?\b:?(?=\s|$)/i, "");
   const lines = [];
   for (const rawLine of text.split("\n")) {
     const [l, jl] = cleanLine(rawLine);
     if (jl) junkFound = true;
+    // single-token camelCase lines ("useRal") are fused junk fragments
+    if (/^\S+$/.test(l) && /[a-z]/.test(l) && /[A-Z]/.test(l)) { junkFound = true; continue; }
     if (l.length > 0) lines.push(l);
   }
   const ui = lines.findIndex((l) => l.includes("उत्तर:"));
   const kept = ui >= 0 ? lines.slice(0, ui + 1) : lines;
   const out = cutRepeats(kept.join("\n")).trim();
+  if (out && userText && userText.length >= 12) {
+    const nU = userText.toLowerCase().replace(/\s+/g, " ").trim();
+    const nO = out.toLowerCase().replace(/\s+/g, " ").trim();
+    if ((nO.includes(nU) && nO.length < nU.length * 2) ||
+        (nU.includes(nO) && nO.length >= 12)) {
+      return "(no good answer — try rephrasing)";
+    }
+  }
   // Junk was present but almost nothing salvageable: say so instead of
-  // showing a misleading fragment (a wrong tax rate shown cleanly is
-  // worse than a visible failure). Short real answers ("नई दिल्ली",
-  // "8") survive: threshold is tiny and digit-bearing outs are exempt.
+  // showing a misleading fragment. Short real answers ("नई दिल्ली",
+  // "8") survive: threshold is tiny, digit-bearing outs are exempt.
   if (junkFound && out.replace(/\s/g, "").length < 8 && !/\d/.test(out) && rawLen > 120) {
     return "(garbled reply — try a shorter question)";
   }
@@ -179,8 +195,9 @@ function cleanLine(line) {
   const role = line.match(/(?:^|\s)User\s*:/);
   let cut = role ? role.index : line.length;
   let junk = false;
-  const m = line.match(CUT_RE);
-  if (m && m.index < cut) { cut = m.index; junk = true; }
+  // delete foreign-script runs but keep surrounding good text, so an
+  // answer embedded in junk ("ভারত ... नई दिल्ली ।") still survives
+  if (CUT_RE.test(line)) { line = line.replace(CUT_RE_G, " "); junk = true; }
   // ALL-CAPS Latin runs (ACCESSIBILITY junk); threshold 6 spares GST/AI/USA
   const caps = line.match(/[A-Z]{6,}/);
   if (caps && caps.index < cut) { cut = caps.index; junk = true; }
@@ -242,18 +259,23 @@ function cutRepeats(text) {
   return t;
 }
 
-// Junk-script runs: Arabic, Arabic Supplement/Presentation Forms, Thai, Lao,
-// CJK (unified, ext-A, compat), Hiragana/Katakana, Hangul, Greek, Cyrillic,
-// plus combining diacritical marks that attach to Latin (e.g. Vietnamese ủ).
-// Threshold = 2 consecutive chars to catch short inserts like "将要".
+// Junk-script runs: Arabic (+Supplement/Presentation Forms), Bengali LSB
+// through Malayalam (all Indic scripts except Devanagari), Tibetan,
+// Myanmar, Thai, Lao, CJK (unified, ext-A, compat), Hiragana/Katakana,
+// Hangul, Greek, Cyrillic, Latin Extended A/B + Extended Additional
+// (Polish l, Vietnamese o), plus combining marks. Single chars count:
+// in Hindi/Hinglish/English chat these scripts never occur legitimately.
 const CUT_RE = new RegExp(
   "[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF" +
+  "\u0980-\u0D7F\u0F00-\u109F" +
   "\u0E00-\u0E7F\u0E80-\u0EFF" +
   "\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF" +
   "\u3040-\u30FF\uAC00-\uD7AF" +
   "\u0370-\u03FF\u0400-\u04FF" +
-  "\u0300-\u036F]{2,}"
+  "\u0100-\u024F\u1E00-\u1EFF" +
+  "\u0300-\u036F]+"
 );
+const CUT_RE_G = new RegExp(CUT_RE.source, "g");
 const LOOP_RE = /(.{10,80}?)\1+\s*$/s;
 
 function getToken() { return (tokenEl.value || localStorage.getItem("bharat_hf_token") || "").trim(); }
@@ -292,7 +314,9 @@ async function send() {
   statusEl.textContent = "Thinking… (first request can take ~1 min while the model loads)";
 
   const messages = [{ role: "system", content: SYS }];
-  for (const [u, b] of history.slice(-3)) {
+  // at most one prior pair: this model degrades fast on long histories,
+  // and stored garbage poisons every later reply
+  for (const [u, b] of history.slice(-1)) {
     messages.push({ role: "user", content: u });
     if (b) messages.push({ role: "assistant", content: b });
   }
@@ -317,9 +341,11 @@ async function send() {
     }
     const data = await res.json();
     const raw = (data.choices && data.choices[0] && data.choices[0].message.content) || "";
-    const reply = clean(raw) || "(empty reply — try again)";
+    const reply = clean(raw, text) || "(empty reply — try again)";
     botEl.textContent = reply;
-    history.push([text, reply]);
+    // quality gate: never feed failure markers back as history
+    if (!reply.startsWith("(")) history.push([text, reply]);
+    while (history.length > 1) history.shift();
     statusEl.textContent = "Ready!";
   } catch (e) {
     botEl.textContent = "Error: " + e.message;
@@ -328,6 +354,11 @@ async function send() {
 }
 
 sendEl.onclick = send;
+document.getElementById("newchat").onclick = () => {
+  chatEl.innerHTML = "";
+  history.length = 0;
+  statusEl.textContent = "Fresh chat started.";
+};
 inputEl.addEventListener("keydown", e => { if (e.key === "Enter") send(); });
 
 // Restore saved token on load.
