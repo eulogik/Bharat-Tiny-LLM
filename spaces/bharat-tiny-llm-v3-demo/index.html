@@ -88,8 +88,8 @@
     <table>
       <tr><th>Feature</th><th>Benefit</th></tr>
       <tr><td>1.7B params</td><td>Runs on phones, laptops, edge devices</td></tr>
-      <tr><td>Devanagari token injection (300 tokens)</td><td>36.8% better Hindi token compression</td></tr>
-      <tr><td>SFT on Hindi math + QA</td><td>56% on GSM8K-Hindi (vs 0% in v2)</td></tr>
+      <tr><td>Devanagari token injection (300 tokens)</td><td>36.9% better Hindi token compression</td></tr>
+      <tr><td>SFT on Hindi math + QA</td><td>Short math answers; full GSM8K-Hindi evals are stack-sensitive (2–35%), see paper</td></tr>
       <tr><td>26.6% fewer bits/char</td><td>Stronger Hindi language modeling than base Qwen3-1.7B</td></tr>
     </table>
     <p style="font-size:.85rem;color:#8b949e;margin-top:10px"><b>Note:</b> v3 is optimized for Hindi math reasoning. Conversational quality is limited — the model may produce garbled text after correct answers. For chat use, see the v3.3 GGUF below.</p>
@@ -99,7 +99,7 @@
     <h3>Run it yourself</h3>
     <p><b>API:</b> <code>model="eulogik/Bharat-Tiny-LLM-v3:featherless-ai"</code> via <code>router.huggingface.co/v1</code> (OpenAI-compatible, see model page for snippets).</p>
     <p><b>llama.cpp (math):</b> <code>llama-cli -m bharat-tiny-llm-v3-q4_k_m.gguf -p "नमस्ते"</code></p>
-    <p><b>llama.cpp (chat):</b> <code>llama-cli -m brahmi-v3.3-q4_k_m.gguf -p "नमस्ते"</code> — v3.3 has better conversational ability (24% GSM8K-Hindi vs 56%, but functional chat).</p>
+    <p><b>llama.cpp (chat):</b> <code>llama-cli -m brahmi-v3.3-q4_k_m.gguf -p "नमस्ते"</code> — v3.3 is the chat-tuned variant (GSM 35% on llama/Q4, pinned protocol).</p>
     <p><b>Offline GGUFs:</b> in the <a href="https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3">model repo</a> (<code>*-q4_k_m.gguf</code>, <code>*-f16.gguf</code>).</p>
   </div>
 
@@ -108,15 +108,15 @@
     <p><b>Is my data private?</b> Chats are sent to the Featherless AI inference endpoint to generate replies — like any hosted demo. For fully offline use, download the GGUF and run it with llama.cpp.</p>
     <p><b>Which languages?</b> Hindi (Devanagari), Hinglish (Romanized Hindi+English), and English.</p>
     <p><b>Why do I need a token?</b> The inference provider requires authentication. A free read-only token takes 30 seconds at <a href="https://huggingface.co/settings/tokens">huggingface.co/settings/tokens</a>.</p>
-    <p><b>What can it do well?</b> Hindi math reasoning (56% on GSM8K-Hindi), factual Q&A, and grade-school math word problems. Conversational quality is limited in v3 — see v3.3 GGUF for better chat.</p>
-    <p><b>Why is the output sometimes garbled?</b> v3 was trained primarily on math + QA data, not conversations. The model produces correct answers but may add junk text afterward. This is a known limitation being addressed in the next training run.</p>
+    <p><b>What can it do well?</b> Short Hindi math (e.g. 17×23=391), factual Q&A, and grade-school math word problems. Conversational quality is limited in v3 — see v3.3 GGUF for better chat.</p>
+    <p><b>Why is the output sometimes garbled?</b> v3 was trained primarily on math + QA data, not conversations, and the base model leaks non-Hindi scripts. This page sends repetition penalty 1.25 and scrubs junk scripts, repeated sentences, and placeholder tokens — but long chats can still drift. Short questions work best.</p>
   </div>
 </div>
 
 <script>
 const API_URL = "https://router.huggingface.co/v1/chat/completions";
 const MODEL = "eulogik/Bharat-Tiny-LLM-v3:featherless-ai";
-const SYS = "You are Bharat-Tiny-LLM, a helpful bilingual assistant for Hindi and Hinglish. Answer in the same language the user writes. Be concise.";
+const SYS = "You are Bharat-Tiny-LLM, a helpful bilingual assistant for Hindi and Hinglish. Answer in the same language the user writes. Be concise: at most 4 short sentences. Never repeat any sentence. Use only Devanagari, Latin, and numerals.";
 
 const chatEl = document.getElementById("chat");
 const inputEl = document.getElementById("input");
@@ -144,23 +144,98 @@ function addMsg(text, cls) {
   return d;
 }
 
-// Mirror of the server-side scrubber: strip leading template-leak junk
-// (non-Devanagari/non-Latin preamble) and collapse trailing repeat loops.
+// Mirror of the server-side scrubber: strip leading template-leak junk,
+// cut each line at the first junk signal, stop at the first repeated
+// sentence anywhere (not just trailing loops).
 function clean(text) {
+  if (!text) return "";
+  let junkFound = false;
   const s = text.match(/[A-Za-z0-9\u0900-\u097F]/);
-  if (s) text = text.slice(s.index);
-  let lines = text.split("\n").map(cleanLine).filter((l) => l.length > 0);
+  if (s && s.index > 0 && /[^\s]/.test(text.slice(0, s.index))) { text = text.slice(s.index); junkFound = true; }
+  else if (s) { text = text.slice(s.index); }
+  const lines = [];
+  for (const rawLine of text.split("\n")) {
+    const [l, jl] = cleanLine(rawLine);
+    if (jl) junkFound = true;
+    if (l.length > 0) lines.push(l);
+  }
   const ui = lines.findIndex((l) => l.includes("उत्तर:"));
-  if (ui >= 0) lines = lines.slice(0, ui + 1);
-  text = lines.join("\n");
-  const loop = text.match(LOOP_RE);
-  if (loop) text = text.slice(0, loop.index) + loop[1];
-  return text.trim();
+  const kept = ui >= 0 ? lines.slice(0, ui + 1) : lines;
+  const out = cutRepeats(kept.join("\n")).trim();
+  // Junk was present but almost nothing salvageable: say so instead of
+  // showing a misleading fragment (a wrong tax rate shown cleanly is
+  // worse than a visible failure).
+  if (junkFound && out.length < 25 && !/\d/.test(out)) {
+    return "(garbled reply — try a shorter question)";
+  }
+  return out;
 }
 
 function cleanLine(line) {
+  // returns [cleaned, foundJunk]; role-echo handling never counts as junk
+  line = line.replace(/^\s*Assistant\s*:\s*/, "");
+  const role = line.match(/(?:^|\s)User\s*:/);
+  let cut = role ? role.index : line.length;
+  let junk = false;
   const m = line.match(CUT_RE);
-  return (m ? line.slice(0, m.index) : line).trim();
+  if (m && m.index < cut) { cut = m.index; junk = true; }
+  // ALL-CAPS Latin runs (ACCESSIBILITY junk); threshold 6 spares GST/AI/USA
+  const caps = line.match(/[A-Z]{6,}/);
+  if (caps && caps.index < cut) { cut = caps.index; junk = true; }
+  // placeholder/model junk: <id..>, <PHONE>, <<..>>, <DIGITS>
+  const ph = line.match(/<[A-Za-z_\/]/);
+  if (ph && ph.index < cut) { cut = ph.index; junk = true; }
+  // stray " ." left by a cut (e.g. "18% .ACCESSIBILITY" -> "18% .")
+  return [line.slice(0, cut).trim().replace(/ \.+$/, ""), junk];
+}
+
+function sentences(line) {
+  // split keeping delimiters; no lookbehind for old browsers.
+  // "." splits only when NOT between digits (keeps 18.5 intact);
+  // 2+ spaces split (loop separator: "आप ज   आप ज").
+  const bits = line.split(/([।!?]+|\.(?!\d)|\s{2,})/);
+  const out = [];
+  for (let i = 0; i < bits.length; i += 2) {
+    const s = (bits[i] + (bits[i + 1] || "")).trim().replace(/\s{2,}/g, " ");
+    if (s) out.push(s);
+  }
+  return out;
+}
+
+function cutRepeats(text) {
+  // Break on the 2nd occurrence of a content fragment (>=8 chars, e.g.
+  // echoed replies) or the 2nd consecutive repeat of a short one (loops
+  // use multi-space separators; legit Hindi reduplication uses single
+  // spaces and never splits, so it survives). Loop copies already kept
+  // are dropped; a content fragment still gets one visible copy unless
+  // a previous output line already shows it.
+  const counts = new Map();
+  const out = [];
+  let lastKey = null, lastRun = 0, stopped = false;
+  for (const line of text.split("\n")) {
+    const kept = [];
+    for (const p of sentences(line)) {
+      if (p.length >= 4) {
+        const c = (counts.get(p) || 0) + 1;
+        counts.set(p, c);
+        if (p === lastKey) lastRun += 1; else { lastKey = p; lastRun = 1; }
+        if ((p.length >= 8 && c >= 2) || lastRun >= 2) {
+          while (kept.length && kept[kept.length - 1] === p) kept.pop();
+          if (p.length >= 8 && !out.some((l) => l.includes(p))) kept.push(p);
+          stopped = true;
+          break;
+        }
+      } else { lastKey = p; lastRun = 1; }
+      kept.push(p);
+    }
+    const joined = kept.join(" ").trim();
+    if (joined) out.push(joined);
+    if (stopped) break;
+  }
+  let t = out.join("\n");
+  const loop = t.match(LOOP_RE);
+  if (loop) t = t.slice(0, loop.index) + loop[1];
+  return t;
 }
 
 // Junk-script runs: Arabic, Arabic Supplement/Presentation Forms, Thai, Lao,
@@ -229,6 +304,7 @@ async function send() {
         max_tokens: parseInt(document.getElementById("maxtok").value, 10),
         temperature: parseFloat(document.getElementById("temp").value),
         top_p: 0.85,
+        repetition_penalty: 1.25,
         stop: ["<|file_sep|>", "<|im_end|>", "<|im_start|>"],
       }),
     });

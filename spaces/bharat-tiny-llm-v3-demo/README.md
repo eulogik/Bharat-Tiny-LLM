@@ -27,8 +27,8 @@ fully static — it calls the model through Hugging Face Inference Providers
 ([huggingface.co/settings/tokens](https://huggingface.co/settings/tokens));
 it stays in your browser's localStorage.
 
-- 🇮🇳 Devanagari token injection for 36.8% Hindi compression
-- 📊 56% on GSM8K-Hindi (grade-school math in Hindi)
+- 🇮🇳 Devanagari token injection for 36.9% Hindi compression
+- 📊 Short Hindi math answers (GSM8K-Hindi is stack-sensitive: 2–35% pinned; see paper)
 - ⚡ 26.6% fewer bits/char than base Qwen3-1.7B on held-out Hindi
 
 Model: [eulogik/Bharat-Tiny-LLM-v3](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3)
