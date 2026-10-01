@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Build v3.2: 3K curated rows."""
-import json, random
+import json, os, random
 from datasets import load_dataset, Dataset
 random.seed(42)
 
@@ -45,5 +45,5 @@ for q,a in ids*167:
 
 random.shuffle(rows); rows=rows[:3000]
 print(f"total {len(rows)}")
-Dataset.from_list(rows).push_to_hub("eulogik/bharat-v3-chat-sft-v2", token="***REMOVED_HF_TOKEN***")
+Dataset.from_list(rows).push_to_hub("eulogik/bharat-v3-chat-sft-v2", token=os.environ.get("HF_TOKEN", ""))
 print("pushed")

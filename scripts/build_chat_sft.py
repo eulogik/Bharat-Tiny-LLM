@@ -8,7 +8,7 @@ Sources:
 
 Output: HF dataset eulogik/bharat-v3-chat-sft (messages format)
 """
-import json, random, re, sys
+import json, os, random, re, sys
 from pathlib import Path
 from datasets import load_dataset, Dataset
 
@@ -181,5 +181,5 @@ ds = Dataset.from_list(all_rows)
 # push to hub
 repo = "eulogik/bharat-v3-chat-sft"
 print(f"\nPushing to {repo}...", flush=True)
-ds.push_to_hub(repo, token="***REMOVED_HF_TOKEN***")
+ds.push_to_hub(repo, token=os.environ.get("HF_TOKEN", ""))
 print(f"Done! {len(ds)} rows → huggingface.co/{repo}")

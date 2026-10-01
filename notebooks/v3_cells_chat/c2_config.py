@@ -17,8 +17,8 @@ if not HF_TOKEN:
     except Exception as e:
         print(f"kaggle_secrets failed: {e}")
 if not HF_TOKEN:
-    HF_TOKEN = "***REMOVED_HF_TOKEN***"
-    print("WARNING: using hardcoded HF_TOKEN")
+    HF_TOKEN = ""
+    print("WARNING: no HF_TOKEN set; Hub writes will fail")
 
 # Set as env var so huggingface_hub picks it up for ALL internal requests
 # (transformers 5.x calls model_info() without forwarding token=)
