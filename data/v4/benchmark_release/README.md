@@ -310,6 +310,8 @@ Benchmark prompts, cards, protocols and aggregated results are released under
 <div align="center">
 
 **Built by [eulogik](https://eulogik.com).**
+
+If you use this benchmark, cite it and like the dataset — it helps others find it.
 [GitHub](https://github.com/eulogik/Bharat-Tiny-LLM) ·
 [Model](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4) ·
 [Demo](https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo)

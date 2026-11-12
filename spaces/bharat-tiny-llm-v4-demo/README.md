@@ -70,3 +70,7 @@ naturalness, 1.00 safety**. Independent human and clinician review are pending.
 - Source: [github.com/eulogik/Bharat-Tiny-LLM](https://github.com/eulogik/Bharat-Tiny-LLM)
   · [gate report](https://github.com/eulogik/Bharat-Tiny-LLM/blob/main/eval/bharatbench_voice/runs/v4_gate_final.md)
 - Apache-2.0.
+
+---
+
+If this saves you time, a **Like** helps others find it. The full system, benchmark and code are in the [collection](https://huggingface.co/collections/eulogik/bharat-tiny-llm-v40-safety-first-offline-hinglish-6af5efaf56aa5eeab4ed0adf).

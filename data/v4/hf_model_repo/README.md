@@ -354,6 +354,8 @@ under the same license.
 
 **Built by [eulogik](https://eulogik.com).**
 
+If this is useful, star the repo and like the model — it helps others find a safer small assistant.
+
 [GitHub](https://github.com/eulogik/Bharat-Tiny-LLM) ·
 [Demo](https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo) ·
 [Dataset](https://huggingface.co/datasets/eulogik/BharatBench-Voice)
