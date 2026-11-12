@@ -70,3 +70,6 @@ data/staging
 
 # Kaggle build artifact (contains push-time injected HF token - NEVER commit)
 kaggle/brahmi_v3_kaggle.ipynb
+
+# Internal planning/GTM/private notes
+internal/

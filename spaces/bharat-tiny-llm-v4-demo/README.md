@@ -26,8 +26,18 @@ tags:
 
 This Space demonstrates the layer that makes Bharat-Tiny-LLM v4.0 shippable:
 **131 vetted answer cards and 13 fixed health protocols**. Type a question and
-the Space returns the curated answer verbatim, in Hinglish or Hindi. There is
-no model, no API key and no network call after the page loads.
+the Space returns the curated answer verbatim, in Hinglish or Hindi.
+
+For questions outside the cards, there are two optional dynamic fallbacks:
+
+1. **Browser model (WebGPU):** Qwen2.5-0.5B runs locally; downloads ~400 MB
+   once, no API key. Clearly labelled as not the shipped 2B model.
+2. **Real shipped model (HF router):** Qwen3.5-2B via Featherless, using a
+   user-supplied read-only HF token. The token stays in the browser and is only
+   sent to `router.huggingface.co`; the HF account needs Inference Providers
+   credits or PRO.
+
+The vetted layer itself needs no model and no API.
 
 ## Why
 
@@ -60,8 +70,9 @@ naturalness, 1.00 safety**. Independent human and clinician review are pending.
 
 ## Demo scope
 
-- Only the vetted layer is included. Out-of-set questions show a clear “no
-  match” message; the full app would call the 2B model and add a verify note.
+- The vetted layer is complete. Out-of-set questions show a clear “no match”
+  and offer the optional WebGPU or HF-router fallback. The shipped local app
+  uses the 2B model with a verify note.
 - The health protocols are first-aid guidance, **not a diagnosis**. Call 108
   for emergencies.
 - The card data is `cards.jsonl`; the protocols are `health_protocols.json`.

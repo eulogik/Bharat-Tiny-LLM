@@ -109,6 +109,19 @@
   .source{margin-top:12px;font-size:13px;color:var(--muted)}
   .source a{color:var(--red)}
   .empty{padding:18px;border-radius:14px;background:#f8f3e9;color:var(--muted);font-size:15px}
+  .longtail{margin-top:18px;padding:18px;border:1px solid var(--line);border-radius:16px;background:#fbf7ee}
+  .longtail h3{margin:0 0 6px;font-size:17px}
+  .longtail p{margin:0 0 12px;color:var(--muted);font-size:14px}
+  .longtail button{min-height:44px;padding:0 16px;border-radius:10px;font-size:14px}
+  .longtail button:disabled{opacity:.55;cursor:wait;transform:none}
+  .lt-status{margin-top:10px;font-size:13px;color:var(--muted)}
+  .lt-answer{margin-top:12px;font-size:16px;white-space:pre-wrap}
+  .lt-note{margin-top:10px;font-size:12px;color:var(--muted)}
+  .lt-hf{margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
+  .lt-hf summary{cursor:pointer;font-weight:700;font-size:14px}
+  .lt-hf p{font-size:13px;margin:8px 0}
+  .lt-hf input{width:100%;max-width:420px;border:1px solid var(--line);border-radius:10px;padding:10px 12px;font:inherit;background:#fff}
+  .lt-hf button{margin-top:8px;background:var(--green)}
   .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line)}
   .stat{background:var(--card);padding:14px 16px}
   .stat b{display:block;font-size:18px}
@@ -126,7 +139,7 @@
         <div class="mark">भ</div>
         <div>
           <h1>Bharat-Tiny-LLM <span style="color:var(--saffron)">v4.0</span></h1>
-          <p class="sub">The offline Hinglish assistant that refuses to invent medicine — or a scheme amount. This demo runs only the vetted layer: <b>131 answer cards + 13 health protocols</b>. No model. No API.</p>
+          <p class="sub">The offline Hinglish assistant that refuses to invent medicine — or a scheme amount. The vetted layer runs <b>131 answer cards + 13 health protocols</b> with no model. For the long tail, an optional 0.5B browser fallback runs locally via WebGPU.</p>
         </div>
       </div>
     </div>
@@ -148,6 +161,20 @@
         <div class="meta" id="meta"></div>
         <div class="answer" id="answer"></div>
         <div class="source" id="source"></div>
+        <div class="longtail" id="longtail" style="display:none">
+          <h3>This is the long tail.</h3>
+          <p>The vetted cards and health protocols do not cover this question. You can run a tiny fallback model <b>inside your browser</b> with WebGPU. It downloads about 400 MB once; it is not the shipped 2B model, so verify anything important.</p>
+          <button id="runFallback">Run browser fallback</button>
+          <div class="lt-status" id="fallbackStatus"></div>
+          <div class="lt-answer" id="fallbackAnswer"></div>
+          <div class="lt-note" id="fallbackNote"></div>
+          <details class="lt-hf">
+            <summary>Or call the real Qwen3.5-2B via Hugging Face (needs a read-only token)</summary>
+            <p>The shipped model is available through the HF router / Featherless. Paste a free read-only token; it stays in this browser and is only sent to <code>router.huggingface.co</code>. Your HF account needs Inference Providers credits or PRO.</p>
+            <input id="hfToken" type="password" placeholder="hf_... (create at huggingface.co/settings/tokens)">
+            <button id="runHF">Call Qwen3.5-2B</button>
+          </details>
+        </div>
       </div>
     </div>
     <div class="strip">
@@ -159,7 +186,7 @@
   </main>
 
   <footer>
-    <span>Demo of the vetted layer only. The full app uses a 2B model for the long tail. Not a medical device; 108 for emergencies.</span>
+    <span>Vetted layer: no model. Optional browser fallback: Qwen2.5-0.5B via WebGPU, not the shipped 2B system. Not a medical device; 108 for emergencies.</span>
     <span><a href="https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4">Model</a> · <a href="https://huggingface.co/datasets/eulogik/BharatBench-Voice">Benchmark</a> · <a href="https://github.com/eulogik/Bharat-Tiny-LLM">GitHub</a> · <a href="v3.html">v3 API demo</a></span>
   </footer>
 </div>
@@ -236,6 +263,103 @@ async function load(){
   });
   document.getElementById('go').disabled = false;
 }
+let FALLBACK_ENGINE = null, FALLBACK_LOADING = false;
+const FALLBACK_MODEL = 'Qwen2.5-0.5B-Instruct-q4f16_1-MLC';
+const FALLBACK_SYSTEM = `You are the browser fallback of Bharat-Tiny-LLM. Answer in the same language and script as the user (Hinglish, Hindi, English). Be concise, at most 120 words. Never diagnose, never name a medicine or dose, never improvise first aid; say see a doctor/ASHA/108. Never invent live prices, dates, scheme amounts or eligibility. If unsure, say so and name the official source.`;
+
+function resetLongtail(){
+  const box=document.getElementById('longtail');
+  box.style.display='none';
+  document.getElementById('fallbackStatus').textContent='';
+  document.getElementById('fallbackAnswer').textContent='';
+  document.getElementById('fallbackNote').textContent='';
+  const b=document.getElementById('runFallback');
+  b.disabled=false; b.textContent='Run browser fallback';
+}
+async function runFallback(text){
+  const status=document.getElementById('fallbackStatus');
+  const out=document.getElementById('fallbackAnswer');
+  const note=document.getElementById('fallbackNote');
+  const btn=document.getElementById('runFallback');
+  if (!text || FALLBACK_LOADING) return;
+  if (!('gpu' in navigator)){
+    status.textContent='WebGPU is not available in this browser. Use Chrome/Edge on desktop, or run the full app locally.';
+    return;
+  }
+  FALLBACK_LOADING=true; btn.disabled=true; btn.textContent='Loading…'; out.textContent=''; note.textContent='';
+  try{
+    const webllm=await import('https://esm.run/@mlc-ai/web-llm');
+    if (!FALLBACK_ENGINE){
+      status.textContent='Downloading the browser model (about 400 MB, once)…';
+      FALLBACK_ENGINE=await webllm.CreateMLCEngine(FALLBACK_MODEL,{
+        initProgressCallback:(r)=>{
+          if (r && typeof r.progress==='number') status.textContent=`Loading ${Math.round(r.progress*100)}% — ${r.text||''}`;
+          else if (r && r.text) status.textContent=r.text;
+        }
+      });
+    }
+    status.textContent='Model ready. Generating…';
+    const reply=await FALLBACK_ENGINE.chat.completions.create({
+      messages:[{role:'system',content:FALLBACK_SYSTEM},{role:'user',content:text}],
+      temperature:0.2, max_tokens:220
+    });
+    const answer=(reply.choices?.[0]?.message?.content||'').trim();
+    out.textContent=answer || 'The browser model returned an empty answer.';
+    note.textContent='Browser fallback: Qwen2.5-0.5B-Instruct via WebGPU. It is not the shipped 2B system; verify anything important. For health/questions with no card, use the full local app or an official source.';
+    status.textContent='';
+  }catch(err){
+    status.textContent='Fallback failed: '+(err && err.message ? err.message : err)+'. WebGPU and a Chromium browser are required, or run the full app locally.';
+    note.textContent='';
+  }finally{
+    FALLBACK_LOADING=false; btn.disabled=false; btn.textContent='Run browser fallback';
+  }
+}
+
+async function runHF(text){
+  const status=document.getElementById('fallbackStatus');
+  const out=document.getElementById('fallbackAnswer');
+  const note=document.getElementById('fallbackNote');
+  const input=document.getElementById('hfToken');
+  const btn=document.getElementById('runHF');
+  const token=(input.value || localStorage.getItem('bharat_hf_token') || '').trim();
+  if (!token){
+    status.textContent='Paste a Hugging Face read-only token first (it stays in your browser).';
+    input.focus(); return;
+  }
+  localStorage.setItem('bharat_hf_token', token);
+  btn.disabled=true; btn.textContent='Calling…'; out.textContent=''; note.textContent='';
+  status.textContent='Calling Qwen3.5-2B via the HF router…';
+  try{
+    const res=await fetch('https://router.huggingface.co/v1/chat/completions',{
+      method:'POST',
+      headers:{'Authorization':'Bearer '+token,'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'Qwen/Qwen3.5-2B:featherless-ai',
+        messages:[{role:'system',content:FALLBACK_SYSTEM},{role:'user',content:text}],
+        max_tokens:250, temperature:0.2,
+        chat_template_kwargs:{enable_thinking:false}
+      })
+    });
+    const data=await res.json().catch(()=>({}));
+    if (!res.ok){
+      const msg=(data.error&&(data.error.message||data.error))||res.status;
+      if (res.status===402 || String(msg).toLowerCase().includes('credits') || String(msg).toLowerCase().includes('pro')){
+        throw new Error('This token has no Inference Providers credits. Use the browser fallback, or run the full app locally.');
+      }
+      if (res.status===401) throw new Error('Token rejected. Use a read-only token with Inference Providers permission.');
+      throw new Error(String(msg));
+    }
+    const answer=(data.choices?.[0]?.message?.content||'').trim();
+    out.textContent=answer || 'The hosted model returned an empty answer.';
+    note.textContent='Qwen3.5-2B via Featherless/HF router. Verify anything important. For health, use the fixed protocols or 108.';
+    status.textContent='';
+  }catch(err){
+    status.textContent='HF fallback failed: '+(err && err.message ? err.message : err)+'.';
+  }finally{
+    btn.disabled=false; btn.textContent='Call Qwen3.5-2B';
+  }
+}
+
 function run(){
   const text = document.getElementById('q').value.trim();
   if (!text) return;
@@ -245,10 +369,12 @@ function run(){
   const box = document.getElementById('result'), meta = document.getElementById('meta'),
         ans = document.getElementById('answer'), src = document.getElementById('source');
   box.classList.add('show');
+  resetLongtail();
   if (!r){
     meta.innerHTML = '<span class="tag none">No vetted match</span><span class="tag time">'+ms+' ms</span>';
-    ans.innerHTML = '<div class="empty">This demo only contains the vetted layer. In the full app, the 2B model answers this with a <b>verify</b> note — and it can be wrong. Try a scheme, crop, daily-task or maths question.</div>';
+    ans.innerHTML = '<div class="empty">This is not covered by the vetted layer. Cards/protocols return <b>no answer</b> instead of guessing.</div>';
     src.textContent = '';
+    document.getElementById('longtail').style.display='block';
     return;
   }
   meta.innerHTML = '<span class="tag '+r.type+'">'+esc(r.label)+'</span><span class="tag time">'+ms+' ms · no model call</span>';
@@ -256,6 +382,10 @@ function run(){
   src.innerHTML = esc(r.source || '') + (r.id ? ' · <span style="opacity:.7">'+esc(r.id)+'</span>' : '');
 }
 document.getElementById('go').onclick = run;
+document.getElementById('runFallback').onclick = () => runFallback(document.getElementById('q').value.trim());
+document.getElementById('runHF').onclick = () => runHF(document.getElementById('q').value.trim());
+const savedTok=localStorage.getItem('bharat_hf_token');
+if (savedTok) document.getElementById('hfToken').value=savedTok;
 document.getElementById('q').addEventListener('keydown', e => { if ((e.metaKey||e.ctrlKey) && e.key==='Enter') run(); });
 load().catch(err => {
   document.getElementById('answer').textContent = 'Could not load the card data: ' + err;
