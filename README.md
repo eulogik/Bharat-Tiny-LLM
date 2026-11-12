@@ -32,6 +32,8 @@ JavaScript. Ask about CSC, PM-KISAN, a crop, a recipe or a percentage.
 
 👉 **[Open the v4.0 demo](https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo)**
 
+![Bharat-Tiny-LLM v4.0 demo](assets/demo_v4.png)
+
 **Local, offline:**
 
 ```bash

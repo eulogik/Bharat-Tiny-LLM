@@ -245,10 +245,12 @@ call that offline.
 
 ## Assets checklist
 
+- [x] Static demo with no API/model: https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo
+- [x] Screenshot: `assets/demo_v4.png`
+- [x] Repo README hero updated with v4 SVG, demo, dataset.
+- [x] HF system card: https://huggingface.co/GautamKishore/Bharat-Tiny-LLM-v4
+- [x] HF dataset: https://huggingface.co/datasets/GautamKishore/BharatBench-Voice
 - [ ] 30-second screen recording: health → CSC → Hindi PM-KISAN → mandi.
 - [ ] Screenshot of the gate report (`v4_gate_final.md`).
-- [ ] Screenshot of the 60-row editorial summary.
-- [ ] Repo README hero section updated.
-- [ ] Hugging Face model card published (system card, not weights).
 - [ ] Zenodo DOI for the corrected v3 paper.
 - [ ] Clinician/KVK reviewer call.
