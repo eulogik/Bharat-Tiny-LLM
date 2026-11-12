@@ -25,6 +25,8 @@ tags:
 - bharat
 - answer-cards
 - health-safety
+- datasets
+- pandas
 size_categories:
 - n<1K
 configs:
