@@ -70,6 +70,7 @@ Stock Qwen3.5-2B + **13 health protocols** + **131 vetted answer cards**.
 [![Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-v4.0-ff6f00)](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4)
 [![Demo](https://img.shields.io/badge/%F0%9F%9A%80%20Demo-No%20API%2C%20no%20model-e07a2f)](https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo)
 [![Dataset](https://img.shields.io/badge/%F0%9F%93%8A%20Benchmark-BharatBench--Voice-2f6b4f)](https://huggingface.co/datasets/eulogik/BharatBench-Voice)
+[![Collection](https://img.shields.io/badge/%F0%9F%97%82%EF%B8%8F%20Collection-Safety--First%20v4-2f6b4f)](https://huggingface.co/collections/eulogik/bharat-tiny-llm-v40-safety-first-offline-hinglish-6af5efaf56aa5eeab4ed0adf)
 [![GitHub](https://img.shields.io/badge/GitHub-Code-171512)](https://github.com/eulogik/Bharat-Tiny-LLM)
 [![Base](https://img.shields.io/badge/Base-Qwen3.5--2B-ff6f00)](https://huggingface.co/Qwen/Qwen3.5-2B)
 [![Size](https://img.shields.io/badge/GGUF-Q4__K__M%20(1.2GB)-blue)](https://huggingface.co/Qwen/Qwen3.5-2B)

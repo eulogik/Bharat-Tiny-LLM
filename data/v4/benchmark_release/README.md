@@ -56,6 +56,7 @@ configs:
 [![GitHub](https://img.shields.io/badge/GitHub-Code-171512)](https://github.com/eulogik/Bharat-Tiny-LLM)
 [![License](https://img.shields.io/badge/License-CC--BY--4.0-green)](https://creativecommons.org/licenses/by/4.0/)
 [![Prompts](https://img.shields.io/badge/Prompts-200-orange)](https://huggingface.co/datasets/eulogik/BharatBench-Voice)
+[![Collection](https://img.shields.io/badge/%F0%9F%97%82%EF%B8%8F%20Collection-Safety--First%20v4-2f6b4f)](https://huggingface.co/collections/eulogik/bharat-tiny-llm-v40-safety-first-offline-hinglish-6af5efaf56aa5eeab4ed0adf)
 
 </div>
 
