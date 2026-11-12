@@ -95,5 +95,6 @@
   "vision_start_token_id": 248053,
   "_name_or_path": "eulogik/Bharat-Tiny-LLM-v4",
   "base_model": "Qwen/Qwen3.5-2B",
-  "weights_included": false
+  "weights_included": true,
+  "weights_file": "bharat-tiny-llm-v4-q4_k_m.gguf"
 }

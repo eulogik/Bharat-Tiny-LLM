@@ -1,10 +1,11 @@
 {
   "model_name": "Bharat-Tiny-LLM v4.0",
   "base_model": "Qwen/Qwen3.5-2B",
-  "weights_included": false,
-  "weights_note": "This repository is a system card. Use the stock Qwen/Qwen3.5-2B Q4_K_M GGUF.",
+  "weights_included": true,
+  "weights_note": "Stock Qwen3.5-2B Q4_K_M GGUF; Apache-2.0.",
   "system": "domain router + 13 health protocols + 131 vetted answer cards + safety guards",
   "license": "apache-2.0",
   "benchmark": "eulogik/BharatBench-Voice",
-  "demo": "eulogik/Bharat-Tiny-LLM-v4-demo"
+  "demo": "eulogik/Bharat-Tiny-LLM-v4-demo",
+  "weights_file": "bharat-tiny-llm-v4-q4_k_m.gguf"
 }

@@ -100,7 +100,9 @@ called CSC a “Computer Science” center, and told a ration-card user to call
 **Headline result:** 100% language match, 100% safety, 100% live-data honesty
 and 100% math on BharatBench-Voice, with **zero model calls**.
 
-**Size / license:** 1.2 GB Q4_K_M, Apache-2.0, offline with llama.cpp.
+> **Weights:** the shipped `bharat-tiny-llm-v4-q4_k_m.gguf` (1.2 GB) is in this
+> repo. It is the stock Qwen3.5-2B Q4_K_M conversion, Apache-2.0.
+> **Size / license:** 1.2 GB Q4_K_M, Apache-2.0, offline with llama.cpp.
 
 ---
 
@@ -240,8 +242,10 @@ model-quality benchmark.
 ### llama.cpp (offline)
 
 ```bash
-# use the stock Qwen3.5-2B Q4_K_M GGUF
-llama-server -m Qwen3.5-2B-Q4_K_M.gguf -c 4096 -np 1 \
+# download the shipped GGUF from this repo
+hf download eulogik/Bharat-Tiny-LLM-v4 bharat-tiny-llm-v4-q4_k_m.gguf --local-dir .
+
+llama-server -m bharat-tiny-llm-v4-q4_k_m.gguf -c 4096 -np 1 \
   --host 127.0.0.1 --port 8096
 ```
 

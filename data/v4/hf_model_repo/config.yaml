@@ -1,7 +1,7 @@
 model: Bharat-Tiny-LLM-v4
 architecture: qwen3_5
 base_model: Qwen/Qwen3.5-2B
-weights_included: false
+weights_included: true
 system: router + 13 health protocols + 131 vetted answer cards
 license: apache-2.0
 benchmark: eulogik/BharatBench-Voice
