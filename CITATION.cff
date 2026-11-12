@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "If you use Bharat-Tiny-LLM v4.0 or BharatBench-Voice, cite this release."
 title: "Bharat-Tiny-LLM v4.0: A Safety-First Offline Hinglish Answer System"
-version: 4.0.2
+version: 4.0.3
 date-released: 2026-11-12
 license: Apache-2.0
 url: "https://github.com/eulogik/Bharat-Tiny-LLM"
@@ -31,8 +31,8 @@ preferred-citation:
   authors:
     - family-names: Kishore
       given-names: Gautam
-  version: 4.0.2
+  version: 4.0.3
   date-released: 2026-11-12
   license: Apache-2.0
-  url: "https://github.com/eulogik/Bharat-Tiny-LLM/releases/tag/v4.0.2"
-  notes: "Base weights: Qwen/Qwen3.5-2B (Apache-2.0). System card: https://huggingface.co/GautamKishore/Bharat-Tiny-LLM-v4. Benchmark: https://huggingface.co/datasets/GautamKishore/BharatBench-Voice"
+  url: "https://github.com/eulogik/Bharat-Tiny-LLM/releases/tag/v4.0.3"
+  notes: "Base weights: Qwen/Qwen3.5-2B (Apache-2.0). System card: https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4. Benchmark: https://huggingface.co/datasets/eulogik/BharatBench-Voice"

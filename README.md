@@ -7,9 +7,10 @@
 **The offline Hinglish assistant that refuses to invent medicine — or a scheme amount.**
 Stock Qwen3.5-2B + **13 health protocols** + **131 vetted answer cards**. 1.2 GB Q4, Apache-2.0.
 
-[![Live demo](https://img.shields.io/badge/%F0%9F%9A%80%20Demo-No%20API%2C%20no%20model-e07a2f)](https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo)
-[![HF Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-v4.0%20system%20card-ff6f00)](https://huggingface.co/GautamKishore/Bharat-Tiny-LLM-v4)
-[![Benchmark](https://img.shields.io/badge/%F0%9F%93%8A%20Dataset-BharatBench--Voice-2f6b4f)](https://huggingface.co/datasets/GautamKishore/BharatBench-Voice)
+[![Live demo](https://img.shields.io/badge/%F0%9F%9A%80%20Demo-No%20API%2C%20no%20model-e07a2f)](https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo)
+[![HF Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-v4.0%20system%20card-ff6f00)](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4)
+[![Benchmark](https://img.shields.io/badge/%F0%9F%93%8A%20Dataset-BharatBench--Voice-2f6b4f)](https://huggingface.co/datasets/eulogik/BharatBench-Voice)
+[![Collection](https://img.shields.io/badge/%F0%9F%97%82%EF%B8%8F%20Collection-Safety--First%20v4-2f6b4f)](https://huggingface.co/collections/eulogik/bharat-tiny-llm-v40-safety-first-offline-hinglish-6af5efaf56aa5eeab4ed0adf)
 [![Base model](https://img.shields.io/badge/%F0%9F%A4%97%20Base-Qwen3.5--2B-ff6f00)](https://huggingface.co/Qwen/Qwen3.5-2B)
 [![Params](https://img.shields.io/badge/Params-2B-orange)](https://huggingface.co/Qwen/Qwen3.5-2B)
 [![GGUF](https://img.shields.io/badge/GGUF-Q4__K__M%20(1.2GB)-blue)](https://huggingface.co/Qwen/Qwen3.5-2B)
@@ -30,7 +31,7 @@ Stock Qwen3.5-2B + **13 health protocols** + **131 vetted answer cards**. 1.2 GB
 **Browser demo — no API, no model:** the Space runs the vetted layer directly in
 JavaScript. Ask about CSC, PM-KISAN, a crop, a recipe or a percentage.
 
-👉 **[Open the v4.0 demo](https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo)**
+👉 **[Open the v4.0 demo](https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo)**
 
 ![Bharat-Tiny-LLM v4.0 demo](assets/demo_v4.png)
 
@@ -44,7 +45,7 @@ venv/bin/python scripts/rag_ask.py \
   --query "PM Kisan ka status kaise check karein?"
 ```
 
-**Benchmark:** [BharatBench-Voice](https://huggingface.co/datasets/GautamKishore/BharatBench-Voice)
+**Benchmark:** [BharatBench-Voice](https://huggingface.co/datasets/eulogik/BharatBench-Voice)
 — 200 prompts, base and v4 runs, cards and protocols.
 
 ---
@@ -265,8 +266,8 @@ Legacy v3 citation:
 ## 🔗 Links
 
 - 🤗 Flagship model: https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3
-- 🌐 v4.0 demo (no API): https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo
-- 📊 Benchmark dataset: https://huggingface.co/datasets/GautamKishore/BharatBench-Voice
+- 🌐 v4.0 demo (no API): https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo
+- 📊 Benchmark dataset: https://huggingface.co/datasets/eulogik/BharatBench-Voice
 - 🌐 v3 API demo (legacy): https://huggingface.co/spaces/eulogik/bharat-tiny-llm-v3-demo
 - 📊 Benchmarks: [docs/benchmarks_v2.md](docs/benchmarks_v2.md)
 - 💻 This repo: https://github.com/eulogik/Bharat-Tiny-LLM

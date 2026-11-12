@@ -19,6 +19,11 @@ tags:
 
 # Bharat-Tiny-LLM v4.0 — vetted answers, no model call
 
+[![Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-Bharat--Tiny--LLM--v4-ff6f00)](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4)
+[![Dataset](https://img.shields.io/badge/%F0%9F%93%8A%20Benchmark-BharatBench--Voice-2f6b4f)](https://huggingface.co/datasets/eulogik/BharatBench-Voice)
+[![GitHub](https://img.shields.io/badge/GitHub-Code-171512)](https://github.com/eulogik/Bharat-Tiny-LLM)
+[![License](https://img.shields.io/badge/License-Apache_2.0-green)](https://github.com/eulogik/Bharat-Tiny-LLM/blob/main/LICENSE)
+
 This Space demonstrates the layer that makes Bharat-Tiny-LLM v4.0 shippable:
 **131 vetted answer cards and 13 fixed health protocols**. Type a question and
 the Space returns the curated answer verbatim, in Hinglish or Hindi. There is
@@ -60,6 +65,8 @@ naturalness, 1.00 safety**. Independent human and clinician review are pending.
 - The health protocols are first-aid guidance, **not a diagnosis**. Call 108
   for emergencies.
 - The card data is `cards.jsonl`; the protocols are `health_protocols.json`.
+- Model: [eulogik/Bharat-Tiny-LLM-v4](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4)
+- Benchmark: [eulogik/BharatBench-Voice](https://huggingface.co/datasets/eulogik/BharatBench-Voice)
 - Source: [github.com/eulogik/Bharat-Tiny-LLM](https://github.com/eulogik/Bharat-Tiny-LLM)
   · [gate report](https://github.com/eulogik/Bharat-Tiny-LLM/blob/main/eval/bharatbench_voice/runs/v4_gate_final.md)
 - Apache-2.0.

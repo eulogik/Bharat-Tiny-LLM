@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use Bharat-Tiny-LLM v4.0 or BharatBench-Voice, cite this release."
+title: "Bharat-Tiny-LLM v4.0: A Safety-First Offline Hinglish Answer System"
+version: 4.0.2
+date-released: 2026-11-12
+license: Apache-2.0
+url: "https://github.com/eulogik/Bharat-Tiny-LLM"
+repository-code: "https://github.com/eulogik/Bharat-Tiny-LLM"
+authors:
+  - family-names: Kishore
+    given-names: Gautam
+    affiliation: eulogik
+keywords:
+  - hinglish
+  - hindi
+  - devanagari
+  - edge-ai
+  - india
+  - offline
+  - safety
+  - qwen3.5
+abstract: >-
+  Bharat-Tiny-LLM v4.0 is an offline Hinglish/Hindi/English assistant built on
+  stock Qwen3.5-2B with 13 fixed health protocols, 131 vetted answer cards, a
+  domain router and safety guards. Health and matched cards never call the
+  model. On the 200-prompt BharatBench-Voice benchmark the system reaches 100%
+  language match, safety, live-data honesty and math with zero model calls.
+preferred-citation:
+  type: software
+  title: "Bharat-Tiny-LLM v4.0"
+  authors:
+    - family-names: Kishore
+      given-names: Gautam
+  version: 4.0.2
+  date-released: 2026-11-12
+  license: Apache-2.0
+  url: "https://github.com/eulogik/Bharat-Tiny-LLM/releases/tag/v4.0.2"
+  notes: "Base weights: Qwen/Qwen3.5-2B (Apache-2.0). System card: https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4. Benchmark: https://huggingface.co/datasets/eulogik/BharatBench-Voice"

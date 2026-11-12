@@ -102,7 +102,7 @@ We are keeping the negative results public:
 
 The vetted layer runs in your browser, with no API and no model:
 
-https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo
+https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo
 
 The full system:
 
@@ -115,10 +115,10 @@ venv/bin/python scripts/rag_ask.py \
 ```
 
 Benchmark, base run, cards and protocols:
-https://huggingface.co/datasets/GautamKishore/BharatBench-Voice
+https://huggingface.co/datasets/eulogik/BharatBench-Voice
 
 System card:
-https://huggingface.co/GautamKishore/Bharat-Tiny-LLM-v4
+https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4
 
 Code and docs:
 https://github.com/eulogik/Bharat-Tiny-LLM

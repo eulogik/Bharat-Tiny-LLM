@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use BharatBench-Voice, cite this dataset."
+title: "BharatBench-Voice: A 200-Prompt Hinglish/Hindi Benchmark for Rural India"
+version: 1.0.0
+date-released: 2026-11-12
+license: CC-BY-4.0
+url: "https://huggingface.co/datasets/eulogik/BharatBench-Voice"
+repository-code: "https://github.com/eulogik/Bharat-Tiny-LLM"
+authors:
+  - family-names: Kishore
+    given-names: Gautam
+    affiliation: eulogik
+keywords:
+  - hinglish
+  - hindi
+  - devanagari
+  - rural-india
+  - benchmark
+  - llm-evaluation
+  - safety
+  - agriculture
+  - government-schemes
+  - offline-ai
+abstract: >-
+  A 200-prompt Hinglish/Hindi usability benchmark across agriculture, government
+  schemes, education, health and daily life, with rubric points, base and v4.0
+  runs, 131 vetted answer cards and 13 health protocols.

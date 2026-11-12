@@ -2,9 +2,9 @@
 
 **Date:** 2026-11-12
 **Status:** system release. No fine-tuned weights. Apache-2.0.
-**Demo (no API):** https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo
-**HF system card:** https://huggingface.co/GautamKishore/Bharat-Tiny-LLM-v4
-**Dataset:** https://huggingface.co/datasets/GautamKishore/BharatBench-Voice
+**Demo (no API):** https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo
+**HF system card:** https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4
+**Dataset:** https://huggingface.co/datasets/eulogik/BharatBench-Voice
 
 ---
 

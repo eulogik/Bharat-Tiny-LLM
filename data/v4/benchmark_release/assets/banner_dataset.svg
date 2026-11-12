@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-label="BharatBench-Voice — 200-prompt Hinglish and Hindi benchmark">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#10231b"/>
+      <stop offset="1" stop-color="#24301f"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2f6b4f"/>
+      <stop offset="1" stop-color="#e07a2f"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="320" fill="url(#bg)"/>
+  <circle cx="1110" cy="40" r="190" fill="#e07a2f" opacity="0.18"/>
+  <circle cx="1080" cy="300" r="180" fill="#2f6b4f" opacity="0.3"/>
+  <rect x="70" y="66" width="8" height="188" rx="4" fill="url(#accent)"/>
+  <text x="104" y="112" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="22" font-weight="700" fill="#7fc4a2" letter-spacing="2">BHARATBENCH-VOICE</text>
+  <text x="104" y="180" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="58" font-weight="800" fill="#f6f0e4" letter-spacing="-2">200 prompts. 5 domains.</text>
+  <text x="106" y="224" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="23" fill="#d5c9b6">Agriculture · Schemes · Education · Health · Daily life</text>
+  <text x="106" y="262" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="19" fill="#9fb8a9">Hinglish + Hindi · base and v4 runs · cards and protocols included · CC-BY-4.0</text>
+  <text x="106" y="296" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="17" fill="#7f8d80">github.com/eulogik/Bharat-Tiny-LLM · huggingface.co/datasets/eulogik/BharatBench-Voice</text>
+</svg>

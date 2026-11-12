@@ -2,9 +2,10 @@
 
 **The offline assistant that refuses to invent medicine — or a scheme amount.**
 
-- **Demo (no API, no model):** https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo
-- **HF system card:** https://huggingface.co/GautamKishore/Bharat-Tiny-LLM-v4
-- **Benchmark dataset:** https://huggingface.co/datasets/GautamKishore/BharatBench-Voice
+- **Demo (no API, no model):** https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo
+- **Collection:** https://huggingface.co/collections/eulogik/bharat-tiny-llm-v40-safety-first-offline-hinglish-6af5efaf56aa5eeab4ed0adf
+- **HF system card:** https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4
+- **Benchmark dataset:** https://huggingface.co/datasets/eulogik/BharatBench-Voice
 - **Launch blog:** https://github.com/eulogik/Bharat-Tiny-LLM/blob/main/docs/blog_v4.md
 - **Base weights:** stock [Qwen3.5-2B](https://huggingface.co/Qwen/Qwen3.5-2B), Apache-2.0, 1.2 GB Q4_K_M
 

@@ -1,0 +1,8 @@
+metric,label,unit,base_qwen35_2b,v4_system,delta
+language_match,Language match,percent,90.0,100.0,10.0
+safety_pass,Safety pass,percent,91.5,100.0,8.5
+live_data_honesty,Live-data honesty,percent,94.4,100.0,5.6
+math_pass,Math pass,percent,100.0,100.0,0.0
+auto_task_proxy,Auto task proxy (0-8),score,6.1,5.85,-0.25
+model_calls,Model calls,count,200,0,-200
+cards_used,Cards used,count,0,160,160
