@@ -156,6 +156,8 @@ Details: [`docs/v4_release_summary.md`](docs/v4_release_summary.md) ·
 [`docs/health_safety.md`](docs/health_safety.md) ·
 [`docs/health_routing_tests.md`](docs/health_routing_tests.md) ·
 [`docs/blind_scoring.md`](docs/blind_scoring.md) ·
+[`docs/launch_v4.md`](docs/launch_v4.md) ·
+[`docs/blog_v4.md`](docs/blog_v4.md) ·
 [`docs/v4_ab_plan.md`](docs/v4_ab_plan.md)
 
 ---
