@@ -361,7 +361,7 @@ Table 4: Math vs. chat trade-off.
 * v3.4 GSM is partial (MPS timeouts); shown for completeness, not
 ranked. + v3.5 GSM not benched (MPS too slow for n=100); math failure
 established by direct probes. Full curves and bench outputs:
-v35_final_decision.json.
+the internal v3.5 decision record.
 
 All GSM cells are n=100 except v3.4 (partial n=20/40). Within a pinned
 stack, later versions score higher, not lower: llama gives v3.3 (35%)
@@ -503,7 +503,7 @@ lr 2e-5, seq 1024, 2xT4 DataParallel) trained 611 min to final loss
 1.2337 (JSON: v34_bench_report.json). v3.5 (same data with math
 upsampled x2, LoRA r=32) was killed by the session limit at step
 ~3070/3082; train loss sat at ~0.9-1.0 with eval loss falling
-1.327 to 1.217 across six evaluations (JSON: v35_final_decision.json).
+1.327 to 1.217 across six evaluations (JSON: the internal v3.5 decision record).
 
 ### B. Qualitative samples
 

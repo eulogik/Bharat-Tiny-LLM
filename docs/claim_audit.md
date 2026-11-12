@@ -3,7 +3,7 @@
 **Date:** 2026-11-11
 **Status:** pre-launch correction. The claims marked ❌ must not be repeated in
 the README, HF card, PyPI, demo Space, talks, or launch posts.
-**Scope:** README, `docs/benchmarks_v2.md`, `docs/paper/bharat-tiny-llm-v3.tex`,
+**Scope:** README, `docs/benchmarks_v2.md`, `docs/paper_arxiv.md`,
 `docs/HF_MODEL_CARD.md`, `packages/pyproject.toml`, demo Space, and the public
 Hub/PyPI pages they generate.
 
@@ -17,8 +17,8 @@ Hub/PyPI pages they generate.
    models score **1.20 bpc (base) vs 1.71 bpc (v3)** on a 60-window smoke run —
    v3 is **42.8% worse**, not 26.6% better. A separate 305,857-character
    llama.cpp/Q4 run agrees in direction: **1.51 vs 1.72 bpc (v3 14.2% worse)**.
-2. **The 56% GSM8K-Hindi number is already retracted** in
-   `docs/v35_final_decision.json`, but it is still in the README and
+2. **The 56% GSM8K-Hindi number is already retracted** in the
+   internal v3.5 decision record, but it is still in the README and
    `docs/benchmarks_v2.md`. Pinned protocols give 2% (torch/fp16) and 29%
    (llama.cpp/Q4) on n=100. The 56.2% was a 9/16 ad-hoc run with no committed
    protocol.
@@ -40,7 +40,7 @@ Hub/PyPI pages they generate.
 
 | # | Claim | Where it appears | Evidence | Verdict | Action |
 |---:|---|---|---|---|---|
-| 1 | "GSM8K-Hindi 56%+" | README table; `docs/benchmarks_v2.md` | `docs/v35_final_decision.json`: 9/16 ad-hoc run, protocol not committed; pinned n=100 gives 2% torch/fp16 and 29% llama.cpp/Q4; 56.2% "RETRACTED as irreproducible" | ❌ **False** | Delete from README and benchmarks. Never use "56%" in any public artifact. |
+| 1 | "GSM8K-Hindi 56%+" | README table; `docs/benchmarks_v2.md` | the internal v3.5 decision record: 9/16 ad-hoc run, protocol not committed; pinned n=100 gives 2% torch/fp16 and 29% llama.cpp/Q4; 56.2% "RETRACTED as irreproducible" | ❌ **False** | Delete from README and benchmarks. Never use "56%" in any public artifact. |
 | 2 | "Bits/char 11.90 → 8.73 (−26.6%)" | README; paper abstract; Space line 94; `benchmarks_v2.md` | `scripts/bench_ppl_torch.py` double-shifts labels; corrected run: base 1.1973, v3 1.7094; llama.cpp/Q4 on 305,857 chars: base 1.51, v3 1.72 | ❌ **Invalid** | Delete the number. Replace with tokenizer fertility, or with the corrected bpc that shows no win. |
 | 3 | "Devanagari token compression 36.8%" | README; paper; Space | `docs/bench_fertility_v3.json`: 1,042.9 → 658.3 tok/1000 chars on 3.36M Devanagari chars = −36.87% | ✅ **True** (tokenizer only) | Keep, but label "tokenizer fertility, not model quality." |
 | 4 | "Mixed corpus savings 18.0%" | README; `benchmarks_v2.md` | `docs/bench_fertility_v3.json`: 586.5 → 482.6 tok/1000 chars on 9.68M chars = −17.72% | ✅ **True** (tokenizer only) | Keep with the same label. |
@@ -156,7 +156,7 @@ What must not be said:
 |---|---|
 | `README.md` | Remove 56% and 26.6%; replace the capability table with tokenizer fertility + honest quality; label the demo as API-hosted; fix the v3.3 note if unverified. |
 | `docs/benchmarks_v2.md` | Add a correction banner at the top; remove the v3 56%/26.6% rows; keep fertility. |
-| `docs/paper/bharat-tiny-llm-v3.tex` | Fix the abstract (1.04 tok/char; no bpc win; 56% retracted; 29% with protocol). Do not resubmit. |
+| `docs/paper_arxiv.md` | Fix the abstract (1.04 tok/char; no bpc win; 56% retracted; 29% with protocol). Do not resubmit. |
 | `docs/HF_MODEL_CARD.md` | Replace with a v3 card or mark it explicitly `v2 legacy`. |
 | `packages/pyproject.toml` | Remove "33.8%"; point the default at v3 GGUF or label the package v2. |
 | `packages/bharat_tiny_llm/constants.py` | Default to the v3 GGUF, not v2 MLX. |
@@ -180,8 +180,7 @@ venv/bin/python scripts/bench_bpc.py \
 # tokenizer fertility
 cat docs/bench_fertility_v3.json
 
-# retraction evidence
-cat docs/v35_final_decision.json
+# retraction evidence: archived in the internal v3.5 decision record
 
 # pinned GSM8K-Hindi
 cat docs/bench_gsm_hi_v3_llama.json
