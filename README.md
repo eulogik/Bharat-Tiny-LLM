@@ -7,6 +7,7 @@
 **The offline Hinglish assistant that refuses to invent medicine — or a scheme amount.**
 Stock Qwen3.5-2B + **13 health protocols** + **131 vetted answer cards**. 1.2 GB Q4, Apache-2.0.
 
+[![Website](https://img.shields.io/badge/%F0%9F%8C%90%20Website-eulogik.github.io-171512)](https://eulogik.github.io/Bharat-Tiny-LLM/)
 [![Live demo](https://img.shields.io/badge/%F0%9F%9A%80%20Demo-No%20API%2C%20no%20model-e07a2f)](https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo)
 [![HF Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-v4.0%20system%20card-ff6f00)](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4)
 [![Benchmark](https://img.shields.io/badge/%F0%9F%93%8A%20Dataset-BharatBench--Voice-2f6b4f)](https://huggingface.co/datasets/eulogik/BharatBench-Voice)
