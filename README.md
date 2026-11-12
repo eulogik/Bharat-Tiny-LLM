@@ -197,7 +197,7 @@ print(llm("नमस्ते, आपका नाम क्या है?", max
 
 | Repo | Format | Size | Use |
 |---|---|---|---|
-| [`Qwen3.5-2B`](https://huggingface.co/Qwen/Qwen3.5-2B) | GGUF Q4_K_M | **1.2 GB** | **v4.0 base (current)** |
+| [`Bharat-Tiny-LLM-v4`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4) | GGUF Q4_K_M | **1.2 GB** | **v4.0 current (hosted)** |
 | [`Bharat-Tiny-LLM-v3`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3) | GGUF Q4_K_M | 1.0 GB | Legacy v3 |
 | [`Bharat-Tiny-LLM-v3`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3) | GGUF F16 | 3.2 GB | Legacy v3 (reference) |
 | [`Bharat-Tiny-LLM-v2-MLX`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v2-MLX) | Q4 MLX + LoRA | 880 MB | Legacy v2 (Apple Silicon) |

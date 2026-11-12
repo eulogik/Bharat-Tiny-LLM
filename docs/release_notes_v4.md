@@ -7,7 +7,8 @@
 - **HF system card:** https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4
 - **Benchmark dataset:** https://huggingface.co/datasets/eulogik/BharatBench-Voice
 - **Launch blog:** https://github.com/eulogik/Bharat-Tiny-LLM/blob/main/docs/blog_v4.md
-- **Base weights:** stock [Qwen3.5-2B](https://huggingface.co/Qwen/Qwen3.5-2B), Apache-2.0, 1.2 GB Q4_K_M
+- **Weights:** [bharat-tiny-llm-v4-q4_k_m.gguf](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4/blob/main/bharat-tiny-llm-v4-q4_k_m.gguf) — 1.2 GB, stock Qwen3.5-2B Q4_K_M, Apache-2.0
+- **Dynamic demo:** vetted cards + protocols, optional WebGPU 0.5B and HF Qwen3.5-2B fallback
 
 ## What it is
 
