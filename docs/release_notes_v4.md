@@ -5,6 +5,7 @@
 - **Demo (no API, no model):** https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo
 - **HF system card:** https://huggingface.co/GautamKishore/Bharat-Tiny-LLM-v4
 - **Benchmark dataset:** https://huggingface.co/datasets/GautamKishore/BharatBench-Voice
+- **Launch blog:** https://github.com/eulogik/Bharat-Tiny-LLM/blob/main/docs/blog_v4.md
 - **Base weights:** stock [Qwen3.5-2B](https://huggingface.co/Qwen/Qwen3.5-2B), Apache-2.0, 1.2 GB Q4_K_M
 
 ## What it is
