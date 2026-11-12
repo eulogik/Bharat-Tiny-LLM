@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bharat-Tiny-LLM v4.0 — Safety-First Offline Hinglish AI</title>
+<meta name="description" content="A 1.2 GB offline Hinglish/Hindi assistant built on Qwen3.5-2B with 13 fixed health protocols and 131 vetted answer cards. 100% safety and language match on a 200-prompt benchmark, zero model calls.">
+<meta name="keywords" content="Hinglish AI, Hindi LLM, offline AI assistant, rural India, health safety, edge AI, Qwen3.5-2B, answer cards, Bharat-Tiny-LLM">
+<meta name="author" content="eulogik">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://eulogik.github.io/Bharat-Tiny-LLM/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bharat-Tiny-LLM v4.0 — the offline assistant that refuses to invent medicine">
+<meta property="og:description" content="13 health protocols, 131 vetted cards, 1.2 GB, Apache-2.0. 100% safety/language on a 200-prompt benchmark with zero model calls.">
+<meta property="og:url" content="https://eulogik.github.io/Bharat-Tiny-LLM/">
+<meta property="og:image" content="https://eulogik.github.io/Bharat-Tiny-LLM/assets/demo_v4.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bharat-Tiny-LLM v4.0 — safety-first offline Hinglish AI">
+<meta name="twitter:description" content="13 health protocols, 131 vetted cards, 100% safety/language with zero model calls.">
+<meta name="twitter:image" content="https://eulogik.github.io/Bharat-Tiny-LLM/assets/demo_v4.png">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"SoftwareApplication","name":"Bharat-Tiny-LLM v4.0","applicationCategory":"UtilitiesApplication","operatingSystem":"Linux, macOS, Android","description":"Offline Hinglish/Hindi/English assistant with 13 fixed health protocols and 131 vetted answer cards. 100% safety and language match on the 200-prompt BharatBench-Voice benchmark with zero model calls.","url":"https://eulogik.github.io/Bharat-Tiny-LLM/","codeRepository":"https://github.com/eulogik/Bharat-Tiny-LLM","license":"https://www.apache.org/licenses/LICENSE-2.0","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"sameAs":["https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4","https://huggingface.co/datasets/eulogik/BharatBench-Voice","https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo"]},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"What is Bharat-Tiny-LLM v4.0?","acceptedAnswer":{"@type":"Answer","text":"An offline Hinglish/Hindi assistant built on stock Qwen3.5-2B with 13 fixed health protocols and 131 vetted answer cards."}},
+      {"@type":"Question","name":"Does it call a model for health questions?","acceptedAnswer":{"@type":"Answer","text":"No. Health questions return fixed first-aid protocols or a safe referral. The model never generates medical advice."}},
+      {"@type":"Question","name":"Does it work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes, after the 1.2 GB Q4_K_M GGUF and the repository are on disk."}},
+      {"@type":"Question","name":"How does it score on the benchmark?","acceptedAnswer":{"@type":"Answer","text":"On 200 Hinglish/Hindi prompts it scores 100% language match, 100% safety, 100% live-data honesty and 100% math, with zero model calls."}}
+    ]}
+  ]
+}
+</script>
+<style>
+  :root{--ink:#171512;--muted:#6b6459;--paper:#f6f0e4;--card:#fffdf8;--line:#e4d9c6;--saffron:#e07a2f;--green:#2f6b4f;--red:#a63d2f;--shadow:0 20px 60px rgba(40,30,15,.12)}
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(1100px 600px at 85% -10%,#f3d7b8 0,transparent 55%),radial-gradient(900px 500px at -10% 20%,#dce8da 0,transparent 50%),var(--paper);color:var(--ink);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Noto Sans Devanagari",sans-serif;line-height:1.55}
+  .wrap{max-width:1080px;margin:0 auto;padding:28px 20px 64px}
+  nav{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:30px}
+  .brand{font-weight:800;letter-spacing:-.02em;font-size:18px}
+  .brand span{color:var(--saffron)}
+  nav a{color:var(--muted);text-decoration:none;font-size:14px;margin-left:14px}
+  nav a:hover{color:var(--red)}
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;align-items:center;margin-bottom:26px}
+  .kicker{display:inline-flex;gap:8px;align-items:center;font-size:12px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--saffron);margin-bottom:12px}
+  .kicker i{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block}
+  h1{font-size:clamp(36px,5vw,64px);line-height:1.02;letter-spacing:-.035em;margin:0 0 14px}
+  h1 em{font-style:normal;color:var(--saffron)}
+  .lede{font-size:18px;color:var(--muted);max-width:620px;margin:0 0 20px}
+  .cta{display:flex;gap:10px;flex-wrap:wrap}
+  .btn{display:inline-block;text-decoration:none;font-weight:800;padding:13px 20px;border-radius:12px;transition:transform .12s ease}
+  .btn:hover{transform:translateY(-1px)}
+  .primary{background:var(--ink);color:#fff}
+  .secondary{background:#fff;color:var(--ink);border:1px solid var(--line)}
+  .hero img{width:100%;border-radius:18px;border:1px solid var(--line);box-shadow:var(--shadow);display:block}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin:26px 0}
+  .stat{background:var(--card);padding:18px}
+  .stat b{display:block;font-size:24px;letter-spacing:-.02em}
+  .stat span{font-size:12px;color:var(--muted)}
+  section{margin:44px 0}
+  h2{font-size:clamp(24px,3vw,34px);letter-spacing:-.02em;margin:0 0 8px}
+  .sub{color:var(--muted);margin:0 0 20px;max-width:760px}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+  .card h3{margin:0 0 6px;font-size:16px}
+  .card p{margin:0;color:var(--muted);font-size:14px}
+  .tag{display:inline-block;font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;padding:4px 8px;border-radius:6px;margin-bottom:9px}
+  .tag.g{background:#e7f0e9;color:var(--green)} .tag.o{background:#fbe9df;color:var(--red)} .tag.b{background:#eae9f7;color:#4b458a}
+  table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:15px}
+  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:#f1eadf;font-size:13px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted)}
+  td:last-child,th:last-child{text-align:right}
+  tr:last-child td{border-bottom:0}
+  .good{color:var(--green);font-weight:800}
+  .note{font-size:13px;color:var(--muted);margin-top:10px}
+  details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:8px}
+  summary{cursor:pointer;font-weight:700}
+  details p{margin:8px 0 0;color:var(--muted);font-size:14px}
+  footer{border-top:1px solid var(--line);margin-top:46px;padding-top:18px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  footer a{color:var(--red);text-decoration:none}
+  @media(max-width:820px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <div class="brand">Bharat-Tiny-LLM <span>v4.0</span></div>
+    <div>
+      <a href="https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo">Demo</a>
+      <a href="https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4">Model</a>
+      <a href="https://huggingface.co/datasets/eulogik/BharatBench-Voice">Benchmark</a>
+      <a href="https://github.com/eulogik/Bharat-Tiny-LLM">GitHub</a>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <div>
+      <div class="kicker"><i></i> Safety-first · offline · Apache-2.0</div>
+      <h1>The offline assistant that <em>refuses</em> to invent medicine.</h1>
+      <p class="lede">Stock Qwen3.5-2B + <b>13 fixed health protocols</b> + <b>131 vetted answer cards</b>. 1.2 GB. Runs offline. Answers the questions people actually ask — without hallucinating the basics.</p>
+      <div class="cta">
+        <a class="btn primary" href="https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo">Try the demo →</a>
+        <a class="btn secondary" href="https://github.com/eulogik/Bharat-Tiny-LLM">Read the code</a>
+      </div>
+    </div>
+    <img src="assets/demo_v4.png" alt="Bharat-Tiny-LLM v4.0 browser demo answering a CSC question">
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>100%</b><span>safety on 200 prompts</span></div>
+    <div class="stat"><b>100%</b><span>language match</span></div>
+    <div class="stat"><b>0</b><span>model calls on the benchmark</span></div>
+    <div class="stat"><b>1.2 GB</b><span>Q4_K_M, offline</span></div>
+  </div>
+
+  <section>
+    <h2>What it refuses to do</h2>
+    <p class="sub">The failures that shaped the product. Every one was measured on a base 2B model.</p>
+    <div class="grid">
+      <div class="card"><span class="tag o">Health</span><h3>No improvised first aid</h3><p>Snake bites, burns and chest pain return fixed protocols with 108 and a “do not” list. The model is not called.</p></div>
+      <div class="card"><span class="tag o">Schemes</span><h3>No invented amounts</h3><p>PM-KISAN, Ayushman, Atal Pension and 100+ facts come from vetted cards, not generation.</p></div>
+      <div class="card"><span class="tag o">Crops</span><h3>No human medicine</h3><p>Crop answers cannot leak Paracetamol, bandages or 108. A post-guard removes them.</p></div>
+      <div class="card"><span class="tag g">Live data</span><h3>No fake prices</h3><p>Mandi rates, weather, train status and exam dates say “I cannot check live data” and name the source.</p></div>
+      <div class="card"><span class="tag g">Maths</span><h3>No wrong arithmetic</h3><p>Percentages, multiplication, discounts and work-rate questions are computed, not recalled.</p></div>
+      <div class="card"><span class="tag b">Long tail</span><h3>No false certainty</h3><p>When no card matches, the model answers with a verify note. It is a 2B model; it can be wrong.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Measured, not claimed</h2>
+    <p class="sub">BharatBench-Voice: 200 Hinglish/Hindi prompts across agriculture, schemes, education, health and daily life.</p>
+    <table>
+      <thead><tr><th>Metric</th><th>Base Qwen3.5-2B</th><th>v4.0</th></tr></thead>
+      <tbody>
+        <tr><td>Language match</td><td>90.0%</td><td class="good">100%</td></tr>
+        <tr><td>Safety pass</td><td>91.5%</td><td class="good">100%</td></tr>
+        <tr><td>Live-data honesty</td><td>94.4%</td><td class="good">100%</td></tr>
+        <tr><td>Math pass</td><td>100%</td><td class="good">100%</td></tr>
+        <tr><td>Model calls</td><td>200</td><td class="good">0</td></tr>
+      </tbody>
+    </table>
+    <p class="note">Health subset: safety 72.5% → 100%, language 80% → 100%. Editorial 60-row review: 7.68/8 task, 4.22/5 naturalness, 1.00 safety. The review is editorial, not an independent human study.</p>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <div class="grid">
+      <div class="card"><span class="tag g">1</span><h3>Route</h3><p>Health, agriculture, schemes, education or daily life.</p></div>
+      <div class="card"><span class="tag g">2</span><h3>Refuse to guess</h3><p>Health protocols and 131 cards return vetted text, instantly.</p></div>
+      <div class="card"><span class="tag g">3</span><h3>Long tail</h3><p>The 2B model answers only when no card matches, with a verify note.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Questions</h2>
+    <details><summary>Is this a new model?</summary><p>No. The weights are stock Qwen3.5-2B (Apache-2.0). The release is the safety, router and card layer plus the benchmark.</p></details>
+    <details><summary>Does it work offline?</summary><p>Yes, after the 1.2 GB Q4_K_M GGUF and the repo are on disk. The browser demo needs no API and no model.</p></details>
+    <details><summary>Is it safe for health?</summary><p>Health is fixed first-aid text with 108 and a “do not” list. It is not a diagnosis and not clinically reviewed yet.</p></details>
+    <details><summary>Why not fine-tune?</summary><p>We tried. Token injection garbled words; SFT applied the crop template to snake bites. The negative results are public in the repo.</p></details>
+    <details><summary>Can I use it commercially?</summary><p>Yes. Apache-2.0. Attribute eulogik/Bharat-Tiny-LLM-v4.</p></details>
+  </section>
+
+  <footer>
+    <span>Built by <a href="https://eulogik.com">eulogik</a>. Apache-2.0. Not a medical device; 108 for emergencies.</span>
+    <span><a href="https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4">Model</a> · <a href="https://huggingface.co/datasets/eulogik/BharatBench-Voice">Benchmark</a> · <a href="https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo">Demo</a></span>
+  </footer>
+</div>
+</body>
+</html>
