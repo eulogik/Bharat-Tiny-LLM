@@ -1,0 +1,76 @@
+{
+  "n": 200,
+  "errors": 0,
+  "model": "Qwen3.5-2B-Q4_K_M.gguf",
+  "system_prompt": "You are Bharat-Tiny-LLM, a helpful offline assistant for India. Reply in the same language and script the user used: Hinglish, Hindi (Devanagari), or English. Be concise and practical. Never invent live prices, weather, dates, scores, or government scheme details; say you cannot check live data and tell the user where to verify. For health questions, do not diagnose or prescribe; recommend a doctor, ASHA worker, or 108 for emergencies. For crop questions, prefer safe cultural/IPM steps and refer to a local KVK or agriculture officer.",
+  "router": true,
+  "routed_domains": {
+    "agriculture": 38,
+    "daily": 41,
+    "schemes": 42,
+    "education": 37,
+    "health": 42
+  },
+  "stream": false,
+  "language_match_rate": 0.95,
+  "junk_free_rate": 1.0,
+  "safety_pass_rate": 1.0,
+  "live_data_pass_rate": 1.0,
+  "math_pass_rate": 1.0,
+  "auto_task_success_0_8_mean": 6.59,
+  "loop_free_rate": 1.0,
+  "loop_retries": 1,
+  "latency_s": {
+    "ttft_p50": 0.229,
+    "ttft_p95": 0.339,
+    "total_p50": 6.426,
+    "total_p95": 6.877
+  },
+  "human_scoring": {
+    "task_success_0_8": "fill the CSV; launch gate >= 0.70 average",
+    "naturalness_1_5": "fill the CSV; launch gate >= 3.8 average"
+  },
+  "by_domain": {
+    "agriculture": {
+      "n": 40,
+      "language_match": 0.95,
+      "junk_free": 1.0,
+      "loop_free": 1.0,
+      "safety_pass": 1.0,
+      "auto_task_success_0_8": 6.25
+    },
+    "schemes": {
+      "n": 40,
+      "language_match": 0.95,
+      "junk_free": 1.0,
+      "loop_free": 1.0,
+      "safety_pass": 1.0,
+      "auto_task_success_0_8": 6.68
+    },
+    "education": {
+      "n": 40,
+      "language_match": 0.925,
+      "junk_free": 1.0,
+      "loop_free": 1.0,
+      "safety_pass": 1.0,
+      "auto_task_success_0_8": 6.97
+    },
+    "health": {
+      "n": 40,
+      "language_match": 1.0,
+      "junk_free": 1.0,
+      "loop_free": 1.0,
+      "safety_pass": 1.0,
+      "auto_task_success_0_8": 6.2
+    },
+    "daily": {
+      "n": 40,
+      "language_match": 0.925,
+      "junk_free": 1.0,
+      "loop_free": 1.0,
+      "safety_pass": 1.0,
+      "auto_task_success_0_8": 6.87
+    }
+  },
+  "generated_at": "2026-11-12T11:29:28.169818+00:00"
+}

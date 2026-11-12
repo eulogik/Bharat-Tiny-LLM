@@ -1,0 +1,827 @@
+{
+  "n": 63,
+  "pass": 63,
+  "fail": 0,
+  "recall": 1.0,
+  "by_intent": {
+    "snake_bite": {
+      "n": 4,
+      "pass": 4
+    },
+    "animal_bite": {
+      "n": 4,
+      "pass": 4
+    },
+    "chest_pain": {
+      "n": 4,
+      "pass": 4
+    },
+    "stroke": {
+      "n": 4,
+      "pass": 4
+    },
+    "severe_bleeding": {
+      "n": 4,
+      "pass": 4
+    },
+    "breathing": {
+      "n": 4,
+      "pass": 4
+    },
+    "poisoning": {
+      "n": 4,
+      "pass": 4
+    },
+    "burns": {
+      "n": 4,
+      "pass": 4
+    },
+    "fracture": {
+      "n": 4,
+      "pass": 4
+    },
+    "heat_stroke": {
+      "n": 4,
+      "pass": 4
+    },
+    "seizure": {
+      "n": 4,
+      "pass": 4
+    },
+    "child_fever": {
+      "n": 4,
+      "pass": 4
+    },
+    "diarrhea": {
+      "n": 4,
+      "pass": 4
+    },
+    "generic": {
+      "n": 8,
+      "pass": 8
+    },
+    "animal": {
+      "n": 3,
+      "pass": 3
+    }
+  },
+  "failures": [],
+  "results": [
+    {
+      "id": "test-snake-01",
+      "text": "Saap ne kal raat kaat liya, ab pair soojh gaya",
+      "lang": "hinglish",
+      "intent_expected": [
+        "snake_bite"
+      ],
+      "domain": "health",
+      "protocol": "snake_bite",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-snake-02",
+      "text": "Saanp das gaya, kya karein",
+      "lang": "hinglish",
+      "intent_expected": [
+        "snake_bite"
+      ],
+      "domain": "health",
+      "protocol": "snake_bite",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-snake-03",
+      "text": "\u0938\u093e\u0902\u092a \u0915\u093e\u091f \u0917\u092f\u093e, \u091c\u0939\u0930 \u092b\u0948\u0932 \u0930\u0939\u093e",
+      "lang": "hi",
+      "intent_expected": [
+        "snake_bite"
+      ],
+      "domain": "health",
+      "protocol": "snake_bite",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-snake-04",
+      "text": "Snake bite, 108 ko call karna chahiye?",
+      "lang": "hinglish",
+      "intent_expected": [
+        "snake_bite"
+      ],
+      "domain": "health",
+      "protocol": "snake_bite",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-animal-01",
+      "text": "Kutte ne bachche ko kaat liya",
+      "lang": "hinglish",
+      "intent_expected": [
+        "animal_bite"
+      ],
+      "domain": "health",
+      "protocol": "animal_bite",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-animal-02",
+      "text": "Kutte ka bite, 21 din baad vaccine?",
+      "lang": "hinglish",
+      "intent_expected": [
+        "animal_bite"
+      ],
+      "domain": "health",
+      "protocol": "animal_bite",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-animal-03",
+      "text": "\u092c\u0902\u0926\u0930 \u0928\u0947 \u0939\u093e\u0925 \u0916\u0930\u094b\u0902\u091a \u0926\u093f\u092f\u093e",
+      "lang": "hi",
+      "intent_expected": [
+        "animal_bite"
+      ],
+      "domain": "health",
+      "protocol": "animal_bite",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-animal-04",
+      "text": "Cat scratch se rabies ho sakta hai?",
+      "lang": "hinglish",
+      "intent_expected": [
+        "animal_bite"
+      ],
+      "domain": "health",
+      "protocol": "animal_bite",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-chest-01",
+      "text": "Seene mein dard aur saans phool rahi",
+      "lang": "hinglish",
+      "intent_expected": [
+        "chest_pain"
+      ],
+      "domain": "health",
+      "protocol": "chest_pain",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-chest-02",
+      "text": "Chhati mein bhaaripan, paseena",
+      "lang": "hinglish",
+      "intent_expected": [
+        "chest_pain"
+      ],
+      "domain": "health",
+      "protocol": "chest_pain",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-chest-03",
+      "text": "\u0926\u093f\u0932 \u092e\u0947\u0902 \u0926\u0930\u094d\u0926 \u0914\u0930 \u0909\u0932\u094d\u091f\u0940",
+      "lang": "hi",
+      "intent_expected": [
+        "chest_pain"
+      ],
+      "domain": "health",
+      "protocol": "chest_pain",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-chest-04",
+      "text": "Heart attack ke symptoms kya hain?",
+      "lang": "hinglish",
+      "intent_expected": [
+        "chest_pain"
+      ],
+      "domain": "health",
+      "protocol": "chest_pain",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-stroke-01",
+      "text": "Chehra tedha aur bolne mein dikkat",
+      "lang": "hinglish",
+      "intent_expected": [
+        "stroke"
+      ],
+      "domain": "health",
+      "protocol": "stroke",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-stroke-02",
+      "text": "Achanak haath kaam nahi kar raha",
+      "lang": "hinglish",
+      "intent_expected": [
+        "stroke"
+      ],
+      "domain": "health",
+      "protocol": "stroke",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-stroke-03",
+      "text": "\u0906\u0927\u093e \u0936\u0930\u0940\u0930 \u0938\u0941\u0928\u094d\u0928 \u0939\u094b \u0917\u092f\u093e",
+      "lang": "hi",
+      "intent_expected": [
+        "stroke"
+      ],
+      "domain": "health",
+      "protocol": "stroke",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-stroke-04",
+      "text": "Stroke ke lakshan, kya karein",
+      "lang": "hinglish",
+      "intent_expected": [
+        "stroke"
+      ],
+      "domain": "health",
+      "protocol": "stroke",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-bleed-01",
+      "text": "Khoon zyada beh raha hai, kya karein",
+      "lang": "hinglish",
+      "intent_expected": [
+        "severe_bleeding"
+      ],
+      "domain": "health",
+      "protocol": "severe_bleeding",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-bleed-02",
+      "text": "Haath se khoon nahi ruk raha",
+      "lang": "hinglish",
+      "intent_expected": [
+        "severe_bleeding"
+      ],
+      "domain": "health",
+      "protocol": "severe_bleeding",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-bleed-03",
+      "text": "\u0917\u0939\u0930\u093e \u0915\u091f, \u0916\u0942\u0928 \u092c\u0939 \u0930\u0939\u093e",
+      "lang": "hi",
+      "intent_expected": [
+        "severe_bleeding"
+      ],
+      "domain": "health",
+      "protocol": "severe_bleeding",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-bleed-04",
+      "text": "Accident mein khoon beh raha",
+      "lang": "hinglish",
+      "intent_expected": [
+        "severe_bleeding"
+      ],
+      "domain": "health",
+      "protocol": "severe_bleeding",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-breath-01",
+      "text": "Saans phool rahi, baith nahi pa raha",
+      "lang": "hinglish",
+      "intent_expected": [
+        "breathing"
+      ],
+      "domain": "health",
+      "protocol": "breathing",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-breath-02",
+      "text": "Saans lene mein dikkat aur hoth neele",
+      "lang": "hinglish",
+      "intent_expected": [
+        "breathing"
+      ],
+      "domain": "health",
+      "protocol": "breathing",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-breath-03",
+      "text": "\u0926\u092e \u0918\u0941\u091f \u0930\u0939\u093e \u0939\u0948",
+      "lang": "hi",
+      "intent_expected": [
+        "breathing"
+      ],
+      "domain": "health",
+      "protocol": "breathing",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-breath-04",
+      "text": "Asthma attack, kya karein",
+      "lang": "hinglish",
+      "intent_expected": [
+        "breathing"
+      ],
+      "domain": "health",
+      "protocol": "breathing",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-poison-01",
+      "text": "Bachche ne phenyl pi liya",
+      "lang": "hinglish",
+      "intent_expected": [
+        "poisoning"
+      ],
+      "domain": "health",
+      "protocol": "poisoning",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-poison-02",
+      "text": "Zeher kha liya, ulti ho rahi",
+      "lang": "hinglish",
+      "intent_expected": [
+        "poisoning"
+      ],
+      "domain": "health",
+      "protocol": "poisoning",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-poison-03",
+      "text": "\u0915\u0940\u091f\u0928\u093e\u0936\u0915 \u092a\u0940 \u0932\u093f\u092f\u093e",
+      "lang": "hi",
+      "intent_expected": [
+        "poisoning"
+      ],
+      "domain": "health",
+      "protocol": "poisoning",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-poison-04",
+      "text": "Kerosene kha liya galti se",
+      "lang": "hinglish",
+      "intent_expected": [
+        "poisoning"
+      ],
+      "domain": "health",
+      "protocol": "poisoning",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-burn-01",
+      "text": "Garam tel se haath jal gaya",
+      "lang": "hinglish",
+      "intent_expected": [
+        "burns"
+      ],
+      "domain": "health",
+      "protocol": "burns",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-burn-02",
+      "text": "Jal gaya, kya lagayein",
+      "lang": "hinglish",
+      "intent_expected": [
+        "burns"
+      ],
+      "domain": "health",
+      "protocol": "burns",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-burn-03",
+      "text": "\u0917\u0930\u092e \u092a\u093e\u0928\u0940 \u0938\u0947 \u091c\u0932 \u0917\u092f\u093e",
+      "lang": "hi",
+      "intent_expected": [
+        "burns"
+      ],
+      "domain": "health",
+      "protocol": "burns",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-burn-04",
+      "text": "Burn blister, kya karein",
+      "lang": "hinglish",
+      "intent_expected": [
+        "burns"
+      ],
+      "domain": "health",
+      "protocol": "burns",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-frac-01",
+      "text": "Pair ki haddi toot gayi",
+      "lang": "hinglish",
+      "intent_expected": [
+        "fracture"
+      ],
+      "domain": "health",
+      "protocol": "fracture",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-frac-02",
+      "text": "Gir gaya, kandha hil nahi raha",
+      "lang": "hinglish",
+      "intent_expected": [
+        "fracture"
+      ],
+      "domain": "health",
+      "protocol": "fracture",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-frac-03",
+      "text": "\u0939\u0921\u094d\u0921\u0940 \u091f\u0942\u091f \u0917\u0908, \u0938\u0942\u091c\u0928 \u0939\u0948",
+      "lang": "hi",
+      "intent_expected": [
+        "fracture"
+      ],
+      "domain": "health",
+      "protocol": "fracture",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-frac-04",
+      "text": "Fracture lagta hai, kya karein",
+      "lang": "hinglish",
+      "intent_expected": [
+        "fracture"
+      ],
+      "domain": "health",
+      "protocol": "fracture",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-heat-01",
+      "text": "Loo lag gayi, behosh hai",
+      "lang": "hinglish",
+      "intent_expected": [
+        "heat_stroke"
+      ],
+      "domain": "health",
+      "protocol": "heat_stroke",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-heat-02",
+      "text": "Garmi se chakkar aur ulti",
+      "lang": "hinglish",
+      "intent_expected": [
+        "heat_stroke"
+      ],
+      "domain": "health",
+      "protocol": "heat_stroke",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-heat-03",
+      "text": "\u0927\u0942\u092a \u092e\u0947\u0902 \u092c\u0947\u0939\u094b\u0936 \u0939\u094b \u0917\u092f\u093e",
+      "lang": "hi",
+      "intent_expected": [
+        "heat_stroke"
+      ],
+      "domain": "health",
+      "protocol": "heat_stroke",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-heat-04",
+      "text": "Heat stroke, sharir garam hai",
+      "lang": "hinglish",
+      "intent_expected": [
+        "heat_stroke"
+      ],
+      "domain": "health",
+      "protocol": "heat_stroke",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-seiz-01",
+      "text": "Daura aaya, kya karein",
+      "lang": "hinglish",
+      "intent_expected": [
+        "seizure"
+      ],
+      "domain": "health",
+      "protocol": "seizure",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-seiz-02",
+      "text": "Mirgi ka attack",
+      "lang": "hinglish",
+      "intent_expected": [
+        "seizure"
+      ],
+      "domain": "health",
+      "protocol": "seizure",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-seiz-03",
+      "text": "\u092c\u091a\u094d\u091a\u0947 \u0915\u094b \u0926\u094c\u0930\u093e \u0906\u092f\u093e",
+      "lang": "hi",
+      "intent_expected": [
+        "seizure"
+      ],
+      "domain": "health",
+      "protocol": "seizure",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-seiz-04",
+      "text": "Fits, muh se jhaag",
+      "lang": "hinglish",
+      "intent_expected": [
+        "seizure"
+      ],
+      "domain": "health",
+      "protocol": "seizure",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-cfever-01",
+      "text": "Bachche ko bukhar 102",
+      "lang": "hinglish",
+      "intent_expected": [
+        "child_fever"
+      ],
+      "domain": "health",
+      "protocol": "child_fever",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-cfever-02",
+      "text": "Baby ko fever, sust hai",
+      "lang": "hinglish",
+      "intent_expected": [
+        "child_fever"
+      ],
+      "domain": "health",
+      "protocol": "child_fever",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-cfever-03",
+      "text": "\u0928\u0935\u091c\u093e\u0924 \u0915\u094b \u092c\u0941\u0916\u093e\u0930",
+      "lang": "hi",
+      "intent_expected": [
+        "child_fever"
+      ],
+      "domain": "health",
+      "protocol": "child_fever",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-cfever-04",
+      "text": "6 mahine ke bacche ko bukhar",
+      "lang": "hinglish",
+      "intent_expected": [
+        "child_fever"
+      ],
+      "domain": "health",
+      "protocol": "child_fever",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-diarr-01",
+      "text": "Dast ho rahe, kya khayein",
+      "lang": "hinglish",
+      "intent_expected": [
+        "diarrhea"
+      ],
+      "domain": "health",
+      "protocol": "diarrhea",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-diarr-02",
+      "text": "Loose motion, pet kharab",
+      "lang": "hinglish",
+      "intent_expected": [
+        "diarrhea"
+      ],
+      "domain": "health",
+      "protocol": "diarrhea",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-diarr-03",
+      "text": "\u092c\u091a\u094d\u091a\u0947 \u0915\u094b \u0926\u0938\u094d\u0924",
+      "lang": "hi",
+      "intent_expected": [
+        "diarrhea"
+      ],
+      "domain": "health",
+      "protocol": "diarrhea",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-diarr-04",
+      "text": "Dast mein ORS",
+      "lang": "hinglish",
+      "intent_expected": [
+        "diarrhea"
+      ],
+      "domain": "health",
+      "protocol": "diarrhea",
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-generic-01",
+      "text": "Sir dard aur bukhar",
+      "lang": "hinglish",
+      "intent_expected": [
+        "generic"
+      ],
+      "domain": "health",
+      "protocol": null,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-generic-02",
+      "text": "Gale mein dard",
+      "lang": "hinglish",
+      "intent_expected": [
+        "generic"
+      ],
+      "domain": "health",
+      "protocol": null,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-generic-03",
+      "text": "Aankh mein jalan",
+      "lang": "hinglish",
+      "intent_expected": [
+        "generic"
+      ],
+      "domain": "health",
+      "protocol": null,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-generic-04",
+      "text": "Kamar dard",
+      "lang": "hinglish",
+      "intent_expected": [
+        "generic"
+      ],
+      "domain": "health",
+      "protocol": null,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-generic-05",
+      "text": "Peshab mein jalan",
+      "lang": "hinglish",
+      "intent_expected": [
+        "generic"
+      ],
+      "domain": "health",
+      "protocol": null,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-generic-06",
+      "text": "Khujli",
+      "lang": "hinglish",
+      "intent_expected": [
+        "generic"
+      ],
+      "domain": "health",
+      "protocol": null,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-generic-07",
+      "text": "Daant dard",
+      "lang": "hinglish",
+      "intent_expected": [
+        "generic"
+      ],
+      "domain": "health",
+      "protocol": null,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-generic-08",
+      "text": "Kaan dard",
+      "lang": "hinglish",
+      "intent_expected": [
+        "generic"
+      ],
+      "domain": "health",
+      "protocol": null,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-vet-01",
+      "text": "Gaay ko bukhar",
+      "lang": "hinglish",
+      "intent_expected": [
+        "animal"
+      ],
+      "domain": "agriculture",
+      "protocol": null,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-vet-02",
+      "text": "Bakri bimar",
+      "lang": "hinglish",
+      "intent_expected": [
+        "animal"
+      ],
+      "domain": "agriculture",
+      "protocol": null,
+      "pass": true,
+      "note": ""
+    },
+    {
+      "id": "test-vet-03",
+      "text": "\u092e\u0941\u0930\u094d\u0917\u0940 \u0915\u094b \u092c\u0941\u0916\u093e\u0930",
+      "lang": "hi",
+      "intent_expected": [
+        "animal"
+      ],
+      "domain": "agriculture",
+      "protocol": null,
+      "pass": true,
+      "note": ""
+    }
+  ]
+}

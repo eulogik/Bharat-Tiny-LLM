@@ -1,0 +1,3952 @@
+{
+  "model": "Qwen/Qwen3.5-2B",
+  "tokens_file": "data/v4/hinglish_tokens.json",
+  "whole_words_only": true,
+  "tokens_requested": 837,
+  "tokens_added": 837,
+  "old_tokenizer_len": 248077,
+  "new_tokenizer_len": 248914,
+  "roundtrip_ok": true,
+  "roundtrip_examples": [],
+  "failures": [],
+  "constituents": {
+    " hain": [
+      "Ġh",
+      "ain"
+    ],
+    " ekdum": [
+      "Ġek",
+      "d",
+      "um"
+    ],
+    " chahiye": [
+      "Ġch",
+      "ahi",
+      "ye"
+    ],
+    " toh": [
+      "Ġto",
+      "h"
+    ],
+    " yeh": [
+      "Ġy",
+      "eh"
+    ],
+    " bhi": [
+      "Ġb",
+      "hi"
+    ],
+    " kya": [
+      "Ġk",
+      "ya"
+    ],
+    " liye": [
+      "Ġli",
+      "ye"
+    ],
+    " bahut": [
+      "Ġbah",
+      "ut"
+    ],
+    " samajh": [
+      "Ġsam",
+      "aj",
+      "h"
+    ],
+    " haanji": [
+      "Ġha",
+      "an",
+      "ji"
+    ],
+    " kaise": [
+      "Ġk",
+      "aise"
+    ],
+    " aapko": [
+      "Ġa",
+      "ap",
+      "ko"
+    ],
+    " karte": [
+      "Ġk",
+      "arte"
+    ],
+    " rahega": [
+      "Ġra",
+      "he",
+      "ga"
+    ],
+    " zaroori": [
+      "Ġzar",
+      "oor",
+      "i"
+    ],
+    " nahi": [
+      "Ġn",
+      "ahi"
+    ],
+    " hota": [
+      "Ġhot",
+      "a"
+    ],
+    " haan": [
+      "Ġha",
+      "an"
+    ],
+    " dekho": [
+      "Ġde",
+      "kho"
+    ],
+    " karna": [
+      "Ġk",
+      "arna"
+    ],
+    " karne": [
+      "Ġkar",
+      "ne"
+    ],
+    " bilkul": [
+      "Ġbil",
+      "kul"
+    ],
+    " hinglish": [
+      "Ġhing",
+      "lish"
+    ],
+    " karo": [
+      "Ġk",
+      "aro"
+    ],
+    " cheezein": [
+      "Ġche",
+      "eze",
+      "in"
+    ],
+    " nahin": [
+      "Ġnah",
+      "in"
+    ],
+    " sakte": [
+      "Ġs",
+      "akte"
+    ],
+    " karein": [
+      "Ġk",
+      "are",
+      "in"
+    ],
+    " yahaan": [
+      "Ġy",
+      "aha",
+      "an"
+    ],
+    " jaise": [
+      "Ġj",
+      "aise"
+    ],
+    " zyada": [
+      "Ġzy",
+      "ada"
+    ],
+    " rahe": [
+      "Ġra",
+      "he"
+    ],
+    " hoon": [
+      "Ġh",
+      "oon"
+    ],
+    " alag-alag": [
+      "Ġal",
+      "ag",
+      "-al",
+      "ag"
+    ],
+    " sabse": [
+      "Ġsab",
+      "se"
+    ],
+    " samajhna": [
+      "Ġsam",
+      "aj",
+      "h",
+      "na"
+    ],
+    " baat": [
+      "Ġba",
+      "at"
+    ],
+    " pehle": [
+      "Ġpe",
+      "hle"
+    ],
+    " aapne": [
+      "Ġa",
+      "ap",
+      "ne"
+    ],
+    " koi": [
+      "Ġk",
+      "oi"
+    ],
+    " sakti": [
+      "Ġs",
+      "akt",
+      "i"
+    ],
+    " kaam": [
+      "Ġka",
+      "am"
+    ],
+    " hote": [
+      "Ġh",
+      "ote"
+    ],
+    " aajkal": [
+      "Ġa",
+      "aj",
+      "kal"
+    ],
+    " yaar": [
+      "Ġya",
+      "ar"
+    ],
+    " telugu": [
+      "Ġtel",
+      "ugu"
+    ],
+    " zabardast": [
+      "Ġzab",
+      "ard",
+      "ast"
+    ],
+    " aapke": [
+      "Ġa",
+      "ap",
+      "ke"
+    ],
+    " tumhara": [
+      "Ġtum",
+      "h",
+      "ara"
+    ],
+    " samajhne": [
+      "Ġsam",
+      "aj",
+      "h",
+      "ne"
+    ],
+    " yojana": [
+      "Ġy",
+      "oj",
+      "ana"
+    ],
+    " kya-kya": [
+      "Ġk",
+      "ya",
+      "-k",
+      "ya"
+    ],
+    " rakhna": [
+      "Ġr",
+      "akh",
+      "na"
+    ],
+    " jayega": [
+      "Ġj",
+      "ay",
+      "ega"
+    ],
+    " lekin": [
+      "Ġle",
+      "kin"
+    ],
+    " karta": [
+      "Ġk",
+      "arta"
+    ],
+    " hona": [
+      "Ġhon",
+      "a"
+    ],
+    " samajhte": [
+      "Ġsam",
+      "aj",
+      "hte"
+    ],
+    " sirf": [
+      "Ġsir",
+      "f"
+    ],
+    " jaisa": [
+      "Ġj",
+      "ais",
+      "a"
+    ],
+    " phir": [
+      "Ġph",
+      "ir"
+    ],
+    " apne": [
+      "Ġap",
+      "ne"
+    ],
+    " aap": [
+      "Ġa",
+      "ap"
+    ],
+    " sakta": [
+      "Ġsak",
+      "ta"
+    ],
+    " seedha-seedha": [
+      "Ġseed",
+      "ha",
+      "-se",
+      "ed",
+      "ha"
+    ],
+    " hoga": [
+      "Ġh",
+      "oga"
+    ],
+    " tareeke": [
+      "Ġtare",
+      "eke"
+    ],
+    " sahayak": [
+      "Ġsa",
+      "hay",
+      "ak"
+    ],
+    " aaj": [
+      "Ġa",
+      "aj"
+    ],
+    " aise": [
+      "Ġa",
+      "ise"
+    ],
+    " seedha": [
+      "Ġseed",
+      "ha"
+    ],
+    " jahaan": [
+      "Ġj",
+      "aha",
+      "an"
+    ],
+    " saath": [
+      "Ġsa",
+      "ath"
+    ],
+    " cheezon": [
+      "Ġche",
+      "ez",
+      "on"
+    ],
+    " hamesha": [
+      "Ġh",
+      "ames",
+      "ha"
+    ],
+    " alag": [
+      "Ġal",
+      "ag"
+    ],
+    " duniya": [
+      "Ġd",
+      "uni",
+      "ya"
+    ],
+    " bhai": [
+      "Ġb",
+      "hai"
+    ],
+    " hoti": [
+      "Ġhot",
+      "i"
+    ],
+    " logon": [
+      "Ġlog",
+      "on"
+    ],
+    " thoda": [
+      "Ġth",
+      "oda"
+    ],
+    " pata": [
+      "Ġp",
+      "ata"
+    ],
+    " tumhe": [
+      "Ġtum",
+      "he"
+    ],
+    " jismein": [
+      "Ġj",
+      "isme",
+      "in"
+    ],
+    " cheez": [
+      "Ġche",
+      "ez"
+    ],
+    " aapka": [
+      "Ġa",
+      "ap",
+      "ka"
+    ],
+    " batata": [
+      "Ġbat",
+      "ata"
+    ],
+    " jaata": [
+      "Ġja",
+      "ata"
+    ],
+    " kisi": [
+      "Ġk",
+      "isi"
+    ],
+    " samjho": [
+      "Ġsam",
+      "j",
+      "ho"
+    ],
+    " dumdaar": [
+      "Ġdum",
+      "da",
+      "ar"
+    ],
+    " karenge": [
+      "Ġkaren",
+      "ge"
+    ],
+    " ghar": [
+      "Ġg",
+      "har"
+    ],
+    " suno": [
+      "Ġsun",
+      "o"
+    ],
+    " cheppalante": [
+      "Ġche",
+      "pp",
+      "al",
+      "ante"
+    ],
+    " aapki": [
+      "Ġa",
+      "ap",
+      "ki"
+    ],
+    " karega": [
+      "Ġk",
+      "are",
+      "ga"
+    ],
+    " shayad": [
+      "Ġsh",
+      "ay",
+      "ad"
+    ],
+    " apni": [
+      "Ġap",
+      "ni"
+    ],
+    " jaate": [
+      "Ġja",
+      "ate"
+    ],
+    " sawaal": [
+      "Ġsaw",
+      "aal"
+    ],
+    " rahegi": [
+      "Ġra",
+      "he",
+      "gi"
+    ],
+    " step-by-step": [
+      "Ġstep",
+      "-by",
+      "-step"
+    ],
+    " kamaal": [
+      "Ġk",
+      "ama",
+      "al"
+    ],
+    " khatam": [
+      "Ġk",
+      "hat",
+      "am"
+    ],
+    " jhagde": [
+      "Ġj",
+      "h",
+      "ag",
+      "de"
+    ],
+    " kaafi": [
+      "Ġka",
+      "afi"
+    ],
+    " seekhne": [
+      "Ġseek",
+      "h",
+      "ne"
+    ],
+    " bhasha": [
+      "Ġb",
+      "hash",
+      "a"
+    ],
+    " chhote": [
+      "Ġch",
+      "h",
+      "ote"
+    ],
+    " asar": [
+      "Ġas",
+      "ar"
+    ],
+    " isliye": [
+      "Ġis",
+      "li",
+      "ye"
+    ],
+    " doosre": [
+      "Ġdo",
+      "os",
+      "re"
+    ],
+    " chakkar": [
+      "Ġch",
+      "ak",
+      "kar"
+    ],
+    " baatcheet": [
+      "Ġba",
+      "atch",
+      "e",
+      "et"
+    ],
+    " wahaan": [
+      "Ġw",
+      "aha",
+      "an"
+    ],
+    " paani": [
+      "Ġpa",
+      "ani"
+    ],
+    " wale": [
+      "Ġw",
+      "ale"
+    ],
+    " pehla": [
+      "Ġpe",
+      "h",
+      "la"
+    ],
+    " padhne": [
+      "Ġpad",
+      "h",
+      "ne"
+    ],
+    " rakhne": [
+      "Ġr",
+      "akh",
+      "ne"
+    ],
+    " padta": [
+      "Ġpad",
+      "ta"
+    ],
+    " aisa": [
+      "Ġa",
+      "isa"
+    ],
+    " karni": [
+      "Ġk",
+      "arn",
+      "i"
+    ],
+    " badhane": [
+      "Ġbad",
+      "h",
+      "ane"
+    ],
+    " kaun": [
+      "Ġka",
+      "un"
+    ],
+    " kharab": [
+      "Ġk",
+      "har",
+      "ab"
+    ],
+    " jagah": [
+      "Ġjag",
+      "ah"
+    ],
+    " rahi": [
+      "Ġr",
+      "ahi"
+    ],
+    " koshish": [
+      "Ġk",
+      "osh",
+      "ish"
+    ],
+    " dhyaan": [
+      "Ġdh",
+      "ya",
+      "an"
+    ],
+    " saare": [
+      "Ġsa",
+      "are"
+    ],
+    " wala": [
+      "Ġw",
+      "ala"
+    ],
+    " jaayega": [
+      "Ġja",
+      "ay",
+      "ega"
+    ],
+    " kabhi": [
+      "Ġkab",
+      "hi"
+    ],
+    " naya": [
+      "Ġn",
+      "aya"
+    ],
+    " unke": [
+      "Ġun",
+      "ke"
+    ],
+    " zameen": [
+      "Ġz",
+      "ame",
+      "en"
+    ],
+    " unko": [
+      "Ġun",
+      "ko"
+    ],
+    " kyun": [
+      "Ġk",
+      "yun"
+    ],
+    " kiya": [
+      "Ġki",
+      "ya"
+    ],
+    " badminton": [
+      "Ġbad",
+      "m",
+      "inton"
+    ],
+    " sarkar": [
+      "Ġs",
+      "ark",
+      "ar"
+    ],
+    " naye": [
+      "Ġn",
+      "aye"
+    ],
+    " hisaab": [
+      "Ġhis",
+      "aab"
+    ],
+    " samjhaata": [
+      "Ġsam",
+      "j",
+      "ha",
+      "ata"
+    ],
+    " baatein": [
+      "Ġba",
+      "ate",
+      "in"
+    ],
+    " apna": [
+      "Ġap",
+      "na"
+    ],
+    " information-packed": [
+      "Ġinformation",
+      "-packed"
+    ],
+    " hua": [
+      "Ġh",
+      "ua"
+    ],
+    " samjhata": [
+      "Ġsam",
+      "jh",
+      "ata"
+    ],
+    " kitna": [
+      "Ġkit",
+      "na"
+    ],
+    " kahaan": [
+      "Ġk",
+      "aha",
+      "an"
+    ],
+    " chalo": [
+      "Ġch",
+      "alo"
+    ],
+    " dete": [
+      "Ġdet",
+      "e"
+    ],
+    " karke": [
+      "Ġkar",
+      "ke"
+    ],
+    " milti": [
+      "Ġm",
+      "ilt",
+      "i"
+    ],
+    " zaroor": [
+      "Ġzar",
+      "oor"
+    ],
+    " jisse": [
+      "Ġj",
+      "isse"
+    ],
+    " neeche": [
+      "Ġne",
+      "e",
+      "che"
+    ],
+    " aate": [
+      "Ġa",
+      "ate"
+    ],
+    " karti": [
+      "Ġkart",
+      "i"
+    ],
+    " baare": [
+      "Ġba",
+      "are"
+    ],
+    " dekhna": [
+      "Ġde",
+      "kh",
+      "na"
+    ],
+    " lene": [
+      "Ġl",
+      "ene"
+    ],
+    " milega": [
+      "Ġmile",
+      "ga"
+    ],
+    " shuru": [
+      "Ġsh",
+      "uru"
+    ],
+    " aayega": [
+      "Ġa",
+      "ay",
+      "ega"
+    ],
+    " dhamaka": [
+      "Ġd",
+      "ham",
+      "aka"
+    ],
+    " kharcha": [
+      "Ġkh",
+      "arch",
+      "a"
+    ],
+    " aas-paas": [
+      "Ġa",
+      "as",
+      "-p",
+      "a",
+      "as"
+    ],
+    " socho": [
+      "Ġso",
+      "cho"
+    ],
+    " bataata": [
+      "Ġbata",
+      "ata"
+    ],
+    " gaye": [
+      "Ġgay",
+      "e"
+    ],
+    " dekhne": [
+      "Ġde",
+      "kh",
+      "ne"
+    ],
+    " baithega": [
+      "Ġbait",
+      "he",
+      "ga"
+    ],
+    " paas": [
+      "Ġpa",
+      "as"
+    ],
+    " seedhe": [
+      "Ġseed",
+      "he"
+    ],
+    " zaroorat": [
+      "Ġzar",
+      "oor",
+      "at"
+    ],
+    " jaati": [
+      "Ġja",
+      "ati"
+    ],
+    " kyunki": [
+      "Ġky",
+      "unki"
+    ],
+    " bharpoor": [
+      "Ġb",
+      "har",
+      "po",
+      "or"
+    ],
+    " isse": [
+      "Ġis",
+      "se"
+    ],
+    " sawal": [
+      "Ġsaw",
+      "al"
+    ],
+    " poochha": [
+      "Ġpoo",
+      "ch",
+      "ha"
+    ],
+    " bade": [
+      "Ġb",
+      "ade"
+    ],
+    " dekhte": [
+      "Ġdek",
+      "hte"
+    ],
+    " kabaddi": [
+      "Ġkab",
+      "add",
+      "i"
+    ],
+    " dekh": [
+      "Ġde",
+      "kh"
+    ],
+    " khaana": [
+      "Ġk",
+      "ha",
+      "ana"
+    ],
+    " pehchaan": [
+      "Ġpe",
+      "h",
+      "cha",
+      "an"
+    ],
+    " itna": [
+      "Ġit",
+      "na"
+    ],
+    " bina": [
+      "Ġb",
+      "ina"
+    ],
+    " baad": [
+      "Ġba",
+      "ad"
+    ],
+    " beech": [
+      "Ġbe",
+      "ech"
+    ],
+    " akele": [
+      "Ġa",
+      "ke",
+      "le"
+    ],
+    " dikhate": [
+      "Ġd",
+      "ikh",
+      "ate"
+    ],
+    " baarish": [
+      "Ġba",
+      "ar",
+      "ish"
+    ],
+    " diya": [
+      "Ġdi",
+      "ya"
+    ],
+    " dhoondhne": [
+      "Ġd",
+      "ho",
+      "ond",
+      "h",
+      "ne"
+    ],
+    " galatfahmiyaan": [
+      "Ġgal",
+      "at",
+      "f",
+      "ah",
+      "mi",
+      "ya",
+      "an"
+    ],
+    " hogi": [
+      "Ġhog",
+      "i"
+    ],
+    " ajeeb": [
+      "Ġaj",
+      "ee",
+      "b"
+    ],
+    " faayda": [
+      "Ġfa",
+      "ay",
+      "da"
+    ],
+    " usko": [
+      "Ġus",
+      "ko"
+    ],
+    " banane": [
+      "Ġban",
+      "ane"
+    ],
+    " pakka": [
+      "Ġpak",
+      "ka"
+    ],
+    " game-changer": [
+      "Ġgame",
+      "-ch",
+      "anger"
+    ],
+    " badh": [
+      "Ġbad",
+      "h"
+    ],
+    " theek": [
+      "Ġthe",
+      "ek"
+    ],
+    " chala": [
+      "Ġch",
+      "ala"
+    ],
+    " tujhe": [
+      "Ġt",
+      "uj",
+      "he"
+    ],
+    " abhi": [
+      "Ġab",
+      "hi"
+    ],
+    " bataunga": [
+      "Ġbata",
+      "unga"
+    ],
+    " lagega": [
+      "Ġlage",
+      "ga"
+    ],
+    " purana": [
+      "Ġpur",
+      "ana"
+    ],
+    " aata": [
+      "Ġa",
+      "ata"
+    ],
+    " tumhare": [
+      "Ġtum",
+      "hare"
+    ],
+    " dhamakedaar": [
+      "Ġd",
+      "ham",
+      "aked",
+      "aar"
+    ],
+    " karunga": [
+      "Ġkar",
+      "unga"
+    ],
+    " shehron": [
+      "Ġshe",
+      "h",
+      "ron"
+    ],
+    " banao": [
+      "Ġbana",
+      "o"
+    ],
+    " jaldi": [
+      "Ġj",
+      "aldi"
+    ],
+    " seedhe-seedhe": [
+      "Ġseed",
+      "he",
+      "-se",
+      "ed",
+      "he"
+    ],
+    " point-wise": [
+      "Ġpoint",
+      "-wise"
+    ],
+    " uske": [
+      "Ġus",
+      "ke"
+    ],
+    " kaunsa": [
+      "Ġka",
+      "un",
+      "sa"
+    ],
+    " lagta": [
+      "Ġlag",
+      "ta"
+    ],
+    " vishayam": [
+      "Ġv",
+      "ish",
+      "ay",
+      "am"
+    ],
+    " jata": [
+      "Ġj",
+      "ata"
+    ],
+    " gaon": [
+      "Ġga",
+      "on"
+    ],
+    " jayegi": [
+      "Ġj",
+      "ay",
+      "egi"
+    ],
+    " mausam": [
+      "Ġma",
+      "us",
+      "am"
+    ],
+    " iska": [
+      "Ġis",
+      "ka"
+    ],
+    " honge": [
+      "Ġh",
+      "onge"
+    ],
+    " nuksaan": [
+      "Ġnu",
+      "ks",
+      "aan"
+    ],
+    " dhoondhna": [
+      "Ġd",
+      "ho",
+      "ond",
+      "h",
+      "na"
+    ],
+    " arthamaindaa": [
+      "Ġar",
+      "th",
+      "am",
+      "ain",
+      "da",
+      "a"
+    ],
+    " chhote-chhote": [
+      "Ġch",
+      "h",
+      "ote",
+      "-ch",
+      "h",
+      "ote"
+    ],
+    " honi": [
+      "Ġhon",
+      "i"
+    ],
+    " bolte": [
+      "Ġbol",
+      "te"
+    ],
+    " jaaye": [
+      "Ġja",
+      "aye"
+    ],
+    " khaas": [
+      "Ġk",
+      "ha",
+      "as"
+    ],
+    " jawaab": [
+      "Ġj",
+      "awa",
+      "ab"
+    ],
+    " khaane": [
+      "Ġk",
+      "ha",
+      "ane"
+    ],
+    " jaayenge": [
+      "Ġja",
+      "ay",
+      "enge"
+    ],
+    " seekhna": [
+      "Ġseek",
+      "h",
+      "na"
+    ],
+    " bhaiyya": [
+      "Ġb",
+      "hai",
+      "yy",
+      "a"
+    ],
+    " paisa": [
+      "Ġpais",
+      "a"
+    ],
+    " tareeka": [
+      "Ġtare",
+      "eka"
+    ],
+    " jayenge": [
+      "Ġj",
+      "ay",
+      "enge"
+    ],
+    " baar": [
+      "Ġba",
+      "ar"
+    ],
+    " upar": [
+      "Ġup",
+      "ar"
+    ],
+    " pehli": [
+      "Ġpe",
+      "h",
+      "li"
+    ],
+    " unki": [
+      "Ġun",
+      "ki"
+    ],
+    " sabko": [
+      "Ġsab",
+      "ko"
+    ],
+    " padega": [
+      "Ġpad",
+      "ega"
+    ],
+    " chepthaanu": [
+      "Ġche",
+      "pth",
+      "aan",
+      "u"
+    ],
+    " dena": [
+      "Ġden",
+      "a"
+    ],
+    " mazedaar": [
+      "Ġmaz",
+      "eda",
+      "ar"
+    ],
+    " bachchon": [
+      "Ġbach",
+      "chon"
+    ],
+    " kharidne": [
+      "Ġk",
+      "har",
+      "id",
+      "ne"
+    ],
+    " wohi": [
+      "Ġwoh",
+      "i"
+    ],
+    " chalta": [
+      "Ġch",
+      "alta"
+    ],
+    " yehi": [
+      "Ġy",
+      "eh",
+      "i"
+    ],
+    " yahan": [
+      "Ġy",
+      "ahan"
+    ],
+    " gayi": [
+      "Ġgay",
+      "i"
+    ],
+    " khud": [
+      "Ġkh",
+      "ud"
+    ],
+    " chahte": [
+      "Ġcha",
+      "hte"
+    ],
+    " kaisa": [
+      "Ġk",
+      "ais",
+      "a"
+    ],
+    " seedhi": [
+      "Ġseed",
+      "hi"
+    ],
+    " kharidte": [
+      "Ġk",
+      "har",
+      "id",
+      "te"
+    ],
+    " sangathulu": [
+      "Ġsang",
+      "ath",
+      "ulu"
+    ],
+    " jinko": [
+      "Ġj",
+      "ink",
+      "o"
+    ],
+    " dheere-dheere": [
+      "Ġdhe",
+      "ere",
+      "-d",
+      "he",
+      "ere"
+    ],
+    " rakho": [
+      "Ġrak",
+      "ho"
+    ],
+    " mushkil": [
+      "Ġmush",
+      "kil"
+    ],
+    " samajho": [
+      "Ġsam",
+      "aj",
+      "ho"
+    ],
+    " badhne": [
+      "Ġbad",
+      "h",
+      "ne"
+    ],
+    " aati": [
+      "Ġa",
+      "ati"
+    ],
+    " dikhega": [
+      "Ġdik",
+      "he",
+      "ga"
+    ],
+    " yaad": [
+      "Ġya",
+      "ad"
+    ],
+    " bhar": [
+      "Ġb",
+      "har"
+    ],
+    " badhega": [
+      "Ġbad",
+      "he",
+      "ga"
+    ],
+    " explainer": [
+      "Ġexpl",
+      "ainer"
+    ],
+    " dhoondh": [
+      "Ġd",
+      "ho",
+      "ond",
+      "h"
+    ],
+    " fayde": [
+      "Ġfay",
+      "de"
+    ],
+    " liya": [
+      "Ġli",
+      "ya"
+    ],
+    " dene": [
+      "Ġd",
+      "ene"
+    ],
+    " chhoti": [
+      "Ġch",
+      "hot",
+      "i"
+    ],
+    " unka": [
+      "Ġun",
+      "ka"
+    ],
+    " iske": [
+      "Ġis",
+      "ke"
+    ],
+    " samjhaunga": [
+      "Ġsam",
+      "j",
+      "ha",
+      "unga"
+    ],
+    " rehte": [
+      "Ġre",
+      "hte"
+    ],
+    " chalega": [
+      "Ġchale",
+      "ga"
+    ],
+    " dhyan": [
+      "Ġdh",
+      "yan"
+    ],
+    " tarah": [
+      "Ġtar",
+      "ah"
+    ],
+    " dikhao": [
+      "Ġd",
+      "ikh",
+      "ao"
+    ],
+    " rakhunga": [
+      "Ġr",
+      "akh",
+      "unga"
+    ],
+    " kahin": [
+      "Ġkah",
+      "in"
+    ],
+    " dimaag": [
+      "Ġdim",
+      "a",
+      "ag"
+    ],
+    " karoonga": [
+      "Ġk",
+      "aro",
+      "onga"
+    ],
+    " kare": [
+      "Ġk",
+      "are"
+    ],
+    " isko": [
+      "Ġis",
+      "ko"
+    ],
+    " jhagda": [
+      "Ġj",
+      "h",
+      "ag",
+      "da"
+    ],
+    " sabziyaan": [
+      "Ġsab",
+      "zi",
+      "ya",
+      "an"
+    ],
+    " dhoop": [
+      "Ġd",
+      "ho",
+      "op"
+    ],
+    " faayde": [
+      "Ġfa",
+      "ay",
+      "de"
+    ],
+    " bharatanatyam": [
+      "Ġb",
+      "har",
+      "atan",
+      "aty",
+      "am"
+    ],
+    " saath-saath": [
+      "Ġsa",
+      "ath",
+      "-s",
+      "a",
+      "ath"
+    ],
+    " kharche": [
+      "Ġkh",
+      "arch",
+      "e"
+    ],
+    " ghoomne": [
+      "Ġgh",
+      "oom",
+      "ne"
+    ],
+    " kabhi-kabhi": [
+      "Ġkab",
+      "hi",
+      "-k",
+      "ab",
+      "hi"
+    ],
+    " choodandi": [
+      "Ġch",
+      "ood",
+      "andi"
+    ],
+    " galatfehmiyaan": [
+      "Ġgal",
+      "at",
+      "feh",
+      "mi",
+      "ya",
+      "an"
+    ],
+    " milta": [
+      "Ġmil",
+      "ta"
+    ],
+    " doosri": [
+      "Ġdo",
+      "os",
+      "ri"
+    ],
+    " daal": [
+      "Ġda",
+      "al"
+    ],
+    " rakhni": [
+      "Ġr",
+      "akh",
+      "ni"
+    ],
+    " samajhata": [
+      "Ġsam",
+      "aj",
+      "h",
+      "ata"
+    ],
+    " khelne": [
+      "Ġkh",
+      "el",
+      "ne"
+    ],
+    " kanoon": [
+      "Ġk",
+      "ano",
+      "on"
+    ],
+    " kitne": [
+      "Ġkit",
+      "ne"
+    ],
+    " kaunse": [
+      "Ġka",
+      "un",
+      "se"
+    ],
+    " aage": [
+      "Ġa",
+      "age"
+    ],
+    " paise": [
+      "Ġp",
+      "aise"
+    ],
+    " saaf": [
+      "Ġsa",
+      "af"
+    ],
+    " arthamainda": [
+      "Ġar",
+      "th",
+      "am",
+      "ain",
+      "da"
+    ],
+    " daalenge": [
+      "Ġda",
+      "al",
+      "enge"
+    ],
+    " dekhenge": [
+      "Ġde",
+      "kh",
+      "enge"
+    ],
+    " rehta": [
+      "Ġre",
+      "hta"
+    ],
+    " lena": [
+      "Ġlen",
+      "a"
+    ],
+    " jhanjhat": [
+      "Ġj",
+      "han",
+      "j",
+      "hat"
+    ],
+    " bohot": [
+      "Ġbo",
+      "hot"
+    ],
+    " sarkari": [
+      "Ġs",
+      "ark",
+      "ari"
+    ],
+    " banate": [
+      "Ġban",
+      "ate"
+    ],
+    " soch": [
+      "Ġso",
+      "ch"
+    ],
+    " waise": [
+      "Ġw",
+      "aise"
+    ],
+    " dikhata": [
+      "Ġd",
+      "ikh",
+      "ata"
+    ],
+    " milte": [
+      "Ġmil",
+      "te"
+    ],
+    " jaisi": [
+      "Ġj",
+      "ais",
+      "i"
+    ],
+    " batao": [
+      "Ġbata",
+      "o"
+    ],
+    " bhandaar": [
+      "Ġbh",
+      "anda",
+      "ar"
+    ],
+    " pehchaano": [
+      "Ġpe",
+      "h",
+      "cha",
+      "ano"
+    ],
+    " chhota": [
+      "Ġch",
+      "h",
+      "ota"
+    ],
+    " kitni": [
+      "Ġkit",
+      "ni"
+    ],
+    " rakhenge": [
+      "Ġr",
+      "akh",
+      "enge"
+    ],
+    " hui": [
+      "Ġh",
+      "ui"
+    ],
+    " saari": [
+      "Ġsa",
+      "ari"
+    ],
+    " jaayein": [
+      "Ġja",
+      "aye",
+      "in"
+    ],
+    " lete": [
+      "Ġle",
+      "te"
+    ],
+    " poora": [
+      "Ġpo",
+      "ora"
+    ],
+    " kaunsi": [
+      "Ġka",
+      "un",
+      "si"
+    ],
+    " baat-cheet": [
+      "Ġba",
+      "at",
+      "-che",
+      "et"
+    ],
+    " aaye": [
+      "Ġa",
+      "aye"
+    ],
+    " dunga": [
+      "Ġdung",
+      "a"
+    ],
+    " seekha": [
+      "Ġseek",
+      "ha"
+    ],
+    " padh": [
+      "Ġpad",
+      "h"
+    ],
+    " uska": [
+      "Ġus",
+      "ka"
+    ],
+    " jahan": [
+      "Ġj",
+      "ahan"
+    ],
+    " kheti": [
+      "Ġk",
+      "heti"
+    ],
+    " dandruff": [
+      "Ġd",
+      "andr",
+      "uff"
+    ],
+    " badi": [
+      "Ġb",
+      "adi"
+    ],
+    " denge": [
+      "Ġden",
+      "ge"
+    ],
+    " itne": [
+      "Ġit",
+      "ne"
+    ],
+    " bade-bade": [
+      "Ġb",
+      "ade",
+      "-b",
+      "ade"
+    ],
+    " saamne": [
+      "Ġsa",
+      "am",
+      "ne"
+    ],
+    " badal": [
+      "Ġbad",
+      "al"
+    ],
+    " tumne": [
+      "Ġtum",
+      "ne"
+    ],
+    " karegi": [
+      "Ġk",
+      "are",
+      "gi"
+    ],
+    " banta": [
+      "Ġb",
+      "anta"
+    ],
+    " kiye": [
+      "Ġki",
+      "ye"
+    ],
+    " bachche": [
+      "Ġbach",
+      "che"
+    ],
+    " aayenge": [
+      "Ġa",
+      "ay",
+      "enge"
+    ],
+    " top-notch": [
+      "Ġtop",
+      "-notch"
+    ],
+    " aadmi": [
+      "Ġa",
+      "ad",
+      "mi"
+    ],
+    " samjha": [
+      "Ġsam",
+      "j",
+      "ha"
+    ],
+    " mitti": [
+      "Ġmitt",
+      "i"
+    ],
+    " jagahon": [
+      "Ġjag",
+      "ah",
+      "on"
+    ],
+    " dikhana": [
+      "Ġd",
+      "ikh",
+      "ana"
+    ],
+    " jaan": [
+      "Ġja",
+      "an"
+    ],
+    " tumhari": [
+      "Ġtum",
+      "hari"
+    ],
+    " mujhe": [
+      "Ġmuj",
+      "he"
+    ],
+    " cheppali": [
+      "Ġche",
+      "pp",
+      "ali"
+    ],
+    " jitna": [
+      "Ġjit",
+      "na"
+    ],
+    " seedha-saadha": [
+      "Ġseed",
+      "ha",
+      "-s",
+      "aad",
+      "ha"
+    ],
+    " bollywood": [
+      "Ġb",
+      "ollywood"
+    ],
+    " kharidna": [
+      "Ġk",
+      "har",
+      "id",
+      "na"
+    ],
+    " bhara": [
+      "Ġbh",
+      "ara"
+    ],
+    " zyaada": [
+      "Ġz",
+      "ya",
+      "ada"
+    ],
+    " saal": [
+      "Ġsa",
+      "al"
+    ],
+    " bhar-bhar": [
+      "Ġb",
+      "har",
+      "-b",
+      "har"
+    ],
+    " khatarnak": [
+      "Ġk",
+      "hat",
+      "arn",
+      "ak"
+    ],
+    " dikhaate": [
+      "Ġdik",
+      "ha",
+      "ate"
+    ],
+    " kachra": [
+      "Ġk",
+      "ach",
+      "ra"
+    ],
+    " waale": [
+      "Ġwa",
+      "ale"
+    ],
+    " mind-blowing": [
+      "Ġmind",
+      "-b",
+      "low",
+      "ing"
+    ],
+    " khaate": [
+      "Ġk",
+      "ha",
+      "ate"
+    ],
+    " dusted": [
+      "Ġdust",
+      "ed"
+    ],
+    " telusaa": [
+      "Ġtel",
+      "us",
+      "aa"
+    ],
+    " doosra": [
+      "Ġdo",
+      "os",
+      "ra"
+    ],
+    " maaro": [
+      "Ġma",
+      "aro"
+    ],
+    " fayda": [
+      "Ġfay",
+      "da"
+    ],
+    " rakh": [
+      "Ġr",
+      "akh"
+    ],
+    " purane": [
+      "Ġpur",
+      "ane"
+    ],
+    " kahaniyaan": [
+      "Ġkah",
+      "ani",
+      "ya",
+      "an"
+    ],
+    " kahan": [
+      "Ġk",
+      "ahan"
+    ],
+    " dikkat": [
+      "Ġd",
+      "ikk",
+      "at"
+    ],
+    " jao": [
+      "Ġj",
+      "ao"
+    ],
+    " peeche": [
+      "Ġpee",
+      "che"
+    ],
+    " kapde": [
+      "Ġkap",
+      "de"
+    ],
+    " itni": [
+      "Ġit",
+      "ni"
+    ],
+    " padhna-likhna": [
+      "Ġpad",
+      "h",
+      "na",
+      "-",
+      "lik",
+      "h",
+      "na"
+    ],
+    " aadha": [
+      "Ġa",
+      "ad",
+      "ha"
+    ],
+    " badhegi": [
+      "Ġbad",
+      "he",
+      "gi"
+    ],
+    " jaye": [
+      "Ġj",
+      "aye"
+    ],
+    " aaya": [
+      "Ġa",
+      "aya"
+    ],
+    " pehchano": [
+      "Ġpe",
+      "h",
+      "ch",
+      "ano"
+    ],
+    " padhna": [
+      "Ġpad",
+      "h",
+      "na"
+    ],
+    " sabke": [
+      "Ġsab",
+      "ke"
+    ],
+    " galat": [
+      "Ġgal",
+      "at"
+    ],
+    " pasand": [
+      "Ġpas",
+      "and"
+    ],
+    " pahunchna": [
+      "Ġp",
+      "ahun",
+      "chn",
+      "a"
+    ],
+    " ismein": [
+      "Ġis",
+      "mein"
+    ],
+    " mehnat": [
+      "Ġme",
+      "hn",
+      "at"
+    ],
+    " aisi": [
+      "Ġa",
+      "isi"
+    ],
+    " ladkiyon": [
+      "Ġlad",
+      "ki",
+      "yon"
+    ],
+    " maine": [
+      "Ġmain",
+      "e"
+    ],
+    " jaana": [
+      "Ġja",
+      "ana"
+    ],
+    " jinhone": [
+      "Ġj",
+      "inh",
+      "one"
+    ],
+    " achha": [
+      "Ġach",
+      "ha"
+    ],
+    " banayenge": [
+      "Ġban",
+      "ay",
+      "enge"
+    ],
+    " barbaad": [
+      "Ġbar",
+      "ba",
+      "ad"
+    ],
+    " dhoondo": [
+      "Ġd",
+      "ho",
+      "ondo"
+    ],
+    " dikhane": [
+      "Ġd",
+      "ikh",
+      "ane"
+    ],
+    " bhej": [
+      "Ġb",
+      "he",
+      "j"
+    ],
+    " samjhenge": [
+      "Ġsam",
+      "jh",
+      "enge"
+    ],
+    " utna": [
+      "Ġut",
+      "na"
+    ],
+    " gyaan": [
+      "Ġg",
+      "ya",
+      "an"
+    ],
+    " karoge": [
+      "Ġkar",
+      "oge"
+    ],
+    " dikhne": [
+      "Ġd",
+      "ikh",
+      "ne"
+    ],
+    " chote-chote": [
+      "Ġch",
+      "ote",
+      "-ch",
+      "ote"
+    ],
+    " jaayegi": [
+      "Ġja",
+      "ay",
+      "egi"
+    ],
+    " sochna": [
+      "Ġso",
+      "chn",
+      "a"
+    ],
+    " mukhyamantri": [
+      "Ġmuk",
+      "hy",
+      "aman",
+      "tri"
+    ],
+    " utha": [
+      "Ġ",
+      "uth",
+      "a"
+    ],
+    " usse": [
+      "Ġus",
+      "se"
+    ],
+    " badhava": [
+      "Ġbad",
+      "h",
+      "ava"
+    ],
+    " khelna": [
+      "Ġkh",
+      "el",
+      "na"
+    ],
+    " bahar": [
+      "Ġbah",
+      "ar"
+    ],
+    " kaisi": [
+      "Ġk",
+      "ais",
+      "i"
+    ],
+    " isme": [
+      "Ġis",
+      "me"
+    ],
+    " mukhyam": [
+      "Ġmuk",
+      "hy",
+      "am"
+    ],
+    " chhote-mote": [
+      "Ġch",
+      "h",
+      "ote",
+      "-m",
+      "ote"
+    ],
+    " raho": [
+      "Ġr",
+      "aho"
+    ],
+    " poori": [
+      "Ġpoor",
+      "i"
+    ],
+    " nikaal": [
+      "Ġn",
+      "ika",
+      "al"
+    ],
+    " thode": [
+      "Ġth",
+      "ode"
+    ],
+    " farak": [
+      "Ġfar",
+      "ak"
+    ],
+    " hawa": [
+      "Ġh",
+      "awa"
+    ],
+    " bachaane": [
+      "Ġbach",
+      "a",
+      "ane"
+    ],
+    " badhate": [
+      "Ġbad",
+      "h",
+      "ate"
+    ],
+    " banayein": [
+      "Ġban",
+      "aye",
+      "in"
+    ],
+    " chaliye": [
+      "Ġch",
+      "ali",
+      "ye"
+    ],
+    " yaani": [
+      "Ġya",
+      "ani"
+    ],
+    " waisa": [
+      "Ġw",
+      "ais",
+      "a"
+    ],
+    " karengi": [
+      "Ġk",
+      "are",
+      "ng",
+      "i"
+    ],
+    " badha": [
+      "Ġbad",
+      "ha"
+    ],
+    " rehna": [
+      "Ġreh",
+      "na"
+    ],
+    " panchayati": [
+      "Ġp",
+      "anch",
+      "ay",
+      "ati"
+    ],
+    " taaki": [
+      "Ġta",
+      "aki"
+    ],
+    " pichhle": [
+      "Ġp",
+      "ich",
+      "hle"
+    ],
+    " samjhe": [
+      "Ġsam",
+      "j",
+      "he"
+    ],
+    " ladkiyaan": [
+      "Ġlad",
+      "ki",
+      "ya",
+      "an"
+    ],
+    " fssai": [
+      "Ġf",
+      "ss",
+      "ai"
+    ],
+    " pichle": [
+      "Ġp",
+      "ich",
+      "le"
+    ],
+    " aane": [
+      "Ġa",
+      "ane"
+    ],
+    " jaane": [
+      "Ġja",
+      "ane"
+    ],
+    " turant": [
+      "Ġtur",
+      "ant"
+    ],
+    " mahabharata": [
+      "Ġmah",
+      "ab",
+      "har",
+      "ata"
+    ],
+    " non-traditional": [
+      "Ġnon",
+      "-tr",
+      "ad",
+      "itional"
+    ],
+    " point-to-point": [
+      "Ġpoint",
+      "-to",
+      "-point"
+    ],
+    " pre-planned": [
+      "Ġpre",
+      "-pl",
+      "anned"
+    ],
+    " theek-thaak": [
+      "Ġthe",
+      "ek",
+      "-th",
+      "a",
+      "ak"
+    ],
+    " khatra": [
+      "Ġk",
+      "hat",
+      "ra"
+    ],
+    " unhone": [
+      "Ġun",
+      "hone"
+    ],
+    " badhaane": [
+      "Ġbad",
+      "ha",
+      "ane"
+    ],
+    " dikhaya": [
+      "Ġd",
+      "ikh",
+      "aya"
+    ],
+    " pehchaanna": [
+      "Ġpe",
+      "h",
+      "cha",
+      "anna"
+    ],
+    " bante": [
+      "Ġb",
+      "ante"
+    ],
+    " daalo": [
+      "Ġda",
+      "alo"
+    ],
+    " aayegi": [
+      "Ġa",
+      "ay",
+      "egi"
+    ],
+    " bachane": [
+      "Ġbach",
+      "ane"
+    ],
+    " nayi": [
+      "Ġnay",
+      "i"
+    ],
+    " post-harvest": [
+      "Ġpost",
+      "-h",
+      "ar",
+      "vest"
+    ],
+    " jaa": [
+      "Ġj",
+      "aa"
+    ],
+    " rahenge": [
+      "Ġrah",
+      "enge"
+    ],
+    " jati": [
+      "Ġj",
+      "ati"
+    ],
+    " shuruwat": [
+      "Ġsh",
+      "uru",
+      "wat"
+    ],
+    " jayein": [
+      "Ġj",
+      "aye",
+      "in"
+    ],
+    " chote-mote": [
+      "Ġch",
+      "ote",
+      "-m",
+      "ote"
+    ],
+    " hoke": [
+      "Ġh",
+      "oke"
+    ],
+    " gaon-gaon": [
+      "Ġga",
+      "on",
+      "-g",
+      "a",
+      "on"
+    ],
+    " kheti-baadi": [
+      "Ġk",
+      "heti",
+      "-b",
+      "a",
+      "adi"
+    ],
+    " gadbad": [
+      "Ġgad",
+      "bad"
+    ],
+    " choodu": [
+      "Ġch",
+      "ood",
+      "u"
+    ],
+    " chote": [
+      "Ġch",
+      "ote"
+    ],
+    " kuchh": [
+      "Ġkuch",
+      "h"
+    ],
+    " khaad": [
+      "Ġk",
+      "ha",
+      "ad"
+    ],
+    " baalon": [
+      "Ġba",
+      "alon"
+    ],
+    " likho": [
+      "Ġlik",
+      "ho"
+    ],
+    " kaam-kaaj": [
+      "Ġka",
+      "am",
+      "-",
+      "ka",
+      "aj"
+    ],
+    " milke": [
+      "Ġmil",
+      "ke"
+    ],
+    " ayurveda": [
+      "Ġay",
+      "urved",
+      "a"
+    ],
+    " point-by-point": [
+      "Ġpoint",
+      "-by",
+      "-point"
+    ],
+    " rishikesh": [
+      "Ġr",
+      "ish",
+      "ik",
+      "esh"
+    ],
+    " bharosa": [
+      "Ġb",
+      "har",
+      "osa"
+    ],
+    " nuksan": [
+      "Ġnu",
+      "ks",
+      "an"
+    ],
+    " seekh": [
+      "Ġseek",
+      "h"
+    ],
+    " nikal": [
+      "Ġnik",
+      "al"
+    ],
+    " bakwaas": [
+      "Ġbak",
+      "wa",
+      "as"
+    ],
+    " doston": [
+      "Ġd",
+      "oston"
+    ],
+    " dikhta": [
+      "Ġdik",
+      "hta"
+    ],
+    " milegi": [
+      "Ġmile",
+      "gi"
+    ],
+    " humein": [
+      "Ġhum",
+      "ein"
+    ],
+    " thodi": [
+      "Ġth",
+      "odi"
+    ],
+    " padho": [
+      "Ġpad",
+      "ho"
+    ],
+    " daalte": [
+      "Ġda",
+      "alte"
+    ],
+    " likhna": [
+      "Ġlik",
+      "h",
+      "na"
+    ],
+    " kholo": [
+      "Ġk",
+      "hol",
+      "o"
+    ],
+    " chhoti-moti": [
+      "Ġch",
+      "hot",
+      "i",
+      "-m",
+      "oti"
+    ],
+    " dheere": [
+      "Ġdhe",
+      "ere"
+    ],
+    " rehne": [
+      "Ġreh",
+      "ne"
+    ],
+    " wahan": [
+      "Ġw",
+      "ahan"
+    ],
+    " kisaan": [
+      "Ġk",
+      "isa",
+      "an"
+    ],
+    " shehri": [
+      "Ġshe",
+      "h",
+      "ri"
+    ],
+    " fasal": [
+      "Ġfas",
+      "al"
+    ],
+    " sheher": [
+      "Ġshe",
+      "her"
+    ],
+    " izzat": [
+      "Ġ",
+      "izz",
+      "at"
+    ],
+    " ghoomna": [
+      "Ġgh",
+      "oom",
+      "na"
+    ],
+    " one-size-fits-all": [
+      "Ġone",
+      "-size",
+      "-f",
+      "its",
+      "-all"
+    ],
+    " information-rich": [
+      "Ġinformation",
+      "-rich"
+    ],
+    " purani": [
+      "Ġpur",
+      "ani"
+    ],
+    " uski": [
+      "Ġus",
+      "ki"
+    ],
+    " baaki": [
+      "Ġba",
+      "aki"
+    ],
+    " rakhte": [
+      "Ġrak",
+      "hte"
+    ],
+    " badhiya": [
+      "Ġbad",
+      "hi",
+      "ya"
+    ],
+    " balki": [
+      "Ġbalk",
+      "i"
+    ],
+    " ilaaj": [
+      "Ġil",
+      "a",
+      "aj"
+    ],
+    " unse": [
+      "Ġun",
+      "se"
+    ],
+    " dhoondhte": [
+      "Ġd",
+      "ho",
+      "ond",
+      "hte"
+    ],
+    " lgbtq": [
+      "Ġl",
+      "gb",
+      "t",
+      "q"
+    ],
+    " dikhenge": [
+      "Ġd",
+      "ikh",
+      "enge"
+    ],
+    " pmfby": [
+      "Ġpm",
+      "f",
+      "by"
+    ],
+    " maamle": [
+      "Ġma",
+      "am",
+      "le"
+    ],
+    " mazaa": [
+      "Ġmaz",
+      "aa"
+    ],
+    " badhata": [
+      "Ġbad",
+      "h",
+      "ata"
+    ],
+    " doosron": [
+      "Ġdo",
+      "os",
+      "ron"
+    ],
+    " khilaaf": [
+      "Ġkh",
+      "ila",
+      "af"
+    ],
+    " badhti": [
+      "Ġbad",
+      "hti"
+    ],
+    " sakein": [
+      "Ġsake",
+      "in"
+    ],
+    " nazariya": [
+      "Ġnaz",
+      "ari",
+      "ya"
+    ],
+    " bijli": [
+      "Ġbij",
+      "li"
+    ],
+    " dikhaane": [
+      "Ġdik",
+      "ha",
+      "ane"
+    ],
+    " jaoge": [
+      "Ġja",
+      "oge"
+    ],
+    " videsh": [
+      "Ġv",
+      "ides",
+      "h"
+    ],
+    " lagte": [
+      "Ġlag",
+      "te"
+    ],
+    " sunno": [
+      "Ġsun",
+      "no"
+    ],
+    " dikhna": [
+      "Ġd",
+      "ikh",
+      "na"
+    ],
+    " padhe-likhe": [
+      "Ġpad",
+      "he",
+      "-",
+      "lik",
+      "he"
+    ],
+    " bolna": [
+      "Ġbol",
+      "na"
+    ],
+    " contextually": [
+      "Ġcontext",
+      "ually"
+    ],
+    " raat": [
+      "Ġra",
+      "at"
+    ],
+    " sikhate": [
+      "Ġs",
+      "ikh",
+      "ate"
+    ],
+    " baar-baar": [
+      "Ġba",
+      "ar",
+      "-b",
+      "aar"
+    ],
+    " inka": [
+      "Ġin",
+      "ka"
+    ],
+    " haath": [
+      "Ġha",
+      "ath"
+    ],
+    " bhejte": [
+      "Ġb",
+      "he",
+      "jte"
+    ],
+    " padhai-likhai": [
+      "Ġpad",
+      "hai",
+      "-",
+      "lik",
+      "hai"
+    ],
+    " upar-neeche": [
+      "Ġup",
+      "ar",
+      "-",
+      "nee",
+      "che"
+    ],
+    " pehno": [
+      "Ġpe",
+      "h",
+      "no"
+    ],
+    " ramayana": [
+      "Ġram",
+      "ay",
+      "ana"
+    ],
+    " eco-friendly": [
+      "Ġeco",
+      "-friendly"
+    ],
+    " jisko": [
+      "Ġj",
+      "isko"
+    ],
+    " dikha": [
+      "Ġdik",
+      "ha"
+    ],
+    " rehti": [
+      "Ġre",
+      "hti"
+    ],
+    " milenge": [
+      "Ġmil",
+      "enge"
+    ],
+    " bheed-bhaad": [
+      "Ġb",
+      "heed",
+      "-b",
+      "ha",
+      "ad"
+    ],
+    " kheti-baari": [
+      "Ġk",
+      "heti",
+      "-b",
+      "a",
+      "ari"
+    ],
+    " dhoondna": [
+      "Ġd",
+      "ho",
+      "ond",
+      "na"
+    ],
+    " delhi": [
+      "Ġdel",
+      "hi"
+    ],
+    " khel": [
+      "Ġkh",
+      "el"
+    ],
+    " padhai": [
+      "Ġpad",
+      "hai"
+    ],
+    " baal": [
+      "Ġba",
+      "al"
+    ],
+    " uss": [
+      "Ġus",
+      "s"
+    ],
+    " garmi": [
+      "Ġg",
+      "armi"
+    ],
+    " samacharam": [
+      "Ġsam",
+      "ach",
+      "aram"
+    ],
+    " jhakaas": [
+      "Ġj",
+      "h",
+      "aka",
+      "as"
+    ],
+    " deti": [
+      "Ġdet",
+      "i"
+    ],
+    " bye-bye": [
+      "Ġbye",
+      "-b",
+      "ye"
+    ],
+    " samjhao": [
+      "Ġsam",
+      "jh",
+      "ao"
+    ],
+    " zamana": [
+      "Ġzam",
+      "ana"
+    ],
+    " bhaag": [
+      "Ġb",
+      "ha",
+      "ag"
+    ],
+    " pooch": [
+      "Ġpoo",
+      "ch"
+    ],
+    " hatao": [
+      "Ġh",
+      "ata",
+      "o"
+    ],
+    " eco-tourism": [
+      "Ġeco",
+      "-t",
+      "our",
+      "ism"
+    ],
+    " nipatne": [
+      "Ġnip",
+      "at",
+      "ne"
+    ],
+    " poochho": [
+      "Ġpoo",
+      "ch",
+      "ho"
+    ],
+    " achche": [
+      "Ġach",
+      "che"
+    ],
+    " bolega": [
+      "Ġbo",
+      "lega"
+    ],
+    " dega": [
+      "Ġdeg",
+      "a"
+    ],
+    " khana": [
+      "Ġkh",
+      "ana"
+    ],
+    " walon": [
+      "Ġwal",
+      "on"
+    ],
+    " pahuncha": [
+      "Ġpah",
+      "unch",
+      "a"
+    ],
+    " ngos": [
+      "Ġng",
+      "os"
+    ],
+    " daalein": [
+      "Ġda",
+      "ale",
+      "in"
+    ],
+    " waali": [
+      "Ġwa",
+      "ali"
+    ],
+    " dosti": [
+      "Ġdost",
+      "i"
+    ],
+    " aam": [
+      "Ġa",
+      "am"
+    ],
+    " banti": [
+      "Ġb",
+      "anti"
+    ],
+    " hisab": [
+      "Ġhis",
+      "ab"
+    ],
+    " long-term": [
+      "Ġlong",
+      "-term"
+    ],
+    " badhta": [
+      "Ġbad",
+      "hta"
+    ],
+    " monsoon": [
+      "Ġmon",
+      "soon"
+    ],
+    " cricketers": [
+      "Ġcr",
+      "ick",
+      "eters"
+    ],
+    " pehente": [
+      "Ġpe",
+      "h",
+      "ente"
+    ],
+    " dimag": [
+      "Ġdim",
+      "ag"
+    ],
+    " uttarakhand": [
+      "Ġut",
+      "tar",
+      "ak",
+      "hand"
+    ],
+    " achhe": [
+      "Ġach",
+      "he"
+    ],
+    " galti": [
+      "Ġg",
+      "alti"
+    ],
+    " bane": [
+      "Ġb",
+      "ane"
+    ],
+    " dikh": [
+      "Ġd",
+      "ikh"
+    ],
+    " unhe": [
+      "Ġun",
+      "he"
+    ],
+    " karoon": [
+      "Ġkar",
+      "oon"
+    ],
+    " maharashtra": [
+      "Ġmah",
+      "ar",
+      "ashtra"
+    ],
+    " chhoti-chhoti": [
+      "Ġch",
+      "hot",
+      "i",
+      "-ch",
+      "hot",
+      "i"
+    ],
+    " chhota-mota": [
+      "Ġch",
+      "h",
+      "ota",
+      "-m",
+      "ota"
+    ],
+    " diwali": [
+      "Ġdi",
+      "wali"
+    ],
+    " dekhbhaal": [
+      "Ġde",
+      "kh",
+      "b",
+      "haal"
+    ],
+    " pehchaane": [
+      "Ġpe",
+      "h",
+      "cha",
+      "ane"
+    ],
+    " tech-savvy": [
+      "Ġtech",
+      "-s",
+      "av",
+      "vy"
+    ],
+    " jeetne": [
+      "Ġje",
+      "et",
+      "ne"
+    ],
+    " dikhte": [
+      "Ġdik",
+      "hte"
+    ],
+    " inko": [
+      "Ġin",
+      "ko"
+    ],
+    " badhna": [
+      "Ġbad",
+      "h",
+      "na"
+    ],
+    " bachao": [
+      "Ġbach",
+      "ao"
+    ],
+    " usme": [
+      "Ġus",
+      "me"
+    ],
+    " nikaalne": [
+      "Ġn",
+      "ika",
+      "alne"
+    ],
+    " achchi": [
+      "Ġach",
+      "chi"
+    ],
+    " awaaz": [
+      "Ġaw",
+      "a",
+      "az"
+    ],
+    " mushkilein": [
+      "Ġmush",
+      "k",
+      "ile",
+      "in"
+    ],
+    " inke": [
+      "Ġin",
+      "ke"
+    ],
+    " peasy": [
+      "Ġpe",
+      "asy"
+    ],
+    " shuruat": [
+      "Ġsh",
+      "uru",
+      "at"
+    ],
+    " sudharne": [
+      "Ġsud",
+      "har",
+      "ne"
+    ],
+    " usmein": [
+      "Ġus",
+      "mein"
+    ],
+    " bura": [
+      "Ġb",
+      "ura"
+    ],
+    " baithna": [
+      "Ġba",
+      "ith",
+      "na"
+    ],
+    " gujarat": [
+      "Ġgu",
+      "jar",
+      "at"
+    ],
+    " subah": [
+      "Ġsub",
+      "ah"
+    ],
+    " isiliye": [
+      "Ġis",
+      "ili",
+      "ye"
+    ],
+    " khatre": [
+      "Ġk",
+      "hat",
+      "re"
+    ],
+    " zindagi": [
+      "Ġz",
+      "ind",
+      "agi"
+    ],
+    " deni": [
+      "Ġden",
+      "i"
+    ],
+    " poochhna": [
+      "Ġpoo",
+      "ch",
+      "h",
+      "na"
+    ],
+    " upi": [
+      "Ġup",
+      "i"
+    ],
+    " zyadatar": [
+      "Ġzy",
+      "ad",
+      "atar"
+    ],
+    " halka-phulka": [
+      "Ġhalk",
+      "a",
+      "-ph",
+      "ul",
+      "ka"
+    ],
+    " mumbai": [
+      "Ġm",
+      "umbai"
+    ],
+    " ghoomte": [
+      "Ġgh",
+      "oom",
+      "te"
+    ],
+    " kharid": [
+      "Ġk",
+      "har",
+      "id"
+    ],
+    " dekha": [
+      "Ġdek",
+      "ha"
+    ],
+    " lagao": [
+      "Ġlag",
+      "ao"
+    ],
+    " achanak": [
+      "Ġa",
+      "chan",
+      "ak"
+    ],
+    " cheppandi": [
+      "Ġche",
+      "pp",
+      "andi"
+    ],
+    " real-time": [
+      "Ġreal",
+      "-time"
+    ],
+    " value-packed": [
+      "Ġvalue",
+      "-packed"
+    ],
+    " pahunche": [
+      "Ġp",
+      "ahun",
+      "che"
+    ],
+    " sarkaar": [
+      "Ġs",
+      "ark",
+      "aar"
+    ],
+    " mukhyamaina": [
+      "Ġmuk",
+      "hy",
+      "am",
+      "aina"
+    ],
+    " samajhate": [
+      "Ġsam",
+      "aj",
+      "h",
+      "ate"
+    ],
+    " baitho": [
+      "Ġba",
+      "ith",
+      "o"
+    ],
+    " dikhaata": [
+      "Ġdik",
+      "ha",
+      "ata"
+    ],
+    " mughal": [
+      "Ġm",
+      "ugh",
+      "al"
+    ],
+    " sochne": [
+      "Ġso",
+      "ch",
+      "ne"
+    ],
+    " achcha": [
+      "Ġach",
+      "cha"
+    ],
+    " dikhayein": [
+      "Ġd",
+      "ikh",
+      "aye",
+      "in"
+    ],
+    " lagti": [
+      "Ġlag",
+      "ti"
+    ],
+    " gandhi": [
+      "Ġgand",
+      "hi"
+    ],
+    " bhai-behen": [
+      "Ġb",
+      "hai",
+      "-be",
+      "hen"
+    ],
+    " extracurricular": [
+      "Ġextr",
+      "ac",
+      "ur",
+      "ricular"
+    ],
+    " banata": [
+      "Ġban",
+      "ata"
+    ],
+    " bachana": [
+      "Ġbach",
+      "ana"
+    ],
+    " jhagdon": [
+      "Ġj",
+      "h",
+      "ag",
+      "don"
+    ],
+    " banaye": [
+      "Ġban",
+      "aye"
+    ],
+    " ahaan": [
+      "Ġa",
+      "ha",
+      "an"
+    ],
+    " himalayas": [
+      "Ġhim",
+      "al",
+      "ayas"
+    ],
+    " khelte": [
+      "Ġkh",
+      "elte"
+    ],
+    " poocha": [
+      "Ġpoo",
+      "cha"
+    ],
+    " e-commerce": [
+      "Ġe",
+      "-commerce"
+    ],
+    " dekhni": [
+      "Ġde",
+      "kh",
+      "ni"
+    ],
+    " easy-peasy": [
+      "Ġeasy",
+      "-pe",
+      "asy"
+    ],
+    " khazana": [
+      "Ġkh",
+      "az",
+      "ana"
+    ],
+    " value-adding": [
+      "Ġvalue",
+      "-",
+      "adding"
+    ],
+    " zbnf": [
+      "Ġz",
+      "bn",
+      "f"
+    ],
+    " micro-irrigation": [
+      "Ġmicro",
+      "-",
+      "ir",
+      "rig",
+      "ation"
+    ],
+    " pahunch": [
+      "Ġpah",
+      "unch"
+    ],
+    " face-to-face": [
+      "Ġface",
+      "-to",
+      "-face"
+    ],
+    " aas": [
+      "Ġa",
+      "as"
+    ],
+    " bachne": [
+      "Ġbach",
+      "ne"
+    ],
+    " baahar": [
+      "Ġba",
+      "ah",
+      "ar"
+    ],
+    " khushboo": [
+      "Ġkh",
+      "ush",
+      "boo"
+    ],
+    " tere": [
+      "Ġt",
+      "ere"
+    ],
+    " holi": [
+      "Ġh",
+      "oli"
+    ],
+    " padti": [
+      "Ġpad",
+      "ti"
+    ],
+    " kehte": [
+      "Ġke",
+      "hte"
+    ],
+    " mahabharat": [
+      "Ġmah",
+      "ab",
+      "har",
+      "at"
+    ],
+    " poochhne": [
+      "Ġpoo",
+      "ch",
+      "h",
+      "ne"
+    ],
+    " deewar": [
+      "Ġde",
+      "ew",
+      "ar"
+    ],
+    " gaadiyan": [
+      "Ġga",
+      "adi",
+      "yan"
+    ],
+    " jaake": [
+      "Ġja",
+      "ake"
+    ],
+    " samjhate": [
+      "Ġsam",
+      "jh",
+      "ate"
+    ],
+    " bano": [
+      "Ġb",
+      "ano"
+    ],
+    " dikhayenge": [
+      "Ġd",
+      "ikh",
+      "ay",
+      "enge"
+    ],
+    " faltu": [
+      "Ġfalt",
+      "u"
+    ],
+    " bachein": [
+      "Ġb",
+      "ache",
+      "in"
+    ],
+    " bhagwaan": [
+      "Ġbh",
+      "ag",
+      "waan"
+    ],
+    " chhupa": [
+      "Ġch",
+      "h",
+      "upa"
+    ],
+    " dhoond": [
+      "Ġd",
+      "ho",
+      "ond"
+    ],
+    " poore": [
+      "Ġpo",
+      "ore"
+    ],
+    " zamane": [
+      "Ġzam",
+      "ane"
+    ],
+    " banaya": [
+      "Ġban",
+      "aya"
+    ],
+    " madad": [
+      "Ġmad",
+      "ad"
+    ],
+    " apne-apne": [
+      "Ġap",
+      "ne",
+      "-ap",
+      "ne"
+    ],
+    " khaaskar": [
+      "Ġk",
+      "ha",
+      "ask",
+      "ar"
+    ],
+    " dusre": [
+      "Ġdus",
+      "re"
+    ],
+    " dhaniya": [
+      "Ġdh",
+      "ani",
+      "ya"
+    ],
+    " nikaalo": [
+      "Ġn",
+      "ika",
+      "alo"
+    ],
+    " pahunchne": [
+      "Ġpah",
+      "unch",
+      "ne"
+    ],
+    " khush": [
+      "Ġkh",
+      "ush"
+    ],
+    " pyaar": [
+      "Ġpy",
+      "aar"
+    ],
+    " tabhi": [
+      "Ġtab",
+      "hi"
+    ],
+    " ugaate": [
+      "Ġu",
+      "ga",
+      "ate"
+    ],
+    " badhao": [
+      "Ġbad",
+      "hao"
+    ],
+    " likha": [
+      "Ġlik",
+      "ha"
+    ],
+    " milna": [
+      "Ġmil",
+      "na"
+    ],
+    " bhaagte": [
+      "Ġb",
+      "ha",
+      "ag",
+      "te"
+    ],
+    " pakad": [
+      "Ġpak",
+      "ad"
+    ],
+    " badhenge": [
+      "Ġbad",
+      "h",
+      "enge"
+    ],
+    " bharat": [
+      "Ġb",
+      "har",
+      "at"
+    ],
+    " aana": [
+      "Ġa",
+      "ana"
+    ],
+    " bhrashtachar": [
+      "Ġb",
+      "hr",
+      "as",
+      "ht",
+      "ach",
+      "ar"
+    ],
+    " padte": [
+      "Ġpad",
+      "te"
+    ],
+    " videshi": [
+      "Ġv",
+      "ides",
+      "hi"
+    ],
+    " badhayein": [
+      "Ġbad",
+      "h",
+      "aye",
+      "in"
+    ],
+    " devanagari": [
+      "Ġdev",
+      "an",
+      "ag",
+      "ari"
+    ],
+    " maan": [
+      "Ġma",
+      "an"
+    ],
+    " tumko": [
+      "Ġtum",
+      "ko"
+    ],
+    " sanctuaries": [
+      "Ġsanct",
+      "u",
+      "aries"
+    ],
+    " aksar": [
+      "Ġaks",
+      "ar"
+    ],
+    " seekhte": [
+      "Ġseek",
+      "hte"
+    ],
+    " yahi": [
+      "Ġy",
+      "ahi"
+    ],
+    " thoda-thoda": [
+      "Ġth",
+      "oda",
+      "-th",
+      "oda"
+    ],
+    " saara": [
+      "Ġsa",
+      "ara"
+    ],
+    " gayab": [
+      "Ġgay",
+      "ab"
+    ],
+    " ek-ek": [
+      "Ġek",
+      "-",
+      "ek"
+    ],
+    " pahadon": [
+      "Ġpah",
+      "ad",
+      "on"
+    ],
+    " pyaaz": [
+      "Ġpy",
+      "a",
+      "az"
+    ],
+    " jaise-jaise": [
+      "Ġj",
+      "aise",
+      "-j",
+      "aise"
+    ],
+    " jisme": [
+      "Ġj",
+      "isme"
+    ],
+    " saalon": [
+      "Ġsa",
+      "alon"
+    ],
+    " barbeque": [
+      "Ġbar",
+      "be",
+      "que"
+    ],
+    " handicrafts": [
+      "Ġhandic",
+      "raft",
+      "s"
+    ],
+    " saste": [
+      "Ġs",
+      "aste"
+    ],
+    " zamaane": [
+      "Ġz",
+      "ama",
+      "ane"
+    ],
+    " telusukovadam": [
+      "Ġtel",
+      "us",
+      "uk",
+      "ov",
+      "adam"
+    ],
+    " shehar": [
+      "Ġshe",
+      "har"
+    ],
+    " shuruwaat": [
+      "Ġsh",
+      "uru",
+      "wa",
+      "at"
+    ],
+    " samaan": [
+      "Ġsama",
+      "an"
+    ],
+    " mahine": [
+      "Ġmah",
+      "ine"
+    ],
+    " aahe": [
+      "Ġaa",
+      "he"
+    ],
+    " coursera": [
+      "Ġcour",
+      "ser",
+      "a"
+    ],
+    " kharido": [
+      "Ġk",
+      "har",
+      "ido"
+    ],
+    " pahunchana": [
+      "Ġpah",
+      "unch",
+      "ana"
+    ],
+    " pareshan": [
+      "Ġpa",
+      "resh",
+      "an"
+    ],
+    " samundar": [
+      "Ġsam",
+      "und",
+      "ar"
+    ],
+    " chalti": [
+      "Ġch",
+      "alti"
+    ],
+    " meri": [
+      "Ġmer",
+      "i"
+    ],
+    " dekhoge": [
+      "Ġde",
+      "kh",
+      "oge"
+    ],
+    " sikhane": [
+      "Ġs",
+      "ikh",
+      "ane"
+    ],
+    " info-packed": [
+      "Ġinfo",
+      "-packed"
+    ],
+    " chalte": [
+      "Ġch",
+      "alte"
+    ],
+    " kaha": [
+      "Ġk",
+      "aha"
+    ],
+    " kadaa": [
+      "Ġkada",
+      "a"
+    ],
+    " khul": [
+      "Ġkh",
+      "ul"
+    ],
+    " nikaalte": [
+      "Ġn",
+      "ika",
+      "alte"
+    ],
+    " undaali": [
+      "Ġund",
+      "a",
+      "ali"
+    ],
+    " galatfahmi": [
+      "Ġgal",
+      "at",
+      "f",
+      "ah",
+      "mi"
+    ],
+    " sasta": [
+      "Ġs",
+      "asta"
+    ],
+    " क्": [
+      "Ġà¤ķ",
+      "à¥į"
+    ],
+    " ज़रूरी": [
+      "Ġà¤ľ",
+      "à¤¼",
+      "à¤°",
+      "à¥Ĥ",
+      "à¤°à¥Ģ"
+    ],
+    " र्": [
+      "Ġà¤°",
+      "à¥į"
+    ],
+    " ज़रू": [
+      "Ġà¤ľ",
+      "à¤¼",
+      "à¤°",
+      "à¥Ĥ"
+    ],
+    " ज़रूर": [
+      "Ġà¤ľ",
+      "à¤¼",
+      "à¤°",
+      "à¥Ĥà¤°"
+    ],
+    " पॉइं": [
+      "Ġà¤ª",
+      "à¥ī",
+      "à¤ĩ",
+      "à¤Ĥ"
+    ],
+    " पॉइंट": [
+      "Ġà¤ª",
+      "à¥ī",
+      "à¤ĩ",
+      "à¤Ĥà¤Ł"
+    ],
+    " पॉइंट्": [
+      "Ġà¤ª",
+      "à¥ī",
+      "à¤ĩ",
+      "à¤Ĥà¤Ł",
+      "à¥į"
+    ],
+    " प्": [
+      "Ġà¤ª",
+      "à¥į"
+    ],
+    " ढ़": [
+      "Ġà¤",
+      "¢",
+      "à¤¼"
+    ],
+    " री": [
+      "Ġà¤°",
+      "à¥Ģ"
+    ],
+    " र्म": [
+      "Ġà¤°",
+      "à¥į",
+      "à¤®"
+    ],
+    " जैस": [
+      "Ġà¤ľ",
+      "à¥Ī",
+      "à¤¸"
+    ],
+    " ज़्याद": [
+      "Ġà¤ľ",
+      "à¤¼",
+      "à¥įà¤¯à¤¾",
+      "à¤¦"
+    ],
+    " ज़": [
+      "Ġà¤ľ",
+      "à¤¼"
+    ],
+    " च्छा": [
+      "Ġà¤ļ",
+      "à¥į",
+      "à¤Ľ",
+      "à¤¾"
+    ],
+    " है।": [
+      "Ġà¤¹à¥Ī",
+      "à¥¤"
+    ],
+    " ज़र": [
+      "Ġà¤ľ",
+      "à¤¼",
+      "à¤°"
+    ],
+    " च्छ": [
+      "Ġà¤ļ",
+      "à¥į",
+      "à¤Ľ"
+    ],
+    " फॉर्मे": [
+      "Ġà¤«",
+      "à¥ī",
+      "à¤°à¥į",
+      "à¤®à¥ĩ"
+    ],
+    " ट्": [
+      "Ġà¤Ł",
+      "à¥į"
+    ],
+    " हूँ": [
+      "Ġà¤¹",
+      "à¥Ĥ",
+      "à¤ģ"
+    ],
+    " ड़ा": [
+      "Ġà¤¡",
+      "à¤¼",
+      "à¤¾"
+    ],
+    " क्य": [
+      "Ġà¤ķ",
+      "à¥įà¤¯"
+    ],
+    " कदम": [
+      "Ġà¤ķ",
+      "à¤¦",
+      "à¤®"
+    ],
+    " तुम्ह": [
+      "Ġà¤¤à¥ģ",
+      "à¤®à¥į",
+      "à¤¹"
+    ],
+    " एकदम": [
+      "Ġà¤ıà¤ķ",
+      "à¤¦",
+      "à¤®"
+    ],
+    " ढ़ा": [
+      "Ġà¤",
+      "¢",
+      "à¤¼",
+      "à¤¾"
+    ],
+    " ल्कुल": [
+      "Ġà¤²",
+      "à¥į",
+      "à¤ķà¥ģ",
+      "à¤²"
+    ],
+    " इन्फॉर": [
+      "Ġà¤ĩ",
+      "à¤¨à¥į",
+      "à¤«",
+      "à¥ī",
+      "à¤°"
+    ],
+    " ज़ुअल": [
+      "Ġà¤ľ",
+      "à¤¼",
+      "à¥ģ",
+      "à¤ħ",
+      "à¤²"
+    ],
+    " न्फॉर": [
+      "Ġà¤¨",
+      "à¥į",
+      "à¤«",
+      "à¥ī",
+      "à¤°"
+    ],
+    " न्फॉर्": [
+      "Ġà¤¨",
+      "à¥į",
+      "à¤«",
+      "à¥ī",
+      "à¤°à¥į"
+    ],
+    " रीक": [
+      "Ġà¤°",
+      "à¥Ģ",
+      "à¤ķ"
+    ],
+    " ल्": [
+      "Ġà¤²",
+      "à¥į"
+    ],
+    " प्लान": [
+      "Ġà¤ª",
+      "à¥įà¤²",
+      "à¤¾à¤¨"
+    ],
+    " चेकलिस": [
+      "Ġà¤ļà¥ĩ",
+      "à¤ķ",
+      "à¤²",
+      "à¤¿à¤¸"
+    ]
+  }
+}

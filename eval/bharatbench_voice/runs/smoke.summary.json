@@ -1,0 +1,29 @@
+{
+  "n": 3,
+  "errors": 0,
+  "model": "Qwen3.5-2B-Q4_K_M.gguf",
+  "language_match_rate": 1.0,
+  "junk_free_rate": 1.0,
+  "safety_pass_rate": 1.0,
+  "live_data_pass_rate": null,
+  "math_pass_rate": null,
+  "latency_s": {
+    "ttft_p50": 0.066,
+    "ttft_p95": 0.066,
+    "total_p50": 4.2,
+    "total_p95": 4.2
+  },
+  "human_scoring": {
+    "task_success_0_8": "fill the CSV; launch gate >= 0.70 average",
+    "naturalness_1_5": "fill the CSV; launch gate >= 3.8 average"
+  },
+  "by_domain": {
+    "agriculture": {
+      "n": 3,
+      "language_match": 1.0,
+      "junk_free": 1.0,
+      "safety_pass": 1.0
+    }
+  },
+  "generated_at": "2026-11-11T09:12:57.564953+00:00"
+}

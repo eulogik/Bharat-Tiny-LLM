@@ -6,13 +6,20 @@ eulogik (eulogik.com)
 *Technical report, September 2026. All numbers in this document are measured;
 reproduction scripts and raw benchmark JSONs are in the public repository.*
 
+> **⚠️ Correction (2026-11-11).** The bits/char results in this document are
+> invalid. The benchmark shifted labels twice and scored token *i+2* instead of
+> *i+1*. The corrected benchmark (`scripts/bench_bpc.py`) gives **1.20 bpc for
+> Qwen3-1.7B base and 1.71 bpc for v3** — v3 is worse, not 26.6% better. The
+> 56% GSM8K-Hindi result was already retracted. The durable v3 result is
+> tokenizer fertility (36.9% Devanagari, 17.7% mixed). See `docs/claim_audit.md`.
+
 ---
 
 ## Abstract
 
 Multilingual byte-level BPE tokenizers tax Devanagari script: Hindi text
 consumes roughly 1.04 tokens per character under Qwen2.5's tokenizer, and
-Qwen3's tokenizer does little better at 0.96. We present a minimal-budget
+Qwen3's tokenizer is slightly worse at 1.04. We present a minimal-budget
 vocabulary injection study: we add 300 Devanagari subword tokens (+0.198%
 of Qwen3-1.7B-Base's 151,669-entry embedding table) to an off-the-shelf
 multilingual BPE tokenizer, initialize new embeddings as the mean of their
@@ -21,9 +28,11 @@ continued pre-training of the new rows only, followed by LoRA fine-tuning
 on a curated Hindi reasoning corpus.
 
 Injection alone reduces token count on pure Devanagari text by 36.9% and
-on mixed Hinglish/Devanagari conversations by 17.7%. After training, the
-model predicts held-out Hindi text at 26.6% fewer bits per character than
-its base under identical character coverage. On GSM8K-Hindi (4-shot
+on mixed Hinglish/Devanagari conversations by 17.7%. This is a tokenizer
+result, not a language-modeling win: with corrected causal alignment the
+SFT model scores 1.71 bits/char versus 1.20 for its base. An earlier
+26.6% bits/char improvement was caused by a label-shift bug and is
+retracted. On GSM8K-Hindi (4-shot
 chain-of-thought, greedy decoding, n=100), scores are dominated by
 inference-stack effects: 2% under torch/fp16 versus 29% under
 llama.cpp/Q4 for identical prompts and weights (chat-tuned variant:
@@ -116,7 +125,8 @@ transliteration round-trip. Injection keeps the surface form native.
 **Novelty positioning.** We claim no new mechanism: insertion, mean-init,
 CPT, and LoRA all exist separately. Our contribution is the quantified
 minimal budget (300 tokens, 0.198% of vocab) delivering 36.9% script-
-specific compression, 26.6% better bits-per-character, a pinned-stack
+specific compression, a corrected bits/char evaluation that retracts an
+earlier 26.6% claim, a pinned-stack
 GSM8K-Hindi study that retracts an early 56% partial, plus an honest
 cross-tokenizer evaluation protocol and a fully open artifact.
 
@@ -271,15 +281,21 @@ Table 2: Bits per character on held-out Hindi/Hinglish text.
     | Qwen2.5-1.5B (bf16)    |    6.11  |   1.6531  |    --   |
     | v2 Q4 + LoRA            |    7.48  |   1.4878  |  -10.0% |
     +-------------------------+----------+-----------+---------+
-    | Qwen3-1.7B-Base         |     --   |  11.8955  |    --   |
-    | v3 Q4_K_M + LoRA        |     --   |   8.7348  |  -26.6% |
+    | Qwen3-1.7B-Base         |    3.98  |   1.1973  |    --   |
+    | v3 Q4_K_M + LoRA        |   11.09  |   1.7094  |  +42.8% |
     +-------------------------+----------+-----------+---------+
 
-The v3 bits-per-character reduction (26.6%) is 2.7x larger than v2
-(10.0%). Two factors explain this: (1) Qwen3-1.7B-Base has higher raw
-bits/char on Hindi than Qwen2.5-1.5B (11.90 vs 1.65), leaving more room
-for improvement, and (2) the capability SFT training phase specifically
-targets Hindi text quality, whereas v2 trained only on conversation data.
+**Correction:** the earlier Qwen3 base/v3 rows (PPL 1.70M / 0.33M, bpc
+11.8955 / 8.7348, -26.6%) came from a benchmark that shifted labels twice.
+The corrected values above use `scripts/bench_bpc.py` on 60 held-out
+1,024-character windows. The v2 rows use an older protocol and are not
+directly comparable. The durable v3 result is tokenizer fertility, not a
+bits/char improvement.
+
+The v3 bits-per-character result does not show an improvement: the earlier
+26.6% reduction was a label-shift bug, and the corrected benchmark puts v3 at
+1.71 bpc versus 1.20 for its base. The durable result is tokenizer fertility,
+not language-model quality.
 
 ### 4.4 GSM8K-Hindi
 
@@ -384,7 +400,8 @@ Table 5: v2 vs v3 comparison.
     | Tokens injected        | 300              | 300              |
     | Injection savings (%)  | 36.5 (Dev)       | 36.9 (Dev)       |
     |                        | 18.0 (mixed)     | 17.7 (mixed)     |
-    | Bits/char reduction    | -10.0%           | -26.6%           |
+    | Bits/char reduction    | -10.0%           | retracted        |
+    |                        |                  | (v3 1.71 vs 1.20)|
     | GSM8K-Hindi            | 0.0% (old stack)| 29% llama, 2%    |
     |                        |                  | torch (n=100)    |
     | Training data          | conversations    | math + QA + conv |
@@ -395,9 +412,10 @@ Table 5: v2 vs v3 comparison.
 The compression numbers are nearly identical between v2 and v3 (36.5% vs
 36.9% Devanagari, 18.0% vs 17.7% mixed). This is expected: the injection
 recipe is the same, and the base Devanagari fertility is similar across
-Qwen2.5-1.5B and Qwen3-1.7B. The bits-per-character improvement (26.6%
-vs 10.0%) tells the real story: v3 is a much better Hindi language model
-after training, even though the tokenizer gains are comparable.
+Qwen2.5-1.5B and Qwen3-1.7B. The earlier bits-per-character improvement
+(26.6%) does not survive a corrected benchmark: it came from a label-shift
+bug, and v3 scores 1.71 bpc against 1.20 for its base. The durable result is
+tokenizer fertility, not language-model quality.
 
 ---
 
@@ -458,8 +476,9 @@ after training, even though the tokenizer gains are comparable.
 
 A 300-token injection (0.198% of the vocabulary, 614K trained params in
 warmup, SFT on Kaggle 2xT4) buys 36.9% script-
-specific compression and 26.6% better bits-per-character on held-out
-Hindi. The GSM8K-Hindi campaign ended in a retraction (an early 56%
+specific compression. A corrected bits/char evaluation retracts the earlier
+26.6% claim; v3 is 1.71 bpc versus 1.20 for its base. The GSM8K-Hindi
+campaign ended in a retraction (an early 56%
 partial did not reproduce) and a finding that stands on its own:
 greedy exact-match scores on a 1.7B model are dominated by the
 inference stack. The final artifact is

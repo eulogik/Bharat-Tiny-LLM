@@ -1,7 +1,7 @@
-"""Bharat-Tiny-LLM — India's first native edge AI for Hinglish and Hindi.
+"""Bharat-Tiny-LLM — India-first edge AI for Hinglish and Hindi.
 
-A 1.5B-parameter edge LLM with 33.8% Devanagari token compression via Brahmi
-vocabulary injection. Runs fully offline on Apple Silicon and edge devices.
+The current PyPI release (0.3.0) packages the v2 MLX model. v3 is a 1.7B,
+1.0 GB Q4_K_M GGUF on Hugging Face; v3/v4 GGUF support lands in 0.4.0.
 Apache-2.0 licensed, open weights.
 
 Built by `eulogik <https://eulogik.com>`_.

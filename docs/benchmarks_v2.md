@@ -1,7 +1,17 @@
 # Bharat-Tiny-LLM — Benchmarks
 
+> **⚠️ Correction (2026-11-11).** The v3 bits/char result below was produced by
+> `scripts/bench_ppl_torch.py`, which shifted labels twice and therefore scored
+> token *i+2* instead of *i+1*. The `11.90 → 8.73 (−26.6%)` row and the `331K`
+> perplexity are invalid. The corrected benchmark (`scripts/bench_bpc.py`) gives
+> **1.20 bpc (base) vs 1.71 bpc (v3)** on a 60-window smoke run, and an
+> independent llama.cpp/Q4 run gives **1.51 vs 1.72** — v3 is worse in
+> bits/char. The 56% GSM8K-Hindi row is also retracted; pinned n=100 protocols
+> give 2% (torch/fp16) and 29% (llama.cpp/Q4). See `docs/claim_audit.md`.
+> Tokenizer fertility (36.9% Devanagari, 17.7% mixed) remains valid.
+
 **Date:** August 24–27, 2026 · **Hardware:** Mac Mini M4 (16 GB) unless noted
-**Reproduce:** `scripts/bench_fertility.py`, `scripts/bench_ppl_torch.py`, `scripts/bench_gsm_hi.py`
+**Reproduce:** `scripts/bench_fertility.py`, `scripts/bench_bpc.py`, `scripts/bench_gsm_hi.py`
 **Models:** base v2 = `Qwen2.5-1.5B`; v3 base = `Qwen3-1.7B-Base`; v3 merged = `eulogik/Bharat-Tiny-LLM-v3`
 
 > All numbers below are measured on held-out corpus lines 300K–305K (never used
@@ -16,16 +26,21 @@ v3 pipeline: Qwen3-1.7B-Base → 300 Devanagari token injection → warmup (3000
 
 | Metric | v2 (Qwen2.5-1.5B) | v3 (Qwen3-1.7B) | Delta |
 |---|---|---|---|
-| **GSM8K-Hindi** (4-shot CoT, greedy) | 0.0% | **56%+** | **+56pp** |
-| **Bits/char** (cross-tokenizer fair) | 1.4878 (−10.0%) | **8.7348** (−26.6%) | **2.7× better reduction** |
-| **Devanagari compression** | 36.5% | 36.8% | +0.3pp |
-| **Mixed corpus savings** | 18.0% | 18.0% | 0.0pp |
-| **Perplexity** (own tok) | 7.48 | 331K (32-bit, uncalibrated) | — |
+| **GSM8K-Hindi** (4-shot CoT, greedy, llama.cpp/Q4, n=100) | not measured | **29%** (v3.3: 35%) | — |
+| **GSM8K-Hindi** (same prompts, torch/fp16, n=100) | not measured | 2% | stack-sensitive |
+| **Bits/char** (corrected, 60-window smoke) | 1.49 vs 1.65 | **1.71 vs 1.20** | **v3 worse** |
+| **Devanagari compression** (tokenizer only) | 36.5% | 36.8% | +0.3pp |
+| **Mixed corpus savings** (tokenizer only) | 18.0% | 18.0% | 0.0pp |
+| **Perplexity** (own tok) | 7.48 | 11.09 (corrected) | — |
 
 **Key findings:**
-- SFT training on GSM8K-Hindi + IndicVault + sample data solved the math problem
-- Compression nearly identical to v2 (36.8% vs 36.5% Dev) because the injection recipe is the same
-- Bits/char improvement (26.6% vs 10%) shows much stronger Hindi language modeling after SFT
+- SFT did **not** create a math breakthrough. The 56% figure was a 9/16 ad-hoc
+  run and is retracted; pinned n=100 gives 29% under llama.cpp/Q4 and 2% under
+  torch/fp16 on identical prompts and weights.
+- Compression is nearly identical to v2 (36.8% vs 36.5% Dev) because the
+  injection recipe is the same. It is a tokenizer result, not a quality result.
+- The corrected bits/char shows v3 is **worse** than base (1.71 vs 1.20). The
+  old "26.6% better" was a label-shift bug.
 
 ### GGUF files for edge deployment
 

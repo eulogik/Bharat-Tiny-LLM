@@ -13,6 +13,8 @@ __pycache__/
 *.so
 .Python
 venv/
+/venv
+.venv*/
 env/
 *.egg-info/
 dist/
@@ -23,6 +25,8 @@ build/
 models/
 data/raw/
 data/processed/
+data/v4/sft/*.jsonl
+data/v4/sft_clean*/
 *.bin
 *.gguf
 *.ggml

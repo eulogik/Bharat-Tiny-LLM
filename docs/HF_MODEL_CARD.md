@@ -17,6 +17,11 @@ pipeline_tag: text-generation
 library_name: mlx
 ---
 
+> **⚠️ This card documents v2 (Qwen2.5-1.5B, 880 MB MLX).** It is kept for the
+> v2 Hub repo. The current model is **v3** (Qwen3-1.7B, 1.0 GB Q4_K_M GGUF,
+> Apache-2.0). v3's corrected benchmarks and claim audit are in the main repo:
+> `docs/claim_audit.md`. Do not cite v2 numbers as v3 results.
+
 <p align="center">
   <img src="https://img.shields.io/badge/Params-1.5B-blue?style=flat-square">
   <img src="https://img.shields.io/badge/Quantization-Q4_MLX-brightgreen?style=flat-square">

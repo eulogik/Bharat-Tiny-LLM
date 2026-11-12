@@ -1,5 +1,11 @@
 # 🇮🇳 bharat-tiny-llm — Offline Hindi/Hinglish AI for Apple Silicon
 
+> **Version note (2026-11-11).** This package release (0.3.0) ships the **v2**
+> MLX model (1.5B, 880 MB). The current model is **v3** (Qwen3-1.7B, 1.0 GB
+> Q4_K_M GGUF). v3/v4 GGUF support lands in 0.4.0. See the
+> [main README](https://github.com/eulogik/Bharat-Tiny-LLM) for current
+> weights and corrected benchmarks.
+
 **`bharat chat`** — an 880 MB Hindi/Hinglish assistant that runs fully offline. No API, no cloud, no internet.
 
 [![PyPI version](https://img.shields.io/pypi/v/bharat-tiny-llm?color=3776ab)](https://pypi.org/project/bharat-tiny-llm/)

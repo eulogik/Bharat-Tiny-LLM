@@ -1,0 +1,93 @@
+{"id":"hold-snake-01","intent":"snake_bite","text":"Saanp ne pair mein das diya, ab sujan hai","lang":"hinglish"}
+{"id":"hold-snake-02","intent":"snake_bite","text":"Snake kaat gaya, kya karna chahiye","lang":"hinglish"}
+{"id":"hold-snake-03","intent":"snake_bite","text":"Do chhed wale nishan hain aur aankh band ho rahi","lang":"hinglish"}
+{"id":"hold-snake-04","intent":"snake_bite","text":"साँप ने पैर में डस दिया","lang":"hi"}
+{"id":"hold-snake-05","intent":"snake_bite","text":"Khet mein saanp mila aur ab pair sunn hai","lang":"hinglish"}
+
+{"id":"hold-animal-01","intent":"animal_bite","text":"Kutte ne haath pakad kar kaat liya","lang":"hinglish"}
+{"id":"hold-animal-02","intent":"animal_bite","text":"Kutta pichha karke kaat gaya","lang":"hinglish"}
+{"id":"hold-animal-03","intent":"animal_bite","text":"Bandariya ne noch diya","lang":"hinglish"}
+{"id":"hold-animal-04","intent":"animal_bite","text":"कुत्ते का काटा हुआ घाव है","lang":"hi"}
+{"id":"hold-animal-05","intent":"animal_bite","text":"Bachche ko billi ne scratch kar diya","lang":"hinglish"}
+
+{"id":"hold-chest-01","intent":"chest_pain","text":"Chhati par dard ho raha hai","lang":"hinglish"}
+{"id":"hold-chest-02","intent":"chest_pain","text":"Seene mein bhaari sa lag raha hai","lang":"hinglish"}
+{"id":"hold-chest-03","intent":"chest_pain","text":"Dil mein jalan aur paseena","lang":"hinglish"}
+{"id":"hold-chest-04","intent":"chest_pain","text":"Left arm pain with chest heaviness","lang":"hinglish"}
+{"id":"hold-chest-05","intent":"chest_pain","text":"सीने में भारीपन और घबराहट","lang":"hi"}
+
+{"id":"hold-stroke-01","intent":"stroke","text":"Aadha chehra latak gaya","lang":"hinglish"}
+{"id":"hold-stroke-02","intent":"stroke","text":"Haath se glass gir raha hai achanak","lang":"hinglish"}
+{"id":"hold-stroke-03","intent":"stroke","text":"Boli labz nahi nikal rahe","lang":"hinglish"}
+{"id":"hold-stroke-04","intent":"stroke","text":"अचानक एक तरफ शरीर सुन्न हो गया","lang":"hi"}
+{"id":"hold-stroke-05","intent":"stroke","text":"Lakwa marne ke baad kya karein","lang":"hinglish"}
+
+{"id":"hold-bleed-01","intent":"severe_bleeding","text":"Khoon band nahi ho raha","lang":"hinglish"}
+{"id":"hold-bleed-02","intent":"severe_bleeding","text":"Talwar se kat gaya, bahut khoon","lang":"hinglish"}
+{"id":"hold-bleed-03","intent":"severe_bleeding","text":"Machine mein haath aa gaya, khoon nikal raha","lang":"hinglish"}
+{"id":"hold-bleed-04","intent":"severe_bleeding","text":"खून का बहाव रुक नहीं रहा","lang":"hi"}
+{"id":"hold-bleed-05","intent":"severe_bleeding","text":"Taaza cut hai aur khoon tapak raha","lang":"hinglish"}
+
+{"id":"hold-breath-01","intent":"breathing","text":"Saans nahi aa rahi, kya karu","lang":"hinglish"}
+{"id":"hold-breath-02","intent":"breathing","text":"Dum ghut gaya","lang":"hinglish"}
+{"id":"hold-breath-03","intent":"breathing","text":"Honth blue ho gaye aur saans tez","lang":"hinglish"}
+{"id":"hold-breath-04","intent":"breathing","text":"साँस लेने में बहुत तकलीफ","lang":"hi"}
+{"id":"hold-breath-05","intent":"breathing","text":"Asthma attack, inhaler kaam nahi kar raha","lang":"hinglish"}
+
+{"id":"hold-poison-01","intent":"poisoning","text":"Bachche ne zeher kha liya","lang":"hinglish"}
+{"id":"hold-poison-02","intent":"poisoning","text":"Sulphas kha liya galti se","lang":"hinglish"}
+{"id":"hold-poison-03","intent":"poisoning","text":"Rat poison kha liya","lang":"hinglish"}
+{"id":"hold-poison-04","intent":"poisoning","text":"कीटनाशक छिड़कते समय मुँह में चला गया","lang":"hi"}
+{"id":"hold-poison-05","intent":"poisoning","text":"Phenyl se ulti ho rahi, kya karu","lang":"hinglish"}
+
+{"id":"hold-burn-01","intent":"burns","text":"Chai se jal gaya","lang":"hinglish"}
+{"id":"hold-burn-02","intent":"burns","text":"Pressure cooker ki bhaap se jal gaya","lang":"hinglish"}
+{"id":"hold-burn-03","intent":"burns","text":"Haath jal gaya aur blisters hain","lang":"hinglish"}
+{"id":"hold-burn-04","intent":"burns","text":"गरम पानी से पैर जल गया","lang":"hi"}
+{"id":"hold-burn-05","intent":"burns","text":"Aag se ungli jal gayi","lang":"hinglish"}
+
+{"id":"hold-frac-01","intent":"fracture","text":"Haddi tut gayi hai","lang":"hinglish"}
+{"id":"hold-frac-02","intent":"fracture","text":"Pair ki haddi bahar aa gayi","lang":"hinglish"}
+{"id":"hold-frac-03","intent":"fracture","text":"Girne se kohni ki haddi mein dard","lang":"hinglish"}
+{"id":"hold-frac-04","intent":"fracture","text":"पैर की हड्डी टूट गई और सूजन है","lang":"hi"}
+{"id":"hold-frac-05","intent":"fracture","text":"Takkar lagne se kandha hil nahi raha","lang":"hinglish"}
+
+{"id":"hold-heat-01","intent":"heat_stroke","text":"Loo mein behosh ho gaya","lang":"hinglish"}
+{"id":"hold-heat-02","intent":"heat_stroke","text":"Garmi se badan garam aur hosh nahi","lang":"hinglish"}
+{"id":"hold-heat-03","intent":"heat_stroke","text":"Heatstroke ho gaya kya karu","lang":"hinglish"}
+{"id":"hold-heat-04","intent":"heat_stroke","text":"धूप में काम किया, अब उल्टी और बेहोशी","lang":"hi"}
+{"id":"hold-heat-05","intent":"heat_stroke","text":"Garmi lag gayi, chakkar aur kamzori","lang":"hinglish"}
+
+{"id":"hold-seiz-01","intent":"seizure","text":"Daura aa gaya","lang":"hinglish"}
+{"id":"hold-seiz-02","intent":"seizure","text":"Mirgi attack hua","lang":"hinglish"}
+{"id":"hold-seiz-03","intent":"seizure","text":"Bachcha kaanp raha hai aur aankh palat rahi","lang":"hinglish"}
+{"id":"hold-seiz-04","intent":"seizure","text":"मिर्गी का दौरा आ गया","lang":"hi"}
+{"id":"hold-seiz-05","intent":"seizure","text":"Jhatke aa rahe hain aur hosh nahi","lang":"hinglish"}
+
+{"id":"hold-cfever-01","intent":"child_fever","text":"Chhote bacche ko bukhar hai","lang":"hinglish"}
+{"id":"hold-cfever-02","intent":"child_fever","text":"6 month baby fever 103","lang":"hinglish"}
+{"id":"hold-cfever-03","intent":"child_fever","text":"Shishu ko bukhar aur doodh nahi pi raha","lang":"hinglish"}
+{"id":"hold-cfever-04","intent":"child_fever","text":"नवजात को बुखार है","lang":"hi"}
+{"id":"hold-cfever-05","intent":"child_fever","text":"Bacche ka bukhar 104 aur sust","lang":"hinglish"}
+
+{"id":"hold-diarr-01","intent":"diarrhea","text":"Dast lag gaye","lang":"hinglish"}
+{"id":"hold-diarr-02","intent":"diarrhea","text":"Pet kharab aur loose motion","lang":"hinglish"}
+{"id":"hold-diarr-03","intent":"diarrhea","text":"Bacche ko 4 baar dast hue","lang":"hinglish"}
+{"id":"hold-diarr-04","intent":"diarrhea","text":"बच्चे को दस्त और उल्टी","lang":"hi"}
+{"id":"hold-diarr-05","intent":"diarrhea","text":"Loose motions aur peshab kam","lang":"hinglish"}
+
+{"id":"hold-generic-01","intent":"generic","text":"Sir dard","lang":"hinglish"}
+{"id":"hold-generic-02","intent":"generic","text":"Gale mein kharash","lang":"hinglish"}
+{"id":"hold-generic-03","intent":"generic","text":"Aankh laal ho gayi","lang":"hinglish"}
+{"id":"hold-generic-04","intent":"generic","text":"Kamar dard","lang":"hinglish"}
+{"id":"hold-generic-05","intent":"generic","text":"Dant dard","lang":"hinglish"}
+{"id":"hold-generic-06","intent":"generic","text":"Kaan dard","lang":"hinglish"}
+{"id":"hold-generic-07","intent":"generic","text":"Khujli ho rahi hai","lang":"hinglish"}
+{"id":"hold-generic-08","intent":"generic","text":"Peshab mein jalan","lang":"hinglish"}
+{"id":"hold-generic-09","intent":"generic","text":"Periods mein dard","lang":"hinglish"}
+{"id":"hold-generic-10","intent":"generic","text":"Bukhar 100 hai","lang":"hinglish"}
+
+{"id":"hold-vet-01","intent":"animal","text":"Gaay bimar hai","lang":"hinglish"}
+{"id":"hold-vet-02","intent":"animal","text":"Bakri khana nahi kha rahi","lang":"hinglish"}
+{"id":"hold-vet-03","intent":"animal","text":"Murgi sust hai","lang":"hinglish"}
+{"id":"hold-vet-04","intent":"animal","text":"भैंस को बुखार है","lang":"hi"}

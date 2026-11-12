@@ -1,0 +1,302 @@
+{
+  "S001": {
+    "original_id": "educ-006",
+    "domain": "education",
+    "prompt_language": "hinglish"
+  },
+  "S002": {
+    "original_id": "sche-033",
+    "domain": "schemes",
+    "prompt_language": "hinglish"
+  },
+  "S003": {
+    "original_id": "dail-004",
+    "domain": "daily",
+    "prompt_language": "hinglish"
+  },
+  "S004": {
+    "original_id": "agri-027",
+    "domain": "agriculture",
+    "prompt_language": "hinglish"
+  },
+  "S005": {
+    "original_id": "sche-035",
+    "domain": "schemes",
+    "prompt_language": "hi"
+  },
+  "S006": {
+    "original_id": "sche-006",
+    "domain": "schemes",
+    "prompt_language": "hinglish"
+  },
+  "S007": {
+    "original_id": "dail-023",
+    "domain": "daily",
+    "prompt_language": "hinglish"
+  },
+  "S008": {
+    "original_id": "dail-024",
+    "domain": "daily",
+    "prompt_language": "hinglish"
+  },
+  "S009": {
+    "original_id": "educ-012",
+    "domain": "education",
+    "prompt_language": "hinglish"
+  },
+  "S010": {
+    "original_id": "sche-011",
+    "domain": "schemes",
+    "prompt_language": "hinglish"
+  },
+  "S011": {
+    "original_id": "agri-009",
+    "domain": "agriculture",
+    "prompt_language": "hinglish"
+  },
+  "S012": {
+    "original_id": "educ-029",
+    "domain": "education",
+    "prompt_language": "hinglish"
+  },
+  "S013": {
+    "original_id": "educ-038",
+    "domain": "education",
+    "prompt_language": "hi"
+  },
+  "S014": {
+    "original_id": "dail-038",
+    "domain": "daily",
+    "prompt_language": "hi"
+  },
+  "S015": {
+    "original_id": "educ-036",
+    "domain": "education",
+    "prompt_language": "hi"
+  },
+  "S016": {
+    "original_id": "dail-033",
+    "domain": "daily",
+    "prompt_language": "hinglish"
+  },
+  "S017": {
+    "original_id": "agri-012",
+    "domain": "agriculture",
+    "prompt_language": "hinglish"
+  },
+  "S018": {
+    "original_id": "sche-031",
+    "domain": "schemes",
+    "prompt_language": "hinglish"
+  },
+  "S019": {
+    "original_id": "dail-030",
+    "domain": "daily",
+    "prompt_language": "hinglish"
+  },
+  "S020": {
+    "original_id": "agri-019",
+    "domain": "agriculture",
+    "prompt_language": "hinglish"
+  },
+  "S021": {
+    "original_id": "sche-019",
+    "domain": "schemes",
+    "prompt_language": "hinglish"
+  },
+  "S022": {
+    "original_id": "agri-028",
+    "domain": "agriculture",
+    "prompt_language": "hinglish"
+  },
+  "S023": {
+    "original_id": "dail-013",
+    "domain": "daily",
+    "prompt_language": "hinglish"
+  },
+  "S024": {
+    "original_id": "sche-004",
+    "domain": "schemes",
+    "prompt_language": "hinglish"
+  },
+  "S025": {
+    "original_id": "educ-023",
+    "domain": "education",
+    "prompt_language": "hinglish"
+  },
+  "S026": {
+    "original_id": "sche-030",
+    "domain": "schemes",
+    "prompt_language": "hinglish"
+  },
+  "S027": {
+    "original_id": "agri-037",
+    "domain": "agriculture",
+    "prompt_language": "hi"
+  },
+  "S028": {
+    "original_id": "educ-034",
+    "domain": "education",
+    "prompt_language": "hinglish"
+  },
+  "S029": {
+    "original_id": "sche-022",
+    "domain": "schemes",
+    "prompt_language": "hinglish"
+  },
+  "S030": {
+    "original_id": "dail-020",
+    "domain": "daily",
+    "prompt_language": "hinglish"
+  },
+  "S031": {
+    "original_id": "sche-014",
+    "domain": "schemes",
+    "prompt_language": "hinglish"
+  },
+  "S032": {
+    "original_id": "sche-005",
+    "domain": "schemes",
+    "prompt_language": "hinglish"
+  },
+  "S033": {
+    "original_id": "educ-032",
+    "domain": "education",
+    "prompt_language": "hinglish"
+  },
+  "S034": {
+    "original_id": "sche-018",
+    "domain": "schemes",
+    "prompt_language": "hinglish"
+  },
+  "S035": {
+    "original_id": "dail-026",
+    "domain": "daily",
+    "prompt_language": "hinglish"
+  },
+  "S036": {
+    "original_id": "agri-021",
+    "domain": "agriculture",
+    "prompt_language": "hinglish"
+  },
+  "S037": {
+    "original_id": "educ-030",
+    "domain": "education",
+    "prompt_language": "hinglish"
+  },
+  "S038": {
+    "original_id": "educ-001",
+    "domain": "education",
+    "prompt_language": "hinglish"
+  },
+  "S039": {
+    "original_id": "educ-039",
+    "domain": "education",
+    "prompt_language": "hi"
+  },
+  "S040": {
+    "original_id": "dail-019",
+    "domain": "daily",
+    "prompt_language": "hinglish"
+  },
+  "S041": {
+    "original_id": "agri-013",
+    "domain": "agriculture",
+    "prompt_language": "hinglish"
+  },
+  "S042": {
+    "original_id": "dail-037",
+    "domain": "daily",
+    "prompt_language": "hi"
+  },
+  "S043": {
+    "original_id": "dail-009",
+    "domain": "daily",
+    "prompt_language": "hinglish"
+  },
+  "S044": {
+    "original_id": "agri-039",
+    "domain": "agriculture",
+    "prompt_language": "hi"
+  },
+  "S045": {
+    "original_id": "sche-032",
+    "domain": "schemes",
+    "prompt_language": "hinglish"
+  },
+  "S046": {
+    "original_id": "educ-025",
+    "domain": "education",
+    "prompt_language": "hinglish"
+  },
+  "S047": {
+    "original_id": "agri-002",
+    "domain": "agriculture",
+    "prompt_language": "hinglish"
+  },
+  "S048": {
+    "original_id": "educ-013",
+    "domain": "education",
+    "prompt_language": "hinglish"
+  },
+  "S049": {
+    "original_id": "dail-012",
+    "domain": "daily",
+    "prompt_language": "hinglish"
+  },
+  "S050": {
+    "original_id": "educ-020",
+    "domain": "education",
+    "prompt_language": "hinglish"
+  },
+  "S051": {
+    "original_id": "agri-024",
+    "domain": "agriculture",
+    "prompt_language": "hinglish"
+  },
+  "S052": {
+    "original_id": "dail-016",
+    "domain": "daily",
+    "prompt_language": "hinglish"
+  },
+  "S053": {
+    "original_id": "agri-004",
+    "domain": "agriculture",
+    "prompt_language": "hinglish"
+  },
+  "S054": {
+    "original_id": "agri-015",
+    "domain": "agriculture",
+    "prompt_language": "hinglish"
+  },
+  "S055": {
+    "original_id": "sche-037",
+    "domain": "schemes",
+    "prompt_language": "hi"
+  },
+  "S056": {
+    "original_id": "sche-040",
+    "domain": "schemes",
+    "prompt_language": "hi"
+  },
+  "S057": {
+    "original_id": "dail-036",
+    "domain": "daily",
+    "prompt_language": "hi"
+  },
+  "S058": {
+    "original_id": "agri-040",
+    "domain": "agriculture",
+    "prompt_language": "hi"
+  },
+  "S059": {
+    "original_id": "agri-014",
+    "domain": "agriculture",
+    "prompt_language": "hinglish"
+  },
+  "S060": {
+    "original_id": "educ-022",
+    "domain": "education",
+    "prompt_language": "hinglish"
+  }
+}

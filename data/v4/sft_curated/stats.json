@@ -1,0 +1,24 @@
+{
+  "rows": 690,
+  "train": 640,
+  "valid": 50,
+  "by_source": {
+    "agriculture": 74,
+    "corpus_clean": 300,
+    "health": 46,
+    "identity": 8,
+    "live_data": 5,
+    "math": 60,
+    "mirror": 6,
+    "mirror_deva": 27,
+    "mirror_en": 10,
+    "schemes": 63,
+    "v33_seed": 91
+  },
+  "by_lang": {
+    "deva": 49,
+    "english": 22,
+    "hinglish": 594,
+    "mixed": 25
+  }
+}

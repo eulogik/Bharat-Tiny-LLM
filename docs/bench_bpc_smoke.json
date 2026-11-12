@@ -1,0 +1,120 @@
+{
+  "protocol": "fixed character windows; one forward pass per window; loss = model(ids, labels=ids); bits/char and bits/byte",
+  "script": "scripts/bench_bpc.py",
+  "corpus": "data/processed/valid_gold.jsonl",
+  "start_line": 0,
+  "window_chars": 1024,
+  "seq": 2048,
+  "windows": 60,
+  "chars": 58210,
+  "slices": {
+    "hinglish": 30,
+    "deva": 28,
+    "english": 0,
+    "mixed": 2,
+    "other": 0
+  },
+  "models": {
+    "Qwen/Qwen3-1.7B-Base": {
+      "windows": 60,
+      "chars": 58210,
+      "bytes": 101139,
+      "tokens": 34981,
+      "nats": 48309.357,
+      "tokens_per_1000_chars": 600.94,
+      "bits_per_char": 1.1973,
+      "bits_per_byte": 0.6891,
+      "ppl": 3.979,
+      "bits_per_char_ci95": [
+        1.1508,
+        1.24
+      ],
+      "slices": {
+        "hinglish": {
+          "windows": 30,
+          "chars": 28177,
+          "bytes": 28472,
+          "tokens": 8378,
+          "nats": 23877.735,
+          "tokens_per_1000_chars": 297.33,
+          "bits_per_char": 1.2226,
+          "bits_per_byte": 1.2099,
+          "ppl": 17.289
+        },
+        "deva": {
+          "windows": 28,
+          "chars": 28672,
+          "bytes": 69954,
+          "tokens": 25727,
+          "nats": 23669.798,
+          "tokens_per_1000_chars": 897.29,
+          "bits_per_char": 1.191,
+          "bits_per_byte": 0.4882,
+          "ppl": 2.509
+        },
+        "mixed": {
+          "windows": 2,
+          "chars": 1361,
+          "bytes": 2713,
+          "tokens": 876,
+          "nats": 761.824,
+          "tokens_per_1000_chars": 643.64,
+          "bits_per_char": 0.8076,
+          "bits_per_byte": 0.4051,
+          "ppl": 2.386
+        }
+      }
+    },
+    "/Volumes/KIOXIA 1TB/brahmi-v3-merged": {
+      "windows": 60,
+      "chars": 58210,
+      "bytes": 101139,
+      "tokens": 28666,
+      "nats": 68969.557,
+      "tokens_per_1000_chars": 492.46,
+      "bits_per_char": 1.7094,
+      "bits_per_byte": 0.9838,
+      "ppl": 11.089,
+      "bits_per_char_ci95": [
+        1.6281,
+        1.7914
+      ],
+      "slices": {
+        "hinglish": {
+          "windows": 30,
+          "chars": 28177,
+          "bytes": 28472,
+          "tokens": 8334,
+          "nats": 28704.702,
+          "tokens_per_1000_chars": 295.77,
+          "bits_per_char": 1.4697,
+          "bits_per_byte": 1.4545,
+          "ppl": 31.321
+        },
+        "deva": {
+          "windows": 28,
+          "chars": 28672,
+          "bytes": 69954,
+          "tokens": 19635,
+          "nats": 39009.618,
+          "tokens_per_1000_chars": 684.81,
+          "bits_per_char": 1.9629,
+          "bits_per_byte": 0.8045,
+          "ppl": 7.292
+        },
+        "mixed": {
+          "windows": 2,
+          "chars": 1361,
+          "bytes": 2713,
+          "tokens": 697,
+          "nats": 1255.238,
+          "tokens_per_1000_chars": 512.12,
+          "bits_per_char": 1.3306,
+          "bits_per_byte": 0.6675,
+          "ppl": 6.055
+        }
+      },
+      "bits_per_char_reduction_vs_first_pct": -42.77
+    }
+  }
+}

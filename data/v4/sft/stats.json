@@ -1,0 +1,25 @@
+{
+  "corpus": "/Volumes/KIOXIA 1TB/brahmi_backup/train_gold_v3.jsonl",
+  "max_rows": 30000,
+  "rows": 30010,
+  "train": 29410,
+  "valid": 600,
+  "seen_languages": {
+    "deva": 22952,
+    "mixed": 11529,
+    "hinglish": 11236,
+    "english": 1249
+  },
+  "kept": {
+    "deva": 6000,
+    "hinglish_mixed": 22751,
+    "english": 1249,
+    "seed": 10
+  },
+  "rejects": {
+    "assistant_quality": 159,
+    "duplicate": 14,
+    "quota": 16952
+  },
+  "system_prompt": "You are Bharat-Tiny-LLM, a helpful offline assistant for India. Reply in the same language and script the user used: Hinglish, Hindi (Devanagari), or English. Be concise and practical. Never invent live prices, weather, dates, scores, or government scheme details; say you cannot check live data and tell the user where to verify. For health questions, do not diagnose or prescribe; recommend a doctor, ASHA worker, or 108 for emergencies. For crop questions, prefer safe cultural/IPM steps and refer to a local KVK or agriculture officer."
+}

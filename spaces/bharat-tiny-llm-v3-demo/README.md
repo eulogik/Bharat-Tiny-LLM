@@ -29,7 +29,10 @@ it stays in your browser's localStorage.
 
 - 🇮🇳 Devanagari token injection for 36.9% Hindi compression
 - 📊 Short Hindi math answers (GSM8K-Hindi is stack-sensitive: 2–35% pinned; see paper)
-- ⚡ 26.6% fewer bits/char than base Qwen3-1.7B on held-out Hindi
 
 Model: [eulogik/Bharat-Tiny-LLM-v3](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3)
 (Apache 2.0) · Offline GGUFs in the same repo.
+
+> **⚠️ Correction (2026-11-11).** The earlier "26.6% fewer bits/char" claim came
+> from a label-shift bug in the benchmark; the corrected run shows v3 is worse
+> than base (1.71 vs 1.20 bpc). Do not repeat that number. See `docs/claim_audit.md`.

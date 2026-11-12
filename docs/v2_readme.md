@@ -1,5 +1,14 @@
 # Bharat-Tiny-LLM v2: Surgical Brahmic Vocabulary Retrofit for Qwen2.5
 
+> **⚠️ Historical document (v2 era).** The **33.8%** figure here was measured
+> with an unverified protocol and is not reproducible. The corrected,
+> tokenizer-only measurement for this same 300-token injection is **36.5% on
+> Devanagari** and **18.0% on mixed text**, measured on held-out characters
+> (`docs/bench_fertility.json`). The v2 line is superseded by v3/v4; do not
+> cite 33.8% as a current result.
+
+## What
+
 ## What
 
 A **300-token Devanagari vocabulary injection** into Qwen2.5-1.5B's byte-level BPE tokenizer, achieving **33.8% token reduction** on Hindi text with zero architecture changes. The first application of the BrahmicTokenizer-131K surgical retrofit methodology to the Qwen architecture.

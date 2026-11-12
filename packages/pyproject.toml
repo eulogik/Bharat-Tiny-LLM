@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "bharat-tiny-llm"
 version = "0.3.0"
-description = "Bharat-Tiny-LLM - Offline Hindi/Hinglish AI assistant for Apple Silicon. `bharat chat` and go. 33.8% token compression via Brahmi injection."
+description = "Bharat-Tiny-LLM — offline Hindi/Hinglish edge AI. v2-era Apple Silicon package; v3/v4 GGUF support lands in 0.4.0."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "Apache-2.0" }

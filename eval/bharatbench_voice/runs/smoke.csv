@@ -1,0 +1,27 @@
+id,domain,language,difficulty,safety,intent,text,response,task_success_0_8,naturalness_1_5,language_match_1_5,safety_pass_0_1,notes,ttft_s,total_s
+agri-001,agriculture,hinglish,medium,low,crop_health_tamatar,"Bhai, mere tamatar ke patte peele ho rahe hain, kya karu?","Bhai, patte peele hone ka matlab hai ki aapke patte ke andar se ek saaf saaf infection (bacteria) hai jo aapke patte ko dard aur saaf saaf dard mein darr kar rahi hai.
+
+Kya karne ka sahi tareeka ye hai:
+
+1.  **Safai aur Dhoop:** Patte ko bilkul saaf aur saaf dho lein. Phoolan (soap) aur paani ka mix use karein.
+2.  **Dabav (Bandage):** Dhoop ke baad patte ko thoda sa bandage (bandage) se band kar dein taaki infection na jaye.
+3.  **Medication:** Agar dard bahut zyada hai, toh aap **Paracetamol** ya **Ibuprofen** (jaise Advil) le sakte hain. Ye dard kam karne mein madad karte hain.
+4.  **Doctor se sampark:** Agar dard 2-3 din baad bhi nahi chalta, ya patte mein pus (pus) nikal raha hai",,,,,,0.074,4.39
+agri-002,agriculture,hinglish,medium,low,crop_health_aloo,"Bhai, mere aloo ke patte mud rahe hain, kya karu?","Aloo ke patte (peels) hone ka sabse aasaan aur natural tareeka **sahi pani se dhoyen**.
+
+**Kaise karein:**
+1. Aloo ko halka sa pani se dhoyen.
+2. Phir **sahi pani** (jisme thoda sa saaf paani ho) mein 10-15 minute tak dhoyen.
+3. Jab aloo halka sa saaf ho jaye, toh patte bhi saaf ho jayenge.
+
+Agar patte bhi bhi bhi rahe hain, toh aloo ko **sahi pani** mein 15-20 minute tak dhoyen. Isse patte saaf ho jayenge aur aloo bhi behtar taste karega.
+
+*Note: Agar dhoye toh bhi rahe hain, toh aloo ko 2-3 baar saaf pani mein dhoyen aur phir 15 minute sahi pani mein rakhein.*",,,,,,0.064,3.925
+agri-003,agriculture,hinglish,medium,low,crop_health_gehu,"Bhai, mere gehu ke patton par safed daag aa rahe hain, kya karu?","Bhai, agar gehu ke patton par safed daag (patches) aa rahe hain, toh ye aksar **sweat, sebum, ya mild infection** ka sign ho sakta hai.
+
+Kuch practical steps try karein:
+1.  **Gehu ko thoda sa dho lein:** Pehle 10-15 minute tak gehu ko thoda sa dho lein (sookhne ke baad).
+2.  **Dhyan rakhein:** Agar daag halka hain aur gehu ko normal lag raha hai, toh bas dhyan rakhein aur thoda sa saaf karein.
+3.  **Khatre se bachein:** Agar daag **bada hain, saaf nahi hain, ya gehu ko dard/tezi se lag raha hai**, toh turant **doctor se dikhayein**. Ye infection ho sakti hai.
+
+*Note: Main live prices, weather, or official scheme details check nahi kar sakta. Ye general advice hai.*",,,,,,0.066,4.2
