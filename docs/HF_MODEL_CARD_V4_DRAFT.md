@@ -1,5 +1,6 @@
 ---
 license: apache-2.0
+inference: false
 language:
 - hi
 - en
