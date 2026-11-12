@@ -3,6 +3,10 @@
 **One-line pitch:** The offline Hinglish assistant that refuses to invent
 medicine — or a scheme amount.
 
+**Live demo (no API, no model):** https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo
+**HF system card:** https://huggingface.co/GautamKishore/Bharat-Tiny-LLM-v4
+**Benchmark dataset:** https://huggingface.co/datasets/GautamKishore/BharatBench-Voice
+
 **Long pitch:** Bharat-Tiny-LLM v4.0 is a 1.2 GB, Apache-2.0, offline assistant
 for rural India. It answers the questions people actually ask from 13 vetted
 health protocols and 131 vetted answer cards, then falls back to a 2B model for
@@ -92,6 +96,8 @@ We tried SFT. We tried a new tokenizer. We tried RAG. All failed in public, and
 we documented why:
 github.com/eulogik/Bharat-Tiny-LLM/blob/main/docs/v4_ab_plan.md
 
+Try the vetted layer (no API): huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo
+
 The product is the safety layer, not a bigger model.
 
 **6/**
@@ -132,7 +138,9 @@ We tried SFT and a new tokenizer first. Both failed. The negative results are
 public. The lesson: for a small model, **knowing when not to answer is the
 product**.
 
-Repo + benchmark + safety docs: github.com/eulogik/Bharat-Tiny-LLM
+Demo: huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo
+Benchmark: huggingface.co/datasets/GautamKishore/BharatBench-Voice
+Repo + safety docs: github.com/eulogik/Bharat-Tiny-LLM
 
 We are looking for clinicians and KVK/CSC reviewers. Independent human and
 clinical review are the next gates.
@@ -161,6 +169,9 @@ review of 60 rows: 7.68/8 task, 4.22/5 naturalness.
 
 It runs as a 1.2 GB Q4 GGUF with llama.cpp. No network, no Play Services.
 Apache-2.0.
+
+Try the vetted layer in the browser (no API): https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo
+Benchmark: https://huggingface.co/datasets/GautamKishore/BharatBench-Voice
 
 Happy to answer questions about the failure modes, the benchmark, or why we
 parked SFT/tokenizer/RAG. Independent human and clinician review are pending;

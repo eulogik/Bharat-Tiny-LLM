@@ -25,6 +25,9 @@ base_model: Qwen/Qwen3.5-2B
 > answer cards, a local router, safety guards and a public benchmark. No
 > fine-tuned weights are claimed.
 
+**Demo (no API):** https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo
+**Benchmark:** https://huggingface.co/datasets/GautamKishore/BharatBench-Voice
+
 Bharat-Tiny-LLM v4.0 is an offline assistant for the way most Indian users
 actually type and speak: **Hinglish first**, with Devanagari Hindi and English
 alongside it. It runs as a 1.2 GB Q4 GGUF on a laptop or phone, with offline

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bharat-Tiny-LLM v3 — Bilingual Hindi/Hinglish Chat</title>
+<meta name="description" content="Bharat-Tiny-LLM v3 is a 1.7B-parameter bilingual Hindi/Hinglish edge LLM. Chat demo served via Hugging Face Inference Providers (Featherless AI)." />
+<style>
+  :root { --bg:#0d1117; --card:#161b22; --accent:#ff6f00; --text:#e6edf3; --muted:#8b949e; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--text); }
+  .wrap { max-width:760px; margin:0 auto; padding:24px 16px 60px; }
+  header { text-align:center; padding:24px 0; }
+  h1 { font-size:1.9rem; margin:0 0 6px; }
+  .tag { color:var(--accent); font-weight:600; }
+  .sub { color:var(--muted); font-size:.95rem; }
+  .card { background:var(--card); border:1px solid #30363d; border-radius:14px; padding:18px; margin:16px 0; }
+  #chat { height:380px; overflow-y:auto; display:flex; flex-direction:column; gap:10px; padding:6px; }
+  .msg { max-width:85%; padding:10px 14px; border-radius:12px; line-height:1.45; white-space:pre-wrap; word-wrap:break-word; }
+  .user { align-self:flex-end; background:var(--accent); color:#fff; }
+  .bot { align-self:flex-start; background:#21262d; }
+  .row { display:flex; gap:8px; margin-top:10px; }
+  input { flex:1; padding:12px 14px; border-radius:10px; border:1px solid #30363d; background:#0d1117; color:var(--text); font-size:1rem; }
+  button { padding:12px 18px; border:none; border-radius:10px; background:var(--accent); color:#fff; font-weight:600; cursor:pointer; }
+  button:disabled { opacity:.5; cursor:not-allowed; }
+  .status { font-size:.85rem; color:var(--muted); margin-top:8px; min-height:1.2em; }
+  .examples { display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+  .examples button { background:#21262d; font-weight:400; font-size:.85rem; padding:7px 12px; }
+  .badges { text-align:center; margin:10px 0; }
+  code { background:#21262d; padding:2px 6px; border-radius:6px; font-size:.85em; }
+  a { color:var(--accent); }
+  table { width:100%; border-collapse:collapse; font-size:.9rem; }
+  td,th { border:1px solid #30363d; padding:8px; text-align:left; }
+  th { background:#21262d; }
+  details { font-size:.9rem; color:var(--muted); }
+  summary { cursor:pointer; color:var(--text); }
+  .tokrow { display:flex; gap:8px; margin-top:8px; }
+  .tokrow input { font-size:.85rem; padding:8px 10px; }
+  .tokrow button { padding:8px 14px; font-size:.85rem; }
+  .sliders { display:flex; gap:16px; margin-top:10px; font-size:.85rem; color:var(--muted); }
+  .sliders label { display:flex; align-items:center; gap:6px; }
+  .sliders input[type=range] { flex:0; width:110px; padding:0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>🗣️ Bharat-Tiny-LLM <span class="tag">v3</span></h1>
+    <div class="sub">Bilingual Hindi / Hinglish / English LLM — hosted inference, no download, works on any device.</div>
+    <div class="badges">
+      <a href="https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3"><img alt="HF Model" src="https://img.shields.io/badge/%F0%9F%A4%97%20Model-eulogik%2FBharat--Tiny--LLM--v3-ff6f00"></a>
+      <img alt="Params" src="https://img.shields.io/badge/Params-1.7B-orange">
+      <img alt="License" src="https://img.shields.io/badge/License-Apache_2.0-green">
+      <img alt="Runs" src="https://img.shields.io/badge/Inference-Featherless%20AI-blue">
+    </div>
+  </header>
+
+  <div class="card">
+    <details id="setup" open>
+      <summary><b>Setup (one time, 30 seconds)</b></summary>
+      <p style="font-size:.85rem">This demo calls the model through Hugging Face Inference Providers.
+      Paste a <b>free</b> read-only token — it stays in your browser (localStorage), never on our server
+      (there is no server; this page is static).</p>
+      <div class="tokrow">
+        <input id="token" type="password" placeholder="hf_... (create at huggingface.co/settings/tokens)" />
+        <button id="saveTok">Save</button>
+      </div>
+      <div class="status" id="tokStatus"></div>
+    </details>
+  </div>
+
+  <div class="card">
+    <div id="chat"></div>
+    <div class="status" id="status">Enter your token above, then chat below.</div>
+    <div class="row">
+      <input id="input" placeholder="अपना सवाल लिखें / Type here (Hindi, Hinglish, English)..." />
+      <button id="send">Send</button>
+      <button id="newchat" title="Clear this conversation">New chat</button>
+    </div>
+    <div class="examples" id="examples"></div>
+    <div class="sliders">
+      <label>Temp <input id="temp" type="range" min="0.1" max="1" step="0.1" value="0.3"><span id="tempV">0.3</span></label>
+      <label>Max tokens <input id="maxtok" type="range" min="32" max="512" step="32" value="160"><span id="maxtokV">160</span></label>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Why Bharat-Tiny-LLM v3?</h3>
+    <table>
+      <tr><th>Feature</th><th>Benefit</th></tr>
+      <tr><td>1.7B params</td><td>Runs on phones, laptops, edge devices</td></tr>
+      <tr><td>Devanagari token injection (300 tokens)</td><td>36.9% better Hindi token compression</td></tr>
+      <tr><td>SFT on Hindi math + QA</td><td>Short math answers; full GSM8K-Hindi evals are stack-sensitive (2–35%), see paper</td></tr>
+      <tr><td>1.0 GB Q4_K_M GGUF</td><td>Runs offline with llama.cpp on a laptop or phone</td></tr>
+    </table>
+    <p style="font-size:.85rem;color:#8b949e;margin-top:10px"><b>Note:</b> v3 is optimized for Hindi math reasoning. Conversational quality is limited — the model may produce garbled text after correct answers. For chat use, see the v3.3 GGUF below.</p>
+  </div>
+
+  <div class="card">
+    <h3>Run it yourself</h3>
+    <p><b>API:</b> <code>model="eulogik/Bharat-Tiny-LLM-v3:featherless-ai"</code> via <code>router.huggingface.co/v1</code> (OpenAI-compatible, see model page for snippets).</p>
+    <p><b>llama.cpp (math):</b> <code>llama-cli -m bharat-tiny-llm-v3-q4_k_m.gguf -p "नमस्ते"</code></p>
+    <p><b>llama.cpp (chat):</b> <code>llama-cli -m brahmi-v3.3-q4_k_m.gguf -p "नमस्ते"</code> — v3.3 is the chat-tuned variant (GSM 35% on llama/Q4, pinned protocol).</p>
+    <p><b>Offline GGUFs:</b> in the <a href="https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3">model repo</a> (<code>*-q4_k_m.gguf</code>, <code>*-f16.gguf</code>).</p>
+  </div>
+
+  <div class="card">
+    <h3>FAQ</h3>
+    <p><b>Is my data private?</b> Chats are sent to the Featherless AI inference endpoint to generate replies — like any hosted demo. For fully offline use, download the GGUF and run it with llama.cpp.</p>
+    <p><b>Which languages?</b> Hindi (Devanagari), Hinglish (Romanized Hindi+English), and English.</p>
+    <p><b>Why do I need a token?</b> The inference provider requires authentication. A free read-only token takes 30 seconds at <a href="https://huggingface.co/settings/tokens">huggingface.co/settings/tokens</a>.</p>
+    <p><b>What can it do well?</b> Short Hindi math (e.g. 17×23=391), factual Q&A, and grade-school math word problems. Conversational quality is limited in v3 — see v3.3 GGUF for better chat.</p>
+    <p><b>Why is the output sometimes garbled?</b> v3 was trained primarily on math + QA data, not conversations, and the base model leaks non-Hindi scripts. This page scrubs junk scripts, repeated sentences, and placeholder tokens, and keeps only the last exchange for context — but long chats can still drift. Short questions work best. Tip: if replies degrade as the chat grows, press New chat — this small model does best with one question at a time.</p>
+  </div>
+</div>
+
+<script>
+const API_URL = "https://router.huggingface.co/v1/chat/completions";
+const MODEL = "eulogik/Bharat-Tiny-LLM-v3:featherless-ai";
+const SYS = "You are Bharat-Tiny-LLM, a helpful bilingual assistant for Hindi and Hinglish. Answer in the same language the user writes. Be concise.";
+
+const chatEl = document.getElementById("chat");
+const inputEl = document.getElementById("input");
+const sendEl = document.getElementById("send");
+const statusEl = document.getElementById("status");
+const examplesEl = document.getElementById("examples");
+const tokenEl = document.getElementById("token");
+const tokStatusEl = document.getElementById("tokStatus");
+
+const EXAMPLES = [
+  "नमस्ते, आपका नाम क्या है?",
+  "भारत की राजधानी क्या है?",
+  "5 सेब में से 2 खा लिए, बचे कितने?",
+  "Hinglish mein batao: aaj ka mausam kaisa hai?"
+];
+
+const history = []; // [user, bot, ...] pairs kept client-side
+
+function addMsg(text, cls) {
+  const d = document.createElement("div");
+  d.className = "msg " + cls;
+  d.textContent = text;
+  chatEl.appendChild(d);
+  chatEl.scrollTop = chatEl.scrollHeight;
+  return d;
+}
+
+// Mirror of the server-side scrubber: strip leading template-leak junk,
+// cut each line at the first junk signal, stop at the first repeated
+// sentence anywhere (not just trailing loops).
+function clean(text, userText) {
+  if (!text) return "";
+  const rawLen = text.length;
+  let junkFound = false;
+  // skip a junk preamble, then drop a first token fused with junk
+  // ("zwłaszcuser") or a bare "user" role echo at the reply start
+  const s = text.match(/[A-Za-z0-9\u0900-\u097F]/);
+  if (s) text = text.slice(s.index);
+  const first = text.match(/^\s*(\S+)/);
+  if (first && CUT_RE.test(first[1])) {
+    text = text.slice(first[0].length); junkFound = true;
+  }
+  text = text.replace(/^\s*users?\b:?(?=\s|$)/i, "");
+  const lines = [];
+  for (const rawLine of text.split("\n")) {
+    const [l, jl] = cleanLine(rawLine);
+    if (jl) junkFound = true;
+    // single-token camelCase lines ("useRal") are fused junk fragments
+    if (/^\S+$/.test(l) && /[a-z]/.test(l) && /[A-Z]/.test(l)) { junkFound = true; continue; }
+    if (l.length > 0) lines.push(l);
+  }
+  const ui = lines.findIndex((l) => l.includes("उत्तर:"));
+  const kept = ui >= 0 ? lines.slice(0, ui + 1) : lines;
+  const out = cutRepeats(kept.join("\n")).trim();
+  if (out && userText && userText.length >= 12) {
+    const nU = userText.toLowerCase().replace(/\s+/g, " ").trim();
+    const nO = out.toLowerCase().replace(/\s+/g, " ").trim();
+    if ((nO.includes(nU) && nO.length < nU.length * 2) ||
+        (nU.includes(nO) && nO.length >= 12)) {
+      return "(no good answer — try rephrasing)";
+    }
+  }
+  // Junk was present but almost nothing salvageable: say so instead of
+  // showing a misleading fragment. Short real answers ("नई दिल्ली",
+  // "8") survive: threshold is tiny, digit-bearing outs are exempt.
+  if (junkFound && out.replace(/\s/g, "").length < 8 && !/\d/.test(out) && rawLen > 120) {
+    return "(garbled reply — try a shorter question)";
+  }
+  return out;
+}
+
+function cleanLine(line) {
+  // returns [cleaned, foundJunk]; role-echo handling never counts as junk
+  line = line.replace(/^\s*Assistant\s*:\s*/, "");
+  const role = line.match(/(?:^|\s)User\s*:/);
+  let cut = role ? role.index : line.length;
+  let junk = false;
+  // delete foreign-script runs but keep surrounding good text, so an
+  // answer embedded in junk ("ভারত ... नई दिल्ली ।") still survives
+  if (CUT_RE.test(line)) { line = line.replace(CUT_RE_G, " "); junk = true; }
+  // ALL-CAPS Latin runs (ACCESSIBILITY junk); threshold 6 spares GST/AI/USA
+  const caps = line.match(/[A-Z]{6,}/);
+  if (caps && caps.index < cut) { cut = caps.index; junk = true; }
+  // placeholder/model junk: <id..>, <PHONE>, <(id..)> cut at once;
+  // <<..>> cuts only when letters follow (placeholders), so pure-math
+  // calculator annotations (<<24/3 = 8>>) survive for math answers.
+  const ph = line.match(/<[(A-Za-z_\/]/) || line.match(/<<(?=[^>]{0,40}[A-Za-z])/);
+  if (ph && ph.index < cut) { cut = ph.index; junk = true; }
+  // stray " ." left by a cut (e.g. "18% .ACCESSIBILITY" -> "18% .")
+  return [line.slice(0, cut).trim().replace(/ \.+$/, ""), junk];
+}
+
+function sentences(line) {
+  // split keeping delimiters; no lookbehind for old browsers.
+  // "." splits only when NOT between digits (keeps 18.5 intact);
+  // 2+ spaces split (loop separator: "आप ज   आप ज").
+  const bits = line.split(/([।!?]+|\.(?!\d)|\s{2,})/);
+  const out = [];
+  for (let i = 0; i < bits.length; i += 2) {
+    const s = (bits[i] + (bits[i + 1] || "")).trim().replace(/\s{2,}/g, " ");
+    if (s) out.push(s);
+  }
+  return out;
+}
+
+function cutRepeats(text) {
+  // Break on the 2nd occurrence of a content fragment (>=8 chars, e.g.
+  // echoed replies) or the 2nd consecutive repeat of a short one (loops
+  // use multi-space separators; legit Hindi reduplication uses single
+  // spaces and never splits, so it survives). Loop copies already kept
+  // are dropped; a content fragment still gets one visible copy unless
+  // a previous output line already shows it.
+  const counts = new Map();
+  const out = [];
+  let lastKey = null, lastRun = 0, stopped = false;
+  for (const line of text.split("\n")) {
+    const kept = [];
+    for (const p of sentences(line)) {
+      if (p.length >= 4) {
+        const c = (counts.get(p) || 0) + 1;
+        counts.set(p, c);
+        if (p === lastKey) lastRun += 1; else { lastKey = p; lastRun = 1; }
+        if ((p.length >= 8 && c >= 2) || lastRun >= 2) {
+          while (kept.length && kept[kept.length - 1] === p) kept.pop();
+          if (p.length >= 8 && !out.some((l) => l.includes(p))) kept.push(p);
+          stopped = true;
+          break;
+        }
+      } else { lastKey = p; lastRun = 1; }
+      kept.push(p);
+    }
+    const joined = kept.join(" ").trim();
+    if (joined) out.push(joined);
+    if (stopped) break;
+  }
+  let t = out.join("\n");
+  const loop = t.match(LOOP_RE);
+  if (loop) t = t.slice(0, loop.index) + loop[1];
+  return t;
+}
+
+// Junk-script runs: Arabic (+Supplement/Presentation Forms), Bengali LSB
+// through Malayalam (all Indic scripts except Devanagari), Tibetan,
+// Myanmar, Thai, Lao, CJK (unified, ext-A, compat), Hiragana/Katakana,
+// Hangul, Greek, Cyrillic, Latin Extended A/B + Extended Additional
+// (Polish l, Vietnamese o), plus combining marks. Single chars count:
+// in Hindi/Hinglish/English chat these scripts never occur legitimately.
+const CUT_RE = new RegExp(
+  "[\u0600-\u06FF\u0750-\u077F\uFB50-\uFDFF\uFE70-\uFEFF" +
+  "\u0980-\u0D7F\u0F00-\u109F" +
+  "\u0E00-\u0E7F\u0E80-\u0EFF" +
+  "\u4E00-\u9FFF\u3400-\u4DBF\uF900-\uFAFF" +
+  "\u3040-\u30FF\uAC00-\uD7AF" +
+  "\u0370-\u03FF\u0400-\u04FF" +
+  "\u0100-\u024F\u1E00-\u1EFF" +
+  "\u0300-\u036F]+"
+);
+const CUT_RE_G = new RegExp(CUT_RE.source, "g");
+const LOOP_RE = /(.{10,80}?)\1+\s*$/s;
+
+function getToken() { return (tokenEl.value || localStorage.getItem("bharat_hf_token") || "").trim(); }
+
+document.getElementById("saveTok").onclick = () => {
+  const t = tokenEl.value.trim();
+  if (!t) { tokStatusEl.textContent = "Paste a token first."; return; }
+  localStorage.setItem("bharat_hf_token", t);
+  tokStatusEl.textContent = "Saved in this browser. You can chat now.";
+  document.getElementById("setup").open = false;
+  statusEl.textContent = "Ready! Ask anything in Hindi, Hinglish, or English.";
+};
+
+EXAMPLES.forEach(e => {
+  const b = document.createElement("button");
+  b.textContent = e;
+  b.onclick = () => { inputEl.value = e; send(); };
+  examplesEl.appendChild(b);
+});
+
+document.getElementById("temp").oninput = e => document.getElementById("tempV").textContent = e.target.value;
+document.getElementById("maxtok").oninput = e => document.getElementById("maxtokV").textContent = e.target.value;
+
+async function send() {
+  const text = inputEl.value.trim();
+  if (!text) return;
+  const token = getToken();
+  if (!token) {
+    statusEl.textContent = "Add your HF token in Setup first (free, 30 seconds).";
+    document.getElementById("setup").open = true;
+    return;
+  }
+  inputEl.value = "";
+  addMsg(text, "user");
+  const botEl = addMsg("…", "bot");
+  statusEl.textContent = "Thinking… (first request can take ~1 min while the model loads)";
+
+  const messages = [{ role: "system", content: SYS }];
+  // at most one prior pair: this model degrades fast on long histories,
+  // and stored garbage poisons every later reply
+  for (const [u, b] of history.slice(-1)) {
+    messages.push({ role: "user", content: u });
+    if (b) messages.push({ role: "assistant", content: b });
+  }
+  messages.push({ role: "user", content: text });
+
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Authorization": "Bearer " + token, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: MODEL,
+        messages,
+        max_tokens: parseInt(document.getElementById("maxtok").value, 10),
+        temperature: parseFloat(document.getElementById("temp").value),
+        top_p: 0.85,
+        stop: ["<|file_sep|>", "<|im_end|>", "<|im_start|>"],
+      }),
+    });
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error(`HTTP ${res.status}: ${err.slice(0, 200)}`);
+    }
+    const data = await res.json();
+    const raw = (data.choices && data.choices[0] && data.choices[0].message.content) || "";
+    const reply = clean(raw, text) || "(empty reply — try again)";
+    botEl.textContent = reply;
+    // quality gate: never feed failure markers back as history
+    if (!reply.startsWith("(")) history.push([text, reply]);
+    while (history.length > 1) history.shift();
+    statusEl.textContent = "Ready!";
+  } catch (e) {
+    botEl.textContent = "Error: " + e.message;
+    statusEl.textContent = "Request failed — check token / connection and retry.";
+  }
+}
+
+sendEl.onclick = send;
+document.getElementById("newchat").onclick = () => {
+  chatEl.innerHTML = "";
+  history.length = 0;
+  statusEl.textContent = "Fresh chat started.";
+};
+inputEl.addEventListener("keydown", e => { if (e.key === "Enter") send(); });
+
+// Restore saved token on load.
+const saved = localStorage.getItem("bharat_hf_token");
+if (saved) {
+  tokenEl.value = saved;
+  tokStatusEl.textContent = "Token restored from this browser.";
+  document.getElementById("setup").open = false;
+  statusEl.textContent = "Ready! Ask anything in Hindi, Hinglish, or English.";
+}
+</script>
+</body>
+</html>

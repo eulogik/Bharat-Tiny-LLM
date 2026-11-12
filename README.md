@@ -1,39 +1,80 @@
 <div align="center">
 
-![Bharat-Tiny-LLM v3 banner](assets/banner.png)
+<img src="assets/banner_v4.svg" alt="Bharat-Tiny-LLM v4.0 — safety first">
 
-# 🗣️ Bharat-Tiny-LLM v3
+# 🛡️ Bharat-Tiny-LLM v4.0
 
-**A bilingual Hindi / Hinglish / English edge LLM — 1.7B params, 1.0 GB GGUF, Apache-2.0.**
-The GGUF weights run fully offline; the hosted demo uses an API.
+**The offline Hinglish assistant that refuses to invent medicine — or a scheme amount.**
+Stock Qwen3.5-2B + **13 health protocols** + **131 vetted answer cards**. 1.2 GB Q4, Apache-2.0.
 
-[![HF Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-eulogik%2FBharat--Tiny--LLM--v3-ff6f00)](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3)
-[![HF Space](https://img.shields.io/badge/%F0%9F%9A%80%20Demo-Featherless%20API-blue)](https://huggingface.co/spaces/eulogik/bharat-tiny-llm-v3-demo)
-[![PyPI](https://img.shields.io/badge/PyPI-bharat--tiny--llm-3776ab)](https://pypi.org/project/bharat-tiny-llm/)
-[![Params](https://img.shields.io/badge/Params-1.7B-orange)](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3)
-[![GGUF](https://img.shields.io/badge/GGUF-Q4__K__M%20(1.0GB)-blue)](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3)
+[![Live demo](https://img.shields.io/badge/%F0%9F%9A%80%20Demo-No%20API%2C%20no%20model-e07a2f)](https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo)
+[![HF Model](https://img.shields.io/badge/%F0%9F%A4%97%20Model-v4.0%20system%20card-ff6f00)](https://huggingface.co/GautamKishore/Bharat-Tiny-LLM-v4)
+[![Benchmark](https://img.shields.io/badge/%F0%9F%93%8A%20Dataset-BharatBench--Voice-2f6b4f)](https://huggingface.co/datasets/GautamKishore/BharatBench-Voice)
+[![Base model](https://img.shields.io/badge/%F0%9F%A4%97%20Base-Qwen3.5--2B-ff6f00)](https://huggingface.co/Qwen/Qwen3.5-2B)
+[![Params](https://img.shields.io/badge/Params-2B-orange)](https://huggingface.co/Qwen/Qwen3.5-2B)
+[![GGUF](https://img.shields.io/badge/GGUF-Q4__K__M%20(1.2GB)-blue)](https://huggingface.co/Qwen/Qwen3.5-2B)
 [![License](https://img.shields.io/badge/License-Apache_2.0-green)](https://github.com/eulogik/Bharat-Tiny-LLM/blob/main/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/eulogik/Bharat-Tiny-LLM?style=social)](https://github.com/eulogik/Bharat-Tiny-LLM)
 
 </div>
 
-> Built by [eulogik](https://eulogik.com) — an India-first AI lab shipping edge-deployable models.
+> Built by [eulogik](https://eulogik.com) — an India-first AI lab shipping edge-deployable systems.
 
-> **🧪 v3.3 conversational** — 370 curated rows (evol-hindi + Hinglish + identity), r=8, 2 epochs, LR 5e-6. Pushed as `brahmi-v3.3-f16.gguf` (3.4 GB) / `brahmi-v3.3-q4_k_m.gguf` (1.1 GB). Dataset: `eulogik/bharat-v3-chat-sft-v3`.
+> **v4.0 is the current release.** v3 is legacy and kept for the record; the old
+> API demo is preserved at `/v3.html` on the v4 Space.
 
 ---
 
-## ⚡ Try it (one command)
+## ⚡ Try it
+
+**Browser demo — no API, no model:** the Space runs the vetted layer directly in
+JavaScript. Ask about CSC, PM-KISAN, a crop, a recipe or a percentage.
+
+👉 **[Open the v4.0 demo](https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo)**
+
+**Local, offline:**
 
 ```bash
-pip install "bharat-tiny-llm[mlx]" && bharat chat
+llama-server -m Qwen3.5-2B-Q4_K_M.gguf -c 4096 -np 1 --host 127.0.0.1 --port 8096 &
+venv/bin/python scripts/rag_ask.py \
+  --server http://127.0.0.1:8096/v1 \
+  --model Qwen3.5-2B-Q4_K_M.gguf \
+  --query "PM Kisan ka status kaise check karein?"
 ```
 
-Or open the **[live demo](https://huggingface.co/spaces/eulogik/bharat-tiny-llm-v3-demo)** (Featherless API, browser-based) — no install.
+**Benchmark:** [BharatBench-Voice](https://huggingface.co/datasets/GautamKishore/BharatBench-Voice)
+— 200 prompts, base and v4 runs, cards and protocols.
 
 ---
 
-## 📌 What is Bharat-Tiny-LLM v3?
+## 📊 v4.0 results
+
+| Metric | Base Qwen3.5-2B | v4.0 |
+|---|---:|---:|
+| Language match | 90.0% | **100%** |
+| Safety pass | 91.5% | **100%** |
+| Live-data honesty | 94.4% | **100%** |
+| Math pass | 100% | **100%** |
+| Auto task proxy (0–8) | 6.10 | 5.85 |
+| Cards used | 0 | **160 / 200** |
+| Model calls | 200 | **0** |
+
+The deterministic gate **passes**: +10.0 pp language, safety not lower, TTFT
+0 s. The auto proxy is slightly lower because concise cards do not repeat
+rubric keywords. The editorial review of 60 non-health rows scored **7.68/8
+task success, 4.22/5 naturalness, 1.00 safety**; it is editorial, not an
+independent human study. Details:
+[`docs/v4_release_summary.md`](docs/v4_release_summary.md).
+
+**Scope note:** the benchmark prompts are covered by cards and protocols, so
+this measures the reliability of the curated layer, not open-ended model
+reasoning. The model handles the long tail with a verify note.
+
+---
+
+## 📌 Legacy v3 (superseded)
+
+
 
 A **1.7-billion-parameter small language model (SLM)** for **Hindi, Hinglish, and English**
 that runs on phones, laptops, and browsers — fully offline. Built by injecting 300
@@ -61,7 +102,7 @@ torch/fp16. The old 56% figure was an ad-hoc 9/16 run and is retracted. See
 
 ---
 
-## 🚀 v4.0 (system release — no new weights)
+## 🧱 v4.0 architecture (details)
 
 v4 is a **system**, not another checkpoint. Two fine-tuning attempts were
 rejected: the injected-token model garbled words, and the stock-base SFT applied
@@ -101,27 +142,6 @@ answer cards + a local router**:
   save **16.57% on Hinglish / 12.62% overall**, but the 16 GB M4 cannot
   calibrate the new output rows alongside LoRA. Kept as an optional build.
 
-**Benchmark:** [BharatBench-Voice](eval/bharatbench_voice/prompts.json) — 200
-prompts across agriculture, schemes, education, health, and daily life.
-
-| Metric | Base Qwen3.5-2B | v4.0 |
-|---|---:|---:|
-| Language match | 90.0% | **100%** |
-| Safety pass | 91.5% | **100%** |
-| Live-data honesty | 94.4% | **100%** |
-| Math pass | 100% | **100%** |
-| Auto task proxy (0–8) | 6.10 | 5.85 |
-| Cards used | 0 | **160 / 200** |
-| Model calls | 200 | **0** |
-
-The deterministic gate **passes** (+10.0 pp language, safety not lower, TTFT
-0 s). The auto proxy is slightly lower because concise cards do not repeat
-rubric keywords; the editorial review of 60 non-health rows scored **7.68/8
-task success, 4.22/5 naturalness, 1.00 safety**. That review is editorial, not
-an independent human study. See
-[`docs/v4_release_summary.md`](docs/v4_release_summary.md) and the gate report
-[`eval/bharatbench_voice/runs/v4_gate_final.md`](eval/bharatbench_voice/runs/v4_gate_final.md).
-
 **Why this matters.** The base model recommended Paracetamol for tomato leaves,
 "doodh ya ghee" for burns, "electric shock" for a fracture, and called CSC a
 "Computer Science" center. v4.0 removes the health failure mode entirely and
@@ -140,7 +160,11 @@ Details: [`docs/v4_release_summary.md`](docs/v4_release_summary.md) ·
 
 ## 🚀 Usage
 
-### llama.cpp
+> **v4.0 usage:** the package/GGUF instructions below are legacy v3. For v4.0,
+> use `scripts/rag_ask.py` with the stock Qwen3.5-2B Q4 GGUF; see
+> [`deploy/README.md`](deploy/README.md).
+
+### llama.cpp (legacy v3)
 ```bash
 llama-cli -m bharat-tiny-llm-v3-q4_k_m.gguf -p "नमस्ते, आप कैसे हैं?"
 ```
@@ -167,9 +191,10 @@ print(llm("नमस्ते, आपका नाम क्या है?", max
 
 | Repo | Format | Size | Use |
 |---|---|---|---|
-| [`Bharat-Tiny-LLM-v3`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3) | GGUF Q4_K_M | **1.0 GB** | **Edge / production (flagship)** |
-| [`Bharat-Tiny-LLM-v3`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3) | GGUF F16 | 3.2 GB | Reference / fine-tuning |
-| [`Bharat-Tiny-LLM-v2-MLX`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v2-MLX) | Q4 MLX + LoRA | 880 MB | Legacy (Apple Silicon) |
+| [`Qwen3.5-2B`](https://huggingface.co/Qwen/Qwen3.5-2B) | GGUF Q4_K_M | **1.2 GB** | **v4.0 base (current)** |
+| [`Bharat-Tiny-LLM-v3`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3) | GGUF Q4_K_M | 1.0 GB | Legacy v3 |
+| [`Bharat-Tiny-LLM-v3`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3) | GGUF F16 | 3.2 GB | Legacy v3 (reference) |
+| [`Bharat-Tiny-LLM-v2-MLX`](https://huggingface.co/eulogik/Bharat-Tiny-LLM-v2-MLX) | Q4 MLX + LoRA | 880 MB | Legacy v2 (Apple Silicon) |
 
 ---
 
@@ -207,9 +232,22 @@ a 1.0 GB Apache-2.0 GGUF that runs offline.
 
 ## 📜 License
 
-Apache 2.0. Base model [Qwen3-1.7B-Base](https://huggingface.co/Qwen/Qwen3-1.7B-Base) (Apache 2.0).
+Apache 2.0. Base model [Qwen3.5-2B](https://huggingface.co/Qwen/Qwen3.5-2B)
+(Apache 2.0). v3 is legacy and remains Apache 2.0.
 
 ## 📖 Citation
+
+```bibtex
+@misc{bharat_tiny_llm_v4,
+  title  = {Bharat-Tiny-LLM v4.0: A Safety-First Offline Hinglish Answer System},
+  author = {Kishore, Gautam},
+  year   = {2026},
+  note   = {eulogik. Apache-2.0. Stock Qwen3.5-2B + 13 health protocols + 131 vetted cards.},
+  url    = {https://github.com/eulogik/Bharat-Tiny-LLM}
+}
+```
+
+Legacy v3 citation:
 
 ```bibtex
 @misc{bharat-tiny-llm-v3,
@@ -223,7 +261,9 @@ Apache 2.0. Base model [Qwen3-1.7B-Base](https://huggingface.co/Qwen/Qwen3-1.7B-
 ## 🔗 Links
 
 - 🤗 Flagship model: https://huggingface.co/eulogik/Bharat-Tiny-LLM-v3
-- 🌐 Live demo (Featherless): https://huggingface.co/spaces/eulogik/bharat-tiny-llm-v3-demo
+- 🌐 v4.0 demo (no API): https://huggingface.co/spaces/GautamKishore/Bharat-Tiny-LLM-v4-demo
+- 📊 Benchmark dataset: https://huggingface.co/datasets/GautamKishore/BharatBench-Voice
+- 🌐 v3 API demo (legacy): https://huggingface.co/spaces/eulogik/bharat-tiny-llm-v3-demo
 - 📊 Benchmarks: [docs/benchmarks_v2.md](docs/benchmarks_v2.md)
 - 💻 This repo: https://github.com/eulogik/Bharat-Tiny-LLM
 - 🏢 Built by [eulogik](https://eulogik.com)

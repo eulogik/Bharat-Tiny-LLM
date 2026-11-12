@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bharat-Tiny-LLM v4.0 — Vetted Offline Answers</title>
+<meta name="description" content="Try the vetted answer layer of Bharat-Tiny-LLM v4.0: 131 cards and 13 health protocols. No model call, no API.">
+<style>
+  :root{
+    --ink:#171512; --muted:#6b6459; --paper:#f6f0e4; --card:#fffdf8;
+    --line:#e4d9c6; --saffron:#e07a2f; --green:#2f6b4f; --red:#a63d2f;
+    --shadow:0 18px 50px rgba(40,30,15,.10);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:
+      radial-gradient(1200px 600px at 85% -10%, #f3d7b8 0%, transparent 55%),
+      radial-gradient(900px 500px at -10% 20%, #dce8da 0%, transparent 50%),
+      var(--paper);
+    color:var(--ink); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans Devanagari", sans-serif;
+    line-height:1.5;
+  }
+  .wrap{max-width:980px;margin:0 auto;padding:34px 20px 60px}
+  header{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;justify-content:space-between;margin-bottom:26px}
+  .brand{display:flex;gap:12px;align-items:center}
+  .mark{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--saffron),#f2b56b);display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px;box-shadow:var(--shadow)}
+  h1{font-size:clamp(26px,4vw,42px);line-height:1.05;margin:0;letter-spacing:-.02em}
+  .sub{color:var(--muted);max-width:620px;margin:8px 0 0;font-size:15px}
+  .badges{display:flex;gap:8px;flex-wrap:wrap}
+  .badge{font-size:12px;border:1px solid var(--line);background:rgba(255,253,248,.7);padding:6px 10px;border-radius:999px;color:var(--muted)}
+  .badge strong{color:var(--green)}
+  main{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden}
+  .panel{padding:24px}
+  .askrow{display:flex;gap:10px;flex-wrap:wrap}
+  textarea{
+    flex:1 1 520px;min-height:58px;max-height:180px;resize:vertical;border:1px solid var(--line);
+    border-radius:14px;padding:14px 16px;font:inherit;background:#fff;color:var(--ink);outline:none
+  }
+  textarea:focus{border-color:var(--saffron);box-shadow:0 0 0 4px rgba(224,122,47,.12)}
+  button{
+    border:0;border-radius:14px;padding:0 22px;min-height:58px;background:var(--ink);color:#fff;
+    font:inherit;font-weight:700;cursor:pointer;transition:transform .12s ease, background .12s ease
+  }
+  button:hover{background:#2a261f;transform:translateY(-1px)}
+  button:active{transform:translateY(0)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .chip{font-size:13px;border:1px solid var(--line);background:#fff;color:var(--ink);padding:8px 12px;border-radius:999px;cursor:pointer}
+  .chip:hover{border-color:var(--saffron);color:var(--red)}
+  .result{margin-top:20px;border-top:1px dashed var(--line);padding-top:20px;display:none}
+  .result.show{display:block;animation:rise .25s ease}
+  @keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+  .tag{font-size:12px;font-weight:700;padding:5px 9px;border-radius:8px}
+  .tag.card{background:#eaf2ec;color:var(--green)}
+  .tag.health{background:#fbe9e5;color:var(--red)}
+  .tag.none{background:#f1ede5;color:var(--muted)}
+  .tag.time{background:#f6efe2;color:var(--muted);font-weight:600}
+  .answer{font-size:17px;white-space:pre-wrap}
+  .source{margin-top:12px;font-size:13px;color:var(--muted)}
+  .source a{color:var(--red)}
+  .empty{padding:18px;border-radius:14px;background:#f8f3e9;color:var(--muted);font-size:15px}
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border-top:1px solid var(--line)}
+  .stat{background:var(--card);padding:14px 16px}
+  .stat b{display:block;font-size:18px}
+  .stat span{font-size:12px;color:var(--muted)}
+  footer{margin-top:22px;color:var(--muted);font-size:13px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
+  footer a{color:var(--red)}
+  @media(max-width:640px){.strip{grid-template-columns:repeat(2,1fr)} .panel{padding:18px} button{width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <div class="brand">
+        <div class="mark">भ</div>
+        <div>
+          <h1>Bharat-Tiny-LLM <span style="color:var(--saffron)">v4.0</span></h1>
+          <p class="sub">The offline Hinglish assistant that refuses to invent medicine — or a scheme amount. This demo runs only the vetted layer: <b>131 answer cards + 13 health protocols</b>. No model. No API.</p>
+        </div>
+      </div>
+    </div>
+    <div class="badges">
+      <span class="badge"><strong>0</strong> model calls</span>
+      <span class="badge">Apache-2.0</span>
+      <span class="badge">1.2 GB Q4</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="panel">
+      <div class="askrow">
+        <textarea id="q" placeholder="Poochhein: CSC center kya kaam karta hai? / Saanp ne kaata hai / मुझे किसान सम्मान निधि की किस्त कब मिलेगी?"></textarea>
+        <button id="go">Ask</button>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div class="result" id="result">
+        <div class="meta" id="meta"></div>
+        <div class="answer" id="answer"></div>
+        <div class="source" id="source"></div>
+      </div>
+    </div>
+    <div class="strip">
+      <div class="stat"><b>131</b><span>vetted answer cards</span></div>
+      <div class="stat"><b>13</b><span>health protocols</span></div>
+      <div class="stat"><b>0</b><span>model calls on the 200-prompt benchmark</span></div>
+      <div class="stat"><b>100%</b><span>safety / language / math in the final run</span></div>
+    </div>
+  </main>
+
+  <footer>
+    <span>Demo of the vetted layer only. The full app uses a 2B model for the long tail. Not a medical device; 108 for emergencies.</span>
+    <span><a href="https://github.com/eulogik/Bharat-Tiny-LLM">GitHub</a> · <a href="https://github.com/eulogik/Bharat-Tiny-LLM/blob/main/eval/bharatbench_voice/runs/v4_gate_final.md">Gate report</a> · <a href="v3.html">v3 API demo</a></span>
+  </footer>
+</div>
+
+<script>
+let CARDS = [], PROTOCOLS = [], GENERIC = {};
+const DEVA = /[\u0900-\u097F]/g, LAT = /[A-Za-z]/g;
+const HEALTH_HINT = /\b(bukhar|fever|dant|dard|saanp|snake|ulti|vomit|khoon|blood|saans|breath|seene|chest|dawai|medicine|doctor|aspatal|hospital|108|daura|seizure|behosh|jalan|burn|haddi|fracture|bachcha|bacche|baby|pregnan|garbhvati|neend|sleep)\b|(बुखार|दर्द|सांप|उल्टी|खून|साँस|सीने|दवा|डॉक्टर|अस्पताल|दौरा|बेहोश|जलन|हड्डी|बच्चे|गर्भवती|नींद)/i;
+
+function langOf(t){ return (t.match(DEVA)||[]).length > (t.match(LAT)||[]).length ? 'hi' : 'hinglish'; }
+function esc(s){ return (s||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function tryMatch(text, patterns){
+  for (const p of patterns){
+    try { if (new RegExp(p, 'i').test(text)) return true; } catch(e){}
+  }
+  return false;
+}
+function ask(text){
+  const lang = langOf(text);
+  for (const p of PROTOCOLS){
+    if (tryMatch(text, [p.match])){
+      return {type:'health', label:'Fixed health protocol', id:p.id, answer:p[lang] || p.hinglish, source:'Vetted first-aid protocol · 108 for emergencies'};
+    }
+  }
+  const mul = text.match(/\b(\d{1,4})\s*[x×]\s*(\d{1,4})\b/);
+  if (mul){
+    const a = +mul[1], b = +mul[2];
+    const answer = lang === 'hi'
+      ? `${a} × ${b} = ${a*b}। कदम दर कदम: ${a} × ${b} = ${a} × ${Math.floor(b/10)*10} + ${a} × ${b%10} = ${a*Math.floor(b/10)*10} + ${a*(b%10)} = ${a*b}।`
+      : `${a} × ${b} = ${a*b}. Step by step: ${a} × ${b} = ${a} × ${Math.floor(b/10)*10} + ${a} × ${b%10} = ${a*Math.floor(b/10)*10} + ${a*(b%10)} = ${a*b}. Yani jawab ${a*b} hai.`;
+    return {type:'card', label:'Computed answer', id:'math-multiply', answer, source:'Arithmetic · no model call'};
+  }
+  const pct = text.match(/(\d{1,6})\s*(?:ka|का)\s*(\d{1,3})\s*(?:%|percent|pratishat|प्रतिशत)/i)
+           || text.match(/(\d{1,3})\s*(?:%|percent|pratishat|प्रतिशत)\s*(?:of|ka|का)\s*(\d{1,6})/i);
+  if (pct){
+    const ka = /ka|का/i.test(pct[0]);
+    const whole = ka ? +pct[1] : +pct[2], percent = ka ? +pct[2] : +pct[1];
+    const value = whole * percent / 100;
+    const answer = lang === 'hi'
+      ? `${whole} का ${percent}% = ${whole} × ${percent}/100 = ${value}।`
+      : `${whole} ka ${percent}% = ${whole} × ${percent}/100 = ${value}.`;
+    return {type:'card', label:'Computed answer', id:'math-percent', answer, source:'Arithmetic · no model call'};
+  }
+  for (const c of CARDS){
+    if (tryMatch(text, c.patterns)){
+      return {type:'card', label:'Vetted answer card', id:c.id, answer:c[lang] || c.hinglish, source:c.source ? ('Source: ' + c.source) : ''};
+    }
+  }
+  if (HEALTH_HINT.test(text)){
+    return {type:'health', label:'Vetted health referral', id:'generic-health', answer:GENERIC[lang] || GENERIC.hinglish, source:'Not a diagnosis · doctor / ASHA / 108'};
+  }
+  return null;
+}
+async function load(){
+  const [cardsText, health] = await Promise.all([
+    fetch('cards.jsonl').then(r => r.text()),
+    fetch('health_protocols.json').then(r => r.json())
+  ]);
+  CARDS = cardsText.trim().split('\n').filter(Boolean).map(JSON.parse);
+  PROTOCOLS = health.protocols; GENERIC = health.generic_health;
+  const examples = [
+    'CSC center kya kaam karta hai?',
+    'Saanp ne kaata hai, kya karein?',
+    'PM Kisan ki agli kist kab aayegi?',
+    'Mere tamatar ke patte peele ho rahe hain',
+    'Mandi mein aaj pyaz ka bhav kya hai?',
+    '1000 ka 15% kitna hoga?'
+  ];
+  const chips = document.getElementById('chips');
+  examples.forEach(e => {
+    const b = document.createElement('button'); b.className='chip'; b.textContent=e;
+    b.onclick = () => { document.getElementById('q').value=e; run(); };
+    chips.appendChild(b);
+  });
+  document.getElementById('go').disabled = false;
+}
+function run(){
+  const text = document.getElementById('q').value.trim();
+  if (!text) return;
+  const t0 = performance.now();
+  const r = ask(text);
+  const ms = (performance.now() - t0).toFixed(1);
+  const box = document.getElementById('result'), meta = document.getElementById('meta'),
+        ans = document.getElementById('answer'), src = document.getElementById('source');
+  box.classList.add('show');
+  if (!r){
+    meta.innerHTML = '<span class="tag none">No vetted match</span><span class="tag time">'+ms+' ms</span>';
+    ans.innerHTML = '<div class="empty">This demo only contains the vetted layer. In the full app, the 2B model answers this with a <b>verify</b> note — and it can be wrong. Try a scheme, crop, daily-task or maths question.</div>';
+    src.textContent = '';
+    return;
+  }
+  meta.innerHTML = '<span class="tag '+r.type+'">'+esc(r.label)+'</span><span class="tag time">'+ms+' ms · no model call</span>';
+  ans.textContent = r.answer;
+  src.innerHTML = esc(r.source || '') + (r.id ? ' · <span style="opacity:.7">'+esc(r.id)+'</span>' : '');
+}
+document.getElementById('go').onclick = run;
+document.getElementById('q').addEventListener('keydown', e => { if ((e.metaKey||e.ctrlKey) && e.key==='Enter') run(); });
+load().catch(err => {
+  document.getElementById('answer').textContent = 'Could not load the card data: ' + err;
+});
+</script>
+</body>
+</html>
