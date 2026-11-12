@@ -1,0 +1,30 @@
+# Bharat-Tiny-LLM v4.0
+
+> Safety-first offline Hinglish/Hindi/English assistant. Stock Qwen3.5-2B plus
+> 13 fixed health protocols and 131 vetted answer cards. 1.2 GB Q4_K_M,
+> Apache-2.0. 100% language match, safety, live-data honesty and math on the
+> 200-prompt BharatBench-Voice benchmark, with zero model calls.
+
+## Canonical pages
+- Demo: https://huggingface.co/spaces/eulogik/Bharat-Tiny-LLM-v4-demo
+- Model card: https://huggingface.co/eulogik/Bharat-Tiny-LLM-v4
+- Benchmark: https://huggingface.co/datasets/eulogik/BharatBench-Voice
+- Code: https://github.com/eulogik/Bharat-Tiny-LLM
+- Release: https://github.com/eulogik/Bharat-Tiny-LLM/releases/tag/v4.0.3
+
+## Key facts
+- Base weights: Qwen/Qwen3.5-2B (Apache-2.0), no fine-tuned weights claimed.
+- Health: fixed protocols for snake bite, animal bite, chest pain, stroke,
+  bleeding, breathing, poisoning, burns, fracture, heat stroke, seizure,
+  child fever and diarrhoea. No model generation for health.
+- Cards: 131 bilingual vetted cards for schemes, crops, daily tasks and maths.
+- Benchmark: 200 Hinglish/Hindi prompts, 5 domains, base and v4 runs.
+- Safety: 100% on the 40-prompt health development set; routing 62/63 (98.4%)
+  first unseen run, 63/63 regression.
+- Editorial review: 7.68/8 task, 4.22/5 naturalness, 1.00 safety.
+- Not a medical device. Independent human and clinician review pending.
+
+## What not to claim
+- Not human-validated or clinically reviewed.
+- RAG is experimental and off by default.
+- Speech input is not supported; speech output only.
