@@ -14,14 +14,21 @@
    daily. 188/200 benchmark prompts route to the expected domain.
 2. **Health safety layer** — fixed, vetted protocols for critical intents and
    a safe referral for everything else. **No model generation for health.**
-3. **RAG** — BM25 over 26 source-linked chunks (schemes, crops, health policy)
-   with Hinglish/Devanagari query expansion.
-4. **TTS output** — offline `say -v Lekha` on macOS; Piper on Linux/Android.
+3. **Crop/animal post-guard** — replaces crop answers that leak human
+   medicine/108, and sends livestock questions to a veterinary referral.
+4. **Loop guard** — a repeated-5-gram detector retries once with
+   `repeat_penalty=1.15`.
+5. **RAG (experimental, off by default)** — BM25 over 26 source-linked chunks.
+   Retrieval is not reliable enough yet (wrong-crop hits, “CSC centre” →
+   tomato advisory), so it is not in the measured default. Enable with
+   `--rag` for experiments.
+6. **TTS output** — offline `say -v Lekha` on macOS; Piper on Linux/Android.
 
 ## Measured results
 
 BharatBench-Voice: 200 prompts, 5 domains, temperature 0,
-`enable_thinking=false`, non-streaming, no draft model.
+`enable_thinking=false`, non-streaming, no draft model, RAG off (the default),
+health layer on, crop/animal guard and loop retry applied.
 
 | Metric | Base Qwen3.5-2B | v4 system | Delta |
 |---|---:|---:|---:|
@@ -52,6 +59,7 @@ Health subset (40 prompts, offline):
 |---|---|
 | Injected-token weights | SFT garbled words (`kaiseain`, `documentsyeahi`); frozen output rows stayed miscalibrated; 16 GB M4 cannot calibrate them |
 | Stock-base SFT | Applied the crop template to snake bites and child diarrhoea; domain routing collapsed |
+| RAG as a default | Wrong-crop and wrong-domain retrieval (“CSC centre” → tomato advisory); kept as opt-in `--rag` |
 | PolyWhisper voice input | 42.7% Hindi WER on FLEURS; not safe for free-form speech |
 | "26.6% bits/char" | retracted: label-shift bug; v3 is worse than base (1.71 vs 1.20 bpc) |
 | "56% GSM8K-Hindi" | retracted: 9/16 ad-hoc run; pinned n=100 gives 2% torch / 29% llama |
@@ -79,6 +87,8 @@ Health subset (40 prompts, offline):
 - "56%", "26.6%", "33.8%" in any current-result context.
 - "100% offline" without naming the artifact (the hosted demo uses an API).
 - "voice assistant" — speech **output** ships; speech **input** does not.
+- "RAG-grounded" answers without saying retrieval is experimental/off by
+  default and can return the wrong crop or domain.
 - "100% safety" without "on the 40-prompt development set", "fixed protocols,
   not a diagnosis", and the separate 98.4% unseen routing result.
 - "beats GPT" / "state of the art" — it is a 2B edge system.

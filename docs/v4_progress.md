@@ -186,8 +186,9 @@ system-level gate is now:
 - **Latency:** TTFT p95 ≤ 3 s for text; the health layer is instant.
 - **Human:** blind naturalness ≥ 3.8 on the non-health CSV.
 
-If the non-health system does not beat the base, ship base + RAG and keep the
-safety layer; do not claim a quality win.
+If the non-health system does not beat the base, ship base + the safety layer
+and keep the tokenizer as an optional efficiency build; do not claim a quality
+win.
 
 ## 8. Health safety layer (the actual breakthrough)
 
@@ -244,11 +245,18 @@ math while the health layer takes health to 100% safety.
 user text/voice
   -> domain router (health / agriculture / schemes / education / daily)
   -> if health: fixed protocol or vetted generic response (no model)
-  -> else: BM25 RAG over 26 source-linked chunks + base Qwen3.5-2B
+  -> else: base Qwen3.5-2B (optional `--rag`: experimental BM25)
   -> post-check: crop/animal answers that leak human medicine are replaced
   -> post-check: looping answers retried once with repeat_penalty=1.15
   -> TTS (macOS say / Piper)
 ```
+
+**RAG was demoted to opt-in.** A retrieval audit found 55/143 non-health
+prompts get a domain-matched BM25 hit, but the chunk is often the wrong crop
+(“CSC centre” → tomato advisory; wheat → tomato). Injecting that context made
+answers worse, so the measured system runs without it. `scripts/rag_ask.py
+--rag` keeps the prototype available and `data/v4/kb/kb.jsonl` documents the
+intended coverage.
 
 Final 200-prompt system run (`system_full_guarded.jsonl`):
 

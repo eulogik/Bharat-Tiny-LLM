@@ -1,24 +1,28 @@
 #!/usr/bin/env python3
 """Offline RAG over a small, source-linked India knowledge base.
 
-No embeddings, no vector database: BM25 over ~25 curated chunks is enough for
-the five domains v4 targets, runs on a phone-class CPU, and never needs a
-network call. The retriever is deliberately simple so its failures are
+**Status: experimental, off by default.** BM25 over ~25 curated chunks is not
+reliable enough for general use yet: a "CSC centre" query can retrieve a tomato
+advisory. The default entry point runs the router + health layer + base model;
+add ``--rag`` only when you have checked retrieval for the domain you need.
+
+No embeddings, no vector database: BM25 runs on a phone-class CPU and never
+needs a network call. The retriever is deliberately simple so its failures are
 inspectable.
 
 Usage
 -----
-  # one question against a running llama-server
+  # default: router + health layer + model, no retrieval
   .venv-v4/bin/python scripts/rag_ask.py \
     --server http://127.0.0.1:8096/v1 \
     --model Qwen3.5-2B-Q4_K_M.gguf \
     --query "PM Kisan ka status kaise check karein?"
 
-  # compare with and without retrieval
-  ... --no-rag
+  # opt in to experimental retrieval and show the sources
+  ... --rag --query "PM Kisan ka status kaise check karein?"
 
   # interactive
-  ... 
+  ...
 """
 
 from __future__ import annotations
@@ -274,7 +278,9 @@ def main() -> None:
     ap.add_argument("--max-tokens", type=int, default=300)
     ap.add_argument("--temperature", type=float, default=0.1)
     ap.add_argument("--timeout", type=float, default=180)
-    ap.add_argument("--no-rag", action="store_true")
+    ap.add_argument("--rag", action="store_true",
+                    help="enable the experimental BM25 retrieval layer (off by default: "
+                         "retrieval is not reliable enough for general use yet)")
     ap.add_argument("--no-router", action="store_true",
                     help="use the generic system prompt instead of per-domain routing")
     ap.add_argument("--no-safety", action="store_true",
@@ -283,8 +289,8 @@ def main() -> None:
     args = ap.parse_args()
 
     docs = load_kb(Path(args.kb))
-    bm25 = None if args.no_rag else BM25(docs)
-    print(f"KB: {len(docs)} chunks; RAG {'off' if args.no_rag else 'on'}", file=sys.stderr)
+    bm25 = BM25(docs) if args.rag else None
+    print(f"KB: {len(docs)} chunks; RAG {'on (experimental)' if args.rag else 'off'}", file=sys.stderr)
 
     def one(q: str) -> None:
         out = answer(q, bm25, args)

@@ -21,8 +21,8 @@ base_model: Qwen/Qwen3.5-2B
 # Bharat-Tiny-LLM v4 — a safety-first offline Hinglish system
 
 > **This is a system release, not a new checkpoint.** The model is stock
-> Qwen3.5-2B (Apache-2.0). The contribution is the local safety/router/RAG
-> layer and the public benchmark. No fine-tuned weights are claimed.
+> Qwen3.5-2B (Apache-2.0). The contribution is the local safety/router layer
+> and the public benchmark. No fine-tuned weights are claimed.
 
 Bharat-Tiny-LLM v4 is an offline assistant for the way most Indian users
 actually type and speak: **Hinglish first**, with Devanagari Hindi and English
@@ -36,7 +36,8 @@ still experimental).
 user text/voice
   -> domain router (health / agriculture / schemes / education / daily)
   -> if health: fixed protocol or vetted generic response (NO model call)
-  -> else: BM25 RAG over 26 source-linked chunks + Qwen3.5-2B
+  -> else: Qwen3.5-2B (optional experimental RAG via --rag)
+  -> crop/animal post-guard + loop retry
   -> TTS (macOS say / Piper)
 ```
 
@@ -80,13 +81,18 @@ prompt and keeps human health, animal health, crops and schemes apart.
 including 39/40 health prompts; the one miss is Ayushman, which correctly goes
 to schemes.
 
-### 3. RAG
+### 3. RAG (experimental, off by default)
 
 BM25 over 26 curated, source-linked chunks: PM Kisan, Ayushman, Fasal Bima,
 Mudra, PM Awas, Ujjwala, Jan Dhan, ration, MGNREGA, KCC, Soil Health Card,
 Sukanya, Atal Pension, e-Shram, Aadhaar, crop advisories, health safety, and a
-live-data policy. Hinglish/Devanagari query expansion. No embeddings, no
-network, phone-class CPU.
+live-data policy.
+
+It is **not enabled by default**. A retrieval audit found that 55/143
+non-health prompts get a domain-matched hit, but the chunk is often the wrong
+crop: “CSC centre” retrieves a tomato advisory, and a wheat question retrieves
+the tomato chunk. Injecting that context made answers worse, so the measured
+system runs without RAG. `scripts/rag_ask.py --rag` enables it for experiments.
 
 ### 4. Voice output
 
@@ -97,7 +103,8 @@ on FLEURS, which is too high for unsupervised use. See `docs/asr_decision.md`.
 ## Results
 
 BharatBench-Voice: 200 prompts, 5 domains, Hinglish + Hindi, temperature 0,
-`enable_thinking=false`, non-streaming, no draft model.
+`enable_thinking=false`, non-streaming, no draft model, RAG off (default),
+health layer on, crop/animal guard and loop retry applied.
 
 | Metric | Base Qwen3.5-2B | v4 system |
 |---|---:|---:|
@@ -110,10 +117,10 @@ BharatBench-Voice: 200 prompts, 5 domains, Hinglish + Hindi, temperature 0,
 | TTFT p50 / p95 | 0.279 / 0.487 s | 0.229 / 0.339 s |
 | Total p50 / p95 | 9.10 / 17.47 s | 6.43 / 6.88 s |
 
-The full-system (router + health layer + RAG) run is in
-`eval/bharatbench_voice/runs/system_full.jsonl`. The health subset is 100%
-safety; the non-health subset uses the base model and inherits its strengths
-and weaknesses.
+The full-system (router + health layer + crop/animal guard + loop retry) run
+is in `eval/bharatbench_voice/runs/system_full_guarded.jsonl`. The health
+subset is 100% safety; the non-health subset uses the base model and inherits
+its strengths and weaknesses. RAG is **not** part of this measured default.
 
 **Near-duplicate caveat:** 36/200 benchmark prompts share ≥0.60 Jaccard with an
 SFT template prompt (16/40 agriculture). The full-set score measures safety
@@ -152,7 +159,7 @@ generalization. Report both.
 - **Not a live-data source.** Mandi prices, weather, exam dates, train status
   and scheme installments are not available; the system says so.
 - **2B parameters.** Non-health open-ended answers can be generic or wrong.
-  RAG is the intended fix for facts, not memorization.
+  RAG is an experimental prototype, not a reliable factual layer yet.
 - **Hinglish-first.** Devanagari and English are supported, but the base model
   sometimes answers Hinglish in Devanagari.
 - **Benchmark scope.** 200 prompts, five domains; a usability benchmark, not a
@@ -170,7 +177,7 @@ benchmark are original work under the same license.
   title  = {Bharat-Tiny-LLM v4: A Safety-First Offline Hinglish System},
   author = {Kishore, Gautam},
   year   = {2026},
-  note   = {eulogik. Apache-2.0. Stock Qwen3.5-2B + local safety/router/RAG.},
+  note   = {eulogik. Apache-2.0. Stock Qwen3.5-2B + local safety/router.},
   url    = {https://github.com/eulogik/Bharat-Tiny-LLM}
 }
 ```

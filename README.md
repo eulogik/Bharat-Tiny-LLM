@@ -66,7 +66,7 @@ torch/fp16. The old 56% figure was an ad-hoc 9/16 run and is retracted. See
 v4 is a **system**, not another checkpoint. Two fine-tuning attempts were
 rejected: the injected-token model garbled words, and the stock-base SFT applied
 the crop template to snake bites and child diarrhoea. The shipped v4 system is
-**stock Qwen3.5-2B (Apache-2.0, 1.2 GB Q4) + a local safety/router/RAG layer**:
+**stock Qwen3.5-2B (Apache-2.0, 1.2 GB Q4) + a local safety/router layer**:
 
 - **Health is retrieval-only.** Critical intents (snake bite, animal bite,
   chest pain, stroke, bleeding, breathing, poisoning, burns, fracture, heat
@@ -83,9 +83,11 @@ the crop template to snake bites and child diarrhoea. The shipped v4 system is
 - **Domain router** (`scripts/domain_prompt.py`): 188/200 benchmark prompts
   routed correctly (94%), including 39/40 health prompts (the one miss,
   Ayushman, correctly goes to schemes).
-- **RAG** (`scripts/rag_ask.py`, 26 source-linked chunks): BM25 + Hinglish
-  query expansion. The PM Kisan answer names the official portal, CSC and
-  documents without inventing amounts or dates.
+- **RAG (experimental, off by default)** (`scripts/rag_ask.py --rag`, 26
+  source-linked chunks): BM25 + Hinglish query expansion. Retrieval is not
+  reliable enough to ship blind — a “CSC centre” query can pull a tomato
+  advisory, and crop chunks are not crop-specific — so the measured default
+  runs without it. It is kept as a tested prototype, not a claimed feature.
 - **TTS output:** offline `say -v Lekha` on macOS, Piper on Linux/Android.
 - **Tokenizer research (parked):** 800 Hinglish + 200 Devanagari whole words
   save **16.57% on Hinglish / 12.62% overall**, but the 16 GB M4 cannot

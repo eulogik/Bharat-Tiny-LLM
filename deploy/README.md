@@ -1,8 +1,9 @@
 # Bharat-Tiny-LLM v4 — local deployment
 
 The v4 artifact is a **system**: stock Qwen3.5-2B Q4_K_M (~1.2 GB) plus a local
-router, a retrieval-only health layer, and a RAG index. Everything below is
-offline after the model file and this repository are on disk.
+router, a retrieval-only health layer, and post-generation guards. An
+experimental RAG index is included but is **off by default**. Everything below
+is offline after the model file and this repository are on disk.
 
 > **Do not call the raw model for health questions.** Use `scripts/rag_ask.py`
 > or the same router/safety layer in your app. Health answers are fixed,
@@ -17,7 +18,7 @@ llama-server \
   -c 4096 -np 1 \
   --host 127.0.0.1 --port 8096 &
 
-# ask through the router + health layer + RAG
+# ask through the router + health layer (RAG off by default)
 venv/bin/python scripts/rag_ask.py \
   --server http://127.0.0.1:8096/v1 \
   --model Qwen3.5-2B-Q4_K_M.gguf \
@@ -29,9 +30,14 @@ venv/bin/python scripts/rag_ask.py \
 1. domain routing (`scripts/domain_prompt.py`);
 2. for health, a fixed protocol or a vetted generic referral — **no model
    call** (`scripts/safety_protocol.py`);
-3. for everything else, BM25 retrieval over `data/v4/kb/kb.jsonl` plus the
-   model;
-4. prints the routed domain, the sources, and the latency.
+3. for everything else, the base model plus the crop/animal and loop guards;
+4. prints the routed domain and latency. Add `--rag` to enable the
+   experimental BM25 retrieval, which also prints its sources.
+
+**Retrieval caveat.** RAG is **off by default** because it is not reliable
+enough yet: a “CSC centre” question retrieves a tomato advisory, and crop
+chunks are not crop-specific. If you enable `--rag`, verify the retrieved
+sources before trusting the answer.
 
 ## 2. Raw llama.cpp server (non-health only)
 
