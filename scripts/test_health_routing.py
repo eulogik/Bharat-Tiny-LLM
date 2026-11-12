@@ -57,6 +57,9 @@ def evaluate(case: dict) -> dict:
     elif expected == ["animal"]:
         ok = domain == "agriculture"
         note = "" if ok else "livestock query did not route to agriculture"
+    elif expected == ["daily"]:
+        ok = domain == "daily"
+        note = "" if ok else "wellness query did not route to daily"
     else:
         ok = domain == "health" and protocol in expected
         if domain != "health":

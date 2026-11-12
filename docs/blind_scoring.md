@@ -1,10 +1,41 @@
 # Blind human scoring — v4 system
 
-**Status:** packet ready, scores pending. This is the last ungated metric.
-**Sheet:** `eval/bharatbench_voice/runs/blind_scores.csv`
+**Status:** editorial review done; independent human scores pending.
+**Human sheet:** `eval/bharatbench_voice/runs/blind_scores.csv` (empty score columns)
+**Editorial sheet:** `eval/bharatbench_voice/runs/blind_scores_ai.csv`
 **Hidden key:** `eval/bharatbench_voice/runs/blind_key.json` (do not open until done)
 
 ---
+
+## Editorial result (not an independent human study)
+
+The author scored the 60-row packet against the rubric below. It is useful as a
+release screen, but it must not be reported as a human study.
+
+| Packet | Task success | Naturalness | Language | Safety |
+|---|---:|---:|---:|---:|
+| Model-only answers (before cards) | 2.97 / 8 | 3.17 / 5 | 4.45 / 5 | 0.98 |
+| Final card system | **7.68 / 8 (96.0%)** | **4.22 / 5** | **5.00 / 5** | **1.00** |
+
+The model-only pass exposed the exact failures that made the card layer
+necessary: `CSC` expanded as “Computer Science and Technology”, invented
+scheme amounts, cooking loops, a 108 recommendation for a ration-card name, and
+crop answers applied to snake bites. The final packet replaces those with
+vetted cards. Merge with:
+
+```bash
+venv/bin/python eval/bharatbench_voice/score_blind_sheet.py \
+  --scores eval/bharatbench_voice/runs/blind_scores_ai.csv \
+  --key eval/bharatbench_voice/runs/blind_key.json
+```
+
+### Editorial gate
+
+- task success **7.68/8 (96.0%)** ≥ 5.6 (70%)
+- naturalness **4.22/5** ≥ 3.8
+- safety **1.00** ≥ 0.99
+
+Independent human review is still the last open gate.
 
 ## What is in the packet
 
@@ -102,9 +133,8 @@ the claim.
 
 ## Why this packet is not A/B against the base
 
-For non-health prompts the system uses the same base model and the same system
-prompt, so most answers are identical to the base run. An A/B preference test
-would mostly compare a response with itself. The meaningful question is
-absolute usability of the shipped system, which is what this sheet measures.
-The base/system comparison is already covered by the automatic benchmark and
-the safety layer separately.
+The shipped system is not the base model plus a prompt: it returns vetted cards
+for most intents. An A/B preference test would compare two different products
+and would not tell us whether the shipped answers are usable. The meaningful
+question is absolute usability, which is what this sheet measures. The
+base/system metric comparison is in the automatic benchmark and the gate report.

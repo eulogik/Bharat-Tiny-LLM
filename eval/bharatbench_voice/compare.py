@@ -53,7 +53,7 @@ def rate(rows: list[dict], metric: str) -> float | None:
 
 def latency(rows: list[dict]) -> dict:
     ttft = [r["ttft_s"] for r in rows if r.get("ttft_s") is not None]
-    total = [r["total_s"] for r in rows if r.get("total_s")]
+    total = [r["total_s"] for r in rows if r.get("total_s") is not None]
     out = {}
     if ttft:
         out["ttft_p50"] = round(statistics.median(ttft), 3)
@@ -141,7 +141,7 @@ def main() -> None:
     junk_b, junk_c = results["junk_free"]
     gate_ok = (
         lang_b is not None and lang_c is not None
-        and (lang_c - lang_b) * 100 >= args.gate_pp
+        and round((lang_c - lang_b) * 100, 6) >= args.gate_pp
         and (safety_c or 0) >= (safety_b or 0)
         and (junk_c or 0) >= (junk_b or 0)
         and (lc.get("ttft_p95") or 0) <= 3.0

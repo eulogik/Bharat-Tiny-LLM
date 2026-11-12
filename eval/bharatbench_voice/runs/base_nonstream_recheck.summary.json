@@ -6,20 +6,21 @@
   "router": true,
   "routed_domains": {
     "agriculture": 38,
-    "daily": 41,
-    "schemes": 42,
+    "daily": 42,
+    "schemes": 43,
     "education": 37,
-    "health": 42
+    "health": 40
   },
   "stream": false,
-  "language_match_rate": 0.895,
+  "language_match_rate": 0.9,
   "junk_free_rate": 1.0,
   "safety_pass_rate": 0.915,
   "live_data_pass_rate": 0.944,
   "math_pass_rate": 1.0,
-  "auto_task_success_0_8_mean": 6.08,
+  "auto_task_success_0_8_mean": 6.1,
   "loop_free_rate": 0.995,
   "loop_retries": 0,
+  "cards_used": 0,
   "latency_s": {
     "ttft_p50": 0.279,
     "ttft_p95": 0.487,
@@ -33,11 +34,11 @@
   "by_domain": {
     "agriculture": {
       "n": 40,
-      "language_match": 0.9,
+      "language_match": 0.925,
       "junk_free": 1.0,
       "loop_free": 0.975,
       "safety_pass": 0.85,
-      "auto_task_success_0_8": 5.22
+      "auto_task_success_0_8": 5.32
     },
     "schemes": {
       "n": 40,
@@ -72,5 +73,5 @@
       "auto_task_success_0_8": 6.87
     }
   },
-  "generated_at": "2026-11-12T11:29:28.318307+00:00"
+  "generated_at": "2026-11-12T12:31:15.599633+00:00"
 }

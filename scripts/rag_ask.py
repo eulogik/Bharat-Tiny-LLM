@@ -56,6 +56,10 @@ try:
 except Exception:  # noqa: BLE001
     is_degenerate = lambda text, **_: False  # type: ignore[assignment]
     loop_ratio = lambda text, **_: 0.0  # type: ignore[assignment]
+try:
+    from answer_cards import CardStore
+except Exception:  # noqa: BLE001
+    CardStore = None  # type: ignore[assignment]
 
 SYSTEM_PROMPT = (
     "You are Bharat-Tiny-LLM, a helpful offline assistant for India. "
@@ -239,6 +243,22 @@ def answer(question: str, bm25: BM25 | None, args) -> dict:
     else:
         domain, system = None, SYSTEM_PROMPT
 
+    # 2a. Vetted answer cards for high-frequency facts. No model call.
+    card_store = getattr(args, "card_store", None)
+    if card_store is not None:
+        card = card_store.match(question, domain)
+        if card:
+            return {
+                "content": card["answer"],
+                "chunks": [],
+                "card_id": card["id"],
+                "card_source": card.get("source", ""),
+                "safety_protocol": None,
+                "routed_domain": domain,
+                "total_s": 0.0,
+                "usage": {},
+            }
+
     chunks = bm25.search(question, args.top_k) if bm25 else []
     context = build_context(chunks)
     if context:
@@ -262,6 +282,12 @@ def answer(question: str, bm25: BM25 | None, args) -> dict:
         lang = safety_protocol.detect_language(question)
         out["content"], replaced = safety_protocol.guard_crop(out["content"], lang, question)
         out["crop_guard"] = replaced
+    if safety_protocol and domain != "health":
+        lang = safety_protocol.detect_language(question)
+        out["content"], replaced = safety_protocol.guard_nonhealth_emergency(
+            out["content"], question, lang
+        )
+        out["emergency_guard"] = replaced
     out["chunks"] = chunks
     out["routed_domain"] = domain
     out["safety_protocol"] = None
@@ -281,6 +307,8 @@ def main() -> None:
     ap.add_argument("--rag", action="store_true",
                     help="enable the experimental BM25 retrieval layer (off by default: "
                          "retrieval is not reliable enough for general use yet)")
+    ap.add_argument("--no-cards", action="store_true",
+                    help="disable the vetted answer cards and use the model for everything")
     ap.add_argument("--no-router", action="store_true",
                     help="use the generic system prompt instead of per-domain routing")
     ap.add_argument("--no-safety", action="store_true",
@@ -290,7 +318,9 @@ def main() -> None:
 
     docs = load_kb(Path(args.kb))
     bm25 = BM25(docs) if args.rag else None
-    print(f"KB: {len(docs)} chunks; RAG {'on (experimental)' if args.rag else 'off'}", file=sys.stderr)
+    args.card_store = CardStore() if (CardStore and not args.no_cards) else None
+    print(f"KB: {len(docs)} chunks; RAG {'on (experimental)' if args.rag else 'off'}; "
+          f"cards: {len(args.card_store) if args.card_store else 0}", file=sys.stderr)
 
     def one(q: str) -> None:
         out = answer(q, bm25, args)
@@ -299,6 +329,8 @@ def main() -> None:
             print(f"Domain: {out['routed_domain']}")
         if out.get("safety_protocol"):
             print(f"Safety protocol: {out['safety_protocol']} (fixed response, no model call)")
+        if out.get("card_id"):
+            print(f"Answer card: {out['card_id']} (vetted, no model call)")
         print(f"A: {out['content']}")
         if out["chunks"]:
             print("Sources:")

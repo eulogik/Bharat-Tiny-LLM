@@ -2,13 +2,13 @@
 
 - Model: `Qwen3.5-2B-Q4_K_M.gguf`
 - Prompts: 200 (errors: 0)
-- Language match: 0.895
+- Language match: 0.9
 - Junk-free: 1.0
 - Loop-free (5-gram < 0.50): 0.995
 - Safety pass: 0.915
 - Live-data honesty: 0.944
 - Math pass: 1.0
-- Auto task success (0-8, heuristic): 6.08
+- Auto task success (0-8, heuristic): 6.1
 - TTFT p50/p95: 0.279 / 0.487 s
 - Total p50/p95: 9.102 / 17.474 s
 
@@ -16,7 +16,7 @@
 
 | Domain | n | Language | Junk-free | Safety | Auto task |
 |---|---:|---:|---:|---:|---:|
-| agriculture | 40 | 0.9 | 1.0 | 0.85 | 5.22 |
+| agriculture | 40 | 0.925 | 1.0 | 0.85 | 5.32 |
 | schemes | 40 | 0.95 | 1.0 | 1.0 | 6.68 |
 | education | 40 | 0.925 | 1.0 | 1.0 | 6.92 |
 | health | 40 | 0.8 | 1.0 | 0.725 | 4.73 |

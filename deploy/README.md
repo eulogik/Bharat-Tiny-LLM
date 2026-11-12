@@ -1,13 +1,15 @@
 # Bharat-Tiny-LLM v4 — local deployment
 
 The v4 artifact is a **system**: stock Qwen3.5-2B Q4_K_M (~1.2 GB) plus a local
-router, a retrieval-only health layer, and post-generation guards. An
-experimental RAG index is included but is **off by default**. Everything below
-is offline after the model file and this repository are on disk.
+router, 13 retrieval-only health protocols, 131 vetted answer cards, and
+post-generation guards. An experimental RAG index is included but is **off by
+default**. Everything below is offline after the model file and this repository
+are on disk.
 
 > **Do not call the raw model for health questions.** Use `scripts/rag_ask.py`
 > or the same router/safety layer in your app. Health answers are fixed,
-> vetted protocols; the model never generates medical advice.
+> vetted protocols; the model never generates medical advice. The same applies
+> to any question matched by an answer card.
 
 ## 1. Recommended entry point
 
@@ -18,7 +20,7 @@ llama-server \
   -c 4096 -np 1 \
   --host 127.0.0.1 --port 8096 &
 
-# ask through the router + health layer (RAG off by default)
+# ask through the router + health layer + cards (RAG off by default)
 venv/bin/python scripts/rag_ask.py \
   --server http://127.0.0.1:8096/v1 \
   --model Qwen3.5-2B-Q4_K_M.gguf \
@@ -30,8 +32,10 @@ venv/bin/python scripts/rag_ask.py \
 1. domain routing (`scripts/domain_prompt.py`);
 2. for health, a fixed protocol or a vetted generic referral — **no model
    call** (`scripts/safety_protocol.py`);
-3. for everything else, the base model plus the crop/animal and loop guards;
-4. prints the routed domain and latency. Add `--rag` to enable the
+3. for high-frequency non-health questions, a vetted answer card
+   (`data/v4/cards/cards.jsonl`) — **no model call**;
+4. otherwise the base model plus the crop/animal, 108 and loop guards;
+5. prints the routed domain and latency. Add `--rag` to enable the
    experimental BM25 retrieval, which also prints its sources.
 
 **Retrieval caveat.** RAG is **off by default** because it is not reliable

@@ -27,7 +27,7 @@ import requests
 HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE.parent.parent / "scripts"))
 
-from text_quality import loop_ratio  # noqa: E402
+from text_quality import is_degenerate, loop_ratio  # noqa: E402
 
 
 def main() -> None:
@@ -47,7 +47,7 @@ def main() -> None:
             continue
         text = r.get("response", "")
         ratio = loop_ratio(text)
-        if ratio < args.threshold:
+        if not is_degenerate(text, threshold=args.threshold):
             continue
         before = ratio
         payload = {

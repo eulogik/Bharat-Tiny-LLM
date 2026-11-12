@@ -511,12 +511,64 @@ ANIMAL_FALLBACK = {
 }
 
 
+SENTENCE_SPLIT_RE = re.compile(r"(?<=[.!?।])\s+|\n+")
+
+
+NONHEALTH_EMERGENCY_RE = re.compile(r"\b(108|102|104)\b|ambulance|एम्बुलेंस", re.I)
+QUERY_EMERGENCY_RE = re.compile(
+    r"\b(saanp|snake|seene|chest|saans|breath|behosh|unconscious|daura|seizure|"
+    r"khoon|blood|accident|poison|zeher|haddi|fracture|jalan|burn|chot|injury)\b|"
+    r"(सांप|साँप|सीने|साँस|बेहोश|खून|दौरा|जहर|हड्डी|जलन|चोट)",
+    re.I,
+)
+NONHEALTH_FALLBACK = {
+    "hinglish": (
+        "Main iska pakka jawab nahi de sakta. Kripya official portal, CSC ya "
+        "sambandhit office se confirm karein. 108 sirf medical emergency ke liye hai."
+    ),
+    "hi": (
+        "मैं इसका पक्का जवाब नहीं दे सकता। कृपया official portal, CSC या "
+        "संबंधित कार्यालय से पुष्टि करें। 108 सिर्फ़ medical emergency के लिए है।"
+    ),
+}
+
+
+def guard_nonhealth_emergency(answer: str, query: str, language: str = "hinglish") -> tuple[str, bool]:
+    """Remove 108/ambulance advice from a non-health answer.
+
+    A ration-card or scheme answer must never tell the user to call 108. If the
+    query itself is an emergency, leave it alone; this guard is only for
+    non-health domains.
+    """
+    if QUERY_EMERGENCY_RE.search(query or ""):
+        return answer, False
+    if not NONHEALTH_EMERGENCY_RE.search(answer or ""):
+        return answer, False
+    lang = language if language == "hi" else "hinglish"
+    parts = [p for p in SENTENCE_SPLIT_RE.split(answer) if p.strip()]
+    kept = [p for p in parts if not NONHEALTH_EMERGENCY_RE.search(p)]
+    cleaned = " ".join(kept).strip()
+    if len(cleaned.split()) < 20:
+        return NONHEALTH_FALLBACK[lang], True
+    note = (
+        "Note: 108 sirf medical emergency ke liye hai, is kaam ke liye nahi."
+        if lang != "hi"
+        else "नोट: 108 सिर्फ़ medical emergency के लिए है, इस काम के लिए नहीं।"
+    )
+    return cleaned + "\n\n" + note, True
+
+
 def guard_crop(answer: str, language: str = "hinglish", query: str = "") -> tuple[str, bool]:
-    """Replace a crop/animal answer that leaked human-medical or crop advice."""
+    """Replace/trim a crop/animal answer that leaked human-medical advice."""
     lang = language if language == "hi" else "hinglish"
     if query and ANIMAL_RE.search(query):
         return ANIMAL_FALLBACK[lang], True
     if CROP_UNSAFE_RE.search(answer):
+        parts = [p for p in SENTENCE_SPLIT_RE.split(answer) if p.strip()]
+        kept = [p for p in parts if not CROP_UNSAFE_RE.search(p)]
+        cleaned = " ".join(kept).strip()
+        if len(cleaned.split()) >= 25:
+            return cleaned, True
         return CROP_FALLBACK[lang], True
     return answer, False
 

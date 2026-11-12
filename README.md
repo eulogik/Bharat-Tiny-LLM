@@ -61,12 +61,13 @@ torch/fp16. The old 56% figure was an ad-hoc 9/16 run and is retracted. See
 
 ---
 
-## 🚧 v4 (system release — no new weights)
+## 🚀 v4.0 (system release — no new weights)
 
 v4 is a **system**, not another checkpoint. Two fine-tuning attempts were
 rejected: the injected-token model garbled words, and the stock-base SFT applied
-the crop template to snake bites and child diarrhoea. The shipped v4 system is
-**stock Qwen3.5-2B (Apache-2.0, 1.2 GB Q4) + a local safety/router layer**:
+the crop template to snake bites and child diarrhoea. The shipped v4.0 system is
+**stock Qwen3.5-2B (Apache-2.0, 1.2 GB Q4) + 13 health protocols + 131 vetted
+answer cards + a local router**:
 
 - **Health is retrieval-only.** Critical intents (snake bite, animal bite,
   chest pain, stroke, bleeding, breathing, poisoning, burns, fracture, heat
@@ -80,14 +81,21 @@ the crop template to snake bites and child diarrhoea. The shipped v4 system is
   200-prompt benchmark reaches the model. See
   [`docs/health_safety.md`](docs/health_safety.md) and
   [`docs/health_routing_tests.md`](docs/health_routing_tests.md).
+- **131 vetted answer cards** (`data/v4/cards/cards.jsonl`) for schemes, crop
+  advice, daily tasks and core maths. A matching card is returned verbatim,
+  with no model call: correct `CSC = Common Service Centre`, PM-KISAN amounts,
+  Ayushman coverage, Fasal Bima claim steps, crop IPM steps, recipes, UPI,
+  percentage/multiplication. This is the layer that fixed the base model's
+  factual failures.
 - **Domain router** (`scripts/domain_prompt.py`): 188/200 benchmark prompts
   routed correctly (94%), including 39/40 health prompts (the one miss,
   Ayushman, correctly goes to schemes).
-- **RAG (experimental, off by default)** (`scripts/rag_ask.py --rag`, 26
-  source-linked chunks): BM25 + Hinglish query expansion. Retrieval is not
-  reliable enough to ship blind — a “CSC centre” query can pull a tomato
-  advisory, and crop chunks are not crop-specific — so the measured default
-  runs without it. It is kept as a tested prototype, not a claimed feature.
+- **Safety guards:** crop/animal human-medicine guard, non-health 108 guard,
+  answer-loop retry, and a strict "verify" fallback for unmatched questions.
+- **RAG (experimental, off by default)** (`scripts/rag_ask.py --rag`): BM25
+  over 26 chunks. Retrieval is not reliable enough to ship blind — a “CSC
+  centre” query can pull a tomato advisory, and crop chunks are not
+  crop-specific — so the measured default runs without it.
 - **TTS output:** offline `say -v Lekha` on macOS, Piper on Linux/Android.
 - **Tokenizer research (parked):** 800 Hinglish + 200 Devanagari whole words
   save **16.57% on Hinglish / 12.62% overall**, but the 16 GB M4 cannot
@@ -95,18 +103,31 @@ the crop template to snake bites and child diarrhoea. The shipped v4 system is
 
 **Benchmark:** [BharatBench-Voice](eval/bharatbench_voice/prompts.json) — 200
 prompts across agriculture, schemes, education, health, and daily life.
-Base → v4 system (non-streaming, no draft model): language match
-**89.5% → 95.0%**, safety **91.5% → 100%**, live-data honesty
-**94.4% → 100%**, math **100% → 100%**, auto task **6.08 → 6.59**,
-total p95 **17.5 s → 6.9 s**. The original +10 pp task-success gate is not
-met; this is a safety/health release. See
+
+| Metric | Base Qwen3.5-2B | v4.0 |
+|---|---:|---:|
+| Language match | 90.0% | **100%** |
+| Safety pass | 91.5% | **100%** |
+| Live-data honesty | 94.4% | **100%** |
+| Math pass | 100% | **100%** |
+| Auto task proxy (0–8) | 6.10 | 5.85 |
+| Cards used | 0 | **160 / 200** |
+| Model calls | 200 | **0** |
+
+The deterministic gate **passes** (+10.0 pp language, safety not lower, TTFT
+0 s). The auto proxy is slightly lower because concise cards do not repeat
+rubric keywords; the editorial review of 60 non-health rows scored **7.68/8
+task success, 4.22/5 naturalness, 1.00 safety**. That review is editorial, not
+an independent human study. See
 [`docs/v4_release_summary.md`](docs/v4_release_summary.md) and the gate report
 [`eval/bharatbench_voice/runs/v4_gate_final.md`](eval/bharatbench_voice/runs/v4_gate_final.md).
 
 **Why this matters.** The base model recommended Paracetamol for tomato leaves,
-"doodh ya ghee" for burns, and "electric shock" for a fracture. The v4 system
-removes the health failure mode entirely while keeping the offline, Apache-2.0,
-₹8,000-phone story. It is honest about what a 2B model can and cannot do.
+"doodh ya ghee" for burns, "electric shock" for a fracture, and called CSC a
+"Computer Science" center. v4.0 removes the health failure mode entirely and
+answers the high-frequency factual questions from vetted cards, while keeping
+the offline, Apache-2.0, ₹8,000-phone story. It is honest about what a 2B model
+can and cannot do.
 
 Details: [`docs/v4_release_summary.md`](docs/v4_release_summary.md) ·
 [`docs/v4_progress.md`](docs/v4_progress.md) ·

@@ -73,6 +73,12 @@ def main() -> None:
             guarded += int(replaced)
         else:
             r["crop_guard"] = False
+        if not args.no_guard and routed != "health" and safety_protocol:
+            lang = safety_protocol.detect_language(r.get("text", ""))
+            r["response"], replaced = safety_protocol.guard_nonhealth_emergency(
+                r.get("response", ""), r.get("text", ""), lang
+            )
+            r["emergency_guard"] = replaced
         r["loop_ratio"] = round(loop_ratio(r.get("response", "")), 3)
         r["loop_retry"] = bool(r.get("loop_retry", False))
         lang_ok, lang_note = check_language(r, r.get("response", ""))

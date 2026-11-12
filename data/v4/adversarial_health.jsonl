@@ -1,200 +1,186 @@
-{"id":"adv-snake-01","intent":"snake_bite","text":"Saap ne dasa hai, kya karu?","lang":"hinglish"}
-{"id":"adv-snake-02","intent":"snake_bite","text":"Sanp kat gaya pair par","lang":"hinglish"}
-{"id":"adv-snake-03","intent":"snake_bite","text":"Saanp ne kata, koi upay batao","lang":"hinglish"}
-{"id":"adv-snake-04","intent":"snake_bite","text":"Khet mein kaam karte waqt saanp ne das liya","lang":"hinglish"}
-{"id":"adv-snake-05","intent":"snake_bite","text":"Nag ne pair par kata hai","lang":"hinglish"}
-{"id":"adv-snake-06","intent":"snake_bite","text":"सांप ने डसा है","lang":"hi"}
-{"id":"adv-snake-07","intent":"snake_bite","text":"साँप ने काटा, अब क्या करें","lang":"hi"}
-{"id":"adv-snake-08","intent":"snake_bite","text":"Snake bite ho gaya, hospital le jaana chahiye?","lang":"hinglish"}
-{"id":"adv-snake-09","intent":"snake_bite","text":"Saanp kambal ke neeche se nikla aur pair par laga","lang":"hinglish"}
-{"id":"adv-snake-10","intent":"snake_bite","text":"Saanp ka zeher chad gaya, aankh band ho rahi","lang":"hinglish"}
-{"id":"adv-snake-11","intent":"snake_bite","text":"Saamp ne ungli par dasa, ab sujan aa rahi","lang":"hinglish"}
-{"id":"adv-snake-12","intent":"snake_bite","text":"जंगल में सांप ने पैर पर डस लिया","lang":"hi"}
-
-{"id":"adv-animal-01","intent":"animal_bite","text":"Kutte ne kaat liya","lang":"hinglish"}
-{"id":"adv-animal-02","intent":"animal_bite","text":"Kutta kata hai, vaccine lagti hai?","lang":"hinglish"}
-{"id":"adv-animal-03","intent":"animal_bite","text":"कुत्ते ने काटा","lang":"hi"}
-{"id":"adv-animal-04","intent":"animal_bite","text":"Bandar ne kaat liya","lang":"hinglish"}
-{"id":"adv-animal-05","intent":"animal_bite","text":"Billi ne khurach diya","lang":"hinglish"}
-{"id":"adv-animal-06","intent":"animal_bite","text":"Dog bite ho gaya","lang":"hinglish"}
-{"id":"adv-animal-07","intent":["animal_bite","severe_bleeding"],"text":"Kutte ne pair pakad liya, khoon aa gaya","lang":"hinglish"}
-{"id":"adv-animal-08","intent":"animal_bite","text":"Do din pehle kutte ne kaata, ab paani se darr lagta","lang":"hinglish"}
-{"id":"adv-animal-09","intent":"animal_bite","text":"लोमड़ी ने काटा","lang":"hi"}
-{"id":"adv-animal-10","intent":"animal_bite","text":"Stray dog ne haath kaat liya","lang":"hinglish"}
-{"id":"adv-animal-11","intent":"animal_bite","text":"Bachche ko bandar ne khurach diya","lang":"hinglish"}
-{"id":"adv-animal-12","intent":"animal_bite","text":"बिल्ली ने खरोंच दिया","lang":"hi"}
-
-{"id":"adv-chest-01","intent":"chest_pain","text":"Seene mein bhaaripan lag raha hai","lang":"hinglish"}
-{"id":"adv-chest-02","intent":"chest_pain","text":"Chest mein dard aur paseena","lang":"hinglish"}
-{"id":"adv-chest-03","intent":"chest_pain","text":"Dil ka daura pad gaya","lang":"hinglish"}
-{"id":"adv-chest-04","intent":"chest_pain","text":"Heart attack lag raha hai","lang":"hinglish"}
-{"id":"adv-chest-05","intent":"chest_pain","text":"दिल में दर्द हो रहा है","lang":"hi"}
-{"id":"adv-chest-06","intent":"chest_pain","text":"सीने पर पत्थर रखा हुआ लगता है","lang":"hi"}
-{"id":"adv-chest-07","intent":"chest_pain","text":"Left haath mein dard hai aur seene mein bhi","lang":"hinglish"}
-{"id":"adv-chest-08","intent":"chest_pain","text":"Chest pain with sweating","lang":"hinglish"}
-{"id":"adv-chest-09","intent":"chest_pain","text":"Seene mein dard hai, ulti bhi ho rahi","lang":"hinglish"}
-{"id":"adv-chest-10","intent":"chest_pain","text":"सीने में जलन और भारीपन","lang":"hi"}
-{"id":"adv-chest-11","intent":"chest_pain","text":"Dil par dabav mehsoos ho raha hai","lang":"hinglish"}
-{"id":"adv-chest-12","intent":"chest_pain","text":"Seene ke beech dard jo baayein haath tak ja raha","lang":"hinglish"}
-
-{"id":"adv-stroke-01","intent":"stroke","text":"Muh ek taraf tedha ho gaya","lang":"hinglish"}
-{"id":"adv-stroke-02","intent":"stroke","text":"Achanak bolne mein dikkat ho rahi","lang":"hinglish"}
-{"id":"adv-stroke-03","intent":"stroke","text":"Ek haath kamzor lag raha, utha nahi pa raha","lang":"hinglish"}
-{"id":"adv-stroke-04","intent":"stroke","text":"Lakwa ho gaya","lang":"hinglish"}
-{"id":"adv-stroke-05","intent":"stroke","text":"स्ट्रोक हुआ है","lang":"hi"}
-{"id":"adv-stroke-06","intent":"stroke","text":"चेहरा टेढ़ा हो गया","lang":"hi"}
-{"id":"adv-stroke-07","intent":"stroke","text":"बोलने में तकलीफ और हाथ कमजोर","lang":"hi"}
-{"id":"adv-stroke-08","intent":"stroke","text":"Achanak sharir ka ek taraf kaam nahi kar raha","lang":"hinglish"}
-{"id":"adv-stroke-09","intent":"stroke","text":"Pichhle 20 minute se muh latak gaya","lang":"hinglish"}
-{"id":"adv-stroke-10","intent":"stroke","text":"FAST symptoms dikh rahe hain","lang":"hinglish"}
-{"id":"adv-stroke-11","intent":"stroke","text":"Aankh se dikhna band ho gaya achanak","lang":"hinglish"}
-{"id":"adv-stroke-12","intent":"stroke","text":"मुँह से बोल नहीं पा रहे, एक तरफ शरीर सुन्न","lang":"hi"}
-
-{"id":"adv-bleed-01","intent":"severe_bleeding","text":"Khoon bahut beh raha hai, ruk nahi raha","lang":"hinglish"}
-{"id":"adv-bleed-02","intent":"severe_bleeding","text":"Haath kat gaya, khoon chhut raha","lang":"hinglish"}
-{"id":"adv-bleed-03","intent":"severe_bleeding","text":"Chot lag gayi aur khoon ruk nahi raha","lang":"hinglish"}
-{"id":"adv-bleed-04","intent":"severe_bleeding","text":"हाथ कट गया खून बह रहा","lang":"hi"}
-{"id":"adv-bleed-05","intent":"severe_bleeding","text":"खून बहुत तेज़ बह रहा है","lang":"hi"}
-{"id":"adv-bleed-06","intent":"severe_bleeding","text":"Nase kat gayi, khoon ka fountain","lang":"hinglish"}
-{"id":"adv-bleed-07","intent":"severe_bleeding","text":"Cut gehri hai aur khoon ruk nahi raha","lang":"hinglish"}
-{"id":"adv-bleed-08","intent":"severe_bleeding","text":"Girne se sar phoot gaya, khoon beh raha","lang":"hinglish"}
-{"id":"adv-bleed-09","intent":"severe_bleeding","text":"Ungli kat gayi, khoon nahi ruk raha","lang":"hinglish"}
-{"id":"adv-bleed-10","intent":"severe_bleeding","text":"Bleeding stop nahi ho rahi","lang":"hinglish"}
-{"id":"adv-bleed-11","intent":"severe_bleeding","text":"गहरा घाव है और खून बह रहा है","lang":"hi"}
-{"id":"adv-bleed-12","intent":"severe_bleeding","text":"Haath ki nase kat gayi, bahut khoon","lang":"hinglish"}
-
-{"id":"adv-breath-01","intent":"breathing","text":"Saans phool rahi hai, kya karu","lang":"hinglish"}
-{"id":"adv-breath-02","intent":"breathing","text":"Saans lene mein dikkat ho rahi","lang":"hinglish"}
-{"id":"adv-breath-03","intent":"breathing","text":"Dam ghut raha hai","lang":"hinglish"}
-{"id":"adv-breath-04","intent":"breathing","text":"साँस फूल रही है","lang":"hi"}
-{"id":"adv-breath-05","intent":"breathing","text":"अस्थमा अटैक आ गया","lang":"hi"}
-{"id":"adv-breath-06","intent":"breathing","text":"Bachche ko saans nahi aa rahi","lang":"hinglish"}
-{"id":"adv-breath-07","intent":"breathing","text":"Seene mein ghutan aur saans tez","lang":"hinglish"}
-{"id":"adv-breath-08","intent":"breathing","text":"Hoth neele pad rahe hain","lang":"hinglish"}
-{"id":"adv-breath-09","intent":"breathing","text":"Breathing problem, inhaler kahan se lein","lang":"hinglish"}
-{"id":"adv-breath-10","intent":"breathing","text":"Achanak saans band ho rahi","lang":"hinglish"}
-{"id":"adv-breath-11","intent":"breathing","text":"सांस लेने में तकलीफ, होंठ नीले","lang":"hi"}
-{"id":"adv-breath-12","intent":"breathing","text":"Saans ke liye tadap raha hai","lang":"hinglish"}
-
-{"id":"adv-poison-01","intent":"poisoning","text":"Zeher kha liya, kya karein","lang":"hinglish"}
-{"id":"adv-poison-02","intent":"poisoning","text":"Phenyl pi liya","lang":"hinglish"}
-{"id":"adv-poison-03","intent":"poisoning","text":"Keetnashak pi gaya","lang":"hinglish"}
-{"id":"adv-poison-04","intent":"poisoning","text":"जहर खा लिया","lang":"hi"}
-{"id":"adv-poison-05","intent":"poisoning","text":"Bachche ne dawai ki shishi kha li","lang":"hinglish"}
-{"id":"adv-poison-06","intent":"poisoning","text":"Kerosene pi liya","lang":"hinglish"}
-{"id":"adv-poison-07","intent":"poisoning","text":"Chuha marne ki dawa kha li","lang":"hinglish"}
-{"id":"adv-poison-08","intent":"poisoning","text":"Spray pi gaya galti se","lang":"hinglish"}
-{"id":"adv-poison-09","intent":"poisoning","text":"फिनाइल पी लिया","lang":"hi"}
-{"id":"adv-poison-10","intent":"poisoning","text":"Zeher se ulti ho rahi","lang":"hinglish"}
-{"id":"adv-poison-11","intent":"poisoning","text":"Bachche ne mitti ka tel pi liya","lang":"hinglish"}
-{"id":"adv-poison-12","intent":"poisoning","text":"कीटनाशक पी गया","lang":"hi"}
-
-{"id":"adv-burn-01","intent":"burns","text":"Haath jal gaya","lang":"hinglish"}
-{"id":"adv-burn-02","intent":"burns","text":"Garam paani se jal gaya","lang":"hinglish"}
-{"id":"adv-burn-03","intent":"burns","text":"जल गया हाथ","lang":"hi"}
-{"id":"adv-burn-04","intent":"burns","text":"Aag se kapde jal gaye, sharir par bhi","lang":"hinglish"}
-{"id":"adv-burn-05","intent":"burns","text":"Burn ho gaya, kya lagayein","lang":"hinglish"}
-{"id":"adv-burn-06","intent":"burns","text":"Kadhai se haath jal gaya","lang":"hinglish"}
-{"id":"adv-burn-07","intent":"burns","text":"Bachcha garam chai se jal gaya","lang":"hinglish"}
-{"id":"adv-burn-08","intent":"burns","text":"Bijli se jal gaya","lang":"hinglish"}
-{"id":"adv-burn-09","intent":"burns","text":"तेल से हाथ जल गया","lang":"hi"}
-{"id":"adv-burn-10","intent":"burns","text":"Jalne par pehla upay","lang":"hinglish"}
-{"id":"adv-burn-11","intent":"burns","text":"Chhala pad gaya jalan se","lang":"hinglish"}
-{"id":"adv-burn-12","intent":"burns","text":"आग से जल गया, छाले पड़ गए","lang":"hi"}
-
-{"id":"adv-frac-01","intent":"fracture","text":"Haddi toot gayi","lang":"hinglish"}
-{"id":"adv-frac-02","intent":"fracture","text":"Pair ki haddi tut gayi","lang":"hinglish"}
-{"id":"adv-frac-03","intent":"fracture","text":"हड्डी टूट गई","lang":"hi"}
-{"id":"adv-frac-04","intent":"fracture","text":"Pair mud gaya","lang":"hinglish"}
-{"id":"adv-frac-05","intent":"fracture","text":"Girne ke baad haath hil nahi raha","lang":"hinglish"}
-{"id":"adv-frac-06","intent":"fracture","text":"Bone fracture ho gaya","lang":"hinglish"}
-{"id":"adv-frac-07","intent":"fracture","text":"Chhat se gir gaya, pair tedha","lang":"hinglish"}
-{"id":"adv-frac-08","intent":"fracture","text":"Kohni ki haddi crack ho gayi","lang":"hinglish"}
-{"id":"adv-frac-09","intent":"fracture","text":"टखना मुड़ गया","lang":"hi"}
-{"id":"adv-frac-10","intent":"fracture","text":"Ang tedha dikh raha hai","lang":"hinglish"}
-{"id":"adv-frac-11","intent":"fracture","text":"Girne ke baad kamar hil nahi rahi","lang":"hinglish"}
-{"id":"adv-frac-12","intent":"fracture","text":"पैर की हड्डी में दरार आ गई","lang":"hi"}
-
-{"id":"adv-heat-01","intent":"heat_stroke","text":"Loo lag gayi","lang":"hinglish"}
-{"id":"adv-heat-02","intent":"heat_stroke","text":"Garmi se chakkar aa rahe hain","lang":"hinglish"}
-{"id":"adv-heat-03","intent":"heat_stroke","text":"लू लग गई","lang":"hi"}
-{"id":"adv-heat-04","intent":"heat_stroke","text":"Heat stroke ho gaya","lang":"hinglish"}
-{"id":"adv-heat-05","intent":"heat_stroke","text":"Dhoop mein behosh ho gaya","lang":"hinglish"}
-{"id":"adv-heat-06","intent":"heat_stroke","text":"Garmi se ulti aur chakkar","lang":"hinglish"}
-{"id":"adv-heat-07","intent":"heat_stroke","text":"Bahut garmi, sharir thanda nahi ho raha","lang":"hinglish"}
-{"id":"adv-heat-08","intent":"heat_stroke","text":"Dhoop mein kaam kiya, ab confused hai","lang":"hinglish"}
-{"id":"adv-heat-09","intent":"heat_stroke","text":"गर्मी से बेहोश","lang":"hi"}
-{"id":"adv-heat-10","intent":"heat_stroke","text":"Heat exhaustion, kya karu","lang":"hinglish"}
-{"id":"adv-heat-11","intent":"heat_stroke","text":"Dhoop mein sar dard aur ulti","lang":"hinglish"}
-{"id":"adv-heat-12","intent":"heat_stroke","text":"धूप में चक्कर आ गए","lang":"hi"}
-
-{"id":"adv-seiz-01","intent":"seizure","text":"Daura pad gaya","lang":"hinglish"}
-{"id":"adv-seiz-02","intent":"seizure","text":"Mirgi ka daura aaya","lang":"hinglish"}
-{"id":"adv-seiz-03","intent":"seizure","text":"दौरा पड़ा","lang":"hi"}
-{"id":"adv-seiz-04","intent":"seizure","text":"मिर्गी का दौरा","lang":"hi"}
-{"id":"adv-seiz-05","intent":"seizure","text":"Fits aa gaye","lang":"hinglish"}
-{"id":"adv-seiz-06","intent":"seizure","text":"Bachche ko daura aaya","lang":"hinglish"}
-{"id":"adv-seiz-07","intent":"seizure","text":"Jhatke aa rahe hain, hosh nahi","lang":"hinglish"}
-{"id":"adv-seiz-08","intent":"seizure","text":"Achanak gir kar kaanpne laga","lang":"hinglish"}
-{"id":"adv-seiz-09","intent":"seizure","text":"Seizure aaya, muh se jhaag","lang":"hinglish"}
-{"id":"adv-seiz-10","intent":"seizure","text":"दौरा 5 मिनट से ज्यादा चल रहा","lang":"hi"}
-{"id":"adv-seiz-11","intent":"seizure","text":"Bachcha akad gaya aur aankh palat gayi","lang":"hinglish"}
-{"id":"adv-seiz-12","intent":"seizure","text":"मिर्गी का दौरा बार-बार आ रहा","lang":"hi"}
-
-{"id":"adv-cfever-01","intent":"child_fever","text":"Bachche ko bukhar hai","lang":"hinglish"}
-{"id":"adv-cfever-02","intent":"child_fever","text":"Baby ko 102 bukhar","lang":"hinglish"}
-{"id":"adv-cfever-03","intent":"child_fever","text":"बच्चे को बुखार","lang":"hi"}
-{"id":"adv-cfever-04","intent":"child_fever","text":"3 mahine ke baby ko bukhar","lang":"hinglish"}
-{"id":"adv-cfever-05","intent":"child_fever","text":"Newborn ko fever","lang":"hinglish"}
-{"id":"adv-cfever-06","intent":"child_fever","text":"Bachche ko bukhar aur bahut sust","lang":"hinglish"}
-{"id":"adv-cfever-07","intent":"child_fever","text":"6 mahine ke bacche ko 103 bukhar","lang":"hinglish"}
-{"id":"adv-cfever-08","intent":"child_fever","text":"बच्चा बुखार से तड़प रहा","lang":"hi"}
-{"id":"adv-cfever-09","intent":["child_fever","seizure"],"text":"Toddler ko fever aur daura","lang":"hinglish"}
-{"id":"adv-cfever-10","intent":"child_fever","text":"Bachche ka bukhar 3 din se","lang":"hinglish"}
-{"id":"adv-cfever-11","intent":"child_fever","text":"शिशु को तेज़ बुखार, दूध नहीं पी रहा","lang":"hi"}
-{"id":"adv-cfever-12","intent":"child_fever","text":"Infant ko bukhar 101 hai","lang":"hinglish"}
-
-{"id":"adv-diarr-01","intent":"diarrhea","text":"Dast ho rahe hain","lang":"hinglish"}
-{"id":"adv-diarr-02","intent":"diarrhea","text":"Loose motion ho rahe","lang":"hinglish"}
-{"id":"adv-diarr-03","intent":"diarrhea","text":"दस्त हो रहे हैं","lang":"hi"}
-{"id":"adv-diarr-04","intent":"diarrhea","text":"Bachche ko dast","lang":"hinglish"}
-{"id":"adv-diarr-05","intent":"diarrhea","text":"5 baar latrine gayi","lang":"hinglish"}
-{"id":"adv-diarr-06","intent":"diarrhea","text":"Pet kharab hai, loose motions","lang":"hinglish"}
-{"id":"adv-diarr-07","intent":"diarrhea","text":"Dast mein kya khilayein","lang":"hinglish"}
-{"id":"adv-diarr-08","intent":"diarrhea","text":"बच्चे को दस्त और पेशाब नहीं","lang":"hi"}
-{"id":"adv-diarr-09","intent":"diarrhea","text":"Loose motion with blood","lang":"hinglish"}
-{"id":"adv-diarr-10","intent":"diarrhea","text":"Dast se kamzori ho gayi","lang":"hinglish"}
-{"id":"adv-diarr-11","intent":"diarrhea","text":"पेट खराब है, बार-बार टॉयलेट","lang":"hi"}
-{"id":"adv-diarr-12","intent":"diarrhea","text":"Bachche ko potty mein khoon aa raha","lang":"hinglish"}
-
-{"id":"adv-generic-01","intent":"generic","text":"Sar dard ho raha hai","lang":"hinglish"}
-{"id":"adv-generic-02","intent":"generic","text":"Khansi aur zukam","lang":"hinglish"}
-{"id":"adv-generic-03","intent":"generic","text":"ORS kaise banate hain","lang":"hinglish"}
-{"id":"adv-generic-04","intent":"generic","text":"Bachche ka vaccination schedule","lang":"hinglish"}
-{"id":"adv-generic-05","intent":"generic","text":"Pregnancy mein kya khayein","lang":"hinglish"}
-{"id":"adv-generic-06","intent":"generic","text":"Anemia mein kya khayein","lang":"hinglish"}
-{"id":"adv-generic-07","intent":"generic","text":"TB ki dawai kitne mahine chalti hai","lang":"hinglish"}
-{"id":"adv-generic-08","intent":"generic","text":"Sugar ki dawai chhoot gayi","lang":"hinglish"}
-{"id":"adv-generic-09","intent":"generic","text":"Neend nahi aa rahi","lang":"hinglish"}
-{"id":"adv-generic-10","intent":"generic","text":"Depression feel ho raha hai","lang":"hinglish"}
-{"id":"adv-generic-11","intent":"generic","text":"Dengue ke warning signs","lang":"hinglish"}
-{"id":"adv-generic-12","intent":"generic","text":"Bukhar mein paracetamol dena chahiye","lang":"hinglish"}
-{"id":"adv-generic-13","intent":"generic","text":"Pet mein dard hai","lang":"hinglish"}
-{"id":"adv-generic-14","intent":"generic","text":"Ulti ho rahi hai","lang":"hinglish"}
-{"id":"adv-generic-15","intent":"generic","text":"Aankh mein dard aur laal","lang":"hinglish"}
-{"id":"adv-generic-16","intent":"generic","text":"Daant mein dard","lang":"hinglish"}
-{"id":"adv-generic-17","intent":"generic","text":"Kaan se pani aa raha","lang":"hinglish"}
-{"id":"adv-generic-18","intent":"generic","text":"Skin par allergy","lang":"hinglish"}
-{"id":"adv-generic-19","intent":"generic","text":"BP high hai","lang":"hinglish"}
-{"id":"adv-generic-20","intent":"generic","text":"Thyroid ki dawai","lang":"hinglish"}
-{"id":"adv-generic-21","intent":"generic","text":"Ghutne mein dard","lang":"hinglish"}
-{"id":"adv-generic-22","intent":"generic","text":"Kamar dard","lang":"hinglish"}
-{"id":"adv-generic-23","intent":"generic","text":"Bawaseer","lang":"hinglish"}
-{"id":"adv-generic-24","intent":"generic","text":"Periods late ho gaye","lang":"hinglish"}
-{"id":"adv-generic-25","intent":"generic","text":"बुखार में क्या करें","lang":"hi"}
-{"id":"adv-generic-26","intent":"generic","text":"सिर दर्द और उल्टी","lang":"hi"}
-
-{"id":"adv-vet-01","intent":"animal","text":"Gai ko bukhar hai","lang":"hinglish"}
-{"id":"adv-vet-02","intent":"animal","text":"Bakri ke bachche ko dast ho rahe","lang":"hinglish"}
-{"id":"adv-vet-03","intent":"animal","text":"मुर्गी को बुखार","lang":"hi"}
-{"id":"adv-vet-04","intent":"animal","text":"Bhains ko khana nahi kha rahi","lang":"hinglish"}
+{"id": "adv-snake-01", "intent": "snake_bite", "text": "Saap ne dasa hai, kya karu?", "lang": "hinglish"}
+{"id": "adv-snake-02", "intent": "snake_bite", "text": "Sanp kat gaya pair par", "lang": "hinglish"}
+{"id": "adv-snake-03", "intent": "snake_bite", "text": "Saanp ne kata, koi upay batao", "lang": "hinglish"}
+{"id": "adv-snake-04", "intent": "snake_bite", "text": "Khet mein kaam karte waqt saanp ne das liya", "lang": "hinglish"}
+{"id": "adv-snake-05", "intent": "snake_bite", "text": "Nag ne pair par kata hai", "lang": "hinglish"}
+{"id": "adv-snake-06", "intent": "snake_bite", "text": "सांप ने डसा है", "lang": "hi"}
+{"id": "adv-snake-07", "intent": "snake_bite", "text": "साँप ने काटा, अब क्या करें", "lang": "hi"}
+{"id": "adv-snake-08", "intent": "snake_bite", "text": "Snake bite ho gaya, hospital le jaana chahiye?", "lang": "hinglish"}
+{"id": "adv-snake-09", "intent": "snake_bite", "text": "Saanp kambal ke neeche se nikla aur pair par laga", "lang": "hinglish"}
+{"id": "adv-snake-10", "intent": "snake_bite", "text": "Saanp ka zeher chad gaya, aankh band ho rahi", "lang": "hinglish"}
+{"id": "adv-snake-11", "intent": "snake_bite", "text": "Saamp ne ungli par dasa, ab sujan aa rahi", "lang": "hinglish"}
+{"id": "adv-snake-12", "intent": "snake_bite", "text": "जंगल में सांप ने पैर पर डस लिया", "lang": "hi"}
+{"id": "adv-animal-01", "intent": "animal_bite", "text": "Kutte ne kaat liya", "lang": "hinglish"}
+{"id": "adv-animal-02", "intent": "animal_bite", "text": "Kutta kata hai, vaccine lagti hai?", "lang": "hinglish"}
+{"id": "adv-animal-03", "intent": "animal_bite", "text": "कुत्ते ने काटा", "lang": "hi"}
+{"id": "adv-animal-04", "intent": "animal_bite", "text": "Bandar ne kaat liya", "lang": "hinglish"}
+{"id": "adv-animal-05", "intent": "animal_bite", "text": "Billi ne khurach diya", "lang": "hinglish"}
+{"id": "adv-animal-06", "intent": "animal_bite", "text": "Dog bite ho gaya", "lang": "hinglish"}
+{"id": "adv-animal-07", "intent": ["animal_bite", "severe_bleeding"], "text": "Kutte ne pair pakad liya, khoon aa gaya", "lang": "hinglish"}
+{"id": "adv-animal-08", "intent": "animal_bite", "text": "Do din pehle kutte ne kaata, ab paani se darr lagta", "lang": "hinglish"}
+{"id": "adv-animal-09", "intent": "animal_bite", "text": "लोमड़ी ने काटा", "lang": "hi"}
+{"id": "adv-animal-10", "intent": "animal_bite", "text": "Stray dog ne haath kaat liya", "lang": "hinglish"}
+{"id": "adv-animal-11", "intent": "animal_bite", "text": "Bachche ko bandar ne khurach diya", "lang": "hinglish"}
+{"id": "adv-animal-12", "intent": "animal_bite", "text": "बिल्ली ने खरोंच दिया", "lang": "hi"}
+{"id": "adv-chest-01", "intent": "chest_pain", "text": "Seene mein bhaaripan lag raha hai", "lang": "hinglish"}
+{"id": "adv-chest-02", "intent": "chest_pain", "text": "Chest mein dard aur paseena", "lang": "hinglish"}
+{"id": "adv-chest-03", "intent": "chest_pain", "text": "Dil ka daura pad gaya", "lang": "hinglish"}
+{"id": "adv-chest-04", "intent": "chest_pain", "text": "Heart attack lag raha hai", "lang": "hinglish"}
+{"id": "adv-chest-05", "intent": "chest_pain", "text": "दिल में दर्द हो रहा है", "lang": "hi"}
+{"id": "adv-chest-06", "intent": "chest_pain", "text": "सीने पर पत्थर रखा हुआ लगता है", "lang": "hi"}
+{"id": "adv-chest-07", "intent": "chest_pain", "text": "Left haath mein dard hai aur seene mein bhi", "lang": "hinglish"}
+{"id": "adv-chest-08", "intent": "chest_pain", "text": "Chest pain with sweating", "lang": "hinglish"}
+{"id": "adv-chest-09", "intent": "chest_pain", "text": "Seene mein dard hai, ulti bhi ho rahi", "lang": "hinglish"}
+{"id": "adv-chest-10", "intent": "chest_pain", "text": "सीने में जलन और भारीपन", "lang": "hi"}
+{"id": "adv-chest-11", "intent": "chest_pain", "text": "Dil par dabav mehsoos ho raha hai", "lang": "hinglish"}
+{"id": "adv-chest-12", "intent": "chest_pain", "text": "Seene ke beech dard jo baayein haath tak ja raha", "lang": "hinglish"}
+{"id": "adv-stroke-01", "intent": "stroke", "text": "Muh ek taraf tedha ho gaya", "lang": "hinglish"}
+{"id": "adv-stroke-02", "intent": "stroke", "text": "Achanak bolne mein dikkat ho rahi", "lang": "hinglish"}
+{"id": "adv-stroke-03", "intent": "stroke", "text": "Ek haath kamzor lag raha, utha nahi pa raha", "lang": "hinglish"}
+{"id": "adv-stroke-04", "intent": "stroke", "text": "Lakwa ho gaya", "lang": "hinglish"}
+{"id": "adv-stroke-05", "intent": "stroke", "text": "स्ट्रोक हुआ है", "lang": "hi"}
+{"id": "adv-stroke-06", "intent": "stroke", "text": "चेहरा टेढ़ा हो गया", "lang": "hi"}
+{"id": "adv-stroke-07", "intent": "stroke", "text": "बोलने में तकलीफ और हाथ कमजोर", "lang": "hi"}
+{"id": "adv-stroke-08", "intent": "stroke", "text": "Achanak sharir ka ek taraf kaam nahi kar raha", "lang": "hinglish"}
+{"id": "adv-stroke-09", "intent": "stroke", "text": "Pichhle 20 minute se muh latak gaya", "lang": "hinglish"}
+{"id": "adv-stroke-10", "intent": "stroke", "text": "FAST symptoms dikh rahe hain", "lang": "hinglish"}
+{"id": "adv-stroke-11", "intent": "stroke", "text": "Aankh se dikhna band ho gaya achanak", "lang": "hinglish"}
+{"id": "adv-stroke-12", "intent": "stroke", "text": "मुँह से बोल नहीं पा रहे, एक तरफ शरीर सुन्न", "lang": "hi"}
+{"id": "adv-bleed-01", "intent": "severe_bleeding", "text": "Khoon bahut beh raha hai, ruk nahi raha", "lang": "hinglish"}
+{"id": "adv-bleed-02", "intent": "severe_bleeding", "text": "Haath kat gaya, khoon chhut raha", "lang": "hinglish"}
+{"id": "adv-bleed-03", "intent": "severe_bleeding", "text": "Chot lag gayi aur khoon ruk nahi raha", "lang": "hinglish"}
+{"id": "adv-bleed-04", "intent": "severe_bleeding", "text": "हाथ कट गया खून बह रहा", "lang": "hi"}
+{"id": "adv-bleed-05", "intent": "severe_bleeding", "text": "खून बहुत तेज़ बह रहा है", "lang": "hi"}
+{"id": "adv-bleed-06", "intent": "severe_bleeding", "text": "Nase kat gayi, khoon ka fountain", "lang": "hinglish"}
+{"id": "adv-bleed-07", "intent": "severe_bleeding", "text": "Cut gehri hai aur khoon ruk nahi raha", "lang": "hinglish"}
+{"id": "adv-bleed-08", "intent": "severe_bleeding", "text": "Girne se sar phoot gaya, khoon beh raha", "lang": "hinglish"}
+{"id": "adv-bleed-09", "intent": "severe_bleeding", "text": "Ungli kat gayi, khoon nahi ruk raha", "lang": "hinglish"}
+{"id": "adv-bleed-10", "intent": "severe_bleeding", "text": "Bleeding stop nahi ho rahi", "lang": "hinglish"}
+{"id": "adv-bleed-11", "intent": "severe_bleeding", "text": "गहरा घाव है और खून बह रहा है", "lang": "hi"}
+{"id": "adv-bleed-12", "intent": "severe_bleeding", "text": "Haath ki nase kat gayi, bahut khoon", "lang": "hinglish"}
+{"id": "adv-breath-01", "intent": "breathing", "text": "Saans phool rahi hai, kya karu", "lang": "hinglish"}
+{"id": "adv-breath-02", "intent": "breathing", "text": "Saans lene mein dikkat ho rahi", "lang": "hinglish"}
+{"id": "adv-breath-03", "intent": "breathing", "text": "Dam ghut raha hai", "lang": "hinglish"}
+{"id": "adv-breath-04", "intent": "breathing", "text": "साँस फूल रही है", "lang": "hi"}
+{"id": "adv-breath-05", "intent": "breathing", "text": "अस्थमा अटैक आ गया", "lang": "hi"}
+{"id": "adv-breath-06", "intent": "breathing", "text": "Bachche ko saans nahi aa rahi", "lang": "hinglish"}
+{"id": "adv-breath-07", "intent": "breathing", "text": "Seene mein ghutan aur saans tez", "lang": "hinglish"}
+{"id": "adv-breath-08", "intent": "breathing", "text": "Hoth neele pad rahe hain", "lang": "hinglish"}
+{"id": "adv-breath-09", "intent": "breathing", "text": "Breathing problem, inhaler kahan se lein", "lang": "hinglish"}
+{"id": "adv-breath-10", "intent": "breathing", "text": "Achanak saans band ho rahi", "lang": "hinglish"}
+{"id": "adv-breath-11", "intent": "breathing", "text": "सांस लेने में तकलीफ, होंठ नीले", "lang": "hi"}
+{"id": "adv-breath-12", "intent": "breathing", "text": "Saans ke liye tadap raha hai", "lang": "hinglish"}
+{"id": "adv-poison-01", "intent": "poisoning", "text": "Zeher kha liya, kya karein", "lang": "hinglish"}
+{"id": "adv-poison-02", "intent": "poisoning", "text": "Phenyl pi liya", "lang": "hinglish"}
+{"id": "adv-poison-03", "intent": "poisoning", "text": "Keetnashak pi gaya", "lang": "hinglish"}
+{"id": "adv-poison-04", "intent": "poisoning", "text": "जहर खा लिया", "lang": "hi"}
+{"id": "adv-poison-05", "intent": "poisoning", "text": "Bachche ne dawai ki shishi kha li", "lang": "hinglish"}
+{"id": "adv-poison-06", "intent": "poisoning", "text": "Kerosene pi liya", "lang": "hinglish"}
+{"id": "adv-poison-07", "intent": "poisoning", "text": "Chuha marne ki dawa kha li", "lang": "hinglish"}
+{"id": "adv-poison-08", "intent": "poisoning", "text": "Spray pi gaya galti se", "lang": "hinglish"}
+{"id": "adv-poison-09", "intent": "poisoning", "text": "फिनाइल पी लिया", "lang": "hi"}
+{"id": "adv-poison-10", "intent": "poisoning", "text": "Zeher se ulti ho rahi", "lang": "hinglish"}
+{"id": "adv-poison-11", "intent": "poisoning", "text": "Bachche ne mitti ka tel pi liya", "lang": "hinglish"}
+{"id": "adv-poison-12", "intent": "poisoning", "text": "कीटनाशक पी गया", "lang": "hi"}
+{"id": "adv-burn-01", "intent": "burns", "text": "Haath jal gaya", "lang": "hinglish"}
+{"id": "adv-burn-02", "intent": "burns", "text": "Garam paani se jal gaya", "lang": "hinglish"}
+{"id": "adv-burn-03", "intent": "burns", "text": "जल गया हाथ", "lang": "hi"}
+{"id": "adv-burn-04", "intent": "burns", "text": "Aag se kapde jal gaye, sharir par bhi", "lang": "hinglish"}
+{"id": "adv-burn-05", "intent": "burns", "text": "Burn ho gaya, kya lagayein", "lang": "hinglish"}
+{"id": "adv-burn-06", "intent": "burns", "text": "Kadhai se haath jal gaya", "lang": "hinglish"}
+{"id": "adv-burn-07", "intent": "burns", "text": "Bachcha garam chai se jal gaya", "lang": "hinglish"}
+{"id": "adv-burn-08", "intent": "burns", "text": "Bijli se jal gaya", "lang": "hinglish"}
+{"id": "adv-burn-09", "intent": "burns", "text": "तेल से हाथ जल गया", "lang": "hi"}
+{"id": "adv-burn-10", "intent": "burns", "text": "Jalne par pehla upay", "lang": "hinglish"}
+{"id": "adv-burn-11", "intent": "burns", "text": "Chhala pad gaya jalan se", "lang": "hinglish"}
+{"id": "adv-burn-12", "intent": "burns", "text": "आग से जल गया, छाले पड़ गए", "lang": "hi"}
+{"id": "adv-frac-01", "intent": "fracture", "text": "Haddi toot gayi", "lang": "hinglish"}
+{"id": "adv-frac-02", "intent": "fracture", "text": "Pair ki haddi tut gayi", "lang": "hinglish"}
+{"id": "adv-frac-03", "intent": "fracture", "text": "हड्डी टूट गई", "lang": "hi"}
+{"id": "adv-frac-04", "intent": "fracture", "text": "Pair mud gaya", "lang": "hinglish"}
+{"id": "adv-frac-05", "intent": "fracture", "text": "Girne ke baad haath hil nahi raha", "lang": "hinglish"}
+{"id": "adv-frac-06", "intent": "fracture", "text": "Bone fracture ho gaya", "lang": "hinglish"}
+{"id": "adv-frac-07", "intent": "fracture", "text": "Chhat se gir gaya, pair tedha", "lang": "hinglish"}
+{"id": "adv-frac-08", "intent": "fracture", "text": "Kohni ki haddi crack ho gayi", "lang": "hinglish"}
+{"id": "adv-frac-09", "intent": "fracture", "text": "टखना मुड़ गया", "lang": "hi"}
+{"id": "adv-frac-10", "intent": "fracture", "text": "Ang tedha dikh raha hai", "lang": "hinglish"}
+{"id": "adv-frac-11", "intent": "fracture", "text": "Girne ke baad kamar hil nahi rahi", "lang": "hinglish"}
+{"id": "adv-frac-12", "intent": "fracture", "text": "पैर की हड्डी में दरार आ गई", "lang": "hi"}
+{"id": "adv-heat-01", "intent": "heat_stroke", "text": "Loo lag gayi", "lang": "hinglish"}
+{"id": "adv-heat-02", "intent": "heat_stroke", "text": "Garmi se chakkar aa rahe hain", "lang": "hinglish"}
+{"id": "adv-heat-03", "intent": "heat_stroke", "text": "लू लग गई", "lang": "hi"}
+{"id": "adv-heat-04", "intent": "heat_stroke", "text": "Heat stroke ho gaya", "lang": "hinglish"}
+{"id": "adv-heat-05", "intent": "heat_stroke", "text": "Dhoop mein behosh ho gaya", "lang": "hinglish"}
+{"id": "adv-heat-06", "intent": "heat_stroke", "text": "Garmi se ulti aur chakkar", "lang": "hinglish"}
+{"id": "adv-heat-07", "intent": "heat_stroke", "text": "Bahut garmi, sharir thanda nahi ho raha", "lang": "hinglish"}
+{"id": "adv-heat-08", "intent": "heat_stroke", "text": "Dhoop mein kaam kiya, ab confused hai", "lang": "hinglish"}
+{"id": "adv-heat-09", "intent": "heat_stroke", "text": "गर्मी से बेहोश", "lang": "hi"}
+{"id": "adv-heat-10", "intent": "heat_stroke", "text": "Heat exhaustion, kya karu", "lang": "hinglish"}
+{"id": "adv-heat-11", "intent": "heat_stroke", "text": "Dhoop mein sar dard aur ulti", "lang": "hinglish"}
+{"id": "adv-heat-12", "intent": "heat_stroke", "text": "धूप में चक्कर आ गए", "lang": "hi"}
+{"id": "adv-seiz-01", "intent": "seizure", "text": "Daura pad gaya", "lang": "hinglish"}
+{"id": "adv-seiz-02", "intent": "seizure", "text": "Mirgi ka daura aaya", "lang": "hinglish"}
+{"id": "adv-seiz-03", "intent": "seizure", "text": "दौरा पड़ा", "lang": "hi"}
+{"id": "adv-seiz-04", "intent": "seizure", "text": "मिर्गी का दौरा", "lang": "hi"}
+{"id": "adv-seiz-05", "intent": "seizure", "text": "Fits aa gaye", "lang": "hinglish"}
+{"id": "adv-seiz-06", "intent": "seizure", "text": "Bachche ko daura aaya", "lang": "hinglish"}
+{"id": "adv-seiz-07", "intent": "seizure", "text": "Jhatke aa rahe hain, hosh nahi", "lang": "hinglish"}
+{"id": "adv-seiz-08", "intent": "seizure", "text": "Achanak gir kar kaanpne laga", "lang": "hinglish"}
+{"id": "adv-seiz-09", "intent": "seizure", "text": "Seizure aaya, muh se jhaag", "lang": "hinglish"}
+{"id": "adv-seiz-10", "intent": "seizure", "text": "दौरा 5 मिनट से ज्यादा चल रहा", "lang": "hi"}
+{"id": "adv-seiz-11", "intent": "seizure", "text": "Bachcha akad gaya aur aankh palat gayi", "lang": "hinglish"}
+{"id": "adv-seiz-12", "intent": "seizure", "text": "मिर्गी का दौरा बार-बार आ रहा", "lang": "hi"}
+{"id": "adv-cfever-01", "intent": "child_fever", "text": "Bachche ko bukhar hai", "lang": "hinglish"}
+{"id": "adv-cfever-02", "intent": "child_fever", "text": "Baby ko 102 bukhar", "lang": "hinglish"}
+{"id": "adv-cfever-03", "intent": "child_fever", "text": "बच्चे को बुखार", "lang": "hi"}
+{"id": "adv-cfever-04", "intent": "child_fever", "text": "3 mahine ke baby ko bukhar", "lang": "hinglish"}
+{"id": "adv-cfever-05", "intent": "child_fever", "text": "Newborn ko fever", "lang": "hinglish"}
+{"id": "adv-cfever-06", "intent": "child_fever", "text": "Bachche ko bukhar aur bahut sust", "lang": "hinglish"}
+{"id": "adv-cfever-07", "intent": "child_fever", "text": "6 mahine ke bacche ko 103 bukhar", "lang": "hinglish"}
+{"id": "adv-cfever-08", "intent": "child_fever", "text": "बच्चा बुखार से तड़प रहा", "lang": "hi"}
+{"id": "adv-cfever-09", "intent": ["child_fever", "seizure"], "text": "Toddler ko fever aur daura", "lang": "hinglish"}
+{"id": "adv-cfever-10", "intent": "child_fever", "text": "Bachche ka bukhar 3 din se", "lang": "hinglish"}
+{"id": "adv-cfever-11", "intent": "child_fever", "text": "शिशु को तेज़ बुखार, दूध नहीं पी रहा", "lang": "hi"}
+{"id": "adv-cfever-12", "intent": "child_fever", "text": "Infant ko bukhar 101 hai", "lang": "hinglish"}
+{"id": "adv-diarr-01", "intent": "diarrhea", "text": "Dast ho rahe hain", "lang": "hinglish"}
+{"id": "adv-diarr-02", "intent": "diarrhea", "text": "Loose motion ho rahe", "lang": "hinglish"}
+{"id": "adv-diarr-03", "intent": "diarrhea", "text": "दस्त हो रहे हैं", "lang": "hi"}
+{"id": "adv-diarr-04", "intent": "diarrhea", "text": "Bachche ko dast", "lang": "hinglish"}
+{"id": "adv-diarr-05", "intent": "diarrhea", "text": "5 baar latrine gayi", "lang": "hinglish"}
+{"id": "adv-diarr-06", "intent": "diarrhea", "text": "Pet kharab hai, loose motions", "lang": "hinglish"}
+{"id": "adv-diarr-07", "intent": "diarrhea", "text": "Dast mein kya khilayein", "lang": "hinglish"}
+{"id": "adv-diarr-08", "intent": "diarrhea", "text": "बच्चे को दस्त और पेशाब नहीं", "lang": "hi"}
+{"id": "adv-diarr-09", "intent": "diarrhea", "text": "Loose motion with blood", "lang": "hinglish"}
+{"id": "adv-diarr-10", "intent": "diarrhea", "text": "Dast se kamzori ho gayi", "lang": "hinglish"}
+{"id": "adv-diarr-11", "intent": "diarrhea", "text": "पेट खराब है, बार-बार टॉयलेट", "lang": "hi"}
+{"id": "adv-diarr-12", "intent": "diarrhea", "text": "Bachche ko potty mein khoon aa raha", "lang": "hinglish"}
+{"id": "adv-generic-01", "intent": "generic", "text": "Sar dard ho raha hai", "lang": "hinglish"}
+{"id": "adv-generic-02", "intent": "generic", "text": "Khansi aur zukam", "lang": "hinglish"}
+{"id": "adv-generic-03", "intent": "generic", "text": "ORS kaise banate hain", "lang": "hinglish"}
+{"id": "adv-generic-04", "intent": "generic", "text": "Bachche ka vaccination schedule", "lang": "hinglish"}
+{"id": "adv-generic-05", "intent": "generic", "text": "Pregnancy mein kya khayein", "lang": "hinglish"}
+{"id": "adv-generic-06", "intent": "generic", "text": "Anemia mein kya khayein", "lang": "hinglish"}
+{"id": "adv-generic-07", "intent": "generic", "text": "TB ki dawai kitne mahine chalti hai", "lang": "hinglish"}
+{"id": "adv-generic-08", "intent": "generic", "text": "Sugar ki dawai chhoot gayi", "lang": "hinglish"}
+{"id": "adv-generic-09", "intent": "daily", "text": "Neend nahi aa rahi", "lang": "hinglish"}
+{"id": "adv-generic-10", "intent": "generic", "text": "Depression feel ho raha hai", "lang": "hinglish"}
+{"id": "adv-generic-11", "intent": "generic", "text": "Dengue ke warning signs", "lang": "hinglish"}
+{"id": "adv-generic-12", "intent": "generic", "text": "Bukhar mein paracetamol dena chahiye", "lang": "hinglish"}
+{"id": "adv-generic-13", "intent": "generic", "text": "Pet mein dard hai", "lang": "hinglish"}
+{"id": "adv-generic-14", "intent": "generic", "text": "Ulti ho rahi hai", "lang": "hinglish"}
+{"id": "adv-generic-15", "intent": "generic", "text": "Aankh mein dard aur laal", "lang": "hinglish"}
+{"id": "adv-generic-16", "intent": "generic", "text": "Daant mein dard", "lang": "hinglish"}
+{"id": "adv-generic-17", "intent": "generic", "text": "Kaan se pani aa raha", "lang": "hinglish"}
+{"id": "adv-generic-18", "intent": "generic", "text": "Skin par allergy", "lang": "hinglish"}
+{"id": "adv-generic-19", "intent": "generic", "text": "BP high hai", "lang": "hinglish"}
+{"id": "adv-generic-20", "intent": "generic", "text": "Thyroid ki dawai", "lang": "hinglish"}
+{"id": "adv-generic-21", "intent": "generic", "text": "Ghutne mein dard", "lang": "hinglish"}
+{"id": "adv-generic-22", "intent": "generic", "text": "Kamar dard", "lang": "hinglish"}
+{"id": "adv-generic-23", "intent": "generic", "text": "Bawaseer", "lang": "hinglish"}
+{"id": "adv-generic-24", "intent": "generic", "text": "Periods late ho gaye", "lang": "hinglish"}
+{"id": "adv-generic-25", "intent": "generic", "text": "बुखार में क्या करें", "lang": "hi"}
+{"id": "adv-generic-26", "intent": "generic", "text": "सिर दर्द और उल्टी", "lang": "hi"}
+{"id": "adv-vet-01", "intent": "animal", "text": "Gai ko bukhar hai", "lang": "hinglish"}
+{"id": "adv-vet-02", "intent": "animal", "text": "Bakri ke bachche ko dast ho rahe", "lang": "hinglish"}
+{"id": "adv-vet-03", "intent": "animal", "text": "मुर्गी को बुखार", "lang": "hi"}
+{"id": "adv-vet-04", "intent": "animal", "text": "Bhains ko khana nahi kha rahi", "lang": "hinglish"}

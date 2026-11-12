@@ -62,6 +62,10 @@ except Exception:  # noqa: BLE001
 
     def loop_ratio(text: str, **_: object) -> float:  # type: ignore[no-redef]
         return 0.0
+try:
+    from answer_cards import CardStore
+except Exception:  # noqa: BLE001
+    CardStore = None  # type: ignore[assignment]
 
 SYSTEM_PROMPT = (
     "You are Bharat-Tiny-LLM, a helpful offline assistant for India. "
@@ -142,6 +146,14 @@ HINGLISH_MARKERS = {
     "hai", "hain", "kya", "kaise", "nahi", "bhi", "yeh", "toh", "chahiye",
     "bilkul", "bahut", "aap", "main", "hum", "kar", "karo", "hoga", "raha",
     "bhai", "yaar", "kuch", "sab", "thik", "theek", "acha", "accha", "haan",
+    "karein", "karna", "karke", "karne", "dein", "dena", "dene", "lein",
+    "lena", "lene", "mein", "ke", "ki", "ka", "se", "par", "aur", "ya",
+    "ho", "hota", "hoti", "hote", "jayega", "jayegi", "jayenge", "sakte",
+    "sakta", "sakti", "wala", "wali", "wale", "liye", "saath", "bina",
+    "roz", "din", "ghante", "paani", "khet", "fasal", "dawai", "ghar",
+    "aapko", "unhe", "inke", "uske", "apne", "apni", "koi", "sahi", "galat",
+    "zaroori", "matlab", "sawal", "jawab", "kitna", "kitne", "kitni",
+    "kaun", "kab", "kahan", "kyun", "bache", "bachche",
 }
 
 # Deterministic numeric check for the math prompts. Values are checked as
@@ -242,7 +254,7 @@ def check_math(prompt: dict, response: str) -> dict:
     ans = MATH_ANSWERS.get(prompt["intent"])
     if not ans:
         return {"applicable": False}
-    found = re.search(rf"(?<![\d.]){re.escape(ans)}(?![\d.])", response) is not None
+    found = re.search(rf"(?<![\d.]){re.escape(ans)}(?!\d|\.\d)", response) is not None
     return {"applicable": True, "expected": ans, "pass": found}
 
 
@@ -450,15 +462,31 @@ def run(args) -> None:
                 routed_domain, system_prompt = route_system_for(p["text"])
             else:
                 routed_domain, system_prompt = None, (args.system_prompt or SYSTEM_PROMPT)
-            try:
-                r = call_chat(args.base_url, args.model, p["text"], system_prompt, args)
-            except Exception as exc:  # noqa: BLE001
-                print(f"[{i}/{len(prompts)}] {p['id']} ERROR {exc}", file=sys.stderr)
-                row = {**p, "error": str(exc), "response": ""}
-                rows.append(row)
-                sink.write(json.dumps(row, ensure_ascii=False) + "\n")
-                sink.flush()
-                continue
+            card = None
+            if getattr(args, "card_store", None) and routed_domain != "health":
+                card = args.card_store.match(p["text"], routed_domain)
+            if card:
+                r = {
+                    "response": card["answer"],
+                    "reasoning_chars": 0,
+                    "ttft_s": 0.0,
+                    "first_token_s": 0.0,
+                    "total_s": 0.0,
+                    "usage": {},
+                    "card_id": card["id"],
+                    "card_source": card.get("source", ""),
+                    "safety_protocol": None,
+                }
+            else:
+                try:
+                    r = call_chat(args.base_url, args.model, p["text"], system_prompt, args)
+                except Exception as exc:  # noqa: BLE001
+                    print(f"[{i}/{len(prompts)}] {p['id']} ERROR {exc}", file=sys.stderr)
+                    row = {**p, "error": str(exc), "response": ""}
+                    rows.append(row)
+                    sink.write(json.dumps(row, ensure_ascii=False) + "\n")
+                    sink.flush()
+                    continue
 
             # Phrase loops pass character-level junk checks. Retry once with a
             # repetition penalty; records the change so the run is auditable.
@@ -488,6 +516,16 @@ def run(args) -> None:
                 if replaced:
                     lang_ok, lang_note = check_language(p, r["response"])
                     junk_ok, junk_hits = check_junk(r["response"])
+            # 108 is for medical emergencies only. Never let a scheme/daily
+            # answer tell the user to call it for an administrative task.
+            if getattr(args, "system", False) and routed_domain != "health" and safety_protocol:
+                r["response"], replaced = safety_protocol.guard_nonhealth_emergency(
+                    r["response"], p["text"], safety_protocol.detect_language(p["text"])
+                )
+                r["emergency_guard"] = replaced
+                if replaced:
+                    lang_ok, lang_note = check_language(p, r["response"])
+                    junk_ok, junk_hits = check_junk(r["response"])
             checks = {
                 "language_match": lang_ok,
                 "language_note": lang_note,
@@ -503,7 +541,10 @@ def run(args) -> None:
                 "stream": bool(args.stream),
                 "routed_domain": routed_domain,
                 "safety_protocol": r.get("safety_protocol"),
+                "card_id": r.get("card_id"),
+                "card_source": r.get("card_source"),
                 "crop_guard": r.get("crop_guard"),
+                "emergency_guard": r.get("emergency_guard"),
                 "loop_retry": bool(r.get("loop_retry", False)),
                 "loop_ratio": round(loop_ratio(r["response"]), 3),
                 "system_prompt": system_prompt,
@@ -622,6 +663,7 @@ def summarize(rows: list[dict]) -> dict:
         "auto_task_success_0_8_mean": round(statistics.mean(auto_all), 2) if auto_all else None,
         "loop_free_rate": round(len(loop_free) / len(loop_values), 3) if loop_values else None,
         "loop_retries": sum(1 for r in rows if r.get("loop_retry")),
+        "cards_used": sum(1 for r in rows if r.get("card_id")),
         "latency_s": {
             "ttft_p50": round(statistics.median(ttfts), 3) if ttfts else None,
             "ttft_p95": round(sorted(ttfts)[int(len(ttfts) * 0.95) - 1], 3) if ttfts else None,
@@ -700,7 +742,9 @@ def main() -> None:
     ap.add_argument("--router", action="store_true",
                     help="use the per-domain system-prompt router (scripts/domain_prompt.py)")
     ap.add_argument("--system", action="store_true",
-                    help="full local system: router + fixed critical-health protocols")
+                    help="full local system: router + fixed critical-health protocols + answer cards")
+    ap.add_argument("--no-cards", action="store_true",
+                    help="disable vetted answer cards (use the model for every non-health prompt)")
     ap.add_argument("--thinking", action="store_true",
                     help="let Qwen3.5 emit reasoning tokens (slower, usually worse for this benchmark)")
     ap.add_argument("--summarize", default=None,
@@ -708,6 +752,9 @@ def main() -> None:
     ap.add_argument("--resume", action="store_true",
                     help="skip prompt IDs already present in --out")
     args = ap.parse_args()
+    args.card_store = (
+        CardStore() if (args.system and not args.no_cards and CardStore) else None
+    )
     if args.summarize:
         summarize_file(args)
     else:

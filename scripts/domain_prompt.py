@@ -37,7 +37,13 @@ BASE = (
     "cannot check live data and tell the user where to verify. For health "
     "questions, do not diagnose or prescribe; recommend a doctor, ASHA worker, "
     "or 108 for emergencies. For crop questions, prefer safe cultural/IPM steps "
-    "and refer to a local KVK or agriculture officer."
+    "and refer to a local KVK or agriculture officer. "
+    "Common terms: CSC = Common Service Centre; KVK = Krishi Vigyan Kendra; "
+    "PM-KISAN = Pradhan Mantri Kisan Samman Nidhi; PMFBY = Pradhan Mantri Fasal "
+    "Bima Yojana; PM-JAY = Ayushman Bharat; MGNREGA = Mahatma Gandhi National "
+    "Rural Employment Guarantee Act; APY = Atal Pension Yojana; SSY = Sukanya "
+    "Samriddhi Yojana. Do not invent other expansions, portal names, amounts, "
+    "dates, or eligibility rules. If unsure, say so and name the office to check."
 )
 
 # Short hints added to BASE for non-health domains. The full rewritten prompts
@@ -118,7 +124,7 @@ HEALTH_RE = re.compile(
     r"dose|doctor|aspatal|hospital|phc|ambulance|108|104|asha|daura|seizure|"
     r"behosh|unconscious|jalan|jalna|jalne|jala|burn|haddi|fracture|chot|injury|"
     r"poison|zeher|platelet|vaccin\w*|teeka|anemia|kamzori|chakkar|dizzy|faint|"
-    r"neend|sleep|mental|depress\w*|tanav|ilaaj|treatment|bimari|khansi|zukam|"
+    r"mental|depress\w*|tanav|ilaaj|treatment|bimari|khansi|zukam|"
     r"ors|dehydrat\w*|wajan|weight|exercise|vyayam|smoking|"
     r"kaan|ear|skin|allergy|khaal|bawaseer|piles|periods|masik|aankh|eye|"
     r"daant|dant|tooth|teeth|kamar|back|ghutna|ghutne|knee|jod|joint|"
@@ -132,7 +138,7 @@ HEALTH_RE = re.compile(
 SCHEME_RE = re.compile(
     r"\b(yojana|scheme|kisan samman|pm kisan|ayushman|ration|aadhaar|pan card|"
     r"mgnrega|nrega|kcc|kisan credit|mudra|pm awas|awas yojana|ujjwala|jan dhan|"
-    r"sukanya|atal pension|e-?shram|scholarship|pension|subsidy|installment|"
+    r"sukanya|atal pension|e-?shram|stand[ -]?up india|scholarship|pension|subsidy|installment|"
     r"kist|beneficiary|eligibility|eligible|apply|aavedan|application|"
     r"documents|kagaz|csc|portal|claim|bima|insurance|status|account|card|"
     r"योजना|आयुष्मान|राशन|आधार|पेंशन|किस्त|आवेदन|दस्तावेज|बीमा|खाता)\b",
