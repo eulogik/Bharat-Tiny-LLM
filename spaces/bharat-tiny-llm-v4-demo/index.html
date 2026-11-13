@@ -163,7 +163,7 @@
         <div class="source" id="source"></div>
         <div class="longtail" id="longtail" style="display:none">
           <h3>This is the long tail.</h3>
-          <p>The vetted cards and health protocols do not cover this question. You can run a tiny fallback model <b>inside your browser</b> with WebGPU. It downloads about 400 MB once; it is not the shipped 2B model, so verify anything important.</p>
+          <p>The vetted cards and health protocols do not cover this question. You can run a tiny fallback model <b>inside your browser</b> with WebGPU. It downloads about 400 MB on the first run and may take several minutes; it is not the shipped 2B model, so verify anything important.</p>
           <button id="runFallback">Run browser fallback</button>
           <div class="lt-status" id="fallbackStatus"></div>
           <div class="lt-answer" id="fallbackAnswer"></div>
@@ -292,6 +292,7 @@ async function runFallback(text){
     if (!FALLBACK_ENGINE){
       status.textContent='Downloading the browser model (about 400 MB, once)…';
       FALLBACK_ENGINE=await webllm.CreateMLCEngine(FALLBACK_MODEL,{
+        appConfig: Object.assign({}, webllm.prebuiltAppConfig, {cacheBackend:'opfs', opfsAccessMode:'async'}),
         initProgressCallback:(r)=>{
           if (r && typeof r.progress==='number') status.textContent=`Loading ${Math.round(r.progress*100)}% — ${r.text||''}`;
           else if (r && r.text) status.textContent=r.text;
